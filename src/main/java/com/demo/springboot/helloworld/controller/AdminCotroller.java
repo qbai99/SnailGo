@@ -29,6 +29,7 @@ public class AdminCotroller {
                 return "/views/book/book-list.html";
             }else{
                 System.out.println("登录失败");
+                System.out.println("登录失败");
             }
         }
         return "/test";
