@@ -20,4 +20,5 @@ public class AdminServiceImpl implements AdminService {
         List<Admin> admins = adminMapper.selectByExample(adminExample);
         return (admins.size()>0?admins.get(0):null);
     }
+
 }

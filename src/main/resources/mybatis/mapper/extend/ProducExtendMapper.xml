@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.springboot.helloworld.mapper.ProductMapper">
+    <resultMap id="myMap" type="com.demo.springboot.helloworld.common.domain.Product" extends="BaseResultMap">
+        <!--如何映射一个实体类的实体类属性-->
+        <association property="category" javaType="com.demo.springboot.helloworld.common.domain.Category">
+            <id column="cid" property="cid"/>
+            <result column="cname" property="cname"/>
+        </association>
+    </resultMap>
+    <select id="selectById" resultMap="myMap">
+        SELECT * FROM category c,products p
+        WHERE c.`cid` = p.`category_id` AND p.`pid`=#{pid};
+    </select>
+</mapper>

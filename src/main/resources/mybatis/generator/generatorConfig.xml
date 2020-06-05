@@ -35,7 +35,12 @@
         </javaClientGenerator>
 
 
-        <table tableName="Admin" domainObjectName="Admin"/>
+        <!--<table tableName="Admin" domainObjectName="Admin"/>-->
+        <table tableName="products" domainObjectName="Product"/>
+<!--        <table tableName="category" domainObjectName="Category">
+
+        </table>-->
+
         <!--<table tableName="Book" domainObjectName="Book"/>-->
 
         <!--  <table schema="DB2ADMIN" tableName="ALLTYPES" domainObjectName="Customer" >
