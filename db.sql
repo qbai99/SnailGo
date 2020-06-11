@@ -7,6 +7,7 @@ drop database if exists eshop;
 
 
 create database eshop;
+use eshop;
 
 drop table if exists address;
 
