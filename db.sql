@@ -327,7 +327,7 @@ alter table goods add constraint FK_Relationship_9 foreign key (cart_id)
 alter table login add constraint FK_Relationship_14 foreign key (user_id)
       references user_info (user_id) on delete restrict on update restrict;
 
-alter table "order" add constraint FK_Relationship_1 foreign key (user_id)
+alter table order_request add constraint FK_Relationship_1 foreign key (user_id)
       references user_info (user_id) on delete restrict on update restrict;
 
 alter table send_receive add constraint FK_Relationship_17 foreign key (user_id)
