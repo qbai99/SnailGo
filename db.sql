@@ -29,7 +29,7 @@ drop table if exists login;
 
 drop table if exists message_record;
 
-drop table if exists "order";
+drop table if exists order_request;
 
 drop table if exists send_receive;
 

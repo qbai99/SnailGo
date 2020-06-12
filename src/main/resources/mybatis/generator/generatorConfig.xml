@@ -11,7 +11,7 @@
         </commentGenerator>
         <!--覆盖生成XML文件-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/springboot_demo?useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=convertToNull"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/eshop?useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=convertToNull"
                         userId="root"
                         password="root">
         </jdbcConnection>
@@ -37,6 +37,7 @@
 
         <!--<table tableName="Admin" domainObjectName="Admin"/>-->
         <table tableName="products" domainObjectName="Product"/>
+        <table tableName="address" domainObjectName="Address"/>
 <!--        <table tableName="category" domainObjectName="Category">
 
         </table>-->
