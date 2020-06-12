@@ -170,7 +170,7 @@ create table message_record
 /*==============================================================*/
 /* Table: "order"                                               */
 /*==============================================================*/
-create table "order"
+create table order_request
 (
    order_id             bigint not null,
    user_id              bigint,
@@ -319,7 +319,7 @@ alter table goods add constraint FK_Relationship_19 foreign key (shop_id)
       references shop (shop_id) on delete restrict on update restrict;
 
 alter table goods add constraint FK_Relationship_20 foreign key (order_id)
-      references "order" (order_id) on delete restrict on update restrict;
+      references order_request (order_id) on delete restrict on update restrict;
 
 alter table goods add constraint FK_Relationship_9 foreign key (cart_id)
       references shopping_cart (cart_id) on delete restrict on update restrict;
@@ -337,7 +337,7 @@ alter table send_receive add constraint FK_Relationship_18 foreign key (chatroom
       references chat_record (chatroom_id) on delete restrict on update restrict;
 
 alter table shipping_state add constraint FK_Relationship_27 foreign key (order_id)
-      references "order" (order_id) on delete restrict on update restrict;
+      references order_request (order_id) on delete restrict on update restrict;
 
 alter table shop add constraint FK_Relationship_2 foreign key (user_id)
       references user_info (user_id) on delete restrict on update restrict;
