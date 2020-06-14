@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.demo.springboot.helloworld.mapper.AdminMapper">
-  <resultMap id="BaseResultMap" type="com.demo.springboot.helloworld.common.domain.Admin">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="loginName" jdbcType="VARCHAR" property="loginname" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="lastLoginTime" jdbcType="TIMESTAMP" property="lastlogintime" />
-    <result column="remark" jdbcType="VARCHAR" property="remark" />
+<mapper namespace="com.demo.springboot.helloworld.mapper.LoginMapper">
+  <resultMap id="BaseResultMap" type="com.demo.springboot.helloworld.common.domain.Login">
+    <id column="login_id" jdbcType="INTEGER" property="loginId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="user_admin" jdbcType="VARCHAR" property="userAdmin" />
+    <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -67,15 +66,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, loginName, password, lastLoginTime, remark
+    login_id, user_id, user_admin, user_password
   </sql>
-  <select id="selectByExample" parameterType="com.demo.springboot.helloworld.common.domain.AdminExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.demo.springboot.helloworld.common.domain.LoginExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from admin
+    from login
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -86,85 +85,76 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from admin
-    where id = #{id,jdbcType=INTEGER}
+    from login
+    where login_id = #{loginId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from admin
-    where id = #{id,jdbcType=INTEGER}
+    delete from login
+    where login_id = #{loginId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.demo.springboot.helloworld.common.domain.AdminExample">
-    delete from admin
+  <delete id="deleteByExample" parameterType="com.demo.springboot.helloworld.common.domain.LoginExample">
+    delete from login
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.demo.springboot.helloworld.common.domain.Admin">
-    insert into admin (id, loginName, password, 
-      lastLoginTime, remark)
-    values (#{id,jdbcType=INTEGER}, #{loginname,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{lastlogintime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.demo.springboot.helloworld.common.domain.Login">
+    insert into login (login_id, user_id, user_admin, 
+      user_password)
+    values (#{loginId,jdbcType=INTEGER}, #{userId,jdbcType=BIGINT}, #{userAdmin,jdbcType=VARCHAR}, 
+      #{userPassword,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.demo.springboot.helloworld.common.domain.Admin">
-    insert into admin
+  <insert id="insertSelective" parameterType="com.demo.springboot.helloworld.common.domain.Login">
+    insert into login
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
+      <if test="loginId != null">
+        login_id,
       </if>
-      <if test="loginname != null">
-        loginName,
+      <if test="userId != null">
+        user_id,
       </if>
-      <if test="password != null">
-        password,
+      <if test="userAdmin != null">
+        user_admin,
       </if>
-      <if test="lastlogintime != null">
-        lastLoginTime,
-      </if>
-      <if test="remark != null">
-        remark,
+      <if test="userPassword != null">
+        user_password,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
+      <if test="loginId != null">
+        #{loginId,jdbcType=INTEGER},
       </if>
-      <if test="loginname != null">
-        #{loginname,jdbcType=VARCHAR},
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
       </if>
-      <if test="password != null">
-        #{password,jdbcType=VARCHAR},
+      <if test="userAdmin != null">
+        #{userAdmin,jdbcType=VARCHAR},
       </if>
-      <if test="lastlogintime != null">
-        #{lastlogintime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="remark != null">
-        #{remark,jdbcType=VARCHAR},
+      <if test="userPassword != null">
+        #{userPassword,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.demo.springboot.helloworld.common.domain.AdminExample" resultType="java.lang.Long">
-    select count(*) from admin
+  <select id="countByExample" parameterType="com.demo.springboot.helloworld.common.domain.LoginExample" resultType="java.lang.Long">
+    select count(*) from login
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update admin
+    update login
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=INTEGER},
+      <if test="record.loginId != null">
+        login_id = #{record.loginId,jdbcType=INTEGER},
       </if>
-      <if test="record.loginname != null">
-        loginName = #{record.loginname,jdbcType=VARCHAR},
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=BIGINT},
       </if>
-      <if test="record.password != null">
-        password = #{record.password,jdbcType=VARCHAR},
+      <if test="record.userAdmin != null">
+        user_admin = #{record.userAdmin,jdbcType=VARCHAR},
       </if>
-      <if test="record.lastlogintime != null">
-        lastLoginTime = #{record.lastlogintime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.remark != null">
-        remark = #{record.remark,jdbcType=VARCHAR},
+      <if test="record.userPassword != null">
+        user_password = #{record.userPassword,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -172,40 +162,35 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update admin
-    set id = #{record.id,jdbcType=INTEGER},
-      loginName = #{record.loginname,jdbcType=VARCHAR},
-      password = #{record.password,jdbcType=VARCHAR},
-      lastLoginTime = #{record.lastlogintime,jdbcType=TIMESTAMP},
-      remark = #{record.remark,jdbcType=VARCHAR}
+    update login
+    set login_id = #{record.loginId,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=BIGINT},
+      user_admin = #{record.userAdmin,jdbcType=VARCHAR},
+      user_password = #{record.userPassword,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.demo.springboot.helloworld.common.domain.Admin">
-    update admin
+  <update id="updateByPrimaryKeySelective" parameterType="com.demo.springboot.helloworld.common.domain.Login">
+    update login
     <set>
-      <if test="loginname != null">
-        loginName = #{loginname,jdbcType=VARCHAR},
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
       </if>
-      <if test="password != null">
-        password = #{password,jdbcType=VARCHAR},
+      <if test="userAdmin != null">
+        user_admin = #{userAdmin,jdbcType=VARCHAR},
       </if>
-      <if test="lastlogintime != null">
-        lastLoginTime = #{lastlogintime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="remark != null">
-        remark = #{remark,jdbcType=VARCHAR},
+      <if test="userPassword != null">
+        user_password = #{userPassword,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where login_id = #{loginId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.demo.springboot.helloworld.common.domain.Admin">
-    update admin
-    set loginName = #{loginname,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      lastLoginTime = #{lastlogintime,jdbcType=TIMESTAMP},
-      remark = #{remark,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="com.demo.springboot.helloworld.common.domain.Login">
+    update login
+    set user_id = #{userId,jdbcType=BIGINT},
+      user_admin = #{userAdmin,jdbcType=VARCHAR},
+      user_password = #{userPassword,jdbcType=VARCHAR}
+    where login_id = #{loginId,jdbcType=INTEGER}
   </update>
 </mapper>
