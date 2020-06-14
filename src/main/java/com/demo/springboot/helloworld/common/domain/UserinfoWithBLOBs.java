@@ -1,15 +1,15 @@
 package com.demo.springboot.helloworld.common.domain;
 
 public class UserinfoWithBLOBs extends Userinfo {
-    private byte[] usersex;
+    private Integer usersex;
 
     private String userIntroductoin;
 
-    public byte[] getUsersex() {
+    public Integer getUsersex() {
         return usersex;
     }
 
-    public void setUsersex(byte[] usersex) {
+    public void setUsersex(Integer usersex) {
         this.usersex = usersex;
     }
 

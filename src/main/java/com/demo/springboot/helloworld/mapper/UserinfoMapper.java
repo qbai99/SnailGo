@@ -2,7 +2,6 @@ package com.demo.springboot.helloworld.mapper;
 
 import com.demo.springboot.helloworld.common.domain.Userinfo;
 import com.demo.springboot.helloworld.common.domain.UserinfoExample;
-import com.demo.springboot.helloworld.common.domain.UserinfoWithBLOBs;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -13,25 +12,25 @@ public interface UserinfoMapper {
 
     int deleteByPrimaryKey(Long userId);
 
-    int insert(UserinfoWithBLOBs record);
+    int insert(Userinfo record);
 
-    int insertSelective(UserinfoWithBLOBs record);
+    int insertSelective(Userinfo record);
 
-    List<UserinfoWithBLOBs> selectByExampleWithBLOBs(UserinfoExample example);
+    List<Userinfo> selectByExampleWithBLOBs(UserinfoExample example);
 
     List<Userinfo> selectByExample(UserinfoExample example);
 
-    UserinfoWithBLOBs selectByPrimaryKey(Long userId);
+    Userinfo selectByPrimaryKey(Long userId);
 
-    int updateByExampleSelective(@Param("record") UserinfoWithBLOBs record, @Param("example") UserinfoExample example);
+    int updateByExampleSelective(@Param("record") Userinfo record, @Param("example") UserinfoExample example);
 
-    int updateByExampleWithBLOBs(@Param("record") UserinfoWithBLOBs record, @Param("example") UserinfoExample example);
+    int updateByExampleWithBLOBs(@Param("record") Userinfo record, @Param("example") UserinfoExample example);
 
     int updateByExample(@Param("record") Userinfo record, @Param("example") UserinfoExample example);
 
-    int updateByPrimaryKeySelective(UserinfoWithBLOBs record);
+    int updateByPrimaryKeySelective(Userinfo record);
 
-    int updateByPrimaryKeyWithBLOBs(UserinfoWithBLOBs record);
+    int updateByPrimaryKeyWithBLOBs(Userinfo record);
 
     int updateByPrimaryKey(Userinfo record);
 }

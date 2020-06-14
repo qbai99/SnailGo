@@ -822,6 +822,66 @@ public class UserinfoExample {
             return (Criteria) this;
         }
 
+        public Criteria andUsersexIsNull() {
+            addCriterion("usersex is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsersexIsNotNull() {
+            addCriterion("usersex is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsersexEqualTo(Integer value) {
+            addCriterion("usersex =", value, "usersex");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsersexNotEqualTo(Integer value) {
+            addCriterion("usersex <>", value, "usersex");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsersexGreaterThan(Integer value) {
+            addCriterion("usersex >", value, "usersex");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsersexGreaterThanOrEqualTo(Integer value) {
+            addCriterion("usersex >=", value, "usersex");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsersexLessThan(Integer value) {
+            addCriterion("usersex <", value, "usersex");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsersexLessThanOrEqualTo(Integer value) {
+            addCriterion("usersex <=", value, "usersex");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsersexIn(List<Integer> values) {
+            addCriterion("usersex in", values, "usersex");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsersexNotIn(List<Integer> values) {
+            addCriterion("usersex not in", values, "usersex");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsersexBetween(Integer value1, Integer value2) {
+            addCriterion("usersex between", value1, value2, "usersex");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsersexNotBetween(Integer value1, Integer value2) {
+            addCriterion("usersex not between", value1, value2, "usersex");
+            return (Criteria) this;
+        }
+
         public Criteria andUserBirthdateIsNull() {
             addCriterion("user_birthdate is null");
             return (Criteria) this;

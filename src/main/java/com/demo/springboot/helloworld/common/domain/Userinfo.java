@@ -25,6 +25,8 @@ public class Userinfo {
 
     private String userPassword;
 
+    private Integer usersex;
+
     private Date userBirthdate;
 
     private String userPhonenumber;
@@ -34,6 +36,8 @@ public class Userinfo {
     private Boolean userTag;
 
     private Long levelId;
+
+    private String userIntroductoin;
 
     public Long getUserId() {
         return userId;
@@ -123,6 +127,14 @@ public class Userinfo {
         this.userPassword = userPassword == null ? null : userPassword.trim();
     }
 
+    public Integer getUsersex() {
+        return usersex;
+    }
+
+    public void setUsersex(Integer usersex) {
+        this.usersex = usersex;
+    }
+
     public Date getUserBirthdate() {
         return userBirthdate;
     }
@@ -161,5 +173,13 @@ public class Userinfo {
 
     public void setLevelId(Long levelId) {
         this.levelId = levelId;
+    }
+
+    public String getUserIntroductoin() {
+        return userIntroductoin;
+    }
+
+    public void setUserIntroductoin(String userIntroductoin) {
+        this.userIntroductoin = userIntroductoin == null ? null : userIntroductoin.trim();
     }
 }
