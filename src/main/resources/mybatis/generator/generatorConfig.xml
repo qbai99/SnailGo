@@ -38,6 +38,8 @@
         <!--<table tableName="Admin" domainObjectName="Admin"/>-->
         <!--<table tableName="products" domainObjectName="Product"/>-->
         <table tableName="goods" domainObjectName="Goods"/>
+        <table tableName="user_info" domainObjectName="Userinfo"/>
+        <table tableName="address" domainObjectName="Address"/>
 <!--        <table tableName="category" domainObjectName="Category">
 
         </table>-->

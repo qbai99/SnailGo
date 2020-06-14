@@ -275,7 +275,7 @@ create table user_info
    user_admin           varchar(255),
    user_name            varchar(7) not null,
    user_password        varchar(15) not null,
-   usersex              blob,
+   usersex              int,
    user_birthdate       date,
    user_phonenumber     char(11),
    user_img             varchar(255),
