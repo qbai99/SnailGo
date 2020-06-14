@@ -40,6 +40,8 @@
         <table tableName="goods" domainObjectName="Goods"/>
         <table tableName="user_info" domainObjectName="Userinfo"/>
         <table tableName="address" domainObjectName="Address"/>
+        <table tableName="order_request" domainObjectName="Order"/>
+        <table tableName="user_finance" domainObjectName="Userfinance"/>
 <!--        <table tableName="category" domainObjectName="Category">
 
         </table>-->
