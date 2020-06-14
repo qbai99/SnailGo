@@ -6,24 +6,17 @@
     <title>AdminLTE 3 | General Form Elements</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="../../static/jquery/dist/jquery.js"></script>
+    <script src="/jquery/dist/jquery.js"></script>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../../static/AdminLTE-3.0.5/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="/AdminLTE-3.0.5/plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../../static/AdminLTE-3.0.5/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="/AdminLTE-3.0.5/dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini">
-<script>
-    $.ajax({
-        success:function (data) {
-            console.log("接收返回值")
-        }
-    })
-</script>
 <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -33,7 +26,7 @@
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="../../static/AdminLTE-3.0.5/index3.html" class="nav-link">Home</a>
+                <a href="/AdminLTE-3.0.5/index3.html" class="nav-link">Home</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="#" class="nav-link">Contact</a>
@@ -64,7 +57,7 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            <img src="../../static/AdminLTE-3.0.5/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                            <img src="/AdminLTE-3.0.5/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
                                     Brad Diesel
@@ -80,7 +73,7 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            <img src="../../static/AdminLTE-3.0.5/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                            <img src="/AdminLTE-3.0.5/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
                                     John Pierce
@@ -96,7 +89,7 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            <img src="../../static/AdminLTE-3.0.5/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                            <img src="/AdminLTE-3.0.5/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
                                     Nora Silvester
@@ -151,8 +144,8 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="../../static/AdminLTE-3.0.5/index3.html" class="brand-link">
-            <img src="../../static/AdminLTE-3.0.5/dist/img/AdminLTELogo.png"
+        <a href="/AdminLTE-3.0.5/index3.html" class="brand-link">
+            <img src="/AdminLTE-3.0.5/dist/img/AdminLTELogo.png"
                  alt="AdminLTE Logo"
                  class="brand-image img-circle elevation-3"
                  style="opacity: .8">
@@ -164,7 +157,7 @@
             <!-- Sidebar user (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="../../static/AdminLTE-3.0.5/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                    <img src="/AdminLTE-3.0.5/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
                     <a href="#" class="d-block">Alexander Pierce</a>
@@ -177,7 +170,7 @@
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
                     <li class="nav-item has-treeview">
-                        <a href="./userInfomation.html" class="nav-link">
+                        <a href="/user/MyInformation" class="nav-link">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
                                 个人中心
@@ -294,25 +287,25 @@
                                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                             </div>
                                             <div class="input-group-append">
-                                                <span class="input-group-text" id="">Upload</span>
+                                                <span class="input-group-text" id="">上传</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label >账号/邮箱</label>
-                                        <input type="email" class="form-control" placeholder="734644329@qq.com">
+                                        <input id="emailInput" type="email" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">密码</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1" value="123456789">
+                                        <label for="passwordInput">密码</label>
+                                        <input type="password" class="form-control" id="passwordInput">
                                     </div>
                                     <div class="form-group">
                                         <label >用户名</label>
-                                        <input type="email" class="form-control" placeholder="Linux">
+                                        <input id="userName" type="email" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label >性别</label>
-                                        <select class="form-control select2" style="width: 100%;">
+                                        <select id="sex" class="form-control select2" style="width: 100%;">
                                             <option selected="selected">保密</option>
                                             <option>男</option>
                                             <option>女</option>
@@ -320,35 +313,35 @@
                                     </div>
                                     <div class="form-group">
                                         <label >出生年月</label>
-                                        <input type="email" class="form-control"  placeholder="1998.6">
+                                        <input id="birthDate" type="email" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label >手机号码</label>
-                                        <input type="email" class="form-control"  placeholder="13060033269">
+                                        <input id="phoneNumber" type="email" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label >自我介绍</label>
-                                        <input type="email" class="form-control"  placeholder="我太难了">
+                                        <input id="introduction" type="email" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label >余额</label>
-                                        <p> 300.32元</p>
+                                        <p id="balance"></p>
                                     </div>
                                     <div class="form-group">
                                         <label >当前收货地址</label>
-                                        <p>四川省成都市双流县西航港街道川大路2号四川大学江安校区</p>
+                                        <p></p>
                                     </div>
                                     <div class="form-group">
                                         <label >等级</label>
-                                        <p> 12</p>
+                                        <p></p>
                                     </div>
                                     <div class="form-group">
                                         <label >积分</label>
-                                        <p>340</p>
+                                        <p></p>
                                     </div>
                                     <div class="form-group">
                                         <label >身份</label>
-                                        <p>卖家</p>
+                                        <p></p>
                                     </div>
                                     <div class="form-check">
                                         <!--<input type="checkbox" class="form-check-input" id="exampleCheck1">-->
@@ -386,15 +379,16 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="../../static/AdminLTE-3.0.5/plugins/jquery/jquery.min.js"></script>
+<script src="/MyInfoJs/MyInfo.js"></script>
+<script src="/AdminLTE-3.0.5/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="../../static/AdminLTE-3.0.5/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/AdminLTE-3.0.5/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- bs-custom-file-input -->
-<script src="../../static/AdminLTE-3.0.5/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<script src="/AdminLTE-3.0.5/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../../static/AdminLTE-3.0.5/dist/js/adminlte.min.js"></script>
+<script src="/AdminLTE-3.0.5/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../../static/AdminLTE-3.0.5/dist/js/demo.js"></script>
+<script src="/AdminLTE-3.0.5/dist/js/demo.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         bsCustomFileInput.init();
