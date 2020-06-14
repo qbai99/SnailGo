@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>搜索结果</title>
+</head>
+<body>
+<li style=" width:206px; height:306px"  th:each="sc:${search_result}">
+    <div class="i-pic limit">
+
+
+        <p class="title fl" th:text="${search_result}"></p>
+        <p class="title fl" th:text="${result_num}"></p>
+    </div>
+</li>
+</body>
+</html>
