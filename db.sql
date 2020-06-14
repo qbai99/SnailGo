@@ -145,14 +145,15 @@ create table goods
 /*==============================================================*/
 /* Table: login                                                 */
 /*==============================================================*/
-create table login
+CREATE TABLE login
 (
-   login_id             int not null,
-   user_id              bigint,
-   username             char(7),
-   password             char(15),
-   primary key (login_id)
+   login_id             INT NOT NULL,
+   user_id              BIGINT,
+   user_admin             VARCHAR(255),
+   user_password             VARCHAR(15),
+   PRIMARY KEY (login_id)
 );
+
 
 /*==============================================================*/
 /* Table: message_record                                        */
@@ -275,7 +276,7 @@ create table user_info
    user_admin           varchar(255),
    user_name            varchar(7) not null,
    user_password        varchar(15) not null,
-   usersex              blob,
+   usersex              int,
    user_birthdate       date,
    user_phonenumber     char(11),
    user_img             varchar(255),
