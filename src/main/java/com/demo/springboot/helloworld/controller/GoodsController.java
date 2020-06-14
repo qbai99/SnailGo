@@ -22,7 +22,7 @@ public class GoodsController {
         return list;
     }
     @RequestMapping("/details")
-    public String details(){
+    public String details(int id){
         return "/goods/details";
     }
 
