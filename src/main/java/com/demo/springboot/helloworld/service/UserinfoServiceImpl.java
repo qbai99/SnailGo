@@ -17,10 +17,9 @@ public class UserinfoServiceImpl implements UserinfoService{
     public List<Userinfo> find() {
 //        userinfoMapper.selectByExample();
         UserinfoExample userinfoExample = new UserinfoExample();
-        userinfoExample.createCriteria().andUserIdEqualTo(null);
+        userinfoExample.createCriteria().andUserAdminEqualTo("admin");
 
         List<Userinfo> userinfo = userinfoMapper.selectByExample(userinfoExample);
-        System.out.println("service已经被调用");
-        return null;
+        return userinfo;
     }
 }

@@ -31,3 +31,6 @@
 1.增加了支付界面-pay.html
 2.增加了static/img的内容
 3.增加了PayController
+# ver 1.0.2.200614_beta
+1.添加了查询个人信息的controller
+2.页面打开个人中心可以显示个人信息
