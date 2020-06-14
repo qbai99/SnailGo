@@ -30,3 +30,4 @@
 # ver 1.0.1.200613_beta
 1.增加了支付界面-pay.html
 2.增加了static/img的内容
+3.增加了PayController
