@@ -20,5 +20,13 @@ public class GoodsServiceImpl implements GoodsService{
         return list;
     }
 
+    @Override
+    public List<Goods> searchtest(String search_input) {
+        GoodsExample goodsExample = new GoodsExample();
+        goodsExample.createCriteria().andGoodsNameLike(search_input);
+        List<Goods> list=goodsMapper.selectByExample(goodsExample);
+        return list;
+    }
+
 
 }
