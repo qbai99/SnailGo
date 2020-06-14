@@ -21,6 +21,9 @@ public class GoodsController {
         List<Goods> list=goodsService.search(name);
         return list;
     }
-
+    @RequestMapping("/details")
+    public String details(){
+        return "/goods/details";
+    }
 
 }
