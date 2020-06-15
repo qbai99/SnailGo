@@ -9,4 +9,6 @@ import java.util.List;
 public interface UserinfoService {
 
     List<Userinfo> find();
+
+    boolean changepassword(String oldPassword,String newPassword);
 }

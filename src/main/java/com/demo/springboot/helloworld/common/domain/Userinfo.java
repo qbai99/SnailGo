@@ -182,4 +182,28 @@ public class Userinfo {
     public void setUserIntroductoin(String userIntroductoin) {
         this.userIntroductoin = userIntroductoin == null ? null : userIntroductoin.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Userinfo{" +
+                "userId=" + userId +
+                ", messageId=" + messageId +
+                ", signUpId=" + signUpId +
+                ", loginId=" + loginId +
+                ", financeId=" + financeId +
+                ", useLevelId=" + useLevelId +
+                ", shopId=" + shopId +
+                ", cartId=" + cartId +
+                ", userAdmin='" + userAdmin + '\'' +
+                ", userName='" + userName + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", usersex=" + usersex +
+                ", userBirthdate=" + userBirthdate +
+                ", userPhonenumber='" + userPhonenumber + '\'' +
+                ", userImg='" + userImg + '\'' +
+                ", userTag=" + userTag +
+                ", levelId=" + levelId +
+                ", userIntroductoin='" + userIntroductoin + '\'' +
+                '}';
+    }
 }

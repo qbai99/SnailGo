@@ -1,5 +1,5 @@
 $.ajax({
-    type: "POST",
+    type: "GET",
     url: "/user/information",
     // data:JSON.stringify(dataObj) ,
     contentType: "application/json; charset=utf-8",
@@ -37,7 +37,8 @@ $.ajax({
             default:
                 break;
         }
-
         console.log(res);
     }
 });
+
+

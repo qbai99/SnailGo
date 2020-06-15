@@ -52,7 +52,7 @@ drop table if exists user_level;
 /*==============================================================*/
 create table address
 (
-   address_id           bigint not null,
+   address_id           bigint not null auto_increment,
    user_id              bigint,
    address              varchar(255),
    primary key (address_id)
@@ -63,7 +63,7 @@ create table address
 /*==============================================================*/
 create table browsing_records
 (
-   records_id           bigint not null,
+   records_id           bigint not null auto_increment,
    user_id              bigint,
    records              varchar(255),
    primary key (records_id)
@@ -74,7 +74,7 @@ create table browsing_records
 /*==============================================================*/
 create table chat_record
 (
-   chatroom_id          int not null,
+   chatroom_id          int not null auto_increment,
    logid                int,
    sender_id            int,
    receiver_id          int,
@@ -88,7 +88,7 @@ create table chat_record
 /*==============================================================*/
 create table good_imgs
 (
-   id                   bigint not null,
+   id                   bigint not null auto_increment,
    goods_id             bigint,
    imgs                 longtext,
    primary key (id)
@@ -99,7 +99,7 @@ create table good_imgs
 /*==============================================================*/
 create table good_infos
 (
-   id                   bigint not null,
+   id                   bigint not null auto_increment,
    goods_id             bigint,
    infos                text,
    primary key (id)
@@ -110,7 +110,7 @@ create table good_infos
 /*==============================================================*/
 create table good_norms
 (
-   id                   bigint not null,
+   id                   bigint not null auto_increment,
    goods_id             bigint,
    norms                varchar(255),
    primary key (id)
@@ -121,7 +121,7 @@ create table good_norms
 /*==============================================================*/
 create table good_tags
 (
-   id                   bigint not null,
+   id                   bigint not null auto_increment,
    goods_id             bigint,
    tags                 varchar(255),
    primary key (id)
@@ -132,7 +132,7 @@ create table good_tags
 /*==============================================================*/
 create table goods
 (
-   goods_id             bigint not null,
+   goods_id             bigint not null auto_increment,
    shop_id              bigint,
    order_id             bigint,
    cart_id              int,
@@ -147,7 +147,7 @@ create table goods
 /*==============================================================*/
 CREATE TABLE login
 (
-   login_id             INT NOT NULL,
+   login_id             INT NOT NULL auto_increment,
    user_id              BIGINT,
    user_admin             VARCHAR(255),
    user_password             VARCHAR(15),
@@ -160,7 +160,7 @@ CREATE TABLE login
 /*==============================================================*/
 create table message_record
 (
-   message_id           int not null,
+   message_id           int not null auto_increment,
    title                varchar(255) not null,
    content              text,
    mail_timing          datetime not null,
@@ -173,7 +173,7 @@ create table message_record
 /*==============================================================*/
 create table order_request
 (
-   order_id             bigint not null,
+   order_id             bigint not null auto_increment,
    user_id              bigint,
    buyer_id             bigint,
    seller_id            bigint,
@@ -188,7 +188,7 @@ create table order_request
 /*==============================================================*/
 create table send_receive
 (
-   user_id              bigint not null,
+   user_id              bigint not null auto_increment,
    chatroom_id          int not null,
    primary key (user_id, chatroom_id)
 );
@@ -198,7 +198,7 @@ create table send_receive
 /*==============================================================*/
 create table shipping_state
 (
-   id                   bigint not null,
+   id                   bigint not null auto_increment,
    order_id             bigint,
    date                 datetime,
    loc                  varchar(255),
@@ -211,7 +211,7 @@ create table shipping_state
 /*==============================================================*/
 create table shop
 (
-   shop_id              bigint not null,
+   shop_id              bigint not null auto_increment,
    user_id              bigint,
    shop_boss            varchar(255),
    shop_goods           text,
@@ -223,7 +223,7 @@ create table shop
 /*==============================================================*/
 create table shopping_cart
 (
-   id                   int not null,
+   id                   int not null auto_increment,
    user_id              bigint,
    goods_id             int,
    goods_name           varchar(255),
@@ -238,7 +238,7 @@ create table shopping_cart
 /*==============================================================*/
 create table sign_up
 (
-   sign_up_id           bigint not null,
+   sign_up_id           bigint not null auto_increment,
    user_id              bigint,
    username             char(7),
    password             varchar(15),
@@ -254,7 +254,7 @@ create table sign_up
 /*==============================================================*/
 create table user_finance
 (
-   finance_id           bigint not null,
+   finance_id           bigint not null auto_increment,
    user_id              bigint,
    balance              double,
    primary key (finance_id)
@@ -265,7 +265,7 @@ create table user_finance
 /*==============================================================*/
 create table user_info
 (
-   user_id              bigint not null,
+   user_id              bigint not null auto_increment,
    message_id           int,
    sign_up_id           bigint,
    login_id             int,
@@ -291,7 +291,7 @@ create table user_info
 /*==============================================================*/
 create table user_level
 (
-   level_id             bigint not null,
+   level_id             bigint not null auto_increment,
    user_id              bigint,
    level                int,
    points               int,
