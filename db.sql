@@ -135,7 +135,6 @@ create table goods
    goods_id             bigint not null auto_increment,
    shop_id              bigint,
    order_id             bigint,
-   cart_id              int,
    goods_price          double,
    goods_name           varchar(255),
    goods_remaning       int default 0,
@@ -225,7 +224,7 @@ create table shopping_cart
 (
    id                   int not null auto_increment,
    user_id              bigint,
-   goods_id             int,
+   goods_id             bigint,
    goods_name           varchar(255),
    goods_remaining      int,
    goods_quantity       int,
@@ -272,7 +271,6 @@ create table user_info
    finance_id           bigint,
    use_level_id         bigint,
    shop_id              bigint,
-   cart_id              int,
    user_admin           varchar(255),
    user_name            varchar(7) not null,
    user_password        varchar(15) not null,
@@ -322,9 +320,6 @@ alter table goods add constraint FK_Relationship_19 foreign key (shop_id)
 alter table goods add constraint FK_Relationship_20 foreign key (order_id)
       references order_request (order_id) on delete restrict on update restrict;
 
-alter table goods add constraint FK_Relationship_9 foreign key (cart_id)
-      references shopping_cart (cart_id) on delete restrict on update restrict;
-
 alter table login add constraint FK_Relationship_14 foreign key (user_id)
       references user_info (user_id) on delete restrict on update restrict;
 
@@ -372,9 +367,6 @@ alter table user_info add constraint FK_Relationship_3 foreign key (shop_id)
 
 alter table user_info add constraint FK_Relationship_5 foreign key (use_level_id)
       references user_level (level_id) on delete restrict on update restrict;
-
-alter table user_info add constraint FK_Relationship_7 foreign key (cart_id)
-      references shopping_cart (cart_id) on delete restrict on update restrict;
 
 alter table user_level add constraint FK_Relationship_6 foreign key (user_id)
       references user_info (user_id) on delete restrict on update restrict;
