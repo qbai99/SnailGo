@@ -4,7 +4,9 @@ import com.demo.springboot.helloworld.common.domain.Userfinance;
 import com.demo.springboot.helloworld.common.domain.UserfinanceExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface UserfinanceMapper {
     long countByExample(UserfinanceExample example);
 
