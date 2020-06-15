@@ -9,4 +9,6 @@ import java.util.List;
 public interface AddressService {
 
     List<Address> MyAddress();
+
+    List<Address> AddAdress(String newAddress);
 }

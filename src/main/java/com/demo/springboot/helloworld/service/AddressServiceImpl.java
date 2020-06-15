@@ -20,4 +20,16 @@ public class AddressServiceImpl implements AddressService {
         List<Address> myaddress = addressMapper.selectByExample(addressExample);
         return myaddress;
     }
+
+    @Override
+    public List<Address> AddAdress(String newAddress) {
+        AddressExample addressExample = new AddressExample();
+        Address newaddress = new Address();
+        newaddress.setUserId((long) 1);
+        newaddress.setAddress(newAddress);
+        addressMapper.insert(newaddress);
+        addressExample.createCriteria().andUserIdEqualTo((long) 1);
+
+        return addressMapper.selectByExample(addressExample);
+    }
 }

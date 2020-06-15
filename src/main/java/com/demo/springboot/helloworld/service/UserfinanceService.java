@@ -8,4 +8,8 @@ import java.util.List;
 @Service
 public interface UserfinanceService {
     List<Userfinance> balance();
+
+    List<Userfinance> check();
+
+    Userfinance charge(double price);
 }

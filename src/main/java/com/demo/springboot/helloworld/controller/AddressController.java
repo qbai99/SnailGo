@@ -22,4 +22,11 @@ public class AddressController {
         List<Address> myaddress = addressService.MyAddress();
         return myaddress;
     }
+
+    @RequestMapping("/addaddress")
+    @ResponseBody
+    public List<Address> AddAdress(String newAddress){
+        List<Address> myaddress = addressService.AddAdress(newAddress);
+        return myaddress;
+    }
 }
