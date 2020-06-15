@@ -18,6 +18,7 @@ public class GoodsController {
     @RequestMapping("/search")
 
     public String search(String search_key, Model model) {
+        search_key=search_key.toUpperCase();
         List<Goods> tmp = goodsService.search(search_key);
 
         if (tmp.size() != 0) {//返回不为空。搜索成功
