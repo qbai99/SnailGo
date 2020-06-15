@@ -6,13 +6,9 @@ import com.demo.springboot.helloworld.common.domain.Userlevel;
 import com.demo.springboot.helloworld.service.UserfinanceService;
 import com.demo.springboot.helloworld.service.UserinfoService;
 import com.demo.springboot.helloworld.service.UserlevelService;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -31,12 +27,13 @@ public class UserinfoController {
     @Autowired
     private UserlevelService userlevelService;
 
+
     @RequestMapping("/MyInformation")
     public String List(){
         return "/user/userInfomation";
     }
 
-    @RequestMapping("/information")
+    @RequestMapping(value = "/information",method = RequestMethod.GET)
     @ResponseBody
     public Map<String,Object> info(){
         List<Userinfo> user = userinfoService.find();
@@ -52,5 +49,24 @@ public class UserinfoController {
     @RequestMapping("/changepassword")
     public String password(){
         return "/user/ChangePassword";
+    }
+
+    @RequestMapping("/AdressManage")
+    public String adress(){
+        return "/user/AddressManage";
+    }
+    @RequestMapping("/changeCommit")
+    @ResponseBody
+    public String ChangePassword(String oldPassword,String newPassword) {
+        System.out.println(oldPassword);
+        System.out.println(newPassword);
+        boolean result = userinfoService.changepassword(oldPassword,newPassword);
+        System.out.println("结果"+result);
+        if(result==false){
+            return "密码错误！";
+        }
+        else {
+            return "修改成功！";
+        }
     }
 }

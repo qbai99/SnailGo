@@ -277,134 +277,26 @@
             <div class="container-fluid">
 
                 <!-- SELECT2 EXAMPLE -->
-                <button class="btn btn-primary" style="margin-bottom: 2%">添加</button>
                 <div class="card card-default">
                     <div class="card-header">
-                        <h3 class="card-title">地址1</h3>
-
+                        <input id="addAddress" type="email" class="form-control" placeholder="请输入要添加的地址">
                         <div class="card-tools">
-                            <button type="button" class="btn btn-info">是否为默认地址</button>
-                            <i class="far fa-circle nav-icon"></i>
-                                <span class="sr-only">Toggle Dropdown</span>
-                                <div class="dropdown-menu" role="menu">
-                                    <a class="dropdown-item" href="#">是</a>
-                                    <a class="dropdown-item" href="#">否</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
+                            <button type="button" class="btn btn-info">添加</button>
                             </button>
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                         </div>
                     </div>
                     <!-- /.card-header -->
+                    <div class="card-header">
+                        <div class="row">
+                            <label>四川省双流区文星镇川大路四川大学</label>
+                        </div>
+                        <!-- /.row -->
+                    </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>省</label>
-                                    <select class="form-control select2bs4" style="width: 100%;">
-                                        <option selected="selected">河北省</option>
-                                        <option>山西省</option>
-                                        <option>辽宁省</option>
-                                        <option>吉林省</option>
-                                        <option>黑龙江省</option>
-                                        <option>江苏省</option>
-                                        <option>浙江省</option>
-                                        <option>安徽省</option>
-                                        <option>福建省</option>
-                                        <option>江西省</option>
-                                        <option>山东省</option>
-                                        <option>河南省</option>
-                                        <option>湖北省</option>
-                                        <option>湖南省</option>
-                                        <option>广东省</option>
-                                        <option>海南省</option>
-                                        <option>四川省</option>
-                                        <option>贵州省</option>
-                                        <option>云南省</option>
-                                        <option>陕西省</option>
-                                        <option>甘肃省</option>
-                                        <option>青海省</option>
-                                        <option>台湾省</option>
-                                        <option>内蒙古自治区</option>
-                                        <option>广西壮族自治区</option>
-                                        <option>西藏自治区</option>
-                                        <option>宁夏回族自治区</option>
-                                        <option>新疆维吾尔自治区</option>
-                                        <option>北京市</option>
-                                        <option>天津市</option>
-                                        <option>上海市</option>
-                                        <option>重庆市</option>
-                                        <option>香港特别行政区</option>
-                                        <option>澳门特别行政区</option>
-                                    </select>
-                                </div>
-                                <!-- /.form-group -->
-                                <div class="form-group">
-                                    <label>街道</label>
-                                    <select class="select2bs4" multiple="multiple" data-placeholder="请输入你的街道"
-                                            style="width: 100%;">
-                                        <option>Alabama</option>
-                                        <option>Alaska</option>
-                                        <option>California</option>
-                                        <option>Delaware</option>
-                                        <option>Tennessee</option>
-                                        <option>Texas</option>
-                                        <option>Washington</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>收货人</label>
-                                    <select class="select2bs4" multiple="multiple" data-placeholder="请输入你的详细地址"
-                                            style="width: 100%;">
-                                    </select>
-                                </div>
-                                <!-- /.form-group -->
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>城市</label>
-                                    <select class="select2bs4" multiple="multiple" data-placeholder="请输入你的城市"
-                                            style="width: 100%;">
-                                        <option>Alabama</option>
-                                        <option>Alaska</option>
-                                        <option>California</option>
-                                        <option>Delaware</option>
-                                        <option>Tennessee</option>
-                                        <option>Texas</option>
-                                        <option>Washington</option>
-                                    </select>
-                                </div>
-                                <!-- /.form-group -->
-                                <div class="form-group">
-                                    <label>详细地址</label>
-                                    <select class="select2bs4" multiple="multiple" data-placeholder="请输入你的详细地址"
-                                            style="width: 100%;">
-                                        <option>Alabama</option>
-                                        <option>Alaska</option>
-                                        <option>California</option>
-                                        <option>Delaware</option>
-                                        <option>Tennessee</option>
-                                        <option>Texas</option>
-                                        <option>Washington</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>联系方式</label>
-                                    <select class="select2bs4" multiple="multiple" data-placeholder="请输入你的详细地址"
-                                            style="width: 100%;">
-                                    </select>
-                                </div>
-                                <!-- /.form-group -->
-                            </div>
                             <!-- /.col -->
                         </div>
                         <!-- /.row -->
-
                     </div>
 
 
@@ -412,140 +304,6 @@
                     <div class="card-footer">
                         <!--Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about-->
                         <!--the plugin.-->
-                    </div>
-                </div>
-                <div class="card card-default">
-                    <div class="card-header">
-                        <h3 class="card-title">地址2</h3>
-
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-info">是否为默认地址</button>
-                            <i class="far fa-circle nav-icon"></i>
-                                <span class="sr-only">Toggle Dropdown</span>
-                                <div class="dropdown-menu" role="menu">
-                                    <a class="dropdown-item" href="#">是</a>
-                                    <a class="dropdown-item" href="#">否</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
-                            </button>
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
-                        </div>
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>省</label>
-                                    <select class="form-control select2bs4" style="width: 100%;">
-                                        <option selected="selected">河北省</option>
-                                        <option>山西省</option>
-                                        <option>辽宁省</option>
-                                        <option>吉林省</option>
-                                        <option>黑龙江省</option>
-                                        <option>江苏省</option>
-                                        <option>浙江省</option>
-                                        <option>安徽省</option>
-                                        <option>福建省</option>
-                                        <option>江西省</option>
-                                        <option>山东省</option>
-                                        <option>河南省</option>
-                                        <option>湖北省</option>
-                                        <option>湖南省</option>
-                                        <option>广东省</option>
-                                        <option>海南省</option>
-                                        <option>四川省</option>
-                                        <option>贵州省</option>
-                                        <option>云南省</option>
-                                        <option>陕西省</option>
-                                        <option>甘肃省</option>
-                                        <option>青海省</option>
-                                        <option>台湾省</option>
-                                        <option>内蒙古自治区</option>
-                                        <option>广西壮族自治区</option>
-                                        <option>西藏自治区</option>
-                                        <option>宁夏回族自治区</option>
-                                        <option>新疆维吾尔自治区</option>
-                                        <option>北京市</option>
-                                        <option>天津市</option>
-                                        <option>上海市</option>
-                                        <option>重庆市</option>
-                                        <option>香港特别行政区</option>
-                                        <option>澳门特别行政区</option>
-                                    </select>
-                                </div>
-                                <!-- /.form-group -->
-                                <div class="form-group">
-                                    <label>街道</label>
-                                    <select class="select2bs4" multiple="multiple" data-placeholder="请输入你的街道"
-                                            style="width: 100%;">
-                                        <option>Alabama</option>
-                                        <option>Alaska</option>
-                                        <option>California</option>
-                                        <option>Delaware</option>
-                                        <option>Tennessee</option>
-                                        <option>Texas</option>
-                                        <option>Washington</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>收货人</label>
-                                    <select class="select2bs4" multiple="multiple" data-placeholder="请输入你的详细地址"
-                                            style="width: 100%;">
-                                    </select>
-                                </div>
-                                <!-- /.form-group -->
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>城市</label>
-                                    <select class="select2bs4" multiple="multiple" data-placeholder="请输入你的城市"
-                                            style="width: 100%;">
-                                        <option>Alabama</option>
-                                        <option>Alaska</option>
-                                        <option>California</option>
-                                        <option>Delaware</option>
-                                        <option>Tennessee</option>
-                                        <option>Texas</option>
-                                        <option>Washington</option>
-                                    </select>
-                                </div>
-                                <!-- /.form-group -->
-                                <div class="form-group">
-                                    <label>详细地址</label>
-                                    <select class="select2bs4" multiple="multiple" data-placeholder="请输入你的详细地址"
-                                            style="width: 100%;">
-                                        <option>Alabama</option>
-                                        <option>Alaska</option>
-                                        <option>California</option>
-                                        <option>Delaware</option>
-                                        <option>Tennessee</option>
-                                        <option>Texas</option>
-                                        <option>Washington</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>联系方式</label>
-                                    <select class="select2bs4" multiple="multiple" data-placeholder="请输入你的详细地址"
-                                            style="width: 100%;">
-                                    </select>
-                                </div>
-                                <!-- /.form-group -->
-                            </div>
-                            <!-- /.col -->
-                        </div>
-                        <!-- /.row -->
-
-                    </div>
-
-
-                    <!-- /.card-body -->
-                    <div class="card-footer">
                     </div>
                 </div>
 
