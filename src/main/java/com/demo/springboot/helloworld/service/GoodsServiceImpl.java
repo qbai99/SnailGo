@@ -5,6 +5,8 @@ import com.demo.springboot.helloworld.common.domain.GoodsExample;
 import com.demo.springboot.helloworld.mapper.GoodsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -16,6 +18,15 @@ public class GoodsServiceImpl implements GoodsService{
     public List<Goods> search(String name) {
         GoodsExample goodsExample = new GoodsExample();
         goodsExample.createCriteria().andGoodsNameLike(name);
+        List<Goods> list=goodsMapper.selectByExample(goodsExample);
+        return list;
+    }
+
+    @Override
+    @ResponseBody
+    public List<Goods> goodsdetails(long id) {
+        GoodsExample goodsExample = new GoodsExample();
+        goodsExample.createCriteria().andGoodsIdEqualTo(id);
         List<Goods> list=goodsMapper.selectByExample(goodsExample);
         return list;
     }
