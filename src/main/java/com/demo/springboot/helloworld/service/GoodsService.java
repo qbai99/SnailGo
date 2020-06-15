@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface GoodsService {
     List<Goods> search(String name);
-
+    List<Goods> goodsdetails(long id);
     List<Goods> searchtest(String search_input);
 }

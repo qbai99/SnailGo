@@ -367,7 +367,7 @@
 
                     <div>
                         <div class="card-title"><p class="title fl" th:text="${sc.goodsName}"></p></div>
-                        <img id="img-result-1" th:src="'/goods_pics/'+${sc.goodsId}+'-pic-1.jpg'"/>
+                        <a th:href="'details?id='+${sc.goodsId}"><img id="img-result-1" th:src="'/goods_pics/'+${sc.goodsId}+'-pic-1.jpg'"/></a>
                     </div>
 
                 </li>
