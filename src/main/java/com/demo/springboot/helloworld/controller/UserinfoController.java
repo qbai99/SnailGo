@@ -9,6 +9,7 @@ import com.demo.springboot.helloworld.service.UserlevelService;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -31,7 +32,6 @@ public class UserinfoController {
     private UserlevelService userlevelService;
 
     @RequestMapping("/MyInformation")
-
     public String List(){
         return "/user/userInfomation";
     }
@@ -47,5 +47,10 @@ public class UserinfoController {
         map.put("UserFinance",userfinance);
         map.put("UserLevel",userlevel);
         return map;
+    }
+
+    @RequestMapping("/changepassword")
+    public String password(){
+        return "/user/ChangePassword";
     }
 }
