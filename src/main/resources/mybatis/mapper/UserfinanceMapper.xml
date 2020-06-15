@@ -179,6 +179,9 @@
     where finance_id = #{financeId,jdbcType=BIGINT}
   </update>
   <select id="selectBalance" resultType="com.demo.springboot.helloworld.common.domain.Userfinance">
-    select balance from user_finance where user_id=001
+    select balance from user_finance where user_id=1
+  </select>
+  <select id="selectAll" resultType="com.demo.springboot.helloworld.common.domain.Userfinance">
+    select * from user_finance;
   </select>
 </mapper>

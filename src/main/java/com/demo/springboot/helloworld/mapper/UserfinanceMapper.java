@@ -31,4 +31,6 @@ public interface UserfinanceMapper {
     int updateByPrimaryKey(Userfinance record);
 
     Double selectBalance();
+
+    List<Userfinance> selectAll();
 }

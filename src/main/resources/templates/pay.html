@@ -6,6 +6,7 @@
   <title>支付</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="/jquery/dist/jquery.js"></script>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="/AdminLTE-3.0.5/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -470,9 +471,9 @@
                       <div class="dropdown-divider"></div>
                       <a href="#" class="dropdown-item">
                         <img  src="/img/yen-2x.png"><img> 平台余额
-                        <span class="float-right text-muted text-sm">23.50</span>
+                        <p id="balance" class="float-right text-muted text-sm"></p>
                       </a>
-                      <a href="/payBybalance" class="dropdown-item">
+                      <a href="balancePay" class="dropdown-item">
                         <img  src="/img/blank.png"><img>
                         <span  class="float-right text-muted text-sm">结算</span>
                       </a>
@@ -522,7 +523,8 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="AdminLTE-3.0.5/plugins/jquery/jquery.min.js"></script>
+<script src="/PayJs/Balance.js"></script>
+<script src="/AdminLTE-3.0.5/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="/AdminLTE-3.0.5/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->

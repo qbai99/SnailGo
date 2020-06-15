@@ -35,6 +35,7 @@
         </javaClientGenerator>
 
     <table tableName="sign_up" domainObjectName="SignUp"></table>
+        <table tableName="shopping_cart" domainObjectName="Cart"></table>
         <!--<table tableName="Admin" domainObjectName="Admin"/>-->
 <!--        <table tableName="Login" domainObjectName="Login"/>-->
 <!--&lt;!&ndash;        <table tableName="address" domainObjectName="Address"/>&ndash;&gt;-->
