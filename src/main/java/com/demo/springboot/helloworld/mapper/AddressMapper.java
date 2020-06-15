@@ -4,7 +4,9 @@ import com.demo.springboot.helloworld.common.domain.Address;
 import com.demo.springboot.helloworld.common.domain.AddressExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface AddressMapper {
     long countByExample(AddressExample example);
 
