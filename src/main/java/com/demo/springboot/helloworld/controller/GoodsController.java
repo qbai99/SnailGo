@@ -17,18 +17,20 @@ public class GoodsController {
 
     @RequestMapping("/search")
 
-    public String search(String name, Model model) {
-        List<Goods> tmp = goodsService.search(name);
+    public String search(String search_key, Model model) {
+        List<Goods> tmp = goodsService.search(search_key);
         if (tmp.size() != 0) {//返回不为空。搜索成功
             /*将搜索结果集合、集合元素个数(结果商品个数)、搜索关键字添加到model的属性中返回前端页面*/
             model.addAttribute("search_result", tmp);//搜索结果商品list
             model.addAttribute("result_num", tmp.size());//搜索结果商品数
-            model.addAttribute("search_key", name);//搜索关键词
+            model.addAttribute("search_key", search_key);//搜索关键词
+
             return "search";//跳转到搜索页search.html
         } else {//搜索失败
             model.addAttribute("error_search_fail", "没有相关商品");
             return "goods/goodsnotfound";
         }
+
 
 
     }

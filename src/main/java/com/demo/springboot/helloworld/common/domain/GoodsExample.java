@@ -445,7 +445,7 @@ public class GoodsExample {
         }
 
         public Criteria andGoodsNameLike(String value) {
-            addCriterion("goods_name like", value, "goodsName");
+            addCriterion("goods_name like", '%'+value+'%', "goodsName");
             return (Criteria) this;
         }
 

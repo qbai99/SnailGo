@@ -362,12 +362,12 @@
 
 
                 </div><!-- /.row -->
-                <li style=" width:206px; height:306px"  th:each="sc:${search_result}">
-                    <div class="i-pic limit">
 
+                <li style=" width:500px; height:500px"  th:each="sc:${search_result}">
 
-                        <p class="title fl" th:text="${search_result}"></p>
-                        <p class="title fl" th:text="${result_num}"></p>
+                    <div>
+                        <div class="card-title"><p class="title fl" th:text="${sc.goodsName}"></p></div>
+                        <img id="img-result-1" th:src="'/goods_pics/'+${sc.goodsId}+'-pic-1.jpg'"/>
                     </div>
 
                 </li>
