@@ -1,30 +1,50 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>注册</title>
+  <title>AdminLTE 3 | General Form Elements</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../static/AdminLTE-3.0.5/plugins/fontawesome-free/css/all.min.css"
-  th:href="@{/AdminLTE-3.0.5/plugins/fontawesome-free/css/all.min.css}">
+  <link rel="stylesheet" href="../static/AdminLTE-3.0.5/plugins/fontawesome-free/css/all.min.css"
+        th:href="@{/AdminLTE-3.0.5/plugins/fontawesome-free/css/all.min.css}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../../static/AdminLTE-3.0.5/dist/css/adminlte.min.css"
-  th:href="@{/AdminLTE-3.0.5/dist/css/adminlte.min.css}">
+  <link rel="stylesheet" href="../static/AdminLTE-3.0.5/dist/css/adminlte.min.css"
+        th:href="@{/AdminLTE-3.0.5/dist/css/adminlte.min.css}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  <script th:src="@{/js/sockjs.min.js}"></script>
+  <script th:src="@{/js/stomp.js}"></script>
+  <script th:src="@{/js/jquery-3.1.1.js}"></script>
+  <!-- jQuery -->
+  <script src="../../static/AdminLTE-3.0.5/plugins/jquery/jquery.min.js"
+          th:src="@{/AdminLTE-3.0.5/plugins/jquery/jquery.min.js}"></script>
+  <!-- Bootstrap 4 -->
+  <script src="../../static/AdminLTE-3.0.5/plugins/bootstrap/js/bootstrap.bundle.min.js"
+          th:src="@{/AdminLTE-3.0.5/plugins/bootstrap/js/bootstrap.bundle.min.js}" ></script>
+  <!-- bs-custom-file-input -->
+  <script src="../../static/AdminLTE-3.0.5/plugins/bs-custom-file-input/bs-custom-file-input.min.js"
+          th:src="@{/AdminLTE-3.0.5/plugins/bs-custom-file-input/bs-custom-file-input.min.js}"></script>
+  <!-- SweetAlert2 -->
+  <script src="../../static/AdminLTE-3.0.5/plugins/sweetalert2/sweetalert2.min.js"
+          th:src="@{/AdminLTE-3.0.5/plugins/sweetalert2/sweetalert2.min.js}"></script>
+  <!-- Toastr -->
+  <script src="../../static/AdminLTE-3.0.5/plugins/toastr/toastr.min.js"
+          th:src="@{/AdminLTE-3.0.5/plugins/toastr/toastr.min.js}"></script>
+  <!-- AdminLTE App -->
+  <script src="../../static/AdminLTE-3.0.5/dist/js/adminlte.min.js"
+          th:src="@{/AdminLTE-3.0.5/dist/js/adminlte.min.js}"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="../../static/AdminLTE-3.0.5/dist/js/demo.js"
+          th:src="@{/AdminLTE-3.0.5/dist/js/demo.js}"></script>
 </head>
-<body class="hold-transition sidebar-collapse">
+<body class="hold-transition sidebar-collapse" onload="connect()">
 <div class="wrapper">
-  <!-- Navbar -->
 
-  <!-- /.navbar -->
-
-  <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="../../static/AdminLTE-3.0.5/index3.html" class="brand-link">
@@ -183,7 +203,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../../static/AdminLTE-3.0.5/pages/UI/general.html" class="nav-link">
+                <a href="../../../../templates/general.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>General</p>
                 </a>
@@ -242,7 +262,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="signUpPage.html" class="nav-link active">
+                <a href="loginPage.html" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>General Elements</p>
                 </a>
@@ -582,149 +602,131 @@
     </div>
     <!-- /.sidebar -->
   </aside>
-
-  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-
-    <!-- Content Wrapper. Contains page content -->
-      <!-- Content Header (Page header) -->
-      <section class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1>网上购物商城</h1>
-            </div>
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">General Form</li>
-              </ol>
-            </div>
-          </div>
-        </div><!-- /.container-fluid -->
-      </section>
-    <!-- Main content -->
-    <section class="content">
+    <section class="content-header">
       <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-3"></div>
-          <!-- left column -->
-          <div class="col-md-6">
-            <!-- general form elements -->
-            <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">注册</h3>
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form role="form" th:action="@{../signUp}">
-                <div class="card-body">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">邮箱</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" name="emailAddress" placeholder="emailAddress">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">密码</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" name="userPassword" placeholder="userPassword">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputUserName1">昵称</label>
-                    <input type="username" class="form-control" id="exampleInputUserName1" name="userName" placeholder="userName">
-                  </div>
-
-                  <div class="form-group">
-                    <div class="icheck-primary d-inline">
-                      <input type="radio" id="radioIdentity1" value="0" name="identity" checked>
-                      <label for="radioIdentity1">
-                        买家
-                      </label>
-                    </div>
-                    <div class="icheck-primary d-inline">
-                      <input type="radio" id="radioIdentity2" value="1"  name="identity">
-                      <label for="radioIdentity2">
-                        卖家
-                      </label>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <div class="icheck-primary d-inline">
-                      <input type="radio" id="radioSex1" name="sex" checked>
-                      <label for="radioSex1">
-                        男
-                      </label>
-                    </div>
-                    <div class="icheck-primary d-inline">
-                      <input type="radio" id="radioSex2" name="sex">
-                      <label for="radioSex2">
-                        女
-                      </label>
-                    </div>
-                    <div class="icheck-primary d-inline">
-                      <input type="radio" id="radioSex3" name="sex">
-                      <label for="radioSex3">
-                        保密
-                      </label>
-                    </div>
-                  </div>
-
-
-
-
-                  <div class="form-group">
-                    <label for="exampleInputAddress1">地址</label>
-                    <input type="address" class="form-control" id="exampleInputAddress1"  name="address" placeholder="address">
-                  </div>
-                </div>
-                <!-- /.card-body -->
-
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-              </form>
-            </div>
-            <!-- /.card -->
-
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>系统管理员</h1>
           </div>
-          <!--/.col (left) -->
-          <!-- right column -->
-
-          <!--/.col (right) -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">General Form</li>
+            </ol>
+          </div>
         </div>
-        <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
-  <!-- /.content-wrapper -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <!-- left column -->
+        <div class="col-md-6">
+          <!-- general form elements -->
+
+          <!-- /.card -->
+          <!-- Horizontal Form -->
+          <div class="card card-outline card-info">
+            <div class="card-header">
+              <h3 class="card-title">推送消息</h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool btn-sm" data-card-widget="collapse" data-toggle="tooltip"
+                        title="Collapse">
+                  <i class="fas fa-minus"></i></button>
+                <button type="button" class="btn btn-tool btn-sm" data-card-widget="remove" data-toggle="tooltip"
+                        title="Remove">
+                  <i class="fas fa-times"></i></button>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+              <div id="conversationDiv">
+              <div class="card-body">
+                <div class="form-group row">
+                  <div class="col-sm-10">
+                    <textarea type="text"  id="name" placeholder="请在这里输入"
+                           style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;
+                            border: 1px solid #dddddd; padding: 10px;">
+                    </textarea>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer" >
+                <button id="sendName" onclick="sendName();">发送</button>
+              </div>
+              </div>
+              <!-- /.card-footer -->
+          </div>
+
+          <!-- /.card -->
+
+        </div>
+        <!--/.col (left) -->
+        <!-- right column -->
+        <!--/.col (right) -->
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
+<!--  <div>-->
+<!--    <button id="connect" onclick="connect();">连接</button>-->
+<!--    <button id="disconnect" disabled="disabled" onclick="disconnect();">断开连接</button>-->
+<!--  </div>-->
 
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
 </div>
-<!-- ./wrapper -->
-
-  <script src="../../static/AdminLTE-3.0.5/plugins/jquery/jquery.min.js"
-          th:src="@{/AdminLTE-3.0.5/plugins/jquery/jquery.min.js}"></script>
-  <!-- Bootstrap 4 -->
-  <script src="../../static/AdminLTE-3.0.5/plugins/bootstrap/js/bootstrap.bundle.min.js"
-          th:src="@{/AdminLTE-3.0.5/plugins/bootstrap/js/bootstrap.bundle.min.js}" ></script>
-  <!-- bs-custom-file-input -->
-  <script src="../../static/AdminLTE-3.0.5/plugins/bs-custom-file-input/bs-custom-file-input.min.js"
-          th:src="@{/AdminLTE-3.0.5/plugins/bs-custom-file-input/bs-custom-file-input.min.js}"></script>
-  <!-- AdminLTE App -->
-  <script src="../../static/AdminLTE-3.0.5/dist/js/adminlte.min.js"
-          th:src="@{/AdminLTE-3.0.5/dist/js/adminlte.min.js}"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="../../static/AdminLTE-3.0.5/dist/js/demo.js"
-          th:src="@{/AdminLTE-3.0.5/dist/js/demo.js}"></script>
+</div>
 <script type="text/javascript">
-$(document).ready(function () {
-  bsCustomFileInput.init();
-});
+  var stompClient = null;
+  function setConnected(connected) {
+    document.getElementById("connect").disabled = connected;
+    document.getElementById("disconnect").disabled = !connected;
+    // document.getElementById("conversationDiv").style.visibility = connected ? 'visible' : 'hidden';
+//        $("#connect").disabled = connected;
+//        $("#disconnect").disabled = !connected;
+    $("#response").html();
+  }
+  function connect() {
+    var socket = new SockJS('/endpointSang');
+    stompClient = Stomp.over(socket);
+    stompClient.connect({}, function (frame) {
+      // setConnected(true);
+      console.log('Connected:' + frame);
+      stompClient.subscribe('/topic/getResponse', function (response) {
+        showResponse(JSON.parse(response.body).responseMessage);
+      })
+    });
+  }
+  function disconnect() {
+    if (stompClient != null) {
+      stompClient.disconnect();
+    }
+    setConnected(false);
+    console.log('Disconnected');
+  }
+  function sendName() {
+    var name = $('#name').val();
+    console.log('name:' + name);
+    stompClient.send("/system", {}, JSON.stringify({'name': name}));
+  }
+  function showResponse(message) {
+    $(document).Toasts('create', {
+      class: 'bg-info',
+      title: 'Toast Title',
+      subtitle: 'Subtitle',
+      body: message
+    })
+  }
+
+
 </script>
+
 </body>
 </html>

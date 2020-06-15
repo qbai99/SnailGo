@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 3 | General Form Elements</title>
+  <title>登录</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -17,8 +17,33 @@
   th:href="@{/AdminLTE-3.0.5/dist/css/adminlte.min.css}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  <script th:src="@{/js/sockjs.min.js}"></script>
+  <script th:src="@{/js/stomp.js}"></script>
+  <script th:src="@{/js/jquery-3.1.1.js}"></script>
+  <!-- jQuery -->
+  <script src="../../static/AdminLTE-3.0.5/plugins/jquery/jquery.min.js"
+          th:src="@{/AdminLTE-3.0.5/plugins/jquery/jquery.min.js}"></script>
+  <!-- Bootstrap 4 -->
+  <script src="../../static/AdminLTE-3.0.5/plugins/bootstrap/js/bootstrap.bundle.min.js"
+          th:src="@{/AdminLTE-3.0.5/plugins/bootstrap/js/bootstrap.bundle.min.js}" ></script>
+  <!-- bs-custom-file-input -->
+  <script src="../../static/AdminLTE-3.0.5/plugins/bs-custom-file-input/bs-custom-file-input.min.js"
+          th:src="@{/AdminLTE-3.0.5/plugins/bs-custom-file-input/bs-custom-file-input.min.js}"></script>
+  <!-- SweetAlert2 -->
+  <script src="../../static/AdminLTE-3.0.5/plugins/sweetalert2/sweetalert2.min.js"
+          th:src="@{/AdminLTE-3.0.5/plugins/sweetalert2/sweetalert2.min.js}"></script>
+  <!-- Toastr -->
+  <script src="../../static/AdminLTE-3.0.5/plugins/toastr/toastr.min.js"
+          th:src="@{/AdminLTE-3.0.5/plugins/toastr/toastr.min.js}"></script>
+  <!-- AdminLTE App -->
+  <script src="../../static/AdminLTE-3.0.5/dist/js/adminlte.min.js"
+          th:src="@{/AdminLTE-3.0.5/dist/js/adminlte.min.js}"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="../../static/AdminLTE-3.0.5/dist/js/demo.js"
+          th:src="@{/AdminLTE-3.0.5/dist/js/demo.js}"></script>
 </head>
-<body class="hold-transition sidebar-collapse">
+<body class="hold-transition sidebar-collapse" onload="connect()">
 <div class="wrapper">
   <!-- Navbar -->
 
@@ -207,7 +232,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../static/AdminLTE-3.0.5/pages/UI/modals.html" class="nav-link">
+                <a href="../ws.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Modals & Alerts</p>
                 </a>
@@ -690,6 +715,28 @@
 $(document).ready(function () {
   bsCustomFileInput.init();
 });
+
+function connect() {
+  var socket = new SockJS('/endpointSang');
+  stompClient = Stomp.over(socket);
+  stompClient.connect({}, function (frame) {
+    // setConnected(true);
+    console.log('Connected:' + frame);
+    stompClient.subscribe('/topic/getResponse', function (response) {
+      showResponse(JSON.parse(response.body).responseMessage);
+    })
+  });
+}
+
+function showResponse(message) {
+  $(document).Toasts('create', {
+    class: 'bg-info',
+    title: 'Toast Title',
+    subtitle: 'Subtitle',
+    body: message
+  })
+}
+
 </script>
 </body>
 </html>
