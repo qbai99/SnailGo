@@ -32,4 +32,12 @@ public class AddressServiceImpl implements AddressService {
 
         return addressMapper.selectByExample(addressExample);
     }
+
+    @Override
+    public int delete(String addressId) {
+        AddressExample addressExample = new AddressExample();
+        addressExample.createCriteria().andAddressIdEqualTo(Long.parseLong(addressId));
+        int result = addressMapper.deleteByExample(addressExample);
+        return result;
+    }
 }

@@ -215,7 +215,7 @@
                         </a>
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="./UserProfile.html" class="nav-link">
+                        <a href="/user/MyProfile" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
                                 我的主页
@@ -279,9 +279,24 @@
                 <!-- SELECT2 EXAMPLE -->
                 <div class="card card-default" id="address">
                     <div class="card-header">
-                        <input id="newAddress" type="email" class="form-control" placeholder="请输入要添加的地址">
+                        <div class="card-body">
+                            <input id="newAddress" class="form-control" placeholder="请输入要添加的地址">
+                        </div>
+                        <div class="card-body">
+                        <input id="newPhoneNumber" class="form-control" placeholder="请输入收件人的手机号码">
+                        </div>
+                        <div class="card-body">
+                            <input id="newPeople" class="form-control" placeholder="请输入收件人姓名">
+                        </div>
                         <div class="card-tools">
                             <button type="button" class="btn btn-info" id="addAddress" onclick="AddAddress()">添加</button>
+                            </button>
+                        </div>
+                        <div class="card-body" style="margin-top: 2%">
+                            <input id="deleteInput" class="form-control" placeholder="请输入要删除的地址id">
+                        </div>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-info" id="deleteAddress" onclick="DeleteAddress()">删除</button>
                             </button>
                         </div>
                     </div>

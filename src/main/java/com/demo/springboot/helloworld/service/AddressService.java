@@ -11,4 +11,6 @@ public interface AddressService {
     List<Address> MyAddress();
 
     List<Address> AddAdress(String newAddress);
+
+    int delete(String addressId);
 }

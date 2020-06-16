@@ -33,6 +33,11 @@ public class UserinfoController {
         return "/user/userInfomation";
     }
 
+    @RequestMapping("/MyProfile")
+    public String profile(){
+        return "/user/UserProfile";
+    }
+
     @RequestMapping(value = "/information",method = RequestMethod.GET)
     @ResponseBody
     public Map<String,Object> info(){
