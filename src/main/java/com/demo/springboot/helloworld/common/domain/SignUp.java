@@ -11,11 +11,11 @@ public class SignUp {
 
     private Boolean identity;
 
+    private String emailAddress;
+
     private Boolean sex;
 
     private String address;
-
-    private String emailAddress;
 
     public Long getSignUpId() {
         return signUpId;
@@ -57,6 +57,14 @@ public class SignUp {
         this.identity = identity;
     }
 
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress == null ? null : emailAddress.trim();
+    }
+
     public Boolean getSex() {
         return sex;
     }
@@ -71,14 +79,6 @@ public class SignUp {
 
     public void setAddress(String address) {
         this.address = address == null ? null : address.trim();
-    }
-
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress == null ? null : emailAddress.trim();
     }
 
     public String getUserPassword() {

@@ -10,7 +10,7 @@ public interface UserinfoService {
 
     Userinfo updateInfo(String email, String username, String sex, String birthdate, String phonenumber, String introduction);
 
-    List<Userinfo> find();
+    List<Userinfo> find(Long userId);
 
     boolean changepassword(String oldPassword,String newPassword);
 }

@@ -4,14 +4,12 @@
   <resultMap id="BaseResultMap" type="com.demo.springboot.helloworld.common.domain.SignUp">
     <id column="sign_up_id" jdbcType="BIGINT" property="signUpId" />
     <result column="user_id" jdbcType="BIGINT" property="userId" />
-    <result column="username" jdbcType="CHAR" property="username" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="identity" jdbcType="BIT" property="identity" />
+    <result column="email_address" jdbcType="VARCHAR" property="emailAddress" />
     <result column="sex" jdbcType="BIT" property="sex" />
     <result column="address" jdbcType="VARCHAR" property="address" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.demo.springboot.helloworld.common.domain.SignUp">
-    <result column="email_address" jdbcType="LONGVARCHAR" property="emailAddress" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -72,27 +70,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    sign_up_id, user_id, username, password, identity, sex, address
+    sign_up_id, user_id, username, password, identity, email_address, sex, address
   </sql>
-  <sql id="Blob_Column_List">
-    email_address
-  </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.demo.springboot.helloworld.common.domain.SignUpExample" resultMap="ResultMapWithBLOBs">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from sign_up
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
   <select id="selectByExample" parameterType="com.demo.springboot.helloworld.common.domain.SignUpExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -107,11 +86,9 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from sign_up
     where sign_up_id = #{signUpId,jdbcType=BIGINT}
   </select>
@@ -127,11 +104,11 @@
   </delete>
   <insert id="insert" parameterType="com.demo.springboot.helloworld.common.domain.SignUp">
     insert into sign_up (sign_up_id, user_id, username, 
-      password, identity, sex, address, 
-      email_address)
-    values (#{signUpId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{username,jdbcType=CHAR}, 
-      #{password,jdbcType=VARCHAR}, #{identity,jdbcType=BIT}, #{sex,jdbcType=BIT}, #{address,jdbcType=VARCHAR}, 
-      #{emailAddress,jdbcType=LONGVARCHAR})
+      password, identity, email_address, 
+      sex, address)
+    values (#{signUpId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{identity,jdbcType=BIT}, #{emailAddress,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=BIT}, #{address,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.demo.springboot.helloworld.common.domain.SignUp">
     insert into sign_up
@@ -151,14 +128,14 @@
       <if test="identity != null">
         identity,
       </if>
+      <if test="emailAddress != null">
+        email_address,
+      </if>
       <if test="sex != null">
         sex,
       </if>
       <if test="address != null">
         address,
-      </if>
-      <if test="emailAddress != null">
-        email_address,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -169,7 +146,7 @@
         #{userId,jdbcType=BIGINT},
       </if>
       <if test="username != null">
-        #{username,jdbcType=CHAR},
+        #{username,jdbcType=VARCHAR},
       </if>
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
@@ -177,14 +154,14 @@
       <if test="identity != null">
         #{identity,jdbcType=BIT},
       </if>
+      <if test="emailAddress != null">
+        #{emailAddress,jdbcType=VARCHAR},
+      </if>
       <if test="sex != null">
         #{sex,jdbcType=BIT},
       </if>
       <if test="address != null">
         #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="emailAddress != null">
-        #{emailAddress,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -204,7 +181,7 @@
         user_id = #{record.userId,jdbcType=BIGINT},
       </if>
       <if test="record.username != null">
-        username = #{record.username,jdbcType=CHAR},
+        username = #{record.username,jdbcType=VARCHAR},
       </if>
       <if test="record.password != null">
         password = #{record.password,jdbcType=VARCHAR},
@@ -212,30 +189,16 @@
       <if test="record.identity != null">
         identity = #{record.identity,jdbcType=BIT},
       </if>
+      <if test="record.emailAddress != null">
+        email_address = #{record.emailAddress,jdbcType=VARCHAR},
+      </if>
       <if test="record.sex != null">
         sex = #{record.sex,jdbcType=BIT},
       </if>
       <if test="record.address != null">
         address = #{record.address,jdbcType=VARCHAR},
       </if>
-      <if test="record.emailAddress != null">
-        email_address = #{record.emailAddress,jdbcType=LONGVARCHAR},
-      </if>
     </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map">
-    update sign_up
-    set sign_up_id = #{record.signUpId,jdbcType=BIGINT},
-      user_id = #{record.userId,jdbcType=BIGINT},
-      username = #{record.username,jdbcType=CHAR},
-      password = #{record.password,jdbcType=VARCHAR},
-      identity = #{record.identity,jdbcType=BIT},
-      sex = #{record.sex,jdbcType=BIT},
-      address = #{record.address,jdbcType=VARCHAR},
-      email_address = #{record.emailAddress,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -244,9 +207,10 @@
     update sign_up
     set sign_up_id = #{record.signUpId,jdbcType=BIGINT},
       user_id = #{record.userId,jdbcType=BIGINT},
-      username = #{record.username,jdbcType=CHAR},
+      username = #{record.username,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
       identity = #{record.identity,jdbcType=BIT},
+      email_address = #{record.emailAddress,jdbcType=VARCHAR},
       sex = #{record.sex,jdbcType=BIT},
       address = #{record.address,jdbcType=VARCHAR}
     <if test="_parameter != null">
@@ -260,7 +224,7 @@
         user_id = #{userId,jdbcType=BIGINT},
       </if>
       <if test="username != null">
-        username = #{username,jdbcType=CHAR},
+        username = #{username,jdbcType=VARCHAR},
       </if>
       <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
@@ -268,35 +232,25 @@
       <if test="identity != null">
         identity = #{identity,jdbcType=BIT},
       </if>
+      <if test="emailAddress != null">
+        email_address = #{emailAddress,jdbcType=VARCHAR},
+      </if>
       <if test="sex != null">
         sex = #{sex,jdbcType=BIT},
       </if>
       <if test="address != null">
         address = #{address,jdbcType=VARCHAR},
       </if>
-      <if test="emailAddress != null">
-        email_address = #{emailAddress,jdbcType=LONGVARCHAR},
-      </if>
     </set>
-    where sign_up_id = #{signUpId,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.demo.springboot.helloworld.common.domain.SignUp">
-    update sign_up
-    set user_id = #{userId,jdbcType=BIGINT},
-      username = #{username,jdbcType=CHAR},
-      password = #{password,jdbcType=VARCHAR},
-      identity = #{identity,jdbcType=BIT},
-      sex = #{sex,jdbcType=BIT},
-      address = #{address,jdbcType=VARCHAR},
-      email_address = #{emailAddress,jdbcType=LONGVARCHAR}
     where sign_up_id = #{signUpId,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.demo.springboot.helloworld.common.domain.SignUp">
     update sign_up
     set user_id = #{userId,jdbcType=BIGINT},
-      username = #{username,jdbcType=CHAR},
+      username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       identity = #{identity,jdbcType=BIT},
+      email_address = #{emailAddress,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=BIT},
       address = #{address,jdbcType=VARCHAR}
     where sign_up_id = #{signUpId,jdbcType=BIGINT}

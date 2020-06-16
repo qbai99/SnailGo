@@ -3,14 +3,27 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 3 | General Form Elements</title>
+    <title>AdminLTE 3 | Advanced form elements</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="/jquery/dist/jquery.js"></script>
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="/AdminLTE-3.0.5/plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="/AdminLTE-3.0.5/plugins/daterangepicker/daterangepicker.css">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="/AdminLTE-3.0.5/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Bootstrap Color Picker -->
+    <link rel="stylesheet" href="/AdminLTE-3.0.5/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+    <!-- Tempusdominus Bbootstrap 4 -->
+    <link rel="stylesheet" href="/AdminLTE-3.0.5/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="/AdminLTE-3.0.5/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="/AdminLTE-3.0.5/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <!-- Bootstrap4 Duallistbox -->
+    <link rel="stylesheet" href="/AdminLTE-3.0.5/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="/AdminLTE-3.0.5/dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
@@ -26,7 +39,7 @@
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="/AdminLTE-3.0.5/index3.html" class="nav-link">Home</a>
+                <a href="../../index3.html" class="nav-link">Home</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="#" class="nav-link">Contact</a>
@@ -57,7 +70,7 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            <img src="/AdminLTE-3.0.5/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                            <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
                                     Brad Diesel
@@ -73,7 +86,7 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            <img src="/AdminLTE-3.0.5/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                            <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
                                     John Pierce
@@ -89,7 +102,7 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            <img src="/AdminLTE-3.0.5/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                            <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
                                     Nora Silvester
@@ -247,12 +260,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>个人中心</h1>
+                        <h1>我的订单</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">General Form</li>
+                            <li class="breadcrumb-item active">Advanced Form</li>
                         </ol>
                     </div>
                 </div>
@@ -260,96 +273,26 @@
         </section>
 
         <!-- Main content -->
-        <section class="content" style="position: relative;left:25%;">
+        <section class="content">
             <div class="container-fluid">
-                <div class="row">
-                    <!-- left column -->
-                    <div class="col-md-6">
-                        <!-- general form elements -->
-                        <div class="card card-primary">
-                            <div class="card-header">
-                                <h3 class="card-title">个人资料</h3>
-                            </div>
-                            <!-- /.card-header -->
-                            <!-- form start -->
-                            <form role="form">
-                                <!--账户 名称 密码 性别 出生年月 手机号码 头像 自我介绍 等级 积分 卖家还是买家-->
-                                <div class="card-body">
-                                    <div class="form-group">
-                                        <label>头像</label>
-                                        <div style="background-color: black;height: 350px;width: 350px;"></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputFile">选择头像文件</label>
-                                        <div class="input-group">
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="exampleInputFile">
-                                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                            </div>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text" id="">上传</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label >账号/邮箱</label>
-                                        <input id="emailInput" type="email" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label >用户名</label>
-                                        <input id="userName" type="email" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label >性别</label>
-                                        <select id="sex" class="form-control select2" style="width: 100%;">
-                                            <option selected="selected">保密</option>
-                                            <option>男</option>
-                                            <option>女</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label >出生年月</label>
-                                        <input id="birthDate" type="email" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label >手机号码</label>
-                                        <input id="phoneNumber" type="email" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label >自我介绍</label>
-                                        <input id="introduction" type="email" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label >余额</label>
-                                        <p id="balance"></p>
-                                    </div>
-                                    <div class="form-group">
-                                        <label >等级</label>
-                                        <p id="level"></p>
-                                    </div>
-                                    <div class="form-group">
-                                        <label >积分</label>
-                                        <p id="point"></p>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>身份</label>
-                                        <p  id="identity"></p>
-                                    </div>
-                                    <div class="form-check">
-                                        <!--<input type="checkbox" class="form-check-input" id="exampleCheck1">-->
-                                        <!--<label class="form-check-label" for="exampleCheck1"></label>-->
-                                    </div>
-                                </div>
-                                <!-- /.card-body -->
 
-                                <div class="card-footer">
-                                    <button type="button" class="btn btn-primary" onclick="clickHandle()">保存</button>
-                                </div>
-                            </form>
+                <!-- SELECT2 EXAMPLE -->
+                <div class="card card-default" id="address">
+                    <div class="card-header">
+                        <div class="card-tools">
                         </div>
                     </div>
+                    <!-- /.card-header -->
+
+
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                        <!--Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about-->
+                        <!--the plugin.-->
+                    </div>
                 </div>
-            </div>
+
+            </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->
     </div>
@@ -371,20 +314,102 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="/MyInfoJs/MyInfo.js"></script>
 <script src="/AdminLTE-3.0.5/plugins/jquery/jquery.min.js"></script>
+<script src="/MyInfoJs/OrderJs.js"></script>
 <!-- Bootstrap 4 -->
 <script src="/AdminLTE-3.0.5/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- bs-custom-file-input -->
-<script src="/AdminLTE-3.0.5/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<!-- Select2 -->
+<script src="/AdminLTE-3.0.5/plugins/select2/js/select2.full.min.js"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="/AdminLTE-3.0.5/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<!-- InputMask -->
+<script src="/AdminLTE-3.0.5/plugins/moment/moment.min.js"></script>
+<script src="/AdminLTE-3.0.5/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+<!-- date-range-picker -->
+<script src="/AdminLTE-3.0.5/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap color picker -->
+<script src="/AdminLTE-3.0.5/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="/AdminLTE-3.0.5/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Bootstrap Switch -->
+<script src="/AdminLTE-3.0.5/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/AdminLTE-3.0.5/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/AdminLTE-3.0.5/dist/js/demo.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        bsCustomFileInput.init();
-    });
+<!-- Page script -->
+<script>
+    $(function () {
+        //Initialize Select2 Elements
+        $('.select2').select2()
+
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
+
+        //Datemask dd/mm/yyyy
+        $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+        //Datemask2 mm/dd/yyyy
+        $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+        //Money Euro
+        $('[data-mask]').inputmask()
+
+        //Date range picker
+        $('#reservationdate').datetimepicker({
+            format: 'L'
+        });
+        //Date range picker
+        $('#reservation').daterangepicker()
+        //Date range picker with time picker
+        $('#reservationtime').daterangepicker({
+            timePicker: true,
+            timePickerIncrement: 30,
+            locale: {
+                format: 'MM/DD/YYYY hh:mm A'
+            }
+        })
+        //Date range as a button
+        $('#daterange-btn').daterangepicker(
+            {
+                ranges   : {
+                    'Today'       : [moment(), moment()],
+                    'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                    'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+                    'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+                startDate: moment().subtract(29, 'days'),
+                endDate  : moment()
+            },
+            function (start, end) {
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+            }
+        )
+
+        //Timepicker
+        $('#timepicker').datetimepicker({
+            format: 'LT'
+        })
+
+        //Bootstrap Duallistbox
+        $('.duallistbox').bootstrapDualListbox()
+
+        //Colorpicker
+        $('.my-colorpicker1').colorpicker()
+        //color picker with addon
+        $('.my-colorpicker2').colorpicker()
+
+        $('.my-colorpicker2').on('colorpickerChange', function(event) {
+            $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+        });
+
+        $("input[data-bootstrap-switch]").each(function(){
+            $(this).bootstrapSwitch('state', $(this).prop('checked'));
+        });
+
+    })
 </script>
 </body>
 </html>

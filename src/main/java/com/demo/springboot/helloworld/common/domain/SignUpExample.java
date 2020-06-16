@@ -424,6 +424,76 @@ public class SignUpExample {
             return (Criteria) this;
         }
 
+        public Criteria andEmailAddressIsNull() {
+            addCriterion("email_address is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailAddressIsNotNull() {
+            addCriterion("email_address is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailAddressEqualTo(String value) {
+            addCriterion("email_address =", value, "emailAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailAddressNotEqualTo(String value) {
+            addCriterion("email_address <>", value, "emailAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailAddressGreaterThan(String value) {
+            addCriterion("email_address >", value, "emailAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailAddressGreaterThanOrEqualTo(String value) {
+            addCriterion("email_address >=", value, "emailAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailAddressLessThan(String value) {
+            addCriterion("email_address <", value, "emailAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailAddressLessThanOrEqualTo(String value) {
+            addCriterion("email_address <=", value, "emailAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailAddressLike(String value) {
+            addCriterion("email_address like", value, "emailAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailAddressNotLike(String value) {
+            addCriterion("email_address not like", value, "emailAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailAddressIn(List<String> values) {
+            addCriterion("email_address in", values, "emailAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailAddressNotIn(List<String> values) {
+            addCriterion("email_address not in", values, "emailAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailAddressBetween(String value1, String value2) {
+            addCriterion("email_address between", value1, value2, "emailAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailAddressNotBetween(String value1, String value2) {
+            addCriterion("email_address not between", value1, value2, "emailAddress");
+            return (Criteria) this;
+        }
+
         public Criteria andSexIsNull() {
             addCriterion("sex is null");
             return (Criteria) this;
@@ -553,18 +623,11 @@ public class SignUpExample {
             addCriterion("address not between", value1, value2, "address");
             return (Criteria) this;
         }
-
-        public abstract void andEmailAddressEqualTo(String emailAddress);
     }
 
     public static class Criteria extends GeneratedCriteria {
         protected Criteria() {
             super();
-        }
-
-        @Override
-        public void andEmailAddressEqualTo(String emailAddress) {
-
         }
     }
 
