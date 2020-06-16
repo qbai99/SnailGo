@@ -53,6 +53,7 @@
 # ver 1.0.5.200616_beta
 1.完成了历史订单和配送状态的查看
 2.修改了UserinfoService Find函数的参数
+3.添加了实体类Order和ShippingState
 
 
 # 使用说明
