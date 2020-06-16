@@ -13,7 +13,7 @@ public class SignUp {
 
     private String emailAddress;
 
-    private Boolean sex;
+    private Integer sex;
 
     private String address;
 
@@ -32,7 +32,6 @@ public class SignUp {
     public void setUserId(Long userId) {
         this.userId = userId;
     }
-
 
     public String getUserName() {
         return userName;
@@ -66,11 +65,11 @@ public class SignUp {
         this.emailAddress = emailAddress == null ? null : emailAddress.trim();
     }
 
-    public Boolean getSex() {
+    public Integer getSex() {
         return sex;
     }
 
-    public void setSex(Boolean sex) {
+    public void setSex(Integer sex) {
         this.sex = sex;
     }
 

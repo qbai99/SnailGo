@@ -21,12 +21,22 @@ public class SignUpController {
     @RequestMapping("/signUp")
     public String signUp(SignUp signup, Model model)
     {
+        if(signup.getUserPassword()=="")
+        {
+            model.addAttribute("errorMsg","密码不能为空");
+            return "signUp/signUpPage";
+        }
+        if(signup.getUserName()=="")
+        {
+            model.addAttribute("errorMsg","昵称不能为空");
+            return "signUp/signUpPage";
+        }
             signup.setUserId(this.i);
             signup.setSignUpId((this.i++));
                 if(signUpService.signUp(signup)){
                     return "login/loginPage";
                 }
-                model.addAttribute("errorMsg","该邮箱已被注册");
+        model.addAttribute("errorMsg","邮箱已被注册");
                 return "signUp/signUpPage";
     }
 
