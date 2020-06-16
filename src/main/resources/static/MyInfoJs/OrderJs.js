@@ -11,11 +11,11 @@ $.ajax({
                 '商品名：' + res.Order[i].goodsName + '<br>' +
                 '单价：' + res.Order[i].goodsPrice + '元' + '<br>' +
                 '数量：' + res.Order[i].goodsQuantity + '<br>' +
-                '总额：' + (parseFloat(res.Order[i].goodsQuantity) * parseFloat(res.Order[i].goodsPrice)) + '元' + '<br>' +
+                '总额：' + (parseFloat(res.Order[i].goodsQuantity) * parseFloat(res.Order[i].goodsPrice)) + '元' + '<br>' +'<br>'+
                 '买家id：' + res.Buyer[i].userId + '<br>' +
                 '买家名：' + res.Buyer[i].userName + '<br>' +
                 '卖家id：' + res.Seller[i].userId + '<br>' +
-                '卖家名：' + res.Seller[i].userName + '<br>' +
+                '卖家名：' + res.Seller[i].userName + '<br>' +'<br>'+
                 '货物当前地点：' + res.ShippingState[i].loc + '<br>' +
                 '配送状态：' + res.ShippingState[i].otherInfo + '</label>' +
                 '</div>' +
