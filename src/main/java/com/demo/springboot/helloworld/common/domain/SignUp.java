@@ -5,17 +5,17 @@ public class SignUp {
 
     private Long userId;
 
-    private String username;
+    private String userName;
 
-    private String password;
+    private String userPassword;
 
     private Boolean identity;
+
+    private String emailAddress;
 
     private Boolean sex;
 
     private String address;
-
-    private String emailAddress;
 
     public Long getSignUpId() {
         return signUpId;
@@ -33,20 +33,21 @@ public class SignUp {
         this.userId = userId;
     }
 
-    public String getUsername() {
-        return username;
+
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
+    public void setUserName(String userName) {
+        this.userName = userName == null ? null : userName.trim();
     }
 
-    public String getPassword() {
-        return password;
+    public String getUserPassword() {
+        return userPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword == null ? null : userPassword.trim();
     }
 
     public Boolean getIdentity() {
@@ -55,6 +56,14 @@ public class SignUp {
 
     public void setIdentity(Boolean identity) {
         this.identity = identity;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress == null ? null : emailAddress.trim();
     }
 
     public Boolean getSex() {
@@ -71,17 +80,5 @@ public class SignUp {
 
     public void setAddress(String address) {
         this.address = address == null ? null : address.trim();
-    }
-
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress == null ? null : emailAddress.trim();
-    }
-
-    public String getUserPassword() {
-        return password;
     }
 }

@@ -24,6 +24,7 @@ public class SignUpServiceImpl implements SignUpService{
           signUpMapper.insert(signUp);
           return true;
       }
+
         return false;
     }
     @Override

@@ -16,21 +16,15 @@ public interface SignUpMapper {
 
     int insertSelective(SignUp record);
 
-    List<SignUp> selectByExampleWithBLOBs(SignUpExample example);
-
     List<SignUp> selectByExample(SignUpExample example);
 
     SignUp selectByPrimaryKey(Long signUpId);
 
     int updateByExampleSelective(@Param("record") SignUp record, @Param("example") SignUpExample example);
 
-    int updateByExampleWithBLOBs(@Param("record") SignUp record, @Param("example") SignUpExample example);
-
     int updateByExample(@Param("record") SignUp record, @Param("example") SignUpExample example);
 
     int updateByPrimaryKeySelective(SignUp record);
-
-    int updateByPrimaryKeyWithBLOBs(SignUp record);
 
     int updateByPrimaryKey(SignUp record);
 }

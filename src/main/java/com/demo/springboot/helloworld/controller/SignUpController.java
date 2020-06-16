@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
-import java.util.Random;
 
 @Controller
 public class SignUpController {
@@ -18,16 +17,16 @@ public class SignUpController {
     public String signUpPage(){
         return "signUp/signUpPage";
     }
-
+    static  Long i=new Long(0);
     @RequestMapping("/signUp")
     public String signUp(SignUp signup, Model model)
     {
-        Long i=new Long(6);
-            signup.setUserId(i++);
-            signup.setSignUpId((i++));
+            signup.setUserId(this.i);
+            signup.setSignUpId((this.i++));
                 if(signUpService.signUp(signup)){
                     return "login/loginPage";
                 }
+                model.addAttribute("errorMsg","该邮箱已被注册");
                 return "signUp/signUpPage";
     }
 
@@ -44,6 +43,7 @@ public class SignUpController {
         SignUp SignUpInDB = signUpService.login(login);
         if (SignUpInDB == null) {
             System.out.println("用户名不存在");
+            model.addAttribute("errorMsg","用户名不存在");
 
         } else {
             String passwordInDB=SignUpInDB.getUserPassword();
@@ -52,7 +52,10 @@ public class SignUpController {
                 return "goods";
             }
             else
+            {
                 System.out.println("登陆失败");
+                model.addAttribute("errorMsg","密码错误");
+            }
         }
         return "login/loginPage";
     }

@@ -681,6 +681,10 @@
 
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Submit</button>
+                  <div >
+                    <div th:text="${errorMsg}"></div>
+                    <input type="hidden" id="errorMsg" value="${errorMsg}}">
+                  </div>
                 </div>
               </form>
             </div>
@@ -722,9 +726,21 @@
   <script src="../../static/AdminLTE-3.0.5/dist/js/demo.js"
           th:src="@{/AdminLTE-3.0.5/dist/js/demo.js}"></script>
 <script type="text/javascript">
+
 $(document).ready(function () {
   bsCustomFileInput.init();
 });
+
+function error() {
+  var data= $("#errorMsg").getAttributeNames();
+  if(data!=null){
+    $(document).Toasts('create', {
+      class: 'bg-info',
+      title: '错误提示',
+      body:"错误提示"
+    })
+  }
+}
 </script>
 </body>
 </html>
