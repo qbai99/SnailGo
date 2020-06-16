@@ -239,10 +239,10 @@ create table sign_up
 (
    sign_up_id           bigint not null auto_increment,
    user_id              bigint,
-   username             char(7),
+   username             varchar(15),
    password             varchar(15),
    identity             bool,
-   email_address        longtext,
+   email_address        varchar(255),
    sex                  bool,
    address              varchar(255),
    primary key (sign_up_id)
