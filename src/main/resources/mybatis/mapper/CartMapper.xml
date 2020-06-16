@@ -6,7 +6,6 @@
     <result column="user_id" jdbcType="BIGINT" property="userId" />
     <result column="goods_id" jdbcType="BIGINT" property="goodsId" />
     <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
-    <result column="goods_remaining" jdbcType="INTEGER" property="goodsRemaining" />
     <result column="goods_quantity" jdbcType="INTEGER" property="goodsQuantity" />
     <result column="goods_price" jdbcType="DOUBLE" property="goodsPrice" />
   </resultMap>
@@ -69,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, user_id, goods_id, goods_name, goods_remaining, goods_quantity, goods_price
+    id, user_id, goods_id, goods_name, goods_quantity, goods_price
   </sql>
   <select id="selectByExample" parameterType="com.demo.springboot.helloworld.common.domain.CartExample" resultMap="BaseResultMap">
     select
@@ -103,11 +102,11 @@
   </delete>
   <insert id="insert" parameterType="com.demo.springboot.helloworld.common.domain.Cart">
     insert into shopping_cart (id, user_id, goods_id, 
-      goods_name, goods_remaining, goods_quantity, 
-      goods_price)
+      goods_name, goods_quantity, goods_price
+      )
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=BIGINT}, #{goodsId,jdbcType=BIGINT}, 
-      #{goodsName,jdbcType=VARCHAR}, #{goodsRemaining,jdbcType=INTEGER}, #{goodsQuantity,jdbcType=INTEGER}, 
-      #{goodsPrice,jdbcType=DOUBLE})
+      #{goodsName,jdbcType=VARCHAR}, #{goodsQuantity,jdbcType=INTEGER}, #{goodsPrice,jdbcType=DOUBLE}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.demo.springboot.helloworld.common.domain.Cart">
     insert into shopping_cart
@@ -123,9 +122,6 @@
       </if>
       <if test="goodsName != null">
         goods_name,
-      </if>
-      <if test="goodsRemaining != null">
-        goods_remaining,
       </if>
       <if test="goodsQuantity != null">
         goods_quantity,
@@ -146,9 +142,6 @@
       </if>
       <if test="goodsName != null">
         #{goodsName,jdbcType=VARCHAR},
-      </if>
-      <if test="goodsRemaining != null">
-        #{goodsRemaining,jdbcType=INTEGER},
       </if>
       <if test="goodsQuantity != null">
         #{goodsQuantity,jdbcType=INTEGER},
@@ -179,9 +172,6 @@
       <if test="record.goodsName != null">
         goods_name = #{record.goodsName,jdbcType=VARCHAR},
       </if>
-      <if test="record.goodsRemaining != null">
-        goods_remaining = #{record.goodsRemaining,jdbcType=INTEGER},
-      </if>
       <if test="record.goodsQuantity != null">
         goods_quantity = #{record.goodsQuantity,jdbcType=INTEGER},
       </if>
@@ -199,7 +189,6 @@
       user_id = #{record.userId,jdbcType=BIGINT},
       goods_id = #{record.goodsId,jdbcType=BIGINT},
       goods_name = #{record.goodsName,jdbcType=VARCHAR},
-      goods_remaining = #{record.goodsRemaining,jdbcType=INTEGER},
       goods_quantity = #{record.goodsQuantity,jdbcType=INTEGER},
       goods_price = #{record.goodsPrice,jdbcType=DOUBLE}
     <if test="_parameter != null">
@@ -218,9 +207,6 @@
       <if test="goodsName != null">
         goods_name = #{goodsName,jdbcType=VARCHAR},
       </if>
-      <if test="goodsRemaining != null">
-        goods_remaining = #{goodsRemaining,jdbcType=INTEGER},
-      </if>
       <if test="goodsQuantity != null">
         goods_quantity = #{goodsQuantity,jdbcType=INTEGER},
       </if>
@@ -235,7 +221,6 @@
     set user_id = #{userId,jdbcType=BIGINT},
       goods_id = #{goodsId,jdbcType=BIGINT},
       goods_name = #{goodsName,jdbcType=VARCHAR},
-      goods_remaining = #{goodsRemaining,jdbcType=INTEGER},
       goods_quantity = #{goodsQuantity,jdbcType=INTEGER},
       goods_price = #{goodsPrice,jdbcType=DOUBLE}
     where id = #{id,jdbcType=INTEGER}

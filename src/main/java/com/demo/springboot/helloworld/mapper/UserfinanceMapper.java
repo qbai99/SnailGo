@@ -33,4 +33,6 @@ public interface UserfinanceMapper {
     Double selectBalance();
 
     List<Userfinance> selectAll();
+
+    void balancePay(int t);
 }
