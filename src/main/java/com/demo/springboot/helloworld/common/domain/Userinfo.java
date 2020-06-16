@@ -17,8 +17,6 @@ public class Userinfo {
 
     private Long shopId;
 
-    private Integer cartId;
-
     private String userAdmin;
 
     private String userName;
@@ -37,7 +35,7 @@ public class Userinfo {
 
     private Long levelId;
 
-    private String userIntroductoin;
+    private String userIntroduction;
 
     public Long getUserId() {
         return userId;
@@ -93,14 +91,6 @@ public class Userinfo {
 
     public void setShopId(Long shopId) {
         this.shopId = shopId;
-    }
-
-    public Integer getCartId() {
-        return cartId;
-    }
-
-    public void setCartId(Integer cartId) {
-        this.cartId = cartId;
     }
 
     public String getUserAdmin() {
@@ -176,11 +166,11 @@ public class Userinfo {
     }
 
     public String getUserIntroductoin() {
-        return userIntroductoin;
+        return userIntroduction;
     }
 
     public void setUserIntroductoin(String userIntroductoin) {
-        this.userIntroductoin = userIntroductoin == null ? null : userIntroductoin.trim();
+        this.userIntroduction = userIntroductoin == null ? null : userIntroductoin.trim();
     }
 
     @Override
@@ -193,7 +183,6 @@ public class Userinfo {
                 ", financeId=" + financeId +
                 ", useLevelId=" + useLevelId +
                 ", shopId=" + shopId +
-                ", cartId=" + cartId +
                 ", userAdmin='" + userAdmin + '\'' +
                 ", userName='" + userName + '\'' +
                 ", userPassword='" + userPassword + '\'' +
@@ -203,7 +192,7 @@ public class Userinfo {
                 ", userImg='" + userImg + '\'' +
                 ", userTag=" + userTag +
                 ", levelId=" + levelId +
-                ", userIntroductoin='" + userIntroductoin + '\'' +
+                ", userIntroduction='" + userIntroduction + '\'' +
                 '}';
     }
 }

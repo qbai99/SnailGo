@@ -278,9 +278,8 @@ create table user_info
    user_birthdate       date,
    user_phonenumber     char(11),
    user_img             varchar(255),
-   user_introductoin    text,
+   user_introduction    text,
    user_tag             bool,
-   level_id             bigint,
    primary key (user_id)
 );
 

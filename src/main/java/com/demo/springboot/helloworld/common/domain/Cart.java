@@ -1,11 +1,11 @@
 package com.demo.springboot.helloworld.common.domain;
 
 public class Cart {
-    private Integer cartId;
+    private Integer id;
 
     private Long userId;
 
-    private Integer shoCartId;
+    private Long goodsId;
 
     private String goodsName;
 
@@ -15,12 +15,12 @@ public class Cart {
 
     private Double goodsPrice;
 
-    public Integer getCartId() {
-        return cartId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setCartId(Integer cartId) {
-        this.cartId = cartId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Long getUserId() {
@@ -31,12 +31,12 @@ public class Cart {
         this.userId = userId;
     }
 
-    public Integer getShoCartId() {
-        return shoCartId;
+    public Long getGoodsId() {
+        return goodsId;
     }
 
-    public void setShoCartId(Integer shoCartId) {
-        this.shoCartId = shoCartId;
+    public void setGoodsId(Long goodsId) {
+        this.goodsId = goodsId;
     }
 
     public String getGoodsName() {

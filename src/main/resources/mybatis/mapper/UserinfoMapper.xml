@@ -9,7 +9,6 @@
     <result column="finance_id" jdbcType="BIGINT" property="financeId" />
     <result column="use_level_id" jdbcType="BIGINT" property="useLevelId" />
     <result column="shop_id" jdbcType="BIGINT" property="shopId" />
-    <result column="cart_id" jdbcType="INTEGER" property="cartId" />
     <result column="user_admin" jdbcType="VARCHAR" property="userAdmin" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
@@ -18,10 +17,9 @@
     <result column="user_phonenumber" jdbcType="CHAR" property="userPhonenumber" />
     <result column="user_img" jdbcType="VARCHAR" property="userImg" />
     <result column="user_tag" jdbcType="BIT" property="userTag" />
-    <result column="level_id" jdbcType="BIGINT" property="levelId" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.demo.springboot.helloworld.common.domain.Userinfo">
-    <result column="user_introductoin" jdbcType="LONGVARCHAR" property="userIntroductoin" />
+    <result column="user_introduction" jdbcType="LONGVARCHAR" property="userIntroductoin" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -82,12 +80,12 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    user_id, message_id, sign_up_id, login_id, finance_id, use_level_id, shop_id, cart_id, 
+    user_id, message_id, sign_up_id, login_id, finance_id, use_level_id, shop_id,
     user_admin, user_name, user_password, usersex, user_birthdate, user_phonenumber, 
-    user_img, user_tag, level_id
+    user_img, user_tag
   </sql>
   <sql id="Blob_Column_List">
-    user_introductoin
+    user_introduction
   </sql>
   <select id="selectByExampleWithBLOBs" parameterType="com.demo.springboot.helloworld.common.domain.UserinfoExample" resultMap="ResultMapWithBLOBs">
     select
@@ -140,14 +138,14 @@
   <insert id="insert" parameterType="com.demo.springboot.helloworld.common.domain.Userinfo">
     insert into user_info (user_id, message_id, sign_up_id, 
       login_id, finance_id, use_level_id, 
-      shop_id, cart_id, user_admin, 
+      shop_id, user_admin,
       user_name, user_password, usersex, 
       user_birthdate, user_phonenumber, user_img, 
-      user_tag, level_id, user_introductoin
+      user_tag, user_introduction
       )
     values (#{userId,jdbcType=BIGINT}, #{messageId,jdbcType=INTEGER}, #{signUpId,jdbcType=BIGINT}, 
       #{loginId,jdbcType=INTEGER}, #{financeId,jdbcType=BIGINT}, #{useLevelId,jdbcType=BIGINT}, 
-      #{shopId,jdbcType=BIGINT}, #{cartId,jdbcType=INTEGER}, #{userAdmin,jdbcType=VARCHAR}, 
+      #{shopId,jdbcType=BIGINT},, #{userAdmin,jdbcType=VARCHAR},
       #{userName,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, #{usersex,jdbcType=INTEGER}, 
       #{userBirthdate,jdbcType=DATE}, #{userPhonenumber,jdbcType=CHAR}, #{userImg,jdbcType=VARCHAR}, 
       #{userTag,jdbcType=BIT}, #{levelId,jdbcType=BIGINT}, #{userIntroductoin,jdbcType=LONGVARCHAR}
@@ -177,9 +175,6 @@
       <if test="shopId != null">
         shop_id,
       </if>
-      <if test="cartId != null">
-        cart_id,
-      </if>
       <if test="userAdmin != null">
         user_admin,
       </if>
@@ -204,11 +199,8 @@
       <if test="userTag != null">
         user_tag,
       </if>
-      <if test="levelId != null">
-        level_id,
-      </if>
       <if test="userIntroductoin != null">
-        user_introductoin,
+        user_introduction,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -233,9 +225,7 @@
       <if test="shopId != null">
         #{shopId,jdbcType=BIGINT},
       </if>
-      <if test="cartId != null">
-        #{cartId,jdbcType=INTEGER},
-      </if>
+
       <if test="userAdmin != null">
         #{userAdmin,jdbcType=VARCHAR},
       </if>
@@ -298,9 +288,6 @@
       <if test="record.shopId != null">
         shop_id = #{record.shopId,jdbcType=BIGINT},
       </if>
-      <if test="record.cartId != null">
-        cart_id = #{record.cartId,jdbcType=INTEGER},
-      </if>
       <if test="record.userAdmin != null">
         user_admin = #{record.userAdmin,jdbcType=VARCHAR},
       </if>
@@ -325,11 +312,8 @@
       <if test="record.userTag != null">
         user_tag = #{record.userTag,jdbcType=BIT},
       </if>
-      <if test="record.levelId != null">
-        level_id = #{record.levelId,jdbcType=BIGINT},
-      </if>
       <if test="record.userIntroductoin != null">
-        user_introductoin = #{record.userIntroductoin,jdbcType=LONGVARCHAR},
+        user_introduction = #{record.userIntroductoin,jdbcType=LONGVARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -345,7 +329,6 @@
       finance_id = #{record.financeId,jdbcType=BIGINT},
       use_level_id = #{record.useLevelId,jdbcType=BIGINT},
       shop_id = #{record.shopId,jdbcType=BIGINT},
-      cart_id = #{record.cartId,jdbcType=INTEGER},
       user_admin = #{record.userAdmin,jdbcType=VARCHAR},
       user_name = #{record.userName,jdbcType=VARCHAR},
       user_password = #{record.userPassword,jdbcType=VARCHAR},
@@ -354,8 +337,7 @@
       user_phonenumber = #{record.userPhonenumber,jdbcType=CHAR},
       user_img = #{record.userImg,jdbcType=VARCHAR},
       user_tag = #{record.userTag,jdbcType=BIT},
-      level_id = #{record.levelId,jdbcType=BIGINT},
-      user_introductoin = #{record.userIntroductoin,jdbcType=LONGVARCHAR}
+      user_introduction = #{record.userIntroductoin,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -369,7 +351,6 @@
       finance_id = #{record.financeId,jdbcType=BIGINT},
       use_level_id = #{record.useLevelId,jdbcType=BIGINT},
       shop_id = #{record.shopId,jdbcType=BIGINT},
-      cart_id = #{record.cartId,jdbcType=INTEGER},
       user_admin = #{record.userAdmin,jdbcType=VARCHAR},
       user_name = #{record.userName,jdbcType=VARCHAR},
       user_password = #{record.userPassword,jdbcType=VARCHAR},
@@ -378,7 +359,6 @@
       user_phonenumber = #{record.userPhonenumber,jdbcType=CHAR},
       user_img = #{record.userImg,jdbcType=VARCHAR},
       user_tag = #{record.userTag,jdbcType=BIT},
-      level_id = #{record.levelId,jdbcType=BIGINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -404,9 +384,6 @@
       <if test="shopId != null">
         shop_id = #{shopId,jdbcType=BIGINT},
       </if>
-      <if test="cartId != null">
-        cart_id = #{cartId,jdbcType=INTEGER},
-      </if>
       <if test="userAdmin != null">
         user_admin = #{userAdmin,jdbcType=VARCHAR},
       </if>
@@ -431,11 +408,8 @@
       <if test="userTag != null">
         user_tag = #{userTag,jdbcType=BIT},
       </if>
-      <if test="levelId != null">
-        level_id = #{levelId,jdbcType=BIGINT},
-      </if>
       <if test="userIntroductoin != null">
-        user_introductoin = #{userIntroductoin,jdbcType=LONGVARCHAR},
+        user_introduction = #{userIntroductoin,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where user_id = #{userId,jdbcType=BIGINT}
@@ -448,7 +422,6 @@
       finance_id = #{financeId,jdbcType=BIGINT},
       use_level_id = #{useLevelId,jdbcType=BIGINT},
       shop_id = #{shopId,jdbcType=BIGINT},
-      cart_id = #{cartId,jdbcType=INTEGER},
       user_admin = #{userAdmin,jdbcType=VARCHAR},
       user_name = #{userName,jdbcType=VARCHAR},
       user_password = #{userPassword,jdbcType=VARCHAR},
@@ -457,8 +430,7 @@
       user_phonenumber = #{userPhonenumber,jdbcType=CHAR},
       user_img = #{userImg,jdbcType=VARCHAR},
       user_tag = #{userTag,jdbcType=BIT},
-      level_id = #{levelId,jdbcType=BIGINT},
-      user_introductoin = #{userIntroductoin,jdbcType=LONGVARCHAR}
+      user_introduction = #{userIntroductoin,jdbcType=LONGVARCHAR}
     where user_id = #{userId,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.demo.springboot.helloworld.common.domain.Userinfo">
@@ -469,7 +441,6 @@
       finance_id = #{financeId,jdbcType=BIGINT},
       use_level_id = #{useLevelId,jdbcType=BIGINT},
       shop_id = #{shopId,jdbcType=BIGINT},
-      cart_id = #{cartId,jdbcType=INTEGER},
       user_admin = #{userAdmin,jdbcType=VARCHAR},
       user_name = #{userName,jdbcType=VARCHAR},
       user_password = #{userPassword,jdbcType=VARCHAR},
@@ -478,7 +449,6 @@
       user_phonenumber = #{userPhonenumber,jdbcType=CHAR},
       user_img = #{userImg,jdbcType=VARCHAR},
       user_tag = #{userTag,jdbcType=BIT},
-      level_id = #{levelId,jdbcType=BIGINT}
     where user_id = #{userId,jdbcType=BIGINT}
   </update>
 </mapper>

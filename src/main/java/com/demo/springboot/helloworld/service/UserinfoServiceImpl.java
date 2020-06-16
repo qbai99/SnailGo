@@ -19,7 +19,8 @@ public class UserinfoServiceImpl implements UserinfoService{
         UserinfoExample userinfoExample = new UserinfoExample();
         userinfoExample.createCriteria().andUserAdminEqualTo("admin");
 
-        List<Userinfo> userinfo = userinfoMapper.selectByExample(userinfoExample);
+        List<Userinfo> userinfo = userinfoMapper.selectByExampleWithBLOBs(userinfoExample);
+        System.out.println(userinfo.toString());
         return userinfo;
     }
 

@@ -82,6 +82,6 @@ public class SignUp {
     }
 
     public String getUserPassword() {
-        return null;
+        return password;
     }
 }

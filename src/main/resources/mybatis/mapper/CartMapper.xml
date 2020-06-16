@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.demo.springboot.helloworld.mapper.CartMapper">
   <resultMap id="BaseResultMap" type="com.demo.springboot.helloworld.common.domain.Cart">
-    <id column="cart_id" jdbcType="INTEGER" property="cartId" />
+    <id column="id" jdbcType="INTEGER" property="id" />
     <result column="user_id" jdbcType="BIGINT" property="userId" />
-    <result column="sho_cart_id" jdbcType="INTEGER" property="shoCartId" />
+    <result column="goods_id" jdbcType="BIGINT" property="goodsId" />
     <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
     <result column="goods_remaining" jdbcType="INTEGER" property="goodsRemaining" />
     <result column="goods_quantity" jdbcType="INTEGER" property="goodsQuantity" />
@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    cart_id, user_id, sho_cart_id, goods_name, goods_remaining, goods_quantity, goods_price
+    id, user_id, goods_id, goods_name, goods_remaining, goods_quantity, goods_price
   </sql>
   <select id="selectByExample" parameterType="com.demo.springboot.helloworld.common.domain.CartExample" resultMap="BaseResultMap">
     select
@@ -89,11 +89,11 @@
     select 
     <include refid="Base_Column_List" />
     from shopping_cart
-    where cart_id = #{cartId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from shopping_cart
-    where cart_id = #{cartId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.demo.springboot.helloworld.common.domain.CartExample">
     delete from shopping_cart
@@ -102,24 +102,24 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.demo.springboot.helloworld.common.domain.Cart">
-    insert into shopping_cart (cart_id, user_id, sho_cart_id, 
+    insert into shopping_cart (id, user_id, goods_id, 
       goods_name, goods_remaining, goods_quantity, 
       goods_price)
-    values (#{cartId,jdbcType=INTEGER}, #{userId,jdbcType=BIGINT}, #{shoCartId,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=BIGINT}, #{goodsId,jdbcType=BIGINT}, 
       #{goodsName,jdbcType=VARCHAR}, #{goodsRemaining,jdbcType=INTEGER}, #{goodsQuantity,jdbcType=INTEGER}, 
       #{goodsPrice,jdbcType=DOUBLE})
   </insert>
   <insert id="insertSelective" parameterType="com.demo.springboot.helloworld.common.domain.Cart">
     insert into shopping_cart
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="cartId != null">
-        cart_id,
+      <if test="id != null">
+        id,
       </if>
       <if test="userId != null">
         user_id,
       </if>
-      <if test="shoCartId != null">
-        sho_cart_id,
+      <if test="goodsId != null">
+        goods_id,
       </if>
       <if test="goodsName != null">
         goods_name,
@@ -135,14 +135,14 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="cartId != null">
-        #{cartId,jdbcType=INTEGER},
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
       </if>
       <if test="userId != null">
         #{userId,jdbcType=BIGINT},
       </if>
-      <if test="shoCartId != null">
-        #{shoCartId,jdbcType=INTEGER},
+      <if test="goodsId != null">
+        #{goodsId,jdbcType=BIGINT},
       </if>
       <if test="goodsName != null">
         #{goodsName,jdbcType=VARCHAR},
@@ -167,14 +167,14 @@
   <update id="updateByExampleSelective" parameterType="map">
     update shopping_cart
     <set>
-      <if test="record.cartId != null">
-        cart_id = #{record.cartId,jdbcType=INTEGER},
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
       </if>
       <if test="record.userId != null">
         user_id = #{record.userId,jdbcType=BIGINT},
       </if>
-      <if test="record.shoCartId != null">
-        sho_cart_id = #{record.shoCartId,jdbcType=INTEGER},
+      <if test="record.goodsId != null">
+        goods_id = #{record.goodsId,jdbcType=BIGINT},
       </if>
       <if test="record.goodsName != null">
         goods_name = #{record.goodsName,jdbcType=VARCHAR},
@@ -195,9 +195,9 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update shopping_cart
-    set cart_id = #{record.cartId,jdbcType=INTEGER},
+    set id = #{record.id,jdbcType=INTEGER},
       user_id = #{record.userId,jdbcType=BIGINT},
-      sho_cart_id = #{record.shoCartId,jdbcType=INTEGER},
+      goods_id = #{record.goodsId,jdbcType=BIGINT},
       goods_name = #{record.goodsName,jdbcType=VARCHAR},
       goods_remaining = #{record.goodsRemaining,jdbcType=INTEGER},
       goods_quantity = #{record.goodsQuantity,jdbcType=INTEGER},
@@ -212,8 +212,8 @@
       <if test="userId != null">
         user_id = #{userId,jdbcType=BIGINT},
       </if>
-      <if test="shoCartId != null">
-        sho_cart_id = #{shoCartId,jdbcType=INTEGER},
+      <if test="goodsId != null">
+        goods_id = #{goodsId,jdbcType=BIGINT},
       </if>
       <if test="goodsName != null">
         goods_name = #{goodsName,jdbcType=VARCHAR},
@@ -228,16 +228,16 @@
         goods_price = #{goodsPrice,jdbcType=DOUBLE},
       </if>
     </set>
-    where cart_id = #{cartId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.demo.springboot.helloworld.common.domain.Cart">
     update shopping_cart
     set user_id = #{userId,jdbcType=BIGINT},
-      sho_cart_id = #{shoCartId,jdbcType=INTEGER},
+      goods_id = #{goodsId,jdbcType=BIGINT},
       goods_name = #{goodsName,jdbcType=VARCHAR},
       goods_remaining = #{goodsRemaining,jdbcType=INTEGER},
       goods_quantity = #{goodsQuantity,jdbcType=INTEGER},
       goods_price = #{goodsPrice,jdbcType=DOUBLE}
-    where cart_id = #{cartId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

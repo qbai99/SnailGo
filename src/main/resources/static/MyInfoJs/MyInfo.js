@@ -6,7 +6,7 @@ $.ajax({
     dataType: "json",
     success: function (res, ifo) {
         $("#emailInput").attr('value',res.UserInfo[0].userAdmin);
-        $("#passwordInput").attr('value',res.UserInfo[0].userPassword);
+        // $("#passwordInput").attr('value',res.UserInfo[0].userPassword);
         $("#userName").attr('value',res.UserInfo[0].userName);
         switch (res.UserInfo[0].usersex) {
             case 0:
@@ -23,7 +23,8 @@ $.ajax({
         }
         $("#birthDate").attr('value',res.UserInfo[0].userBirthdate);
         $("#phoneNumber").attr('value',res.UserInfo[0].userPhonenumber);
-        $("#introduction").attr('value',res.UserInfo[0].userIntroduction);
+        $("#introduction").attr('value',res.UserInfo[0].userIntroductoin);
+
         $("#balance").html(res.UserFinance[0].balance);
         $("#level").html(res.UserLevel[0].level);
         $("#point").html(res.UserLevel[0].points);
@@ -38,6 +39,7 @@ $.ajax({
                 break;
         }
         console.log(res);
+        console.log(res.UserInfo[0].userIntroduction);
     }
 });
 

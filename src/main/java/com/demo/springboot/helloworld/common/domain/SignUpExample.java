@@ -554,7 +554,7 @@ public class SignUpExample {
             return (Criteria) this;
         }
 
-        public abstract void andEmailAddressEqualTo(String userAdmin);
+        public abstract void andEmailAddressEqualTo(String emailAddress);
     }
 
     public static class Criteria extends GeneratedCriteria {
@@ -563,7 +563,7 @@ public class SignUpExample {
         }
 
         @Override
-        public void andEmailAddressEqualTo(String userAdmin) {
+        public void andEmailAddressEqualTo(String emailAddress) {
 
         }
     }
