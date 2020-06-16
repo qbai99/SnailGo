@@ -1142,65 +1142,6 @@ public class UserinfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andLevelIdIsNull() {
-            addCriterion("level_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andLevelIdIsNotNull() {
-            addCriterion("level_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andLevelIdEqualTo(Long value) {
-            addCriterion("level_id =", value, "levelId");
-            return (Criteria) this;
-        }
-
-        public Criteria andLevelIdNotEqualTo(Long value) {
-            addCriterion("level_id <>", value, "levelId");
-            return (Criteria) this;
-        }
-
-        public Criteria andLevelIdGreaterThan(Long value) {
-            addCriterion("level_id >", value, "levelId");
-            return (Criteria) this;
-        }
-
-        public Criteria andLevelIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("level_id >=", value, "levelId");
-            return (Criteria) this;
-        }
-
-        public Criteria andLevelIdLessThan(Long value) {
-            addCriterion("level_id <", value, "levelId");
-            return (Criteria) this;
-        }
-
-        public Criteria andLevelIdLessThanOrEqualTo(Long value) {
-            addCriterion("level_id <=", value, "levelId");
-            return (Criteria) this;
-        }
-
-        public Criteria andLevelIdIn(List<Long> values) {
-            addCriterion("level_id in", values, "levelId");
-            return (Criteria) this;
-        }
-
-        public Criteria andLevelIdNotIn(List<Long> values) {
-            addCriterion("level_id not in", values, "levelId");
-            return (Criteria) this;
-        }
-
-        public Criteria andLevelIdBetween(Long value1, Long value2) {
-            addCriterion("level_id between", value1, value2, "levelId");
-            return (Criteria) this;
-        }
-
-        public Criteria andLevelIdNotBetween(Long value1, Long value2) {
-            addCriterion("level_id not between", value1, value2, "levelId");
-            return (Criteria) this;
-        }
     }
 
     public static class Criteria extends GeneratedCriteria {

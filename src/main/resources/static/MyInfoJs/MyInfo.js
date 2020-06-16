@@ -8,15 +8,16 @@ $.ajax({
         $("#emailInput").attr('value',res.UserInfo[0].userAdmin);
         // $("#passwordInput").attr('value',res.UserInfo[0].userPassword);
         $("#userName").attr('value',res.UserInfo[0].userName);
-        switch (res.UserInfo[0].usersex) {
+        console.log(Number(res.UserInfo[0].usersex))
+        switch (Number(res.UserInfo[0].usersex)) {
             case 0:
-                $("#sex").attr('value','保密');
+                $("#sex").val('保密');
                 break;
             case 1:
-                $("#sex").attr('value','男');
+                $("#sex").val('男');
                 break;
             case 2:
-                $("#sex").attr('value','女');
+                $("#sex").val('女');
                 break;
             default:
                 break;
@@ -39,8 +40,64 @@ $.ajax({
                 break;
         }
         console.log(res);
-        console.log(res.UserInfo[0].userIntroduction);
     }
 });
 
+function clickHandle() {
+    var email = $('#emailInput').val();
+    var username = $('#userName').val();
+    var sex = $('#sex').val();
+    var birthdate = $('#birthDate').val();
+    var phonenumber = $('#phoneNumber').val();
+    var introduction = $('#introduction').val();
+    var realsex;
+    switch (sex) {
+        case "保密":
+            realsex=0;
+            break;
+        case "男":
+            realsex=1;
+            break;
+        case "女":
+            realsex=2;
+            break;
+        default:
+            break;
+    }
+    $.ajax({
+        type:'POST',
+        url:'/user/updateInfo',
+        data:{
+            email:email,
+            username:username,
+            sex:realsex,
+            birthdate:birthdate,
+            phonenumber:phonenumber,
+            introduction:introduction
+        },
+        success:function (res) {
 
+            $("#emailInput").attr('value',res.userAdmin);
+            // $("#passwordInput").attr('value',res.UserInfo[0].userPassword);
+            $("#userName").attr('value',res.userName);
+            console.log(Number(res.usersex))
+            switch (Number(res.usersex)) {
+                case 0:
+                    $("#sex").val('保密');
+                    break;
+                case 1:
+                    $("#sex").val('男');
+                    break;
+                case 2:
+                    $("#sex").val('女');
+                    break;
+                default:
+                    break;
+            }
+            $("#birthDate").attr('value',res.userBirthdate);
+            $("#phoneNumber").attr('value',res.userPhonenumber);
+            $("#introduction").attr('value',res.userIntroductoin);
+            alert("保存成功！");
+        }
+    })
+}

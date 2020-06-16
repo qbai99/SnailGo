@@ -33,7 +33,6 @@ public class Userinfo {
 
     private Boolean userTag;
 
-    private Long levelId;
 
     private String userIntroduction;
 
@@ -129,7 +128,7 @@ public class Userinfo {
         return userBirthdate;
     }
 
-    public void setUserBirthdate(Date userBirthdate) {
+    public void setUserBirthdate(java.sql.Date userBirthdate) {
         this.userBirthdate = userBirthdate;
     }
 
@@ -157,13 +156,6 @@ public class Userinfo {
         this.userTag = userTag;
     }
 
-    public Long getLevelId() {
-        return levelId;
-    }
-
-    public void setLevelId(Long levelId) {
-        this.levelId = levelId;
-    }
 
     public String getUserIntroductoin() {
         return userIntroduction;
@@ -191,7 +183,6 @@ public class Userinfo {
                 ", userPhonenumber='" + userPhonenumber + '\'' +
                 ", userImg='" + userImg + '\'' +
                 ", userTag=" + userTag +
-                ", levelId=" + levelId +
                 ", userIntroduction='" + userIntroduction + '\'' +
                 '}';
     }

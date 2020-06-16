@@ -46,6 +46,12 @@ public class UserinfoController {
         return map;
     }
 
+    @RequestMapping("/updateInfo")
+    @ResponseBody
+    public Userinfo updateinfo(String email,String username,String sex,String birthdate,String phonenumber,String introduction){
+        Userinfo result = userinfoService.updateInfo(email,username,sex,birthdate,phonenumber,introduction);
+        return result;
+    }
     @RequestMapping("/changepassword")
     public String password(){
         return "/user/ChangePassword";

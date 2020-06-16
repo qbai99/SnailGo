@@ -448,7 +448,7 @@
       user_birthdate = #{userBirthdate,jdbcType=DATE},
       user_phonenumber = #{userPhonenumber,jdbcType=CHAR},
       user_img = #{userImg,jdbcType=VARCHAR},
-      user_tag = #{userTag,jdbcType=BIT},
+      user_tag = #{userTag,jdbcType=BIT}
     where user_id = #{userId,jdbcType=BIGINT}
   </update>
 </mapper>
