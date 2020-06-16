@@ -354,66 +354,6 @@ public class CartExample {
             return (Criteria) this;
         }
 
-        public Criteria andGoodsRemainingIsNull() {
-            addCriterion("goods_remaining is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsRemainingIsNotNull() {
-            addCriterion("goods_remaining is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsRemainingEqualTo(Integer value) {
-            addCriterion("goods_remaining =", value, "goodsRemaining");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsRemainingNotEqualTo(Integer value) {
-            addCriterion("goods_remaining <>", value, "goodsRemaining");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsRemainingGreaterThan(Integer value) {
-            addCriterion("goods_remaining >", value, "goodsRemaining");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsRemainingGreaterThanOrEqualTo(Integer value) {
-            addCriterion("goods_remaining >=", value, "goodsRemaining");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsRemainingLessThan(Integer value) {
-            addCriterion("goods_remaining <", value, "goodsRemaining");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsRemainingLessThanOrEqualTo(Integer value) {
-            addCriterion("goods_remaining <=", value, "goodsRemaining");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsRemainingIn(List<Integer> values) {
-            addCriterion("goods_remaining in", values, "goodsRemaining");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsRemainingNotIn(List<Integer> values) {
-            addCriterion("goods_remaining not in", values, "goodsRemaining");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsRemainingBetween(Integer value1, Integer value2) {
-            addCriterion("goods_remaining between", value1, value2, "goodsRemaining");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsRemainingNotBetween(Integer value1, Integer value2) {
-            addCriterion("goods_remaining not between", value1, value2, "goodsRemaining");
-            return (Criteria) this;
-        }
-
         public Criteria andGoodsQuantityIsNull() {
             addCriterion("goods_quantity is null");
             return (Criteria) this;

@@ -26,4 +26,16 @@ public class PayController {
         List<Userfinance> list =payService.selectall();
         return list;
     }
+    @RequestMapping("/balancePay")
+    public String balancePay(int total){
+        int t;
+        t=total;
+        System.out.println(total);
+        payService.balancePay(t);
+        return "pay";
+    }
+    @RequestMapping("/meetpay")
+    public String meetpay(){
+        return "pay";
+    }
 }

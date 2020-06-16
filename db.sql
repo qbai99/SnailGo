@@ -226,7 +226,6 @@ create table shopping_cart
    user_id              bigint,
    goods_id             bigint,
    goods_name           varchar(255),
-   goods_remaining      int,
    goods_quantity       int,
    goods_price          double not null,
    primary key (id)

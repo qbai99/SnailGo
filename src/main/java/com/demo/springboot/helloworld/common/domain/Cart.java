@@ -9,8 +9,6 @@ public class Cart {
 
     private String goodsName;
 
-    private Integer goodsRemaining;
-
     private Integer goodsQuantity;
 
     private Double goodsPrice;
@@ -45,14 +43,6 @@ public class Cart {
 
     public void setGoodsName(String goodsName) {
         this.goodsName = goodsName == null ? null : goodsName.trim();
-    }
-
-    public Integer getGoodsRemaining() {
-        return goodsRemaining;
-    }
-
-    public void setGoodsRemaining(Integer goodsRemaining) {
-        this.goodsRemaining = goodsRemaining;
     }
 
     public Integer getGoodsQuantity() {

@@ -8,4 +8,6 @@ public interface PayService {
     Double getbalance();
 
     List<Userfinance> selectall();
+
+    void balancePay(int t);
 }

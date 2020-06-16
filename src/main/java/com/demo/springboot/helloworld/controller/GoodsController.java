@@ -51,4 +51,8 @@ public class   GoodsController {
         }
 
     }
+    @RequestMapping("/cart")
+    public String cart(){
+        return"cart";
+    }
 }

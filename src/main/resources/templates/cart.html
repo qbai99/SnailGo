@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,6 +15,17 @@
     <link rel="stylesheet" href="/AdminLTE-3.0.5/dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <script src="/jquery/dist/jquery.js"></script>
+    <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="/bootstrap-table/bootstrap-table.js"
+            th:src="@{/bootstrap-table/bootstrap-table.js}"></script>
+    <script src="/bootstrap-table/locale/bootstrap-table-zh-CN.js"
+            th:src="@{/bootstrap-table/locale/bootstrap-table-zh-CN.js}"></script>
+
+
+    <script src="/layer/layer.js"
+            th:src="@{/layer/layer.js}"></script>
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -432,8 +443,7 @@
                             </td>
                             <td class="project-actions text-right">
                                 <a class="btn btn-warning  btn-sm" href="#">
-                                    <i class="fas fa-pencil-alt">
-                                    </i>
+                                    <img  src="/img/yen-2x.png"><img>
                                     结算
                                 </a>
                                 <a class="btn btn-danger btn-sm" href="#">
