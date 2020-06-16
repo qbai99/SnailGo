@@ -36,7 +36,7 @@ function AddAddress() {
                 '<div class="row">' +
                 '<label>'+newAddress+'</label>' +'<button id="button' + index +
                 '" class="btn btn-info" style="position: absolute;' +
-                'right: 2%;">删除</button>'+
+                'right: 2%;" onclick="deleteHandle(event)">删除</button>'+
                 '</div>' +
                 '</div>');
             $('#address').append(bigDiv);
