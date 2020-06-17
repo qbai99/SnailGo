@@ -22,6 +22,10 @@
   <link rel="stylesheet" href="/AdminLTE-3.0.5/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
   <!-- Bootstrap4 Duallistbox -->
   <link rel="stylesheet" href="/AdminLTE-3.0.5/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="/AdminLTE-3.0.5/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="/AdminLTE-3.0.5/plugins/toastr/toastr.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/AdminLTE-3.0.5/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
@@ -169,9 +173,9 @@
   <aside class="main-sidebar sidebar-light-primary small-text elevation-4">
     <!-- Brand Logo -->
     <a href="/AdminLTE-3.0.5/index3.html" class="brand-link">
-      <img src="/AdminLTE-3.0.5/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">SnailGo</span>
     </a>
 
     <!-- Sidebar -->
@@ -363,7 +367,7 @@
                   <p>双流 西航港 川大路2号四川大学江安校区</p>
                   <p>17360079045</p>
                   <div class="icheck-danger d-inline">
-                    <input name="r2" id="radioDanger0" type="radio">
+                    <input name="r2" id="radioDanger0" type="radio" checked>
                     <label for="radioDanger0">
                     </label>
                   </div>
@@ -431,7 +435,7 @@
                     <input type="text" class="form-control float-right" id="reservationtime">
                   </div>
                   <div style="float:right;width:10%">
-                    <a class="btn btn-warning  btn-sm" href="/meetpay">
+                    <a class="btn btn-warning  btn-sm swalDefaultSuccess" href="#">
                       <img  src="/img/yen-2x.png"><img>
                       结算
                     </a>
@@ -454,28 +458,28 @@
                     </thead>
                     <tbody>
                     <tr>
-                      <td><a href="goods/details">
-                        <img style="width:4vh;height: 4vh" src="/AdminLTE-3.0.5/dist/img/prod-1.jpg" class="product-image" alt="Product Image">
-                        iPad pro</a></td>
-                      <td>256G</td>
+                      <td><a href="goods/details?id=1">
+                        <img style="width:4vh;height: 4vh" src="/goods_pics/1-pic-1.jpg" class="product-image" alt="Product Image">
+                        iPad Pro 2019</a></td>
+                      <td> </td>
                       <td>100.00</td>
                       <td>1</td>
                       <td>100.00</td>
                     </tr>
                     <tr>
-                      <td><a href="goods/details">
-                        <img style="width:4vh;height: 4vh" src="/AdminLTE-3.0.5/dist/img/prod-1.jpg" class="product-image" alt="Product Image">
-                        iPhone X Max</a></td>
-                      <td>64G</td>
+                      <td><a href="goods/details?id=2">
+                        <img style="width:4vh;height: 4vh" src="/goods_pics/2-pic-1.jpg" class="product-image" alt="Product Image">
+                        iPhone 11</a></td>
+                      <td> </td>
                       <td>20.00</td>
                       <td>1</td>
                       <td>20.00</td>
                     </tr>
                     <tr>
-                      <td><a href="goods/details">
-                        <img style="width:4vh;height: 4vh" src="/AdminLTE-3.0.5/dist/img/prod-1.jpg" class="product-image" alt="Product Image">
-                        记事本</a></td>
-                      <td>图案1</td>
+                      <td><a href="goods/details?id=3">
+                        <img style="width:4vh;height: 4vh" src="/goods_pics/3-pic-1.jpg" class="product-image" alt="Product Image">
+                        iPad Pro 2020</a></td>
+                      <td> </td>
                       <td>3.00</td>
                       <td>1</td>
                       <td>3.00</td>
@@ -582,6 +586,10 @@
 <script src="/AdminLTE-3.0.5/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- Bootstrap Switch -->
 <script src="/AdminLTE-3.0.5/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="/AdminLTE-3.0.5/plugins/sweetalert2/sweetalert2.min.js"></script>
+<!-- Toastr -->
+<script src="/AdminLTE-3.0.5/plugins/toastr/toastr.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="/AdminLTE-3.0.5/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
@@ -661,6 +669,161 @@
     });
 
   })
+</script>
+<script>
+  $(function() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+    });
+
+    $('.swalDefaultSuccess').click(function() {
+      Toast.fire({
+        icon: 'success',
+        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.swalDefaultInfo').click(function() {
+      Toast.fire({
+        icon: 'info',
+        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.swalDefaultError').click(function() {
+      Toast.fire({
+        icon: 'error',
+        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.swalDefaultWarning').click(function() {
+      Toast.fire({
+        icon: 'warning',
+        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.swalDefaultQuestion').click(function() {
+      Toast.fire({
+        icon: 'question',
+        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+
+    $('.toastrDefaultSuccess').click(function() {
+      toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+    });
+    $('.toastrDefaultInfo').click(function() {
+      toastr.info('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+    });
+    $('.toastrDefaultError').click(function() {
+      toastr.error('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+    });
+    $('.toastrDefaultWarning').click(function() {
+      toastr.warning('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+    });
+
+    $('.toastsDefaultDefault').click(function() {
+      $(document).Toasts('create', {
+        title: 'Toast Title',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultTopLeft').click(function() {
+      $(document).Toasts('create', {
+        title: 'Toast Title',
+        position: 'topLeft',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultBottomRight').click(function() {
+      $(document).Toasts('create', {
+        title: 'Toast Title',
+        position: 'bottomRight',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultBottomLeft').click(function() {
+      $(document).Toasts('create', {
+        title: 'Toast Title',
+        position: 'bottomLeft',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultAutohide').click(function() {
+      $(document).Toasts('create', {
+        title: 'Toast Title',
+        autohide: true,
+        delay: 750,
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultNotFixed').click(function() {
+      $(document).Toasts('create', {
+        title: 'Toast Title',
+        fixed: false,
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultFull').click(function() {
+      $(document).Toasts('create', {
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.',
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        icon: 'fas fa-envelope fa-lg',
+      })
+    });
+    $('.toastsDefaultFullImage').click(function() {
+      $(document).Toasts('create', {
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.',
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        image: '../../dist/img/user3-128x128.jpg',
+        imageAlt: 'User Picture',
+      })
+    });
+    $('.toastsDefaultSuccess').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-success',
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultInfo').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-info',
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultWarning').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-warning',
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultDanger').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-danger',
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultMaroon').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-maroon',
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+  });
+
 </script>
 </body>
 </html>

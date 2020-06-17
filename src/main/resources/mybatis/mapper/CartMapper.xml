@@ -225,4 +225,15 @@
       goods_price = #{goodsPrice,jdbcType=DOUBLE}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <resultMap id="carttable" type="com.demo.springboot.helloworld.common.domain.Cart">
+    <id column="id" jdbcType="INTEGER" property="goods_id"/>
+    <result column="user_id" jdbcType="BIGINT" property="user_id"/>
+    <result column="goods_id" jdbcType="BIGINT" property="goods_id"/>
+    <result column="goods_name" jdbcType="VARCHAR" property="goods_name"/>
+    <result column="goods_quantity" jdbcType="INTEGER" property="goods_quantity"/>
+    <result column="goods_price" jdbcType="DOUBLE" property="goods_price"/>
+  </resultMap>
+  <select id="selectAll" resultType="com.demo.springboot.helloworld.common.domain.Cart">
+    select id, goods_id as goodsId, goods_name as goodsName,goods_quantity as goodsQuantity,goods_price as goodsPrice from shopping_cart where user_id=1
+  </select>
 </mapper>
