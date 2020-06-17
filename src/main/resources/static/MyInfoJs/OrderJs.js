@@ -8,20 +8,23 @@ $.ajax({
             var bigDiv = $('<div class="card-header">' +
                 '<div class="row">' +
                 '<div class="col-md-6">' +
-                '<label>订单号：' + res.ShippingState[i].id + '<br>' +
-                '商品名：' + res.Order[i].goodsName + '<br>' +
-                '单价：' + res.Order[i].goodsPrice + '元' + '<br>' +
-                '数量：' + res.Order[i].goodsQuantity + '<br>' +
-                '总额：' + (parseFloat(res.Order[i].goodsQuantity) * parseFloat(res.Order[i].goodsPrice)) + '元' + '<br>' +'<br>'+
-                '</label>'+'</div>' +
+                '<div class="form-group">' +
+                '<label class="card-header">订单号：' + res.ShippingState[i].id + '<br></label>' +
+                '<p class="form-control"><label>商品名：</label>' + res.Order[i].goodsName + '</p>' +
+                '<p class="form-control"><label>单价：</label>' + res.Order[i].goodsPrice + '元' + '</p>' +
+                '<p class="form-control"><label>数量：</label>' + res.Order[i].goodsQuantity + '</p>' +
+                '<p class="form-control"><label>总额：</label>' + (parseFloat(res.Order[i].goodsQuantity) * parseFloat(res.Order[i].goodsPrice)) + '元' + '<br>' +'</p>'+
+                '</div></div>' +
                 '<div class="col-md-6">' +
-                '<label>买家id：' + res.Buyer[i].userId + '<br>' +
-                '买家名：' + res.Buyer[i].userName + '<br>' +
-                '卖家id：' + res.Seller[i].userId + '<br>' +
-                '卖家名：' + res.Seller[i].userName + '<br>' +'<br>'+
-                '货物当前地点：' + res.ShippingState[i].loc + '<br>' +
-                '配送状态：' + res.ShippingState[i].otherInfo + '</label>' +
-                '</label>'+'</div>' +
+                // '买家id：' + res.Buyer[i].userId + '<br>' +
+                '<div class="form-group">' +
+                '<label class="card-header"><br></label>' +
+                '<p class="form-control"><label>买家名：</label>' + res.Buyer[i].userName + '</p>' +
+                // '卖家id：' + res.Seller[i].userId + '<br>' +
+                '<p class="form-control"><label>卖家名：</label>' + res.Seller[i].userName + '<br>' +'</p>'+
+                '<p class="form-control"><label>货物当前地点：</label>' + res.ShippingState[i].loc + '</p>' +
+                '<p class="form-control"><label>配送状态：</label>' + res.ShippingState[i].otherInfo + '</p>' +
+                '</div></div>' +
                 '</div>' +
                 '</div>');
             $('#address').append(bigDiv);
