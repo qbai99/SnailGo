@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="UTF-8">
     <title>搜索结果</title>
@@ -38,7 +38,7 @@
         <!-- SEARCH FORM -->
         <form class="form-inline ml-3" action="/goods/search" target=_parent>
             <div class="input-group input-group-sm">
-                <input name="name" class="form-control form-control-navbar" type="name" placeholder="在此搜索商品" aria-label="Search">
+                <input name="search_key" class="form-control form-control-navbar" placeholder="在此搜索商品" aria-label="Search">
                 <div class="input-group-append">
                     <button class="btn btn-navbar" type="submit">
                         <i class="fas fa-search"></i>
@@ -363,12 +363,14 @@
 
                 </div><!-- /.row -->
 
-                <li style=" width:500px; height:500px"  th:each="sc:${search_result}">
-
-                    <div>
-                        <div class="card-title"><p class="title fl" th:text="${sc.goodsName}"></p></div>
-                        <a th:href="'details?id='+${sc.goodsId}"><img id="img-result-1" th:src="'/goods_pics/'+${sc.goodsId}+'-pic-1.jpg'"/></a>
+                <li  th:each="sc:${search_result}">
+                    <div class="col">
+                        <div class="cols-3">
+                            <a th:href="'details?id='+${sc.goodsId}"><img id="img-result-1" style=" width:200px; height:200px" th:src="'/goods_pics/'+${sc.goodsId}+'-pic-1.jpg'"/></a>
+                            <div class="card-title"><p class="title fl" th:text="${sc.goodsName}"></p></div>
+                        </div>
                     </div>
+
 
                 </li>
             </div><!-- /.container-fluid -->

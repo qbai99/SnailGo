@@ -240,4 +240,7 @@
       goods_remaning = #{goodsRemaning,jdbcType=INTEGER}
     where goods_id = #{goodsId,jdbcType=BIGINT}
   </update>
+  <select id="mysearch" resultType="com.demo.springboot.helloworld.common.domain.Goods" resultMap="BaseResultMap">
+    select goods_id, shop_id, order_id, goods_price, goods_name, goods_remaning from goods WHERE ( upper(goods_name) like upper(CONCAT('%',#{search_key},'%')) )
+  </select>
 </mapper>
