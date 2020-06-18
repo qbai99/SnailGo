@@ -5,10 +5,10 @@
     <id column="goods_id" jdbcType="BIGINT" property="goodsId" />
     <result column="shop_id" jdbcType="BIGINT" property="shopId" />
     <result column="order_id" jdbcType="BIGINT" property="orderId" />
-    <result column="cart_id" jdbcType="INTEGER" property="cartId" />
     <result column="goods_price" jdbcType="DOUBLE" property="goodsPrice" />
     <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
     <result column="goods_remaning" jdbcType="INTEGER" property="goodsRemaning" />
+    <result column="goods_dsp" jdbcType="VARCHAR" property="goodsDsp" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    goods_id, shop_id, order_id, goods_price, goods_name, goods_remaning
+    goods_id, shop_id, order_id, goods_price, goods_name, goods_remaning, goods_dsp
   </sql>
   <select id="selectByExample" parameterType="com.demo.springboot.helloworld.common.domain.GoodsExample" resultMap="BaseResultMap">
     select
@@ -103,11 +103,11 @@
   </delete>
   <insert id="insert" parameterType="com.demo.springboot.helloworld.common.domain.Goods">
     insert into goods (goods_id, shop_id, order_id, 
-      cart_id, goods_price, goods_name, 
-      goods_remaning)
+      goods_price, goods_name, goods_remaning, 
+      goods_dsp)
     values (#{goodsId,jdbcType=BIGINT}, #{shopId,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, 
-      #{cartId,jdbcType=INTEGER}, #{goodsPrice,jdbcType=DOUBLE}, #{goodsName,jdbcType=VARCHAR}, 
-      #{goodsRemaning,jdbcType=INTEGER})
+      #{goodsPrice,jdbcType=DOUBLE}, #{goodsName,jdbcType=VARCHAR}, #{goodsRemaning,jdbcType=INTEGER}, 
+      #{goodsDsp,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.demo.springboot.helloworld.common.domain.Goods">
     insert into goods
@@ -121,9 +121,6 @@
       <if test="orderId != null">
         order_id,
       </if>
-      <if test="cartId != null">
-        cart_id,
-      </if>
       <if test="goodsPrice != null">
         goods_price,
       </if>
@@ -132,6 +129,9 @@
       </if>
       <if test="goodsRemaning != null">
         goods_remaning,
+      </if>
+      <if test="goodsDsp != null">
+        goods_dsp,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -144,9 +144,6 @@
       <if test="orderId != null">
         #{orderId,jdbcType=BIGINT},
       </if>
-      <if test="cartId != null">
-        #{cartId,jdbcType=INTEGER},
-      </if>
       <if test="goodsPrice != null">
         #{goodsPrice,jdbcType=DOUBLE},
       </if>
@@ -155,6 +152,9 @@
       </if>
       <if test="goodsRemaning != null">
         #{goodsRemaning,jdbcType=INTEGER},
+      </if>
+      <if test="goodsDsp != null">
+        #{goodsDsp,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -176,9 +176,6 @@
       <if test="record.orderId != null">
         order_id = #{record.orderId,jdbcType=BIGINT},
       </if>
-      <if test="record.cartId != null">
-        cart_id = #{record.cartId,jdbcType=INTEGER},
-      </if>
       <if test="record.goodsPrice != null">
         goods_price = #{record.goodsPrice,jdbcType=DOUBLE},
       </if>
@@ -187,6 +184,9 @@
       </if>
       <if test="record.goodsRemaning != null">
         goods_remaning = #{record.goodsRemaning,jdbcType=INTEGER},
+      </if>
+      <if test="record.goodsDsp != null">
+        goods_dsp = #{record.goodsDsp,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -198,10 +198,10 @@
     set goods_id = #{record.goodsId,jdbcType=BIGINT},
       shop_id = #{record.shopId,jdbcType=BIGINT},
       order_id = #{record.orderId,jdbcType=BIGINT},
-      cart_id = #{record.cartId,jdbcType=INTEGER},
       goods_price = #{record.goodsPrice,jdbcType=DOUBLE},
       goods_name = #{record.goodsName,jdbcType=VARCHAR},
-      goods_remaning = #{record.goodsRemaning,jdbcType=INTEGER}
+      goods_remaning = #{record.goodsRemaning,jdbcType=INTEGER},
+      goods_dsp = #{record.goodsDsp,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -215,9 +215,6 @@
       <if test="orderId != null">
         order_id = #{orderId,jdbcType=BIGINT},
       </if>
-      <if test="cartId != null">
-        cart_id = #{cartId,jdbcType=INTEGER},
-      </if>
       <if test="goodsPrice != null">
         goods_price = #{goodsPrice,jdbcType=DOUBLE},
       </if>
@@ -227,6 +224,9 @@
       <if test="goodsRemaning != null">
         goods_remaning = #{goodsRemaning,jdbcType=INTEGER},
       </if>
+      <if test="goodsDsp != null">
+        goods_dsp = #{goodsDsp,jdbcType=VARCHAR},
+      </if>
     </set>
     where goods_id = #{goodsId,jdbcType=BIGINT}
   </update>
@@ -234,13 +234,13 @@
     update goods
     set shop_id = #{shopId,jdbcType=BIGINT},
       order_id = #{orderId,jdbcType=BIGINT},
-      cart_id = #{cartId,jdbcType=INTEGER},
       goods_price = #{goodsPrice,jdbcType=DOUBLE},
       goods_name = #{goodsName,jdbcType=VARCHAR},
-      goods_remaning = #{goodsRemaning,jdbcType=INTEGER}
+      goods_remaning = #{goodsRemaning,jdbcType=INTEGER},
+      goods_dsp = #{goodsDsp,jdbcType=VARCHAR}
     where goods_id = #{goodsId,jdbcType=BIGINT}
   </update>
-  <select id="mysearch" resultType="com.demo.springboot.helloworld.common.domain.Goods" resultMap="BaseResultMap">
-    select goods_id, shop_id, order_id, goods_price, goods_name, goods_remaning from goods WHERE ( upper(goods_name) like upper(CONCAT('%',#{search_key},'%')) )
+  <select id="mysearch" resultMap="BaseResultMap" resultType="com.demo.springboot.helloworld.common.domain.Goods">
+    select * from goods where upper(goods_name) like upper(CONCAT('%',#{search_key},'%'))
   </select>
 </mapper>

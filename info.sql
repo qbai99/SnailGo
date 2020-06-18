@@ -1,3 +1,4 @@
+use eshop;
 INSERT INTO user_info
 (user_id, user_admin, user_name, user_password, usersex, user_birthdate, user_phonenumber,user_introduction,user_tag)
 VALUES (1,"admin","测试买家","admin",1,"2019-8-7","12345678901","我太难了",false);
