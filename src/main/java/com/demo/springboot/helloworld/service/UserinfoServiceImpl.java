@@ -39,10 +39,10 @@ public class UserinfoServiceImpl implements UserinfoService{
     }
 
     @Override
-    public List<Userinfo> find() {
+    public List<Userinfo> find(Long userId) {
 //        userinfoMapper.selectByExample();
         UserinfoExample userinfoExample = new UserinfoExample();
-        userinfoExample.createCriteria().andUserAdminEqualTo("admin");
+        userinfoExample.createCriteria().andUserIdEqualTo(userId);
 
         List<Userinfo> userinfo = userinfoMapper.selectByExampleWithBLOBs(userinfoExample);
         System.out.println(userinfo.toString());

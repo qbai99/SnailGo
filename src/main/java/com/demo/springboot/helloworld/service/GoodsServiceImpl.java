@@ -15,10 +15,9 @@ public class GoodsServiceImpl implements GoodsService{
     @Autowired
     private GoodsMapper goodsMapper;
     @Override
-    public List<Goods> search(String name) {
-        GoodsExample goodsExample = new GoodsExample();
-        goodsExample.createCriteria().andGoodsNameLike(name);
-        List<Goods> list=goodsMapper.selectByExample(goodsExample);
+    public List<Goods> search(String search_key) {
+
+        List<Goods> list=goodsMapper.mysearch(search_key);
         return list;
     }
 
@@ -35,6 +34,14 @@ public class GoodsServiceImpl implements GoodsService{
     public List<Goods> searchtest(String search_input) {
         GoodsExample goodsExample = new GoodsExample();
         goodsExample.createCriteria().andGoodsNameLike(search_input);
+        List<Goods> list=goodsMapper.selectByExample(goodsExample);
+        return list;
+    }
+
+    @Override
+    public List<Goods> allgoods() {
+        GoodsExample goodsExample = new GoodsExample();
+
         List<Goods> list=goodsMapper.selectByExample(goodsExample);
         return list;
     }

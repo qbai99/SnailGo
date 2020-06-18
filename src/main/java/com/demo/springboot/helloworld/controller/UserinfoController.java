@@ -33,10 +33,15 @@ public class UserinfoController {
         return "/user/userInfomation";
     }
 
+    @RequestMapping("/MyProfile")
+    public String profile(){
+        return "/user/UserProfile";
+    }
+
     @RequestMapping(value = "/information",method = RequestMethod.GET)
     @ResponseBody
     public Map<String,Object> info(){
-        List<Userinfo> user = userinfoService.find();
+        List<Userinfo> user = userinfoService.find((long) 1);
         List<Userfinance> userfinance = userfinanceService.balance();
         List<Userlevel> userlevel = userlevelService.level();
         Map<String,Object> map = new HashMap<String,Object>();

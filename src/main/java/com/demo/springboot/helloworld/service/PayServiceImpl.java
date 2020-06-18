@@ -22,4 +22,7 @@ public class PayServiceImpl implements PayService{
     public List<Userfinance> selectall() {
         return userfinanceMapper.selectAll();
     }
+    public void balancePay(int t){
+        userfinanceMapper.balancePay(t);
+    }
 }

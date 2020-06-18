@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 3 | General Form Elements</title>
+    <title>网上商城</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="/jquery/dist/jquery.js"></script>
@@ -26,17 +26,17 @@
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="/AdminLTE-3.0.5/index3.html" class="nav-link">Home</a>
+                <a href="#" class="nav-link">主页</a>
             </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Contact</a>
-            </li>
+
+
         </ul>
 
+
         <!-- SEARCH FORM -->
-        <form class="form-inline ml-3">
+        <form class="form-inline ml-3" action="/goods/search" target=_parent>
             <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                <input name="search_key" class="form-control form-control-navbar" type="name" placeholder="在此搜索商品" aria-label="Search">
                 <div class="input-group-append">
                     <button class="btn btn-navbar" type="submit">
                         <i class="fas fa-search"></i>
@@ -44,6 +44,7 @@
                 </div>
             </div>
         </form>
+
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
@@ -105,6 +106,7 @@
                     <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
                 </div>
             </li>
+
             <!-- Notifications Dropdown Menu -->
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
@@ -112,7 +114,7 @@
                     <span class="badge badge-warning navbar-badge">15</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-item dropdown-header">15 Notifications</span>
+                    <span class="dropdown-header">15 Notifications</span>
                     <div class="dropdown-divider"></div>
                     <a href="#" class="dropdown-item">
                         <i class="fas fa-envelope mr-2"></i> 4 new messages
@@ -132,11 +134,47 @@
                     <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                    <i class="fas fa-th-large"></i>
+            <li class="nav-item dropdown user-menu">
+                <a href="./user/userInfomation.html" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                    <img src="/AdminLTE-3.0.5/dist/img/user2-160x160.jpg" class="user-image img-circle elevation-2" alt="User Image">
+                    <span class="d-none d-md-inline">Alexander Pierce</span>
                 </a>
+                <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <!-- User image -->
+                    <li class="user-header bg-primary">
+                        <img src="/AdminLTE-3.0.5/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+
+                        <p>
+                            Alexander Pierce - Web Developer
+                            <small>Member since Nov. 2012</small>
+                        </p>
+                    </li>
+                    <!-- Menu Body -->
+                    <li class="user-body">
+                        <div class="row">
+                            <div class="col-4 text-center">
+                                <a href="#">Followers</a>
+                            </div>
+                            <div class="col-4 text-center">
+                                <a href="#">Sales</a>
+                            </div>
+                            <div class="col-4 text-center">
+                                <a href="#">Friends</a>
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                    </li>
+                    <!-- Menu Footer-->
+                    <li class="user-footer">
+                        <a href="/user/MyInformation" class="btn btn-default btn-flat">个人中心</a>
+                        <a href="#" class="btn btn-default btn-flat float-right">Sign out</a>
+                    </li>
+                </ul>
             </li>
+            <li class="nav-item">
+                <a href="/cart"><i class="nav-icon fas fa-shopping-cart"></i></a>
+            </li>
+
         </ul>
     </nav>
     <!-- /.navbar -->
@@ -145,11 +183,11 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="/AdminLTE-3.0.5/index3.html" class="brand-link">
-            <img src="/AdminLTE-3.0.5/dist/img/AdminLTELogo.png"
+            <img src="/img/logo.png"
                  alt="AdminLTE Logo"
                  class="brand-image img-circle elevation-3"
                  style="opacity: .8">
-            <span class="brand-text font-weight-light">AdminLTE 3</span>
+            <span class="brand-text font-weight-light">Snail Go</span>
         </a>
 
         <!-- Sidebar -->
@@ -202,7 +240,7 @@
                         </a>
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="./UserProfile.html" class="nav-link">
+                        <a href="/user/MyProfile" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
                                 我的主页
@@ -210,7 +248,7 @@
                         </a>
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="../goods.html" class="nav-link">
+                        <a href="/" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
                                 商品页面
@@ -218,7 +256,7 @@
                         </a>
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="" class="nav-link">
+                        <a href="/user/OrderHistory" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
                                 订单记录
@@ -251,8 +289,8 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">General Form</li>
+                            <li class="breadcrumb-item"><a href="#">个人中心</a></li>
+                            <li class="breadcrumb-item active">个人信息</li>
                         </ol>
                     </div>
                 </div>

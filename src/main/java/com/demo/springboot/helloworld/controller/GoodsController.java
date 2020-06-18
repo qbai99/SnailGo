@@ -1,5 +1,6 @@
 package com.demo.springboot.helloworld.controller;
 
+import com.demo.springboot.helloworld.common.domain.Cart;
 import com.demo.springboot.helloworld.common.domain.Goods;
 import com.demo.springboot.helloworld.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,13 @@ public class   GoodsController {
     @RequestMapping("/search")
 
     public String search(String search_key, Model model) {
-        search_key=search_key.toUpperCase();
+
+
         List<Goods> tmp = goodsService.search(search_key);
 
+        System.out.println("返回成功");
+        System.out.println(tmp.size());
+        System.out.println(tmp);
         if (tmp.size() != 0) {//返回不为空。搜索成功
             /*将搜索结果集合、集合元素个数(结果商品个数)、搜索关键字添加到model的属性中返回前端页面*/
             model.addAttribute("search_result", tmp);//搜索结果商品list
@@ -50,5 +55,9 @@ public class   GoodsController {
             return "goods/goodsnotfound";
         }
 
+    }
+    @RequestMapping("/cart")
+    public String cart(){
+        return"cart";
     }
 }

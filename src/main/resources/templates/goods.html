@@ -198,8 +198,13 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="cart" role="button"><i class="nav-icon fas fa-shopping-cart"></i></a>
+
+                <a href="/cart" class="nav-link">
+                    <i class="fas fa-shopping-cart "></i>
+                    <span class="badge badge-warning navbar-badge">1</span>
+                </a>
             </li>
+
 
         </ul>
     </nav>
@@ -209,20 +214,15 @@
     <aside class="main-sidebar sidebar-light-primary small-text elevation-4">
         <!-- Brand Logo -->
         <a href="/AdminLTE-3.0.5/index3.html" class="brand-link">
-            <img src="/AdminLTE-3.0.5/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+            <img src="/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
-            <span class="brand-text font-weight-light">AdminLTE 3</span>
+            <span class="brand-text font-weight-light">Snail Go</span>
         </a>
 
         <!-- Sidebar -->
         <div class="sidebar">
             <!-- Sidebar user panel (optional) -->
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
-                    <img src="/AdminLTE-3.0.5/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-                </div>
 
-            </div>
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
@@ -417,7 +417,183 @@
 
             <!-- /.card -->
         </div>
-        <!-- /.col -->
+
+
+
+        <!--商品列表-->
+        <div class="content">
+            <!-- START ACCORDION & CAROUSEL-->
+
+                <!-- /.col -->
+
+
+            <!-- /.row -->
+            <!-- END ACCORDION & CAROUSEL-->
+            <div class="container-fluid">
+                <!--鞋-->
+
+                <div id="shoe-1">
+
+                    <div class="ml-lg-3">
+                        <h4>数码3C</h4>
+                    </div>
+
+                <div class="row">
+
+                            <div class="col-lg-3"><a href="goods/e-commerce.html">
+                                <div class="position-relative">
+                                    <a th:href="'/goods/details?id='+${allgoods[0].goodsId}"><img class="img-fluid" id="img-1" th:src="'/goods_pics/'+${allgoods[0].goodsId}+'-pic-1.jpg'"/></a>
+
+                                    <div class="ribbon-wrapper ribbon-lg">
+                                        <div class="ribbon bg-success text-lg">
+                                            上新
+                                        </div>
+                                    </div>
+                            </div>
+                            </a>
+                        </div>
+                            <div class="col-lg-3"><a href="goods/e-commerce.html">
+                                <div class="position-relative">
+                                    <a th:href="'/goods/details?id='+${allgoods[1].goodsId}"><img class="img-fluid" id="img-1" th:src="'/goods_pics/'+${allgoods[1].goodsId}+'-pic-1.jpg'"/></a>
+                                    <div class="ribbon-wrapper ribbon-lg hot">
+                                        <div class="ribbon bg-danger text-lg ">
+                                            热卖
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            </div>
+                            <div class="col-lg-3"><a href="goods/e-commerce.html">
+                                <div class="position-relative">
+                                    <a th:href="'/goods/details?id='+${allgoods[2].goodsId}"><img class="img-fluid" id="img-1" th:src="'/goods_pics/'+${allgoods[2].goodsId}+'-pic-1.jpg'"/></a>
+                                    <div class="ribbon-wrapper ribbon-lg">
+                                        <div class="ribbon bg-danger text-lg">
+                                            热卖
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            </div>
+                        <div class="col-lg-3">
+                            <div class="position-relative">
+                                <a th:href="'/goods/details?id='+${allgoods[1].goodsId}"><img class="img-fluid" id="img-1" th:src="'/goods_pics/'+${allgoods[1].goodsId}+'-pic-1.jpg'"/></a>
+                                <div class="ribbon-wrapper ribbon-lg">
+                                    <div class="ribbon bg-warning text-lg">
+                                        推广
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+                </div>
+
+                <!--鞋-->
+                <div id="male">
+                    <div class="ml-lg-3">
+                        <h4>男装</h4>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-lg-3"><a href="goods/e-commerce.html">
+                            <div class="position-relative">
+                                <a th:href="'/goods/details?id='+${allgoods[3].goodsId}"><img class="img-fluid" th:src="'/goods_pics/'+${allgoods[3].goodsId}+'-pic-1.jpg'"/></a>
+                                <div class="ribbon-wrapper ribbon-lg">
+                                    <div class="ribbon bg-success text-lg">
+                                        上新
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+                        <div class="col-lg-3"><a href="goods/e-commerce.html">
+                            <div class="position-relative">
+                                <a th:href="'/goods/details?id='+${allgoods[4].goodsId}"><img class="img-fluid"  th:src="'/goods_pics/'+${allgoods[4].goodsId}+'-pic-1.jpg'"/></a>
+                                <div class="ribbon-wrapper ribbon-lg hot">
+                                    <div class="ribbon bg-danger text-lg ">
+                                        热卖
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+                        <div class="col-lg-3"><a href="goods/e-commerce.html">
+                            <div class="position-relative">
+                                <a th:href="'/goods/details?id='+${allgoods[5].goodsId}"><img class="img-fluid"  th:src="'/goods_pics/'+${allgoods[5].goodsId}+'-pic-1.jpg'"/></a>
+                                <div class="ribbon-wrapper ribbon-lg">
+                                    <div class="ribbon bg-danger text-lg">
+                                        热卖
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+
+
+                    </div>
+                </div>
+                <!--鞋-->
+                <div id="female">
+                    <div class="ml-lg-3">
+                        <h4>女装</h4>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-lg-3"><a href="goods/e-commerce.html">
+                            <div class="position-relative">
+                                <a th:href="'/goods/details?id='+${allgoods[6].goodsId}"><img class="img-fluid" th:src="'/goods_pics/'+${allgoods[6].goodsId}+'-pic-1.jpg'"/></a>
+                                <div class="ribbon-wrapper ribbon-lg">
+                                    <div class="ribbon bg-success text-lg">
+                                        上新
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+                        <div class="col-lg-3"><a href="goods/e-commerce.html">
+                            <div class="position-relative">
+                                <a th:href="'/goods/details?id='+${allgoods[7].goodsId}"><img class="img-fluid"  th:src="'/goods_pics/'+${allgoods[7].goodsId}+'-pic-1.jpg'"/></a>
+                                <div class="ribbon-wrapper ribbon-lg hot">
+                                    <div class="ribbon bg-danger text-lg ">
+                                        热卖
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+                        <div class="col-lg-3"><a href="goods/e-commerce.html">
+                            <div class="position-relative">
+                                <a th:href="'/goods/details?id='+${allgoods[8].goodsId}"><img class="img-fluid"  th:src="'/goods_pics/'+${allgoods[8].goodsId}+'-pic-1.jpg'"/></a>
+                                <div class="ribbon-wrapper ribbon-lg">
+                                    <div class="ribbon bg-danger text-lg">
+                                        热卖
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+
+
+                    </div>
+                </div>
+                    <!-- /.col-md-6 -->
+
+
+                        <div class="card card-primary card-outline">
+                            <div class="card-header">
+                                <h5 class="m-0">Featured</h5>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title">Special title treatment</h6>
+
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-md-6 -->
+                </div>
+                <!-- /.row -->
         <div class="row" style="margin-top: 10px">
             <div class="col-10 m-auto">
                 <div class="card card-lightblue">
@@ -517,162 +693,16 @@
                     </div>
                 </div>
             </div>
-
-
-
-        <!--商品列表-->
-        <div class="content">
-            <!-- START ACCORDION & CAROUSEL-->
-
-                <!-- /.col -->
-
-
-            <!-- /.row -->
-            <!-- END ACCORDION & CAROUSEL-->
-            <div class="container-fluid">
-                <!--鞋-->
-
-                <div id="shoe-1">
-
-                    <div class="ml-lg-3">
-                        <h4>登山鞋</h4>
-                    </div>
-
-                <div class="row">
-
-                            <div class="col-lg-3"><a href="goods/e-commerce.html">
-                                <div class="position-relative">
-                                    <img src="/AdminLTE-3.0.5/dist/img/prod-1.jpg" alt="Photo 1" class="img-fluid">
-                                    <div class="ribbon-wrapper ribbon-lg">
-                                        <div class="ribbon bg-success text-lg">
-                                            上新
-                                        </div>
-                                    </div>
-                            </div>
-                            </a>
-                        </div>
-                            <div class="col-lg-3"><a href="goods/e-commerce.html">
-                                <div class="position-relative">
-                                    <img src="/AdminLTE-3.0.5/dist/img/prod-2.jpg" alt="Photo 1" class="img-fluid">
-                                    <div class="ribbon-wrapper ribbon-lg hot">
-                                        <div class="ribbon bg-danger text-lg ">
-                                            热卖
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            </div>
-                            <div class="col-lg-3"><a href="goods/e-commerce.html">
-                                <div class="position-relative">
-                                    <img src="/AdminLTE-3.0.5/dist/img/prod-1.jpg" alt="Photo 1" class="img-fluid">
-                                    <div class="ribbon-wrapper ribbon-lg">
-                                        <div class="ribbon bg-danger text-lg">
-                                            热卖
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            </div>
-                        <div class="col-lg-3">
-                            <div class="position-relative">
-                                <img src="/AdminLTE-3.0.5/dist/img/prod-2.jpg" alt="Photo 1" class="img-fluid">
-                                <div class="ribbon-wrapper ribbon-lg">
-                                    <div class="ribbon bg-warning text-lg">
-                                        推广
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                </div>
-                </div>
-
-                <!--鞋-->
-                <div id="shoe-2">
-                    <div class="ml-lg-3">
-                        <h4>运动鞋</h4>
-                    </div>
-                    <div class="row">
-
-                        <div class="col-lg-3"><a href="goods/e-commerce.html">
-                            <div class="position-relative">
-                                <img src="/AdminLTE-3.0.5/dist/img/prod-1.jpg" alt="Photo 1" class="img-fluid">
-                                <div class="ribbon-wrapper ribbon-lg">
-                                    <div class="ribbon bg-success text-lg">
-                                        上新
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                        <div class="col-lg-3"><a href="goods/e-commerce.html">
-                            <div class="position-relative">
-                                <img src="/AdminLTE-3.0.5/dist/img/prod-2.jpg" alt="Photo 1" class="img-fluid">
-                                <div class="ribbon-wrapper ribbon-lg hot">
-                                    <div class="ribbon bg-danger text-lg ">
-                                        热卖
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                        <div class="col-lg-3"><a href="goods/e-commerce.html">
-                            <div class="position-relative">
-                                <img src="/AdminLTE-3.0.5/dist/img/prod-1.jpg" alt="Photo 1" class="img-fluid">
-                                <div class="ribbon-wrapper ribbon-lg">
-                                    <div class="ribbon bg-danger text-lg">
-                                        热卖
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="position-relative">
-                                <img src="/AdminLTE-3.0.5/dist/img/prod-2.jpg" alt="Photo 1" class="img-fluid">
-                                <div class="ribbon-wrapper ribbon-lg">
-                                    <div class="ribbon bg-warning text-lg">
-                                        推广
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                    <!-- /.col-md-6 -->
-
-
-                        <div class="card card-primary card-outline">
-                            <div class="card-header">
-                                <h5 class="m-0">Featured</h5>
-                            </div>
-                            <div class="card-body">
-                                <h6 class="card-title">Special title treatment</h6>
-
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.col-md-6 -->
-                </div>
-                <!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content -->
     </div>
 
     <!-- /.content-wrapper -->
+<!-- /.col -->
+
 
     <!-- Control Sidebar -->
-    <aside>
-        <!-- Control sidebar content goes here -->
-        <div class="p-3">
-            <h5>购物车</h5>
-            <p>已选择的商品</p>
-        </div>
-    </aside>
     <!-- /.control-sidebar -->
 
     <!-- Main Footer -->
