@@ -7,13 +7,13 @@ public class Goods {
 
     private Long orderId;
 
-    private Integer cartId;
-
     private Double goodsPrice;
 
     private String goodsName;
 
     private Integer goodsRemaning;
+
+    private String goodsDsp;
 
     public Long getGoodsId() {
         return goodsId;
@@ -39,14 +39,6 @@ public class Goods {
         this.orderId = orderId;
     }
 
-    public Integer getCartId() {
-        return cartId;
-    }
-
-    public void setCartId(Integer cartId) {
-        this.cartId = cartId;
-    }
-
     public Double getGoodsPrice() {
         return goodsPrice;
     }
@@ -69,5 +61,13 @@ public class Goods {
 
     public void setGoodsRemaning(Integer goodsRemaning) {
         this.goodsRemaning = goodsRemaning;
+    }
+
+    public String getGoodsDsp() {
+        return goodsDsp;
+    }
+
+    public void setGoodsDsp(String goodsDsp) {
+        this.goodsDsp = goodsDsp == null ? null : goodsDsp.trim();
     }
 }

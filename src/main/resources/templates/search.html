@@ -362,17 +362,22 @@
 
 
                 </div><!-- /.row -->
+                <div class="row">
+                <li  th:each="sc:${search_result}" style="list-style:none; /* 将默认的列表符号去掉 */padding:0; /* 将默认的内边距去掉 */margin:0; /* 将默认的外边距去掉 */">
 
-                <li  th:each="sc:${search_result}">
-                    <div class="col">
-                        <div class="cols-3">
-                            <a th:href="'details?id='+${sc.goodsId}"><img id="img-result-1" style=" width:200px; height:200px" th:src="'/goods_pics/'+${sc.goodsId}+'-pic-1.jpg'"/></a>
-                            <div class="card-title"><p class="title fl" th:text="${sc.goodsName}"></p></div>
+                        <div class="row-cols-md-6">
+                            <a th:href="'details?id='+${sc.goodsId}"><img style="width: 300px ;height: 300px" th:src="'/goods_pics/'+${sc.goodsId}+'-pic-1.jpg'"/></a>
+
+                            <h3 class="my-3"><p class="title fl" th:text="${sc.goodsName}"></p></h3>
+                            <h3 class="mb-0">
+                                <p class="title fl" th:text="'¥'+${sc.goodsPrice}"></p>
+                            </h3>
                         </div>
-                    </div>
+
 
 
                 </li>
+                </div>
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
