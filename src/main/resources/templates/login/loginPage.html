@@ -43,10 +43,9 @@
   <script src="../../static/AdminLTE-3.0.5/dist/js/demo.js"
           th:src="@{/AdminLTE-3.0.5/dist/js/demo.js}"></script>
 </head>
-<body class="hold-transition sidebar-collapse" onload="connect()">
+<body class="hold-transition sidebar-collapse" onload="connect()" >
 <div class="wrapper">
   <!-- Navbar -->
-
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
@@ -609,18 +608,19 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper" >
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>网上购物商城</h1>
+
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">General Form</li>
+              <a th:href="@{/}">
+                <img th:src="@{/img/logo.png}" alt="logo" style="width: 40px;height: 40px"/>
+              </a>
             </ol>
           </div>
         </div>
@@ -628,8 +628,8 @@
     </section>
 
     <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
+    <section class="content" >
+      <div class="container-fluid" >
         <div class="row"></div>
         <div class="row"></div>
         <div class="row"></div>
@@ -673,12 +673,15 @@
                 <!-- /.card-body -->
                 <div class="card-footer">
 
-                    <button type="submit" class="btn btn-info">Sign in</button>
+                    <button type="submit" class="btn btn-info" onclick="setCookie()">Sign in</button>
                     <button type="submit" class="btn btn-default float-right">Cancel</button>
                     <div class="row">
                       <a href="/signUpPage" class="offset-11" style="font-family: 微软雅黑;text-align: right;
                       font-size: small">
                         还未注册</a>
+                      <div >
+                        <div th:text="${errorMsg}" style="color:red;"></div>
+                      </div>
                     </div>
                 </div>
                 <!-- /.card-footer -->
@@ -741,6 +744,12 @@ function showResponse(message) {
     subtitle: 'Subtitle',
     body: message
   })
+}
+
+function setCookie() {
+  var d='${userAdminForUser}';
+  document.cookie="userAdmin="+d;
+
 }
 
 </script>

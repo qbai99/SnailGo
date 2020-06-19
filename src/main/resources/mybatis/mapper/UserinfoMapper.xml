@@ -151,6 +151,7 @@
       #{userTag,jdbcType=BIT}, #{levelId,jdbcType=BIGINT}, #{userIntroductoin,jdbcType=LONGVARCHAR}
       )
   </insert>
+
   <insert id="insertSelective" parameterType="com.demo.springboot.helloworld.common.domain.Userinfo">
     insert into user_info
     <trim prefix="(" suffix=")" suffixOverrides=",">

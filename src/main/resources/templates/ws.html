@@ -2,7 +2,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 3 | General Form Elements</title>
+  <title>消息推送</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -612,8 +612,9 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">General Form</li>
+              <a th:href="@{/}">
+                <img th:src="@{/img/logo.png}" alt="logo" style="width: 40px;height: 40px"/>
+              </a>
             </ol>
           </div>
         </div>
@@ -719,8 +720,7 @@
   function showResponse(message) {
     $(document).Toasts('create', {
       class: 'bg-info',
-      title: 'Toast Title',
-      subtitle: 'Subtitle',
+      title: '消息推送',
       body: message
     })
   }

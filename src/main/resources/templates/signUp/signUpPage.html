@@ -593,12 +593,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>网上购物商城</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">General Form</li>
+                <a th:href="@{/}">
+                  <img th:src="@{/img/logo.png}" alt="logo" style="width: 40px;height: 40px"/>
+                </a>
               </ol>
             </div>
           </div>
@@ -650,19 +650,19 @@
 
                   <div class="form-group">
                     <div class="icheck-primary d-inline">
-                      <input type="radio" id="radioSex1" name="sex" checked>
+                      <input type="radio" id="radioSex1" value="0" name="sex" checked>
                       <label for="radioSex1">
                         男
                       </label>
                     </div>
                     <div class="icheck-primary d-inline">
-                      <input type="radio" id="radioSex2" name="sex">
+                      <input type="radio" id="radioSex2" value="1" name="sex">
                       <label for="radioSex2">
                         女
                       </label>
                     </div>
                     <div class="icheck-primary d-inline">
-                      <input type="radio" id="radioSex3" name="sex">
+                      <input type="radio" id="radioSex3" value="2" name="sex">
                       <label for="radioSex3">
                         保密
                       </label>
@@ -680,7 +680,10 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary" >Submit</button>
+                  <div >
+                    <div th:text="${errorMsg}" style="color:red;"></div>
+                  </div>
                 </div>
               </form>
             </div>
@@ -722,9 +725,12 @@
   <script src="../../static/AdminLTE-3.0.5/dist/js/demo.js"
           th:src="@{/AdminLTE-3.0.5/dist/js/demo.js}"></script>
 <script type="text/javascript">
+
 $(document).ready(function () {
   bsCustomFileInput.init();
 });
+
+
 </script>
 </body>
 </html>

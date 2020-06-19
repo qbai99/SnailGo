@@ -237,15 +237,15 @@ create table shopping_cart
 /*==============================================================*/
 create table sign_up
 (
-   sign_up_id           bigint not null auto_increment,
-   user_id              bigint,
-   username             varchar(15),
-   password             varchar(15),
-   identity             bool,
-   email_address        varchar(255),
-   sex                  bool,
-   address              varchar(255),
-   primary key (sign_up_id)
+sign_up_id           BIGINT NOT NULL AUTO_INCREMENT,
+   user_id              BIGINT,
+   user_name             VARCHAR(15),
+   user_password             VARCHAR(15),
+   identity             BOOL,
+   email_address        VARCHAR(255),
+   sex                  INT,
+   address              VARCHAR(255),
+   PRIMARY KEY (sign_up_id)
 );
 
 /*==============================================================*/
