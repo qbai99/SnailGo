@@ -2,7 +2,6 @@ package com.demo.springboot.helloworld.service;
 
 import com.demo.springboot.helloworld.common.domain.Userfinance;
 import com.demo.springboot.helloworld.mapper.UserfinanceMapper;
-import com.demo.springboot.helloworld.mapper.UserinfoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

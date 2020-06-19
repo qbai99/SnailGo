@@ -7,4 +7,5 @@ import org.springframework.ui.Model;
 public interface SignUpService {
     public boolean signUp(SignUp signUp);
     public SignUp login(Login login);
+    public SignUp returnSignUp(SignUp signUp);
 }
