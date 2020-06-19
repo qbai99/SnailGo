@@ -138,6 +138,7 @@ create table goods
    goods_price          double,
    goods_name           varchar(255),
    goods_remaning       int default 0,
+   goods_dsp           varchar(255),
    primary key (goods_id)
 );
 
