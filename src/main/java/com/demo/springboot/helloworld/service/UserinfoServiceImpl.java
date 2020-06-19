@@ -1,5 +1,7 @@
 package com.demo.springboot.helloworld.service;
 
+import com.demo.springboot.helloworld.common.domain.Address;
+import com.demo.springboot.helloworld.common.domain.SignUp;
 import com.demo.springboot.helloworld.common.domain.Userinfo;
 import com.demo.springboot.helloworld.common.domain.UserinfoExample;
 import com.demo.springboot.helloworld.mapper.UserinfoMapper;
@@ -64,5 +66,31 @@ public class UserinfoServiceImpl implements UserinfoService{
             System.out.println("密码错误");
             return false;
         }
+    }
+
+    @Override
+    public boolean addUser(SignUp signUp) {
+
+        Userinfo userinfo = new Userinfo();
+        userinfo.setMessageId(null);
+        userinfo.setLoginId(null);
+        userinfo.setFinanceId(null);
+        userinfo.setUseLevelId(null);
+        userinfo.setShopId(null);
+        userinfo.setSignUpId(signUp.getSignUpId());
+        userinfo.setUserAdmin(signUp.getEmailAddress());
+        userinfo.setUserPassword(signUp.getUserPassword());
+        userinfo.setUserName(signUp.getUserName());
+        userinfo.setUserTag(signUp.getIdentity());
+        userinfo.setUsersex(signUp.getSex());
+        userinfo.setUserIntroductoin(null);
+        userinfo.setUserPhonenumber(null);
+        userinfo.setUserBirthdate(null);
+        userinfo.setFinanceId(null);
+
+        int result = userinfoMapper.insert(userinfo);
+        System.out.println(result);
+
+        return false;
     }
 }

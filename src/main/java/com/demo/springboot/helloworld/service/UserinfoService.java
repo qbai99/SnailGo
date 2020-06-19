@@ -1,5 +1,6 @@
 package com.demo.springboot.helloworld.service;
 
+import com.demo.springboot.helloworld.common.domain.SignUp;
 import com.demo.springboot.helloworld.common.domain.Userinfo;
 import org.springframework.stereotype.Service;
 
@@ -13,4 +14,6 @@ public interface UserinfoService {
     List<Userinfo> find(Long userId);
 
     boolean changepassword(String oldPassword,String newPassword);
+
+    boolean addUser(SignUp signUp);
 }

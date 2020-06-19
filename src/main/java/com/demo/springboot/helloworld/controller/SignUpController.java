@@ -3,6 +3,8 @@ package com.demo.springboot.helloworld.controller;
 import com.demo.springboot.helloworld.common.domain.Login;
 import com.demo.springboot.helloworld.common.domain.SignUp;
 import com.demo.springboot.helloworld.service.SignUpService;
+import com.demo.springboot.helloworld.service.UserinfoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
@@ -20,6 +22,10 @@ import java.util.Map;
 public class SignUpController {
     @Resource
     private SignUpService signUpService;
+
+    @Autowired
+    UserinfoService userinfoService;
+
     @RequestMapping("/signUpPage")
     public String signUpPage(){
         return "signUp/signUpPage";
@@ -43,14 +49,15 @@ public class SignUpController {
             model.addAttribute("errorMsg","昵称不能为空");
             return "signUp/signUpPage";
         }
-            signup.setUserId(this.i);
-            signup.setSignUpId((this.i++));
-                if(signUpService.signUp(signup)){
-                    model.addAttribute("userAdminForUser",signup.getEmailAddress());
-                    return "login/loginPage";
-                }
+        signup.setSignUpId((this.i++));
+        if(signUpService.signUp(signup)==false){
+            model.addAttribute("userAdminForUser",signup.getEmailAddress());
+            System.out.println(11111111);
+            userinfoService.addUser(signup);
+            return "login/loginPage";
+        }
         model.addAttribute("errorMsg","邮箱已被注册");
-                return "signUp/signUpPage";
+        return "signUp/signUpPage";
     }
 
     @RequestMapping("/loginPage")
