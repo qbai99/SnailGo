@@ -4,10 +4,17 @@ import com.demo.springboot.helloworld.common.domain.Login;
 import com.demo.springboot.helloworld.common.domain.SignUp;
 import com.demo.springboot.helloworld.service.SignUpService;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class SignUpController {
@@ -21,6 +28,11 @@ public class SignUpController {
     @RequestMapping("/signUp")
     public String signUp(SignUp signup, Model model)
     {
+        if(signup.getEmailAddress()=="")
+        {
+            model.addAttribute("errorMsg","邮箱不能为空");
+            return "signUp/signUpPage";
+        }
         if(signup.getUserPassword()=="")
         {
             model.addAttribute("errorMsg","密码不能为空");
@@ -59,7 +71,7 @@ public class SignUpController {
             String passwordInDB=SignUpInDB.getUserPassword();
             if (passwordInDB.equals(login.getUserPassword())){
                 System.out.println("登陆成功");
-                return "goods";
+                return "/goods";
             }
             else
             {
@@ -69,4 +81,5 @@ public class SignUpController {
         }
         return "login/loginPage";
     }
+
 }

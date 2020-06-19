@@ -423,6 +423,12 @@
     $(document).ready(function () {
         bsCustomFileInput.init();
     });
+
+    function getCookie() {
+        var decodedCookie = decodeURIComponent(document.cookie);
+       console.log(decodedCookie.substring(decodedCookie.indexOf('=')+1));
+
+    }
 </script>
 </body>
 </html>

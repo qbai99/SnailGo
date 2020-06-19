@@ -4,6 +4,7 @@ import com.demo.springboot.helloworld.common.domain.Login;
 import com.demo.springboot.helloworld.common.domain.SignUp;
 import com.demo.springboot.helloworld.common.domain.SignUpExample;
 import com.demo.springboot.helloworld.mapper.SignUpMapper;
+import com.demo.springboot.helloworld.mapper.UserinfoMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
@@ -14,10 +15,9 @@ import java.util.List;
 public class SignUpServiceImpl implements SignUpService{
     @Resource
     SignUpMapper signUpMapper;
-
+    UserinfoMapper userinfoMapper;
     @Override
     public boolean signUp(SignUp signUp){
-
         SignUpExample signUpExample=new SignUpExample();
         signUpExample.createCriteria().andEmailAddressEqualTo(signUp.getEmailAddress());
 

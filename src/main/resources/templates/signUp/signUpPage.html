@@ -680,10 +680,9 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary" >Submit</button>
                   <div >
-                    <div th:text="${errorMsg}"></div>
-                    <input type="hidden" id="errorMsg" value="${errorMsg}}">
+                    <div th:text="${errorMsg}" style="color:red;"></div>
                   </div>
                 </div>
               </form>
@@ -731,16 +730,7 @@ $(document).ready(function () {
   bsCustomFileInput.init();
 });
 
-function error() {
-  var data= $("#errorMsg").getAttributeNames();
-  if(data!=null){
-    $(document).Toasts('create', {
-      class: 'bg-info',
-      title: '错误提示',
-      body:"错误提示"
-    })
-  }
-}
+
 </script>
 </body>
 </html>

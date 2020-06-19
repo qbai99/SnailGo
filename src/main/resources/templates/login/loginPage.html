@@ -43,10 +43,9 @@
   <script src="../../static/AdminLTE-3.0.5/dist/js/demo.js"
           th:src="@{/AdminLTE-3.0.5/dist/js/demo.js}"></script>
 </head>
-<body class="hold-transition sidebar-collapse" onload="connect()">
+<body class="hold-transition sidebar-collapse" onload="connect()" >
 <div class="wrapper">
   <!-- Navbar -->
-
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
@@ -609,7 +608,7 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper" >
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -629,8 +628,8 @@
     </section>
 
     <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
+    <section class="content" >
+      <div class="container-fluid" >
         <div class="row"></div>
         <div class="row"></div>
         <div class="row"></div>
@@ -674,15 +673,14 @@
                 <!-- /.card-body -->
                 <div class="card-footer">
 
-                    <button type="submit" class="btn btn-info" onclick="error()">Sign in</button>
+                    <button type="submit" class="btn btn-info" onclick="setCookie()">Sign in</button>
                     <button type="submit" class="btn btn-default float-right">Cancel</button>
                     <div class="row">
                       <a href="/signUpPage" class="offset-11" style="font-family: 微软雅黑;text-align: right;
                       font-size: small">
                         还未注册</a>
                       <div >
-                        <div th:text="${errorMsg}"></div>
-                        <input type="hidden" id="errorMsg" value="${errorMsg}}">
+                        <div th:text="${errorMsg}" style="color:red;"></div>
                       </div>
                     </div>
                 </div>
@@ -748,15 +746,10 @@ function showResponse(message) {
   })
 }
 
-function error() {
-  var data= $("#errorMsg").getAttributeNames();
-  if(data!=null){
-    $(document).Toasts('create', {
-      class: 'bg-info',
-      title: '错误提示',
-      body:"错误提示"
-    })
-  }
+function setCookie() {
+  var d='${userAdminForUser}';
+  document.cookie="userAdmin="+d;
+
 }
 
 </script>
