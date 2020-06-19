@@ -49,8 +49,7 @@ public class SignUpController {
             model.addAttribute("errorMsg","昵称不能为空");
             return "signUp/signUpPage";
         }
-        signup.setSignUpId((this.i++));
-        if(signUpService.signUp(signup)==false){
+        if(signUpService.signUp(signup)){
             model.addAttribute("userAdminForUser",signup.getEmailAddress());
             System.out.println(11111111);
             userinfoService.addUser(signup);

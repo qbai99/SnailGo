@@ -88,6 +88,7 @@ public class UserinfoServiceImpl implements UserinfoService{
         userinfo.setUserBirthdate(null);
         userinfo.setFinanceId(null);
 
+        System.out.println("插入操作前");
         int result = userinfoMapper.insert(userinfo);
         System.out.println(result);
 
