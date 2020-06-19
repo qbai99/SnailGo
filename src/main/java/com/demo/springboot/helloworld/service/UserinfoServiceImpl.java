@@ -15,6 +15,9 @@ public class UserinfoServiceImpl implements UserinfoService{
     @Autowired
     private UserinfoMapper userinfoMapper;
 
+    @Autowired
+    private SignUpService signUpService;
+
     @Override
     public Userinfo updateInfo(String email, String username, String sex, String birthdate, String phonenumber, String introduction) {
         UserinfoExample userinfoExample = new UserinfoExample();
@@ -86,9 +89,21 @@ public class UserinfoServiceImpl implements UserinfoService{
         userinfo.setFinanceId(null);
 
         int result = userinfoMapper.insert(userinfo);
+        UserinfoExample userinfoExample = new UserinfoExample();
+        userinfoExample.createCriteria().andUserAdminEqualTo(signUp.getEmailAddress());
+        List<Userinfo> userinfoList = userinfoMapper.selectByExampleWithBLOBs(userinfoExample);
 
+        SignUp sign = signUpService.updateUserId(userinfoList.get(0));
 
-
-        return false;
+        if(result==1){
+            return true;
+        }
+        if(result==0)
+        {
+            return false;
+        }
+        else{
+            return false;
+        }
     }
 }

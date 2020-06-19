@@ -53,7 +53,6 @@ public class SignUpController {
             model.addAttribute("userAdminForUser",signup.getEmailAddress());
             SignUp signUpInDB=signUpService.returnSignUp(signup);
             userinfoService.addUser(signUpInDB);
-            signUpService.updateUserId(signUpInDB);
             return "login/loginPage";
         }
         model.addAttribute("errorMsg","邮箱已被注册");

@@ -38,17 +38,16 @@ public class SignUpServiceImpl implements SignUpService{
         return signUps.get(0);
     }
 @Override
-public SignUp updateUserId(SignUp signUp) {///////////////更新userid
+public SignUp updateUserId(Userinfo userinfo) {///////////////更新userid
         SignUpExample signUpExample=new SignUpExample();
         signUpExample.createCriteria().andUserIdIsNull();
-   List<SignUp> results = signUpMapper.selectByExample(signUpExample);
-    SignUp result=results.get(0);
-    UserinfoExample userinfoExample=new UserinfoExample();
-    userinfoExample.createCriteria().andUserAdminEqualTo(result.getEmailAddress());
-   List<Userinfo> tems=userinfoMapper.selectByExample(userinfoExample);
-   Userinfo tem=tems.get(0);
-    result.setUserId(tem.getUserId());
-  return result;
+        List<SignUp> results = signUpMapper.selectByExample(signUpExample);
+        SignUp newSign = results.get(0);
+        newSign.setUserId(userinfo.getUserId());
+        SignUpExample signUpExample1 = new SignUpExample();
+        signUpExample1.createCriteria().andEmailAddressEqualTo(results.get(0).getEmailAddress());
+        signUpMapper.updateByExample(newSign,signUpExample1);
+        return newSign;
 }
 
     @Override
