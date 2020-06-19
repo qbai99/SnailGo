@@ -8,4 +8,5 @@ public interface SignUpService {
     public boolean signUp(SignUp signUp);
     public SignUp login(Login login);
     public SignUp returnSignUp(SignUp signUp);
+    public SignUp updateUserId(SignUp signUp) ;
 }

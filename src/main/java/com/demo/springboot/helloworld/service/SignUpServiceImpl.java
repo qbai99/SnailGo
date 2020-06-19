@@ -1,18 +1,19 @@
 package com.demo.springboot.helloworld.service;
 
-import com.demo.springboot.helloworld.common.domain.Login;
-import com.demo.springboot.helloworld.common.domain.SignUp;
-import com.demo.springboot.helloworld.common.domain.SignUpExample;
+import com.demo.springboot.helloworld.common.domain.*;
 import com.demo.springboot.helloworld.mapper.SignUpMapper;
+import com.demo.springboot.helloworld.mapper.UserinfoMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.sql.Date;
 import java.util.List;
 
 @Service
 public class SignUpServiceImpl implements SignUpService{
     @Resource
     SignUpMapper signUpMapper;
+    UserinfoMapper userinfoMapper;
     @Override
     public boolean signUp(SignUp signUp){
         SignUpExample signUpExample=new SignUpExample();
@@ -29,13 +30,26 @@ public class SignUpServiceImpl implements SignUpService{
 
         return false;
     }
-
+    @Override
     public SignUp returnSignUp(SignUp signUp){
         SignUpExample signUpExample=new SignUpExample();
         signUpExample.createCriteria().andEmailAddressEqualTo(signUp.getEmailAddress());
         List<SignUp> signUps=signUpMapper.selectByExample(signUpExample);
         return signUps.get(0);
     }
+@Override
+public SignUp updateUserId(SignUp signUp) {///////////////更新userid
+        SignUpExample signUpExample=new SignUpExample();
+        signUpExample.createCriteria().andUserIdIsNull();
+   List<SignUp> results = signUpMapper.selectByExample(signUpExample);
+    SignUp result=results.get(0);
+    UserinfoExample userinfoExample=new UserinfoExample();
+    userinfoExample.createCriteria().andUserAdminEqualTo(result.getEmailAddress());
+   List<Userinfo> tems=userinfoMapper.selectByExample(userinfoExample);
+   Userinfo tem=tems.get(0);
+    result.setUserId(tem.getUserId());
+  return result;
+}
 
     @Override
     public SignUp login(Login login) {
