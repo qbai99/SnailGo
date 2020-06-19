@@ -672,7 +672,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-
+                  <input type="hidden" id="userAdminForUser" value="${userAdminForUser}">
                     <button type="submit" class="btn btn-info" onclick="setCookie()">Sign in</button>
                     <button type="submit" class="btn btn-default float-right">Cancel</button>
                     <div class="row">
@@ -747,7 +747,7 @@ function showResponse(message) {
 }
 
 function setCookie() {
-  var d='${userAdminForUser}';
+  var d=$("#userAdminForUser").getAttributeNames();
   document.cookie="userAdmin="+d;
 
 }

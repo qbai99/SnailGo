@@ -78,6 +78,7 @@ public class SignUpController {
             String passwordInDB=SignUpInDB.getUserPassword();
             if (passwordInDB.equals(login.getUserPassword())){
                 System.out.println("登陆成功");
+                model.addAttribute("userAdminForUser",login.getUserAdmin());
                 return "/goods";
             }
             else
