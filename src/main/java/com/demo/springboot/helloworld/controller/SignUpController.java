@@ -51,7 +51,6 @@ public class SignUpController {
         }
         if(signUpService.signUp(signup)){
             model.addAttribute("userAdminForUser",signup.getEmailAddress());
-            System.out.println(11111111);
             userinfoService.addUser(signup);
             return "login/loginPage";
         }

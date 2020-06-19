@@ -1,13 +1,10 @@
 package com.demo.springboot.helloworld.mapper;
 
-import com.demo.springboot.helloworld.common.domain.SignUp;
 import com.demo.springboot.helloworld.common.domain.Userinfo;
 import com.demo.springboot.helloworld.common.domain.UserinfoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface UserinfoMapper {
     long countByExample(UserinfoExample example);
 
@@ -36,5 +33,4 @@ public interface UserinfoMapper {
     int updateByPrimaryKeyWithBLOBs(Userinfo record);
 
     int updateByPrimaryKey(Userinfo record);
-
 }

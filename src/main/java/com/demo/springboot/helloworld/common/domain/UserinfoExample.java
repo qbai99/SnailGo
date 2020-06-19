@@ -552,66 +552,6 @@ public class UserinfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andCartIdIsNull() {
-            addCriterion("cart_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCartIdIsNotNull() {
-            addCriterion("cart_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCartIdEqualTo(Integer value) {
-            addCriterion("cart_id =", value, "cartId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCartIdNotEqualTo(Integer value) {
-            addCriterion("cart_id <>", value, "cartId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCartIdGreaterThan(Integer value) {
-            addCriterion("cart_id >", value, "cartId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCartIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("cart_id >=", value, "cartId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCartIdLessThan(Integer value) {
-            addCriterion("cart_id <", value, "cartId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCartIdLessThanOrEqualTo(Integer value) {
-            addCriterion("cart_id <=", value, "cartId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCartIdIn(List<Integer> values) {
-            addCriterion("cart_id in", values, "cartId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCartIdNotIn(List<Integer> values) {
-            addCriterion("cart_id not in", values, "cartId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCartIdBetween(Integer value1, Integer value2) {
-            addCriterion("cart_id between", value1, value2, "cartId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCartIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("cart_id not between", value1, value2, "cartId");
-            return (Criteria) this;
-        }
-
         public Criteria andUserAdminIsNull() {
             addCriterion("user_admin is null");
             return (Criteria) this;
@@ -1141,7 +1081,6 @@ public class UserinfoExample {
             addCriterion("user_tag not between", value1, value2, "userTag");
             return (Criteria) this;
         }
-
     }
 
     public static class Criteria extends GeneratedCriteria {

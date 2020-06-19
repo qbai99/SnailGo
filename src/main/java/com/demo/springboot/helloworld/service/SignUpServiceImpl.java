@@ -25,6 +25,8 @@ public class SignUpServiceImpl implements SignUpService{
       if(signUps.size()==0)
       {
           signUpMapper.insert(signUp);
+//          signUpExample.createCriteria().andEmailAddressEqualTo(signUp.getEmailAddress());
+//          SignUp sign = signUpMapper.selectByExample(signUpExample);
           return true;
       }
 

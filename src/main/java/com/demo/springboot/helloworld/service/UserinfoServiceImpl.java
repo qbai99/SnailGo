@@ -32,7 +32,7 @@ public class UserinfoServiceImpl implements UserinfoService{
 //        Date date = sdf.parse(birthdate);
         result.setUserBirthdate(Date.valueOf(birthdate));
         result.setUserPhonenumber(phonenumber);
-        result.setUserIntroductoin(introduction);
+        result.setUserIntroduction(introduction);
         System.out.println("新数据"+result.toString());
         int res = userinfoMapper.updateByPrimaryKeyWithBLOBs(result);
         System.out.println(userinfoMapper.selectByPrimaryKey((long) 1).toString());
@@ -83,14 +83,14 @@ public class UserinfoServiceImpl implements UserinfoService{
         userinfo.setUserName(signUp.getUserName());
         userinfo.setUserTag(signUp.getIdentity());
         userinfo.setUsersex(signUp.getSex());
-        userinfo.setUserIntroductoin(null);
+        userinfo.setUserIntroduction(null);
         userinfo.setUserPhonenumber(null);
         userinfo.setUserBirthdate(null);
         userinfo.setFinanceId(null);
 
-        System.out.println("插入操作前");
         int result = userinfoMapper.insert(userinfo);
-        System.out.println(result);
+
+
 
         return false;
     }

@@ -19,7 +19,7 @@
     <result column="user_tag" jdbcType="BIT" property="userTag" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.demo.springboot.helloworld.common.domain.Userinfo">
-    <result column="user_introduction" jdbcType="LONGVARCHAR" property="userIntroductoin" />
+    <result column="user_introduction" jdbcType="LONGVARCHAR" property="userIntroduction" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -80,9 +80,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    user_id, message_id, sign_up_id, login_id, finance_id, use_level_id, shop_id,
-    user_admin, user_name, user_password, usersex, user_birthdate, user_phonenumber, 
-    user_img, user_tag
+    user_id, message_id, sign_up_id, login_id, finance_id, use_level_id, shop_id, user_admin, 
+    user_name, user_password, usersex, user_birthdate, user_phonenumber, user_img, user_tag
   </sql>
   <sql id="Blob_Column_List">
     user_introduction
@@ -138,20 +137,17 @@
   <insert id="insert" parameterType="com.demo.springboot.helloworld.common.domain.Userinfo">
     insert into user_info (user_id, message_id, sign_up_id, 
       login_id, finance_id, use_level_id, 
-      shop_id, user_admin,
-      user_name, user_password, usersex, 
-      user_birthdate, user_phonenumber, user_img, 
-      user_tag, user_introduction
-      )
+      shop_id, user_admin, user_name, 
+      user_password, usersex, user_birthdate, 
+      user_phonenumber, user_img, user_tag, 
+      user_introduction)
     values (#{userId,jdbcType=BIGINT}, #{messageId,jdbcType=INTEGER}, #{signUpId,jdbcType=BIGINT}, 
       #{loginId,jdbcType=INTEGER}, #{financeId,jdbcType=BIGINT}, #{useLevelId,jdbcType=BIGINT}, 
-      #{shopId,jdbcType=BIGINT},, #{userAdmin,jdbcType=VARCHAR},
-      #{userName,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, #{usersex,jdbcType=INTEGER}, 
-      #{userBirthdate,jdbcType=DATE}, #{userPhonenumber,jdbcType=CHAR}, #{userImg,jdbcType=VARCHAR}, 
-      #{userTag,jdbcType=BIT}, #{levelId,jdbcType=BIGINT}, #{userIntroductoin,jdbcType=LONGVARCHAR}
-      )
+      #{shopId,jdbcType=BIGINT}, #{userAdmin,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{userPassword,jdbcType=VARCHAR}, #{usersex,jdbcType=INTEGER}, #{userBirthdate,jdbcType=DATE}, 
+      #{userPhonenumber,jdbcType=CHAR}, #{userImg,jdbcType=VARCHAR}, #{userTag,jdbcType=BIT}, 
+      #{userIntroduction,jdbcType=LONGVARCHAR})
   </insert>
-
   <insert id="insertSelective" parameterType="com.demo.springboot.helloworld.common.domain.Userinfo">
     insert into user_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -200,7 +196,7 @@
       <if test="userTag != null">
         user_tag,
       </if>
-      <if test="userIntroductoin != null">
+      <if test="userIntroduction != null">
         user_introduction,
       </if>
     </trim>
@@ -226,7 +222,6 @@
       <if test="shopId != null">
         #{shopId,jdbcType=BIGINT},
       </if>
-
       <if test="userAdmin != null">
         #{userAdmin,jdbcType=VARCHAR},
       </if>
@@ -251,11 +246,8 @@
       <if test="userTag != null">
         #{userTag,jdbcType=BIT},
       </if>
-      <if test="levelId != null">
-        #{levelId,jdbcType=BIGINT},
-      </if>
-      <if test="userIntroductoin != null">
-        #{userIntroductoin,jdbcType=LONGVARCHAR},
+      <if test="userIntroduction != null">
+        #{userIntroduction,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -313,8 +305,8 @@
       <if test="record.userTag != null">
         user_tag = #{record.userTag,jdbcType=BIT},
       </if>
-      <if test="record.userIntroductoin != null">
-        user_introduction = #{record.userIntroductoin,jdbcType=LONGVARCHAR},
+      <if test="record.userIntroduction != null">
+        user_introduction = #{record.userIntroduction,jdbcType=LONGVARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -338,7 +330,7 @@
       user_phonenumber = #{record.userPhonenumber,jdbcType=CHAR},
       user_img = #{record.userImg,jdbcType=VARCHAR},
       user_tag = #{record.userTag,jdbcType=BIT},
-      user_introduction = #{record.userIntroductoin,jdbcType=LONGVARCHAR}
+      user_introduction = #{record.userIntroduction,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -359,7 +351,7 @@
       user_birthdate = #{record.userBirthdate,jdbcType=DATE},
       user_phonenumber = #{record.userPhonenumber,jdbcType=CHAR},
       user_img = #{record.userImg,jdbcType=VARCHAR},
-      user_tag = #{record.userTag,jdbcType=BIT},
+      user_tag = #{record.userTag,jdbcType=BIT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -409,8 +401,8 @@
       <if test="userTag != null">
         user_tag = #{userTag,jdbcType=BIT},
       </if>
-      <if test="userIntroductoin != null">
-        user_introduction = #{userIntroductoin,jdbcType=LONGVARCHAR},
+      <if test="userIntroduction != null">
+        user_introduction = #{userIntroduction,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where user_id = #{userId,jdbcType=BIGINT}
@@ -431,7 +423,7 @@
       user_phonenumber = #{userPhonenumber,jdbcType=CHAR},
       user_img = #{userImg,jdbcType=VARCHAR},
       user_tag = #{userTag,jdbcType=BIT},
-      user_introduction = #{userIntroductoin,jdbcType=LONGVARCHAR}
+      user_introduction = #{userIntroduction,jdbcType=LONGVARCHAR}
     where user_id = #{userId,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.demo.springboot.helloworld.common.domain.Userinfo">
