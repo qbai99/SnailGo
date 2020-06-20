@@ -55,6 +55,9 @@
 2.修改了UserinfoService Find函数的参数
 3.添加了实体类Order和ShippingState
 
+# ver 1.0.5.200620_beta
+1.完成了用户登录信息用cookie的存取
+2.完成了个人中心的动态数据库查询
 
 # 使用说明
 + "http://localhost:端口号/ws"  系统管理员消息推送，主页能显示消息
