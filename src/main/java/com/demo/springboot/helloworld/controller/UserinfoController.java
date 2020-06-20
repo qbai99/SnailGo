@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,6 +43,7 @@ public class UserinfoController {
     @ResponseBody
     public Map<String,Object> info(){
         List<Userinfo> user = userinfoService.find((long) 1);
+        System.out.println(user.get(0).toString());
         List<Userfinance> userfinance = userfinanceService.balance();
         List<Userlevel> userlevel = userlevelService.level();
         Map<String,Object> map = new HashMap<String,Object>();
@@ -53,7 +55,8 @@ public class UserinfoController {
 
     @RequestMapping("/updateInfo")
     @ResponseBody
-    public Userinfo updateinfo(String email,String username,String sex,String birthdate,String phonenumber,String introduction){
+    public Userinfo updateinfo(String email, String username, String sex, String birthdate, String phonenumber, String introduction, String file){
+        System.out.println("图片二进制流"+file);
         Userinfo result = userinfoService.updateInfo(email,username,sex,birthdate,phonenumber,introduction);
         return result;
     }

@@ -80,6 +80,7 @@ public class SignUpController {
                 System.out.println("登陆成功");
                 model.addAttribute("userAdminForUser",login.getUserAdmin());
                 return "/goods";
+//                return "login/loginPage";
             }
             else
             {

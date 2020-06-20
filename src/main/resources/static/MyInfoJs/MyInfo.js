@@ -1,3 +1,7 @@
+var decodedCookie = decodeURIComponent(document.cookie);
+console.log(decodedCookie);
+var result = document.cookie.split(";");
+console.log(result);
 $.ajax({
     type: "GET",
     url: "/user/information",
@@ -24,7 +28,7 @@ $.ajax({
         }
         $("#birthDate").attr('value',res.UserInfo[0].userBirthdate);
         $("#phoneNumber").attr('value',res.UserInfo[0].userPhonenumber);
-        $("#introduction").attr('value',res.UserInfo[0].userIntroductoin);
+        $("#introduction").attr('value',res.UserInfo[0].userIntroduction);
 
         $("#balance").html(res.UserFinance[0].balance);
         $("#level").html(res.UserLevel[0].level);
@@ -73,7 +77,8 @@ function clickHandle() {
             sex:realsex,
             birthdate:birthdate,
             phonenumber:phonenumber,
-            introduction:introduction
+            introduction:introduction,
+            file:binaryFile
         },
         success:function (res) {
 
