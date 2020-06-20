@@ -1,7 +1,4 @@
-var decodedCookie = decodeURIComponent(document.cookie);
-console.log(decodedCookie);
-var result = document.cookie.split(";");
-console.log(result);
+
 $.ajax({
     type: "GET",
     url: "/user/information",

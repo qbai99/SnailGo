@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
@@ -41,15 +43,25 @@ public class UserinfoController {
 
     @RequestMapping(value = "/information",method = RequestMethod.GET)
     @ResponseBody
-    public Map<String,Object> info(){
+    public Map<String,Object> info(HttpServletRequest request){
         List<Userinfo> user = userinfoService.find((long) 1);
         System.out.println(user.get(0).toString());
         List<Userfinance> userfinance = userfinanceService.balance();
         List<Userlevel> userlevel = userlevelService.level();
         Map<String,Object> map = new HashMap<String,Object>();
+//        Cookie[] cookies=request.getCookies();
+//        String userAdmin="";
+//        if(cookies!=null&&cookies.length>0)
+//        {
+//            for (int i=0;i<cookies.length;i++)
+//            {
+//
+//            }
+//        }
         map.put("UserInfo",user);
         map.put("UserFinance",userfinance);
         map.put("UserLevel",userlevel);
+
         return map;
     }
 

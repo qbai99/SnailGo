@@ -12,14 +12,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Controller
-public class SignUpController {
+public class SignUpController extends HttpServlet {
     @Resource
     private SignUpService signUpService;
 
@@ -68,7 +72,7 @@ public class SignUpController {
 //     //直接获取
 //    bean 方式获取
 //    public String login(@RequestParam("loginName") String name, String password,@RequestParam(name = "age",defaultValue = "0") int age)
-    public String login(Login login, Model model) {
+    public String login(Login login, Model model, HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         SignUp SignUpInDB = signUpService.login(login);
         if (SignUpInDB == null) {
             System.out.println("用户名不存在");
@@ -78,7 +82,10 @@ public class SignUpController {
             String passwordInDB=SignUpInDB.getUserPassword();
             if (passwordInDB.equals(login.getUserPassword())){
                 System.out.println("登陆成功");
-                model.addAttribute("userAdminForUser",login.getUserAdmin());
+                Cookie cookie=new Cookie("username",login.getUserAdmin());
+                cookie.setMaxAge(60*5);
+                //将cookie发给浏览器（如果没有这句，cookie就不会发送给客户端）
+                response.addCookie(cookie);
                 return "/goods";
 //                return "login/loginPage";
             }
