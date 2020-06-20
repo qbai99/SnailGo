@@ -1,8 +1,12 @@
-
+var userEmail = document.cookie.split('=')[6];
+console.log(userEmail);
 $.ajax({
     type: "GET",
     url: "/user/information",
     // data:JSON.stringify(dataObj) ,
+    data:{
+        userEmail:userEmail
+    },
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function (res, ifo) {
@@ -69,7 +73,8 @@ function clickHandle() {
         type:'POST',
         url:'/user/updateInfo',
         data:{
-            email:email,
+            email:userEmail,
+            newAdmin:email,
             username:username,
             sex:realsex,
             birthdate:birthdate,

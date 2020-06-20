@@ -9,7 +9,7 @@ import java.util.List;
 public interface UserfinanceService {
     List<Userfinance> balance();
 
-    List<Userfinance> check();
+    List<Userfinance> check(String userAdmin);
 
-    Userfinance charge(double price);
+    Userfinance charge(String userAdmin,double price);
 }

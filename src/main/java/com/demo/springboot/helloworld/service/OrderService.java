@@ -7,5 +7,5 @@ import java.util.List;
 
 @Service
 public interface OrderService {
-    List<Order> check();
+    List<Order> check(String userAdmin);
 }

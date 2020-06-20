@@ -43,8 +43,9 @@ public class UserinfoController {
 
     @RequestMapping(value = "/information",method = RequestMethod.GET)
     @ResponseBody
-    public Map<String,Object> info(HttpServletRequest request){
-        List<Userinfo> user = userinfoService.find((long) 1);
+    public Map<String,Object> info(String userEmail){
+        System.out.println(userEmail);
+        List<Userinfo> user = userinfoService.findWithAdmin(userEmail);
         System.out.println(user.get(0).toString());
         List<Userfinance> userfinance = userfinanceService.balance();
         List<Userlevel> userlevel = userlevelService.level();
@@ -67,9 +68,8 @@ public class UserinfoController {
 
     @RequestMapping("/updateInfo")
     @ResponseBody
-    public Userinfo updateinfo(String email, String username, String sex, String birthdate, String phonenumber, String introduction, String file){
-        System.out.println("图片二进制流"+file);
-        Userinfo result = userinfoService.updateInfo(email,username,sex,birthdate,phonenumber,introduction);
+    public Userinfo updateinfo(String email, String newAdmin,String username, String sex, String birthdate, String phonenumber, String introduction){
+        Userinfo result = userinfoService.updateInfo(email,newAdmin,username,sex,birthdate,phonenumber,introduction);
         return result;
     }
     @RequestMapping("/changepassword")
@@ -83,10 +83,10 @@ public class UserinfoController {
     }
     @RequestMapping("/changeCommit")
     @ResponseBody
-    public String ChangePassword(String oldPassword,String newPassword) {
+    public String ChangePassword(String oldPassword,String newPassword,String userAdmin) {
         System.out.println(oldPassword);
         System.out.println(newPassword);
-        boolean result = userinfoService.changepassword(oldPassword,newPassword);
+        boolean result = userinfoService.changepassword(oldPassword,newPassword,userAdmin);
         System.out.println("结果"+result);
         if(result==false){
             return "密码错误！";

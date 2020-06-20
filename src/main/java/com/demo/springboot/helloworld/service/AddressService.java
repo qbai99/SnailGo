@@ -8,7 +8,7 @@ import java.util.List;
 @Service
 public interface AddressService {
 
-    List<Address> MyAddress();
+    List<Address> MyAddress(String userAdmin);
 
     List<Address> AddAdress(String newAddress);
 

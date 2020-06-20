@@ -18,8 +18,8 @@ public class AddressController {
 
     @RequestMapping("/myaddress")
     @ResponseBody
-    public List<Address> MyAddress(){
-        List<Address> myaddress = addressService.MyAddress();
+    public List<Address> MyAddress(String userAdmin){
+        List<Address> myaddress = addressService.MyAddress(userAdmin);
         return myaddress;
     }
 

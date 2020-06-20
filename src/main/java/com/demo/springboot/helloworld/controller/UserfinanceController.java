@@ -23,16 +23,16 @@ public class UserfinanceController {
 
     @RequestMapping("/check")
     @ResponseBody
-    public List<Userfinance> check(){
-        List<Userfinance> userfinances = userfinanceService.check();
+    public List<Userfinance> check(String userAdmin){
+        List<Userfinance> userfinances = userfinanceService.check(userAdmin);
         return userfinances;
     }
 
     @RequestMapping("/postcharge")
     @ResponseBody
-    public Userfinance charge(String input){
+    public Userfinance charge(String userAdmin,String input){
         double price = Double.valueOf(input);
-        Userfinance userfinances = userfinanceService.charge(price);
+        Userfinance userfinances = userfinanceService.charge(userAdmin,price);
         return userfinances;
     }
 }
