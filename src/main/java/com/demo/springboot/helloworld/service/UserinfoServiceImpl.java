@@ -1,14 +1,14 @@
 package com.demo.springboot.helloworld.service;
 
+import com.demo.springboot.helloworld.common.domain.SignUp;
 import com.demo.springboot.helloworld.common.domain.Userinfo;
 import com.demo.springboot.helloworld.common.domain.UserinfoExample;
 import com.demo.springboot.helloworld.mapper.UserinfoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 @Service
 public class UserinfoServiceImpl implements UserinfoService{
@@ -16,24 +16,28 @@ public class UserinfoServiceImpl implements UserinfoService{
     @Autowired
     private UserinfoMapper userinfoMapper;
 
+    @Autowired
+    private SignUpService signUpService;
+
     @Override
-    public Userinfo updateInfo(String email, String username, String sex, String birthdate, String phonenumber, String introduction) {
+    public Userinfo updateInfo(String email, String newAdmin,String username, String sex, String birthdate, String phonenumber, String introduction) {
         UserinfoExample userinfoExample = new UserinfoExample();
-        userinfoExample.createCriteria().andUserIdEqualTo((long) 1);
-        Userinfo result = userinfoMapper.selectByPrimaryKey((long) 1);
+        userinfoExample.createCriteria().andUserAdminEqualTo(email);
+        Userinfo result = userinfoMapper.selectByExampleWithBLOBs(userinfoExample).get(0);
         System.out.println("旧数据"+result.toString());
-        result.setUserAdmin(email);
-        result.setUserId((long) 1);
+//        System.out.println(file);
+        result.setUserAdmin(newAdmin);
+        result.setUserId(result.getUserId());
         result.setUserName(username);
         result.setUsersex(Integer.parseInt(sex));
 //        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 //        Date date = sdf.parse(birthdate);
-        result.setUserBirthdate(Date.valueOf(birthdate));
+        result.setUserBirthdate(java.sql.Date.valueOf(birthdate));
         result.setUserPhonenumber(phonenumber);
-        result.setUserIntroductoin(introduction);
+        result.setUserIntroduction(introduction);
+//        result.setUserImg(file);
         System.out.println("新数据"+result.toString());
         int res = userinfoMapper.updateByPrimaryKeyWithBLOBs(result);
-        System.out.println(userinfoMapper.selectByPrimaryKey((long) 1).toString());
 
         return result;
     }
@@ -43,15 +47,25 @@ public class UserinfoServiceImpl implements UserinfoService{
 //        userinfoMapper.selectByExample();
         UserinfoExample userinfoExample = new UserinfoExample();
         userinfoExample.createCriteria().andUserIdEqualTo(userId);
-
         List<Userinfo> userinfo = userinfoMapper.selectByExampleWithBLOBs(userinfoExample);
         System.out.println(userinfo.toString());
         return userinfo;
     }
 
     @Override
-    public boolean changepassword(String oldPassword,String newPassword) {
-        Userinfo newuser = (Userinfo) userinfoMapper.selectByPrimaryKey((long) 1);
+    public List<Userinfo> findWithAdmin(String userAdmin) {
+        UserinfoExample userinfoExample = new UserinfoExample();
+        userinfoExample.createCriteria().andUserAdminEqualTo(userAdmin);
+        List<Userinfo> userinfo = userinfoMapper.selectByExampleWithBLOBs(userinfoExample);
+        System.out.println(userinfo.toString());
+        return userinfo;
+    }
+
+    @Override
+    public boolean changepassword(String oldPassword,String newPassword,String userAdmin) {
+       UserinfoExample userinfoExample = new UserinfoExample();
+       userinfoExample.createCriteria().andUserAdminEqualTo(userAdmin);
+        Userinfo newuser = userinfoMapper.selectByExampleWithBLOBs(userinfoExample).get(0);
         System.out.println("正确密码"+newuser.getUserPassword());
         System.out.println("当前输入密码"+oldPassword);
         if(newuser.getUserPassword().equals(oldPassword)){
@@ -62,6 +76,45 @@ public class UserinfoServiceImpl implements UserinfoService{
         }
         else{
             System.out.println("密码错误");
+            return false;
+        }
+    }
+
+    @Override
+    public boolean addUser(SignUp signUp) {
+
+        Userinfo userinfo = new Userinfo();
+        userinfo.setMessageId(null);
+        userinfo.setLoginId(null);
+        userinfo.setFinanceId(null);
+        userinfo.setUseLevelId(null);
+        userinfo.setShopId(null);
+        userinfo.setSignUpId(signUp.getSignUpId());
+        userinfo.setUserAdmin(signUp.getEmailAddress());
+        userinfo.setUserPassword(signUp.getUserPassword());
+        userinfo.setUserName(signUp.getUserName());
+        userinfo.setUserTag(signUp.getIdentity());
+        userinfo.setUsersex(signUp.getSex());
+        userinfo.setUserIntroduction(null);
+        userinfo.setUserPhonenumber(null);
+        userinfo.setUserBirthdate(null);
+        userinfo.setFinanceId(null);
+
+        int result = userinfoMapper.insert(userinfo);
+        UserinfoExample userinfoExample = new UserinfoExample();
+        userinfoExample.createCriteria().andUserAdminEqualTo(signUp.getEmailAddress());
+        List<Userinfo> userinfoList = userinfoMapper.selectByExampleWithBLOBs(userinfoExample);
+
+        SignUp sign = signUpService.updateUserId(userinfoList.get(0));
+
+        if(result==1){
+            return true;
+        }
+        if(result==0)
+        {
+            return false;
+        }
+        else{
             return false;
         }
     }

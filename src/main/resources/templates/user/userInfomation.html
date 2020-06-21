@@ -315,18 +315,35 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label>头像</label>
-                                        <div style="background-color: black;height: 350px;width: 350px;"></div>
+                                        <div style="background-color: black;height: 350px;width: 350px;"><img src="" id="preview" style="width: 350px;height: 350px;"></div>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputFile">选择头像文件</label>
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="exampleInputFile">
+                                                <input type="file" class="custom-file-input" id="exampleInputFile" onchange="check()" accept="image/jpg,image/jpeg,img/png,img/PNG">
                                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                             </div>
                                             <div class="input-group-append">
                                                 <span class="input-group-text" id="">上传</span>
                                             </div>
+                                            <script>
+                                                var binaryFile;
+                                                function check(){
+                                                    console.log($('#exampleInputFile').val());
+                                                    var reads = new FileReader();
+                                                    console.log(document.getElementById('exampleInputFile').files);
+                                                    var f = document.getElementById('exampleInputFile').files[0];
+                                                    reads.readAsDataURL(f);
+                                                    reads.onload = function (e) {
+                                                        binaryFile = this.result;
+                                                        $('#preview').attr('src',this.result);
+                                                        console.log(f);
+                                                    }
+
+                                                }
+
+                                            </script>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -409,6 +426,15 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        bsCustomFileInput.init();
+    });
+
+        var decodedCookie = decodeURIComponent(document.cookie);
+        console.log(decodedCookie.substring(decodedCookie.indexOf('=')+1));
+
+</script>
 <script src="/MyInfoJs/MyInfo.js"></script>
 <script src="/AdminLTE-3.0.5/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -419,16 +445,6 @@
 <script src="/AdminLTE-3.0.5/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/AdminLTE-3.0.5/dist/js/demo.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        bsCustomFileInput.init();
-    });
 
-    function getCookie() {
-        var decodedCookie = decodeURIComponent(document.cookie);
-       console.log(decodedCookie.substring(decodedCookie.indexOf('=')+1));
-
-    }
-</script>
 </body>
 </html>

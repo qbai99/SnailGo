@@ -1,7 +1,12 @@
+var userEmail = document.cookie.split('=')[6];
+console.log(userEmail);
 $.ajax({
     type: "GET",
     url: "/user/information",
     // data:JSON.stringify(dataObj) ,
+    data:{
+        userEmail:userEmail
+    },
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function (res, ifo) {
@@ -24,7 +29,7 @@ $.ajax({
         }
         $("#birthDate").attr('value',res.UserInfo[0].userBirthdate);
         $("#phoneNumber").attr('value',res.UserInfo[0].userPhonenumber);
-        $("#introduction").attr('value',res.UserInfo[0].userIntroductoin);
+        $("#introduction").attr('value',res.UserInfo[0].userIntroduction);
 
         $("#balance").html(res.UserFinance[0].balance);
         $("#level").html(res.UserLevel[0].level);
@@ -68,12 +73,14 @@ function clickHandle() {
         type:'POST',
         url:'/user/updateInfo',
         data:{
-            email:email,
+            email:userEmail,
+            newAdmin:email,
             username:username,
             sex:realsex,
             birthdate:birthdate,
             phonenumber:phonenumber,
-            introduction:introduction
+            introduction:introduction,
+            file:binaryFile
         },
         success:function (res) {
 

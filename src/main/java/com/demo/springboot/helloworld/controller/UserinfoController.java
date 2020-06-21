@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,21 +43,33 @@ public class UserinfoController {
 
     @RequestMapping(value = "/information",method = RequestMethod.GET)
     @ResponseBody
-    public Map<String,Object> info(){
-        List<Userinfo> user = userinfoService.find((long) 1);
+    public Map<String,Object> info(String userEmail){
+        System.out.println(userEmail);
+        List<Userinfo> user = userinfoService.findWithAdmin(userEmail);
+        System.out.println(user.get(0).toString());
         List<Userfinance> userfinance = userfinanceService.balance();
         List<Userlevel> userlevel = userlevelService.level();
         Map<String,Object> map = new HashMap<String,Object>();
+//        Cookie[] cookies=request.getCookies();
+//        String userAdmin="";
+//        if(cookies!=null&&cookies.length>0)
+//        {
+//            for (int i=0;i<cookies.length;i++)
+//            {
+//
+//            }
+//        }
         map.put("UserInfo",user);
         map.put("UserFinance",userfinance);
         map.put("UserLevel",userlevel);
+
         return map;
     }
 
     @RequestMapping("/updateInfo")
     @ResponseBody
-    public Userinfo updateinfo(String email,String username,String sex,String birthdate,String phonenumber,String introduction){
-        Userinfo result = userinfoService.updateInfo(email,username,sex,birthdate,phonenumber,introduction);
+    public Userinfo updateinfo(String email, String newAdmin,String username, String sex, String birthdate, String phonenumber, String introduction){
+        Userinfo result = userinfoService.updateInfo(email,newAdmin,username,sex,birthdate,phonenumber,introduction);
         return result;
     }
     @RequestMapping("/changepassword")
@@ -70,10 +83,10 @@ public class UserinfoController {
     }
     @RequestMapping("/changeCommit")
     @ResponseBody
-    public String ChangePassword(String oldPassword,String newPassword) {
+    public String ChangePassword(String oldPassword,String newPassword,String userAdmin) {
         System.out.println(oldPassword);
         System.out.println(newPassword);
-        boolean result = userinfoService.changepassword(oldPassword,newPassword);
+        boolean result = userinfoService.changepassword(oldPassword,newPassword,userAdmin);
         System.out.println("结果"+result);
         if(result==false){
             return "密码错误！";

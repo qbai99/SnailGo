@@ -34,8 +34,8 @@ public class OrderController {
 
     @RequestMapping("/order/check")
     @ResponseBody
-    public Map<String,Object> CheckOrder(){
-        List<Order> orderList = orderService.check();
+    public Map<String,Object> CheckOrder(String userAdmin){
+        List<Order> orderList = orderService.check(userAdmin);
         System.out.println(orderList.get(0).getUserId());
         List<Userinfo> buyerList = userinfoService.find(orderList.get(0).getUserId());
         List<Userinfo> sellerList = userinfoService.find(orderList.get(0).getSellerId());

@@ -2,7 +2,9 @@ package com.demo.springboot.helloworld.service;
 
 import com.demo.springboot.helloworld.common.domain.Order;
 import com.demo.springboot.helloworld.common.domain.OrderExample;
+import com.demo.springboot.helloworld.common.domain.UserinfoExample;
 import com.demo.springboot.helloworld.mapper.OrderMapper;
+import com.demo.springboot.helloworld.mapper.UserinfoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +15,16 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     OrderMapper orderMapper;
 
+    @Autowired
+    UserinfoMapper userinfoMapper;
+
     @Override
-    public List<Order> check() {
+    public List<Order> check(String userAdmin) {
+        UserinfoExample userinfoExample = new UserinfoExample();
+        userinfoExample.createCriteria().andUserAdminEqualTo(userAdmin);
+        Long userId = userinfoMapper.selectByExampleWithBLOBs(userinfoExample).get(0).getUserId();
         OrderExample orderExample = new OrderExample();
-        orderExample.createCriteria().andBuyerIdEqualTo((long) 1);
+        orderExample.createCriteria().andBuyerIdEqualTo(userId);
         List<Order> orderList = orderMapper.selectByExample(orderExample);
 
         return orderList;

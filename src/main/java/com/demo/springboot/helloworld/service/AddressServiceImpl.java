@@ -2,6 +2,7 @@ package com.demo.springboot.helloworld.service;
 
 import com.demo.springboot.helloworld.common.domain.Address;
 import com.demo.springboot.helloworld.common.domain.AddressExample;
+import com.demo.springboot.helloworld.common.domain.Userinfo;
 import com.demo.springboot.helloworld.mapper.AddressMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,11 +13,13 @@ import java.util.List;
 public class AddressServiceImpl implements AddressService {
     @Autowired
     AddressMapper addressMapper;
-
+    @Autowired
+    UserinfoService userinfoService;
     @Override
-    public List<Address> MyAddress() {
+    public List<Address> MyAddress(String userAdmin) {
         AddressExample addressExample = new AddressExample();
-        addressExample.createCriteria().andUserIdEqualTo((long) 1);
+        List<Userinfo> userinfoList = userinfoService.findWithAdmin(userAdmin);
+        addressExample.createCriteria().andUserIdEqualTo(userinfoList.get(0).getUserId());
         List<Address> myaddress = addressMapper.selectByExample(addressExample);
         return myaddress;
     }

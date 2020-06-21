@@ -1,6 +1,8 @@
 var oldPassword = '';
 var rewriteoldPassword = '';
 var newPassword = '';
+var userEmail = document.cookie.split('=')[6];
+console.log(userEmail);
 
 function Oldlistener() {
     oldPassword = $("#oldpassword").val();
@@ -40,6 +42,9 @@ function Newlistener() {
     if(newPassword!=rewriteoldPassword){
         $("#alertNew").html("两次输入的密码不一致！");
     }
+    else{
+        $("#alertNew").html("");
+    }
 }
 function submitChange() {
     if(newPassword!=rewriteoldPassword){
@@ -76,7 +81,8 @@ function submitChange() {
             async: true,
             data: {
                 "oldPassword": oldPassword,
-                "newPassword": newPassword
+                "newPassword": newPassword,
+                userAdmin:userEmail
             },
             success: function (res) {
                 alert(res);

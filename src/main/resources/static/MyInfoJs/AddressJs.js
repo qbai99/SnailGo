@@ -1,8 +1,13 @@
 var addressID = new Array();//存地址
+var userEmail = document.cookie.split('=')[6];
+console.log(userEmail);
 var index = -1;
 $.ajax({
     type:"POST",
     url:"/address/myaddress",
+    data:{
+        userAdmin:userEmail
+    },
     success:function (res) {
         console.log(res);
         for(var i = 0;i<res.length;i++){
