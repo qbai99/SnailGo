@@ -673,7 +673,7 @@
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <input type="hidden" id="userAdminForUser" th:value="${userAdminForUser}" oninput="getEmail()">
-                    <button type="submit" class="btn btn-info" onclick="setCookie()">Sign in</button>
+                    <button type="submit" class="btn btn-info" >Sign in</button>
                     <button type="submit" class="btn btn-default float-right">Cancel</button>
                     <div class="row">
                       <a href="/signUpPage" class="offset-11" style="font-family: 微软雅黑;text-align: right;
@@ -746,12 +746,11 @@ function showResponse(message) {
   })
 }
 
-
-var email
-function setCookie() {
-  var d=$("#userAdminForUser").getAttribute();
-  document.cookie="userAdmin="+d;
-}
+//
+// function setCookie() {
+//   var d=$("#userAdminForUser").getAttribute();
+//   document.cookie="userAdmin="+d;
+// }
 
 function getEmail() {
     email = $("#userAdminForUser").val();
