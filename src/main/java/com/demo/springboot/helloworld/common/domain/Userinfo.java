@@ -1,7 +1,5 @@
 package com.demo.springboot.helloworld.common.domain;
 
-import java.util.Date;
-
 public class Userinfo {
     private Long userId;
 
@@ -25,15 +23,11 @@ public class Userinfo {
 
     private Integer usersex;
 
-    private Date userBirthdate;
+    private String userBirthdate;
 
     private String userPhonenumber;
 
-    private String userImg;
-
     private Boolean userTag;
-
-    private String userIntroduction;
 
     public Long getUserId() {
         return userId;
@@ -123,12 +117,12 @@ public class Userinfo {
         this.usersex = usersex;
     }
 
-    public Date getUserBirthdate() {
+    public String getUserBirthdate() {
         return userBirthdate;
     }
 
-    public void setUserBirthdate(Date userBirthdate) {
-        this.userBirthdate = userBirthdate;
+    public void setUserBirthdate(String userBirthdate) {
+        this.userBirthdate = userBirthdate == null ? null : userBirthdate.trim();
     }
 
     public String getUserPhonenumber() {
@@ -139,49 +133,11 @@ public class Userinfo {
         this.userPhonenumber = userPhonenumber == null ? null : userPhonenumber.trim();
     }
 
-    public String getUserImg() {
-        return userImg;
-    }
-
-    public void setUserImg(String userImg) {
-        this.userImg = userImg == null ? null : userImg.trim();
-    }
-
     public Boolean getUserTag() {
         return userTag;
     }
 
     public void setUserTag(Boolean userTag) {
         this.userTag = userTag;
-    }
-
-    public String getUserIntroduction() {
-        return userIntroduction;
-    }
-
-    public void setUserIntroduction(String userIntroduction) {
-        this.userIntroduction = userIntroduction == null ? null : userIntroduction.trim();
-    }
-
-    @Override
-    public String toString() {
-        return "Userinfo{" +
-                "userId=" + userId +
-                ", messageId=" + messageId +
-                ", signUpId=" + signUpId +
-                ", loginId=" + loginId +
-                ", financeId=" + financeId +
-                ", useLevelId=" + useLevelId +
-                ", shopId=" + shopId +
-                ", userAdmin='" + userAdmin + '\'' +
-                ", userName='" + userName + '\'' +
-                ", userPassword='" + userPassword + '\'' +
-                ", usersex=" + usersex +
-                ", userBirthdate=" + userBirthdate +
-                ", userPhonenumber='" + userPhonenumber + '\'' +
-                ", userImg='" + userImg + '\'' +
-                ", userTag=" + userTag +
-                ", userIntroduction='" + userIntroduction + '\'' +
-                '}';
     }
 }

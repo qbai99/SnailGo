@@ -213,8 +213,11 @@ create table shop
 (
    shop_id              bigint not null auto_increment,
    user_id              bigint,
-   shop_boss            varchar(255),
-   shop_goods           text,
+   shop_name            varchar(255),
+   shop_main_bussiness  varchar(255),
+   shop_star            double,
+   shop_dsp             varchar(255),
+   shop_loc             varchar(255),
    primary key (shop_id)
 );
 
@@ -275,9 +278,9 @@ create table user_info
    user_name            varchar(7) not null,
    user_password        varchar(15) not null,
    usersex              int,
-   user_birthdate       date,
+   user_birthdate       char(255),
    user_phonenumber     char(11),
-   user_img             varchar(255),
+   user_img             longblob,
    user_introduction    text,
    user_tag             bool,
    primary key (user_id)
@@ -336,6 +339,7 @@ alter table shipping_state add constraint FK_Relationship_27 foreign key (order_
 
 alter table shop add constraint FK_Relationship_2 foreign key (user_id)
       references user_info (user_id) on delete restrict on update restrict;
+
 
 alter table shopping_cart add constraint FK_Relationship_8 foreign key (user_id)
       references user_info (user_id) on delete restrict on update restrict;

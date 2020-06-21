@@ -2,6 +2,7 @@ package com.demo.springboot.helloworld.controller;
 
 import com.demo.springboot.helloworld.common.domain.Userfinance;
 import com.demo.springboot.helloworld.common.domain.Userinfo;
+import com.demo.springboot.helloworld.common.domain.UserinfoWithBLOBs;
 import com.demo.springboot.helloworld.common.domain.Userlevel;
 import com.demo.springboot.helloworld.service.UserfinanceService;
 import com.demo.springboot.helloworld.service.UserinfoService;
@@ -45,7 +46,7 @@ public class UserinfoController {
     @ResponseBody
     public Map<String,Object> info(String userEmail){
         System.out.println(userEmail);
-        List<Userinfo> user = userinfoService.findWithAdmin(userEmail);
+        List<UserinfoWithBLOBs> user = userinfoService.findWithAdmin(userEmail);
         System.out.println(user.get(0).toString());
         List<Userfinance> userfinance = userfinanceService.balance();
         List<Userlevel> userlevel = userlevelService.level();
@@ -68,8 +69,9 @@ public class UserinfoController {
 
     @RequestMapping("/updateInfo")
     @ResponseBody
-    public Userinfo updateinfo(String email, String newAdmin,String username, String sex, String birthdate, String phonenumber, String introduction){
-        Userinfo result = userinfoService.updateInfo(email,newAdmin,username,sex,birthdate,phonenumber,introduction);
+    public Userinfo updateinfo(String email, String newAdmin,String username, String sex, String birthdate, String phonenumber, String introduction,String file){
+        System.out.println(file);
+        Userinfo result = userinfoService.updateInfo(email,newAdmin,username,sex,birthdate,phonenumber,introduction,file);
         return result;
     }
     @RequestMapping("/changepassword")

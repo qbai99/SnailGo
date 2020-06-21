@@ -1,8 +1,6 @@
 package com.demo.springboot.helloworld.common.domain;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class UserinfoExample {
@@ -104,32 +102,6 @@ public class UserinfoExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Date> dateList = new ArrayList<>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
-            }
-            addCriterion(condition, dateList, property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andUserIdIsNull() {
@@ -832,53 +804,63 @@ public class UserinfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andUserBirthdateEqualTo(Date value) {
-            addCriterionForJDBCDate("user_birthdate =", value, "userBirthdate");
+        public Criteria andUserBirthdateEqualTo(String value) {
+            addCriterion("user_birthdate =", value, "userBirthdate");
             return (Criteria) this;
         }
 
-        public Criteria andUserBirthdateNotEqualTo(Date value) {
-            addCriterionForJDBCDate("user_birthdate <>", value, "userBirthdate");
+        public Criteria andUserBirthdateNotEqualTo(String value) {
+            addCriterion("user_birthdate <>", value, "userBirthdate");
             return (Criteria) this;
         }
 
-        public Criteria andUserBirthdateGreaterThan(Date value) {
-            addCriterionForJDBCDate("user_birthdate >", value, "userBirthdate");
+        public Criteria andUserBirthdateGreaterThan(String value) {
+            addCriterion("user_birthdate >", value, "userBirthdate");
             return (Criteria) this;
         }
 
-        public Criteria andUserBirthdateGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("user_birthdate >=", value, "userBirthdate");
+        public Criteria andUserBirthdateGreaterThanOrEqualTo(String value) {
+            addCriterion("user_birthdate >=", value, "userBirthdate");
             return (Criteria) this;
         }
 
-        public Criteria andUserBirthdateLessThan(Date value) {
-            addCriterionForJDBCDate("user_birthdate <", value, "userBirthdate");
+        public Criteria andUserBirthdateLessThan(String value) {
+            addCriterion("user_birthdate <", value, "userBirthdate");
             return (Criteria) this;
         }
 
-        public Criteria andUserBirthdateLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("user_birthdate <=", value, "userBirthdate");
+        public Criteria andUserBirthdateLessThanOrEqualTo(String value) {
+            addCriterion("user_birthdate <=", value, "userBirthdate");
             return (Criteria) this;
         }
 
-        public Criteria andUserBirthdateIn(List<Date> values) {
-            addCriterionForJDBCDate("user_birthdate in", values, "userBirthdate");
+        public Criteria andUserBirthdateLike(String value) {
+            addCriterion("user_birthdate like", value, "userBirthdate");
             return (Criteria) this;
         }
 
-        public Criteria andUserBirthdateNotIn(List<Date> values) {
-            addCriterionForJDBCDate("user_birthdate not in", values, "userBirthdate");
+        public Criteria andUserBirthdateNotLike(String value) {
+            addCriterion("user_birthdate not like", value, "userBirthdate");
             return (Criteria) this;
         }
 
-        public Criteria andUserBirthdateBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("user_birthdate between", value1, value2, "userBirthdate");
+        public Criteria andUserBirthdateIn(List<String> values) {
+            addCriterion("user_birthdate in", values, "userBirthdate");
             return (Criteria) this;
         }
 
-        public Criteria andUserBirthdateNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("user_birthdate not between", value1, value2, "userBirthdate");
+        public Criteria andUserBirthdateNotIn(List<String> values) {
+            addCriterion("user_birthdate not in", values, "userBirthdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserBirthdateBetween(String value1, String value2) {
+            addCriterion("user_birthdate between", value1, value2, "userBirthdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserBirthdateNotBetween(String value1, String value2) {
+            addCriterion("user_birthdate not between", value1, value2, "userBirthdate");
             return (Criteria) this;
         }
 
@@ -949,76 +931,6 @@ public class UserinfoExample {
 
         public Criteria andUserPhonenumberNotBetween(String value1, String value2) {
             addCriterion("user_phonenumber not between", value1, value2, "userPhonenumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserImgIsNull() {
-            addCriterion("user_img is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserImgIsNotNull() {
-            addCriterion("user_img is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserImgEqualTo(String value) {
-            addCriterion("user_img =", value, "userImg");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserImgNotEqualTo(String value) {
-            addCriterion("user_img <>", value, "userImg");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserImgGreaterThan(String value) {
-            addCriterion("user_img >", value, "userImg");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserImgGreaterThanOrEqualTo(String value) {
-            addCriterion("user_img >=", value, "userImg");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserImgLessThan(String value) {
-            addCriterion("user_img <", value, "userImg");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserImgLessThanOrEqualTo(String value) {
-            addCriterion("user_img <=", value, "userImg");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserImgLike(String value) {
-            addCriterion("user_img like", value, "userImg");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserImgNotLike(String value) {
-            addCriterion("user_img not like", value, "userImg");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserImgIn(List<String> values) {
-            addCriterion("user_img in", values, "userImg");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserImgNotIn(List<String> values) {
-            addCriterion("user_img not in", values, "userImg");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserImgBetween(String value1, String value2) {
-            addCriterion("user_img between", value1, value2, "userImg");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserImgNotBetween(String value1, String value2) {
-            addCriterion("user_img not between", value1, value2, "userImg");
             return (Criteria) this;
         }
 
