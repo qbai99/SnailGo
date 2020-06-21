@@ -49,7 +49,7 @@ public class   GoodsController {
         if (tmp.size() != 0) {//返回不为空。搜索成功
             /*将搜索结果集合、集合元素个数(结果商品个数)、搜索关键字添加到model的属性中返回前端页面*/
             model.addAttribute("goodsdetails", tmp);//搜索结果商品list
-            return "goods/details";
+            return "product_details";
         } else {//搜索失败
             model.addAttribute("error_search_fail", "没有相关商品");
             return "goods/goodsnotfound";
@@ -58,7 +58,7 @@ public class   GoodsController {
     }
     @RequestMapping("/newdetail")
         public String newdetail(){
-            return "goods/product_details.html";
+            return "product_details";
         }
 
     @RequestMapping("/addgoodstocart")
