@@ -3,6 +3,7 @@ package com.demo.springboot.helloworld.controller;
 import com.demo.springboot.helloworld.common.domain.Order;
 import com.demo.springboot.helloworld.common.domain.ShippingState;
 import com.demo.springboot.helloworld.common.domain.Userinfo;
+import com.demo.springboot.helloworld.common.domain.UserinfoWithBLOBs;
 import com.demo.springboot.helloworld.service.OrderService;
 import com.demo.springboot.helloworld.service.ShippingStateService;
 import com.demo.springboot.helloworld.service.UserinfoService;
@@ -37,12 +38,12 @@ public class OrderController {
     public Map<String,Object> CheckOrder(String userAdmin){
         List<Order> orderList = orderService.check(userAdmin);
         System.out.println(orderList.get(0).getUserId());
-        List<Userinfo> buyerList = userinfoService.find(orderList.get(0).getUserId());
-        List<Userinfo> sellerList = userinfoService.find(orderList.get(0).getSellerId());
+        List<UserinfoWithBLOBs> buyerList = userinfoService.find(orderList.get(0).getUserId());
+        List<UserinfoWithBLOBs> sellerList = userinfoService.find(orderList.get(0).getSellerId());
         List<ShippingState> shippingStateList = shippingStateService.find(orderList.get(0).getOrderId());
         for(int i=1;i<orderList.size();i++){
-            List<Userinfo> tempbuyerList = userinfoService.find(orderList.get(i).getUserId());
-            List<Userinfo> tempsellerList = userinfoService.find(orderList.get(i).getSellerId());
+            List<UserinfoWithBLOBs> tempbuyerList = userinfoService.find(orderList.get(i).getUserId());
+            List<UserinfoWithBLOBs> tempsellerList = userinfoService.find(orderList.get(i).getSellerId());
             List<ShippingState> tempshippingStateList = shippingStateService.find(orderList.get(i).getOrderId());
             buyerList.addAll(tempbuyerList);
             sellerList.addAll(tempsellerList);

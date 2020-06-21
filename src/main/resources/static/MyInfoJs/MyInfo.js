@@ -1,5 +1,22 @@
 var userEmail = document.cookie.split('=')[6];
 console.log(userEmail);
+var binaryFile;
+
+function check(){
+    console.log($('#exampleInputFile').val());
+    var reads = new FileReader();
+    console.log(document.getElementById('exampleInputFile').files);
+    var f = document.getElementById('exampleInputFile').files[0];
+    reads.readAsDataURL(f);
+    reads.onload = function (e) {
+        binaryFile = this.result;
+        console.log("上传图片"+this.result);
+        $('#preview').attr('src',this.result);
+        console.log(f);
+    }
+
+}
+
 $.ajax({
     type: "GET",
     url: "/user/information",
@@ -10,6 +27,8 @@ $.ajax({
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function (res, ifo) {
+        console.log("返回图片"+res.UserInfo[0].userImg);
+        $('#preview').attr('src',res.UserInfo[0].userImg);
         $("#emailInput").attr('value',res.UserInfo[0].userAdmin);
         // $("#passwordInput").attr('value',res.UserInfo[0].userPassword);
         $("#userName").attr('value',res.UserInfo[0].userName);

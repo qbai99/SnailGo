@@ -227,9 +227,9 @@ create table user_info
    user_name            varchar(7) not null,
    user_password        varchar(15) not null,
    usersex              int,
-   user_birthdate       date,
+   user_birthdate       char(255),
    user_phonenumber     char(11),
-   user_img             varchar(255),
+   user_img             longblob,
    user_introduction    text,
    user_tag             bool,
    primary key (user_id)
