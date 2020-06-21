@@ -1,7 +1,6 @@
 package com.demo.springboot.helloworld.service;
 
 import com.demo.springboot.helloworld.common.domain.SignUp;
-import com.demo.springboot.helloworld.common.domain.Userinfo;
 import com.demo.springboot.helloworld.common.domain.UserinfoWithBLOBs;
 import org.springframework.stereotype.Service;
 

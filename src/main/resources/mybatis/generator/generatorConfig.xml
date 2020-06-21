@@ -33,8 +33,8 @@
                              targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
-       <table tableName="goods" domainObjectName="Goods"></table>
-        <!--<table tableName="sign_up" domainObjectName="SignUp"></table>-->
+<!--       <table tableName="goods" domainObjectName="Goods"></table>-->
+        <table tableName="sign_up" domainObjectName="SignUp"></table>
         <!--<table tableName="shopping_cart" domainObjectName="Cart"></table>-->
        <!-- <table tableName="order_request" domainObjectName="Order"></table>
         <table tableName="shipping_state" domainObjectName="ShippingState"></table>-->
@@ -42,7 +42,7 @@
         <!--<table tableName="Admin" domainObjectName="Admin"/>-->
 <!--        <table tableName="Login" domainObjectName="Login"/>-->
 <!--&lt;!&ndash;        <table tableName="address" domainObjectName="Address"/>&ndash;&gt;-->
-        <!--<table tableName="user_info" domainObjectName="Userinfo"/>-->
+<!--        <table tableName="user_info" domainObjectName="Userinfo"/>-->
 <!--        <table tableName="address" domainObjectName="Address"/>-->
 <!--        <table tableName="category" domainObjectName="Category">
 
