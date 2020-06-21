@@ -65,7 +65,10 @@ public class GoodsServiceImpl implements GoodsService{
         return cartMapper.selectByExample(example);
 
     }
-
+    @Override
+    public int selectRem(Long goodsId){
+        return goodsMapper.selectRem(goodsId);
+    }
 
 
 

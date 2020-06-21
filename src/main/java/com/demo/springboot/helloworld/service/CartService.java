@@ -6,4 +6,10 @@ import java.util.List;
 
 public interface CartService {
     List<Cart> selectall();
+
+    List<Cart> selectallnr();
+
+    void del(int id);
+
+    List<Cart> selectByid(int id);
 }
