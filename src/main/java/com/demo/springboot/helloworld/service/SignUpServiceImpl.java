@@ -6,7 +6,6 @@ import com.demo.springboot.helloworld.mapper.UserinfoMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.sql.Date;
 import java.util.List;
 
 @Service

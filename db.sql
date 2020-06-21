@@ -196,7 +196,6 @@ sign_up_id           BIGINT NOT NULL AUTO_INCREMENT,
    identity             BOOL,
    email_address        VARCHAR(255),
    sex                  INT,
-   address              VARCHAR(255),
    PRIMARY KEY (sign_up_id)
 );
 

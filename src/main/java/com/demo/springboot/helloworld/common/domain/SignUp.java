@@ -15,8 +15,6 @@ public class SignUp {
 
     private Integer sex;
 
-    private String address;
-
     public Long getSignUpId() {
         return signUpId;
     }
@@ -71,13 +69,5 @@ public class SignUp {
 
     public void setSex(Integer sex) {
         this.sex = sex;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
     }
 }

@@ -1,15 +1,12 @@
 package com.demo.springboot.helloworld.common.domain;
 
-import java.io.UnsupportedEncodingException;
-
 public class UserinfoWithBLOBs extends Userinfo {
     private byte[] userImg;
 
     private String userIntroduction;
 
-    public String getUserImg() throws UnsupportedEncodingException {
-        String str = new String(userImg, "utf-8");
-        return str;
+    public byte[] getUserImg() {
+        return userImg;
     }
 
     public void setUserImg(byte[] userImg) {

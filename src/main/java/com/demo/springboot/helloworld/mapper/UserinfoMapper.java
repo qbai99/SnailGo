@@ -5,7 +5,9 @@ import com.demo.springboot.helloworld.common.domain.UserinfoExample;
 import com.demo.springboot.helloworld.common.domain.UserinfoWithBLOBs;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface UserinfoMapper {
     long countByExample(UserinfoExample example);
 
