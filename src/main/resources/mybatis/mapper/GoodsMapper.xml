@@ -9,6 +9,7 @@
     <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
     <result column="goods_remaning" jdbcType="INTEGER" property="goodsRemaning" />
     <result column="goods_dsp" jdbcType="VARCHAR" property="goodsDsp" />
+    <result column="goods_tag" jdbcType="VARCHAR" property="goodsTag" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,7 +70,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    goods_id, shop_id, order_id, goods_price, goods_name, goods_remaning
+    goods_id, shop_id, order_id, goods_price, goods_name, goods_remaning, goods_dsp, 
+    goods_tag
   </sql>
   <select id="selectByExample" parameterType="com.demo.springboot.helloworld.common.domain.GoodsExample" resultMap="BaseResultMap">
     select
@@ -103,11 +105,11 @@
   </delete>
   <insert id="insert" parameterType="com.demo.springboot.helloworld.common.domain.Goods">
     insert into goods (goods_id, shop_id, order_id, 
-      goods_price, goods_name, goods_remaning,
-      goods_dsp)
+      goods_price, goods_name, goods_remaning, 
+      goods_dsp, goods_tag)
     values (#{goodsId,jdbcType=BIGINT}, #{shopId,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, 
       #{goodsPrice,jdbcType=DOUBLE}, #{goodsName,jdbcType=VARCHAR}, #{goodsRemaning,jdbcType=INTEGER}, 
-      #{goodsDsp,jdbcType=VARCHAR})
+      #{goodsDsp,jdbcType=VARCHAR}, #{goodsTag,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.demo.springboot.helloworld.common.domain.Goods">
     insert into goods
@@ -133,6 +135,9 @@
       <if test="goodsDsp != null">
         goods_dsp,
       </if>
+      <if test="goodsTag != null">
+        goods_tag,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="goodsId != null">
@@ -155,6 +160,9 @@
       </if>
       <if test="goodsDsp != null">
         #{goodsDsp,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsTag != null">
+        #{goodsTag,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -188,6 +196,9 @@
       <if test="record.goodsDsp != null">
         goods_dsp = #{record.goodsDsp,jdbcType=VARCHAR},
       </if>
+      <if test="record.goodsTag != null">
+        goods_tag = #{record.goodsTag,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -201,7 +212,8 @@
       goods_price = #{record.goodsPrice,jdbcType=DOUBLE},
       goods_name = #{record.goodsName,jdbcType=VARCHAR},
       goods_remaning = #{record.goodsRemaning,jdbcType=INTEGER},
-      goods_dsp = #{record.goodsDsp,jdbcType=VARCHAR}
+      goods_dsp = #{record.goodsDsp,jdbcType=VARCHAR},
+      goods_tag = #{record.goodsTag,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -227,6 +239,9 @@
       <if test="goodsDsp != null">
         goods_dsp = #{goodsDsp,jdbcType=VARCHAR},
       </if>
+      <if test="goodsTag != null">
+        goods_tag = #{goodsTag,jdbcType=VARCHAR},
+      </if>
     </set>
     where goods_id = #{goodsId,jdbcType=BIGINT}
   </update>
@@ -237,7 +252,8 @@
       goods_price = #{goodsPrice,jdbcType=DOUBLE},
       goods_name = #{goodsName,jdbcType=VARCHAR},
       goods_remaning = #{goodsRemaning,jdbcType=INTEGER},
-      goods_dsp = #{goodsDsp,jdbcType=VARCHAR}
+      goods_dsp = #{goodsDsp,jdbcType=VARCHAR},
+      goods_tag = #{goodsTag,jdbcType=VARCHAR}
     where goods_id = #{goodsId,jdbcType=BIGINT}
   </update>
   <select id="mysearch" resultMap="BaseResultMap" resultType="com.demo.springboot.helloworld.common.domain.Goods">

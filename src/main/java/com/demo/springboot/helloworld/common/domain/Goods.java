@@ -15,6 +15,8 @@ public class Goods {
 
     private String goodsDsp;
 
+    private String goodsTag;
+
     public Long getGoodsId() {
         return goodsId;
     }
@@ -69,5 +71,13 @@ public class Goods {
 
     public void setGoodsDsp(String goodsDsp) {
         this.goodsDsp = goodsDsp == null ? null : goodsDsp.trim();
+    }
+
+    public String getGoodsTag() {
+        return goodsTag;
+    }
+
+    public void setGoodsTag(String goodsTag) {
+        this.goodsTag = goodsTag == null ? null : goodsTag.trim();
     }
 }

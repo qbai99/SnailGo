@@ -26,6 +26,8 @@
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/responsive.css">
+  <link href="/icofont/icofont.min.css" rel="stylesheet">
+  <link href="/boxicons/css/boxicons.min.css" rel="stylesheet">
 <!-- Fonts Online -->
 <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 
@@ -39,7 +41,7 @@
 
 <!-- Page Wrapper -->
 <div id="wrap">
-  
+
   <!-- Top bar -->
   
   <!-- Header -->
@@ -47,7 +49,9 @@
     <!-- Nav -->
     <nav class="navbar ownmenu">
         <!-- Categories -->
-      <div class="logo"> <a href="/"><img  style="height: 40px; width: 80px" src="img/logo.png" alt="" ></a> </div>
+
+
+
 
         <!-- Navbar Header -->
         <div class="navbar-header">
@@ -56,10 +60,9 @@
         <!-- NAV -->
         <div class="collapse navbar-collapse" id="nav-open-btn">
           <ul class="nav">
-            <li><div class="h3"style="margin-top: 15px">Snail Go</div></li>
-            <li><a href="/">主页 </a></li>
-			<li><a href="/Listall"> 所有商品 </a></li>
 
+            <div class="logo"> <a href="/"><img  style="height: 60px; width: 60px" src="img/logo.png" alt="" ></a> </div>
+            <div class="h2"style="margin-top: 20px">Snail Go</div>
 
           </ul>
         </div>
@@ -132,7 +135,7 @@
         <div class="row"> 
           
           <!-- Main Slider  -->
-          <div class="col-md-9 no-padding"> 
+          <div class="col-md-9 no-padding">
             
             <!-- Main Slider Start -->
             <div class="tp-banner-container">
@@ -367,10 +370,11 @@
               </div>
             </div>
           </div>
-          
+
           <!-- Main Slider  -->
-          <div class="col-md-3 no-padding"> 
-            
+
+          <div class="col-md-3 no-padding">
+
             <!-- New line required  -->
             <div class="product">
               <div class="like-bnr">
@@ -380,7 +384,7 @@
                   <span class="price">$259.99</span> </div>
               </div>
             </div>
-            
+
             <!-- Weekly Slaes  -->
             <div class="week-sale-bnr">
               <h4>Weekly <span>Sale!</span></h4>
@@ -389,6 +393,7 @@
               <a href="#." class="btn-round">立即购买</a> </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -439,9 +444,9 @@
         
         <!-- Nav tabs -->
         <ul class="nav nav-tabs nav-pills margin-bottom-40" role="tablist">
-          <li role="presentation" class="active"><a href="#featur" aria-controls="featur" role="tab" data-toggle="tab">Featured</a></li>
-          <li role="presentation"><a href="#special" aria-controls="special" role="tab" data-toggle="tab">Special</a></li>
-          <li role="presentation"><a href="#on-sal" aria-controls="on-sal" role="tab" data-toggle="tab">Onsale</a></li>
+          <li role="presentation" class="active"><a href="#featur" aria-controls="featur" role="tab" data-toggle="tab">精选</a></li>
+          <li role="presentation"><a href="#special" aria-controls="special" role="tab" data-toggle="tab">推荐</a></li>
+          <li role="presentation"><a href="#on-sal" aria-controls="on-sal" role="tab" data-toggle="tab">促销</a></li>
         </ul>
         
         <!-- Tab panes -->
@@ -452,12 +457,34 @@
             <div class="item-slide-5 with-nav"> 
               <!-- Product -->
               <div class="product">
-                <article> <img class="img-responsive" src="images/item-img-1-1.jpg" alt="" > 
-                  <!-- Content --> 
-                  <span class="tag">Latop</span> <a href="#." class="tittle">Laptop Alienware 15 i7 Perfect For Playing Game</a> 
+                <article>
+                  <a th:href="'/goods/details?id='+${allgoods[0].goodsId}"><img class="img-fluid" id="img-1" th:src="'/goods_pics/'+${allgoods[0].goodsId}+'-pic-1.jpg'"/></a>
+                  <!-- Content -->
+                  <span class="tag" th:text="${allgoods[0].goodsTag}"></span> <a href="#." class="tittle" th:text="${allgoods[0].goodsName}"></a>
                   <!-- Reviews -->
                   <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-                  <div class="price">$350.00 </div>
+                  <div class="price"><p class="title fl" th:text="'¥'+${allgoods[0].goodsPrice}"></p></div>
+                  <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+              </div>
+              <div class="product">
+                <article>
+                  <a th:href="'/goods/details?id='+${allgoods[0].goodsId}"><img class="img-fluid" id="img-1" th:src="'/goods_pics/'+${allgoods[1].goodsId}+'-pic-1.jpg'"/></a>
+                  <!-- Content -->
+                  <span class="tag" th:text="${allgoods[1].goodsTag}"></span> <a href="#." class="tittle" th:text="${allgoods[1].goodsName}"></a>
+                  <!-- Reviews -->
+                  <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                  <div class="price"><p class="title fl" th:text="'¥'+${allgoods[1].goodsPrice}"></p></div>
+                  <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+              </div>
+              <!-- Product -->
+              <div class="product">
+                <article>
+                  <a th:href="'/goods/details?id='+${allgoods[2].goodsId}"><img class="img-fluid" id="img-1" th:src="'/goods_pics/'+${allgoods[2].goodsId}+'-pic-1.jpg'"/></a>
+                  <!-- Content -->
+                  <span class="tag" th:text="${allgoods[2].goodsTag}"></span> <a href="#." class="tittle" th:text="${allgoods[2].goodsName}"></a>
+                  <!-- Reviews -->
+                  <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                  <div class="price"><p class="title fl" th:text="'¥'+${allgoods[0].goodsPrice}"></p></div>
                   <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
               </div>
               <!-- Product -->
@@ -465,7 +492,7 @@
                 <article> <img class="img-responsive" src="images/item-img-1-2.jpg" alt="" > <span class="sale-tag">-25%</span> 
                   
                   <!-- Content --> 
-                  <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
+                  <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a>
                   <!-- Reviews -->
                   <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
                   <div class="price">$350.00 <span>$200.00</span></div>

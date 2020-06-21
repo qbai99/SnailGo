@@ -9,11 +9,7 @@ public interface GoodsService {
     List<Goods> search(String search_key);
     List<Goods> goodsdetails(long id);
     List<Goods> searchtest(String search_input);
-
-
     List<Goods> allgoods();
-
-
     List<Cart> addgoodstocart(long userId, long goodsId, double price, int quantity, String goodsname);
 
     int selectRem(Long goodsId);

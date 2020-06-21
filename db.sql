@@ -4,9 +4,8 @@
 /*==============================================================*/
 
 drop database if exists eshop;
+CREATE DATABASE `eshop` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-
-create database eshop;
 use eshop;
 
 drop table if exists address;
@@ -14,14 +13,6 @@ drop table if exists address;
 drop table if exists browsing_records;
 
 drop table if exists chat_record;
-
-drop table if exists good_imgs;
-
-drop table if exists good_infos;
-
-drop table if exists good_norms;
-
-drop table if exists good_tags;
 
 drop table if exists goods;
 
@@ -83,49 +74,6 @@ create table chat_record
    primary key (chatroom_id)
 );
 
-/*==============================================================*/
-/* Table: good_imgs                                             */
-/*==============================================================*/
-create table good_imgs
-(
-   id                   bigint not null auto_increment,
-   goods_id             bigint,
-   imgs                 longtext,
-   primary key (id)
-);
-
-/*==============================================================*/
-/* Table: good_infos                                            */
-/*==============================================================*/
-create table good_infos
-(
-   id                   bigint not null auto_increment,
-   goods_id             bigint,
-   infos                text,
-   primary key (id)
-);
-
-/*==============================================================*/
-/* Table: good_norms                                            */
-/*==============================================================*/
-create table good_norms
-(
-   id                   bigint not null auto_increment,
-   goods_id             bigint,
-   norms                varchar(255),
-   primary key (id)
-);
-
-/*==============================================================*/
-/* Table: good_tags                                             */
-/*==============================================================*/
-create table good_tags
-(
-   id                   bigint not null auto_increment,
-   goods_id             bigint,
-   tags                 varchar(255),
-   primary key (id)
-);
 
 /*==============================================================*/
 /* Table: goods                                                 */
@@ -139,6 +87,7 @@ create table goods
    goods_name           varchar(255),
    goods_remaning       int default 0,
    goods_dsp           varchar(255),
+   goods_tag             varchar(255),
    primary key (goods_id)
 );
 
@@ -304,17 +253,6 @@ alter table address add constraint FK_Relationship_4 foreign key (user_id)
 alter table browsing_records add constraint FK_Relationship_10 foreign key (user_id)
       references user_info (user_id) on delete restrict on update restrict;
 
-alter table good_imgs add constraint FK_Relationship_26 foreign key (goods_id)
-      references goods (goods_id) on delete restrict on update restrict;
-
-alter table good_infos add constraint FK_Relationship_25 foreign key (goods_id)
-      references goods (goods_id) on delete restrict on update restrict;
-
-alter table good_norms add constraint FK_Relationship_23 foreign key (goods_id)
-      references goods (goods_id) on delete restrict on update restrict;
-
-alter table good_tags add constraint FK_Relationship_24 foreign key (goods_id)
-      references goods (goods_id) on delete restrict on update restrict;
 
 alter table goods add constraint FK_Relationship_19 foreign key (shop_id)
       references shop (shop_id) on delete restrict on update restrict;
