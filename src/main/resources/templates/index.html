@@ -38,56 +38,17 @@
 <body>
 
 <!-- Page Wrapper -->
-<div id="wrap" class="layout-3">
+<div id="wrap">
   
   <!-- Top bar -->
   
   <!-- Header -->
-  <header class="header header-style-3">
+  <header class="header">
     <!-- Nav -->
     <nav class="navbar ownmenu">
-      <div class="container"> 
-        
         <!-- Categories -->
-        <div class="cate-lst"> <a  data-toggle="collapse" class="cate-style" href="#cater"><i class="fa fa-list-ul"></i> 所有分类 </a>
-          <div class="cate-bar-in">
-            <div id="cater" class="collapse">
-              <ul>
-                  <li><a href="#."> Home Audio & Theater</a></li>
-                  <li><a href="#."> TV & Video</a></li>
-                  <li><a href="#."> Camera, Photo & Video</a></li>
-                  <li class="sub-menu"><a href="#."> Cell Phones & Accessories</a>
-                    <ul>
-                      <li><a href="#."> TV & Video</a></li>
-                      <li><a href="#."> Camera, Photo & Video</a></li>
-                      <li><a href="#."> Cell Phones & Accessories</a>
-                    </ul>
-                  </li>
-                  <li><a href="#."> Headphones</a></li>
-                  <li><a href="#."> Video Games</a></li>
-                  <li class="sub-menu"><a href="#."> Bluetooth & Wireless Speakers</a>
-                    <ul>
-                      <li><a href="#."> TV & Video</a></li>
-                      <li><a href="#."> Camera, Photo & Video</a></li>
-                      <li><a href="#."> Cell Phones & Accessories</a>
-                    </ul>
-                  </li>
-                  <li class="sub-menu"><a href="#."> Gaming Console</a>
-                    <ul>
-                      <li><a href="#."> TV & Video</a></li>
-                      <li><a href="#."> Camera, Photo & Video</a></li>
-                      <li><a href="#."> Cell Phones & Accessories</a>
-                    </ul>
-                  </li>
-                  <li><a href="#."> Computers & Tablets</a></li>
-                  <li><a href="#."> Monitors</a></li>
-                  <li><a href="#."> Home Appliances</a></li>
-                  <li><a href="#."> Office Supplies</a></li>
-                </ul>
-            </div>
-          </div>
-        </div>
-        
+      <div class="logo"> <a href="/"><img  style="height: 40px; width: 80px" src="img/logo.png" alt="" ></a> </div>
+
         <!-- Navbar Header -->
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-open-btn" aria-expanded="false"> <span><i class="fa fa-navicon"></i></span> </button>
@@ -95,64 +56,77 @@
         <!-- NAV -->
         <div class="collapse navbar-collapse" id="nav-open-btn">
           <ul class="nav">
+            <li><div class="h3"style="margin-top: 15px">Snail Go</div></li>
             <li><a href="/">主页 </a></li>
 			<li><a href="/Listall"> 所有商品 </a></li>
+
 
           </ul>
         </div>
 
         <!-- NAV RIGHT -->
-        <div class="nav-right"> <a href="/user/MyInformation"><i class="fa fa-2x fa-user"></i> <strong>个人中心</strong> </a></div>
-      </div>
+        <div class="nav-right">
+          <a href="/user/MyInformation"><i class="fa fa-user"></i> <strong>个人中心</strong> </a>
+          <a href="/"><i class="fa fa-comment"></i><strong>消息</strong></a>
+          <a href="/cart"> <i class="fa fa-shopping-cart"></i></a>
+        </div>
+
     </nav>
     <!--
-    <div class="logo"> <a href="index.html"><img  style="height: 80px; width: 200px" src="img/big_logo.jpg" alt="" ></a> </div>
+
     --><div class="container">
+    <div class="cate-lst" style="float: left"> <a  data-toggle="collapse" class="cate-style" href="#cater"><i class="fa fa-list-ul"></i> 所有分类 </a>
+      <div class="cate-bar-in">
+        <div id="cater" class="collapse">
+          <ul>
 
-
+            <li class="sub-menu"><a href="#.">男装</a>
+              <ul>
+                <li><a href="#."> 上衣</a></li>
+                <li><a href="#."> 下装</a></li>
+                <li><a href="#."> 包</a>
+                <li><a href="#."> 配饰</a>
+              </ul>
+            </li>
+            <li class="sub-menu"><a href="#.">女装</a>
+              <ul>
+                <li><a href="#."> 上衣</a></li>
+                <li><a href="#."> 下装</a></li>
+                <li><a href="#."> 包</a>
+                <li><a href="#."> 配饰</a>
+              </ul>
+            </li>
+            <li class="sub-menu"><a href="#.">数码3C</a>
+              <ul>
+                <li><a href="#.">平板电脑</a></li>
+                <li><a href="#.">移动电话</a></li>
+                <li><a href="#.">台式机</a>
+                <li><a href="#.">配件</a>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
       <div class="search-cate">
         <form action="/goods/search" target=_parent>
           <select class="selectpicker">
             <option> 分类</option>
-            <option> Home Audio & Theater</option>
-            <option> TV & Video</option>
-            <option> Camera, Photo & Video</option>
-            <option> Cell Phones & Accessories</option>
-            <option> Headphones</option>
-            <option> Video Games</option>
-            <option> Bluetooth & Wireless </option>
-            <option> Gaming Console</option>
-            <option> Computers & Tablets</option>
-            <option> Monitors </option>
+            <option> 男装</option>
+            <option> 女装</option>
+            <option> 数码3C</option>
           </select>
-          <input type="search" name="search_key" placeholder="Search entire store here...">
+          <input type="search" name="search_key" placeholder="在此输入你想要的商品">
           <button class="submit" type="submit"><i class="icon-magnifier"></i></button>
-
         </form>
       </div>
-
       <!-- Cart Part -->
-      <ul class="nav navbar-right cart-pop">
-        <li class="dropdown"> <a href="/cart" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="itm-cont">3</span> <i class="flaticon-shopping-bag"></i> <strong>My Cart</strong> <br>
-          <span>查看购物车</span></a>
-          <ul class="dropdown-menu">
-            <li>
-              <div class="media-left"> <a href="#." class="thumb"> <img src="images/item-img-1-1.jpg" class="img-responsive" alt="" > </a> </div>
-              <div class="media-body"> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a> <span>250 x 1</span> </div>
-            </li>
-            <li>
-              <div class="media-left"> <a href="#." class="thumb"> <img src="images/item-img-1-2.jpg" class="img-responsive" alt="" > </a> </div>
-              <div class="media-body"> <a href="#." class="tittle">Funda Para Ebook 7" full HD</a> <span>250 x 1</span> </div>
-            </li>
-            <li class="btn-cart"> <a href="/cart" class="btn-round">详情</a> </li>
-          </ul>
-        </li>
-      </ul>
+
     </div>
   </header>
-  
+
   <!-- Slid Sec -->
-  <section class="slid-sec">
+  <section class="slid-sec light-gry-bg">
     <div class="container">
       <div class="container-fluid">
         <div class="row"> 
