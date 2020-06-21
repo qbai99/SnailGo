@@ -1,6 +1,5 @@
 package com.demo.springboot.helloworld.controller;
 
-import com.demo.springboot.helloworld.common.domain.Address;
 import com.demo.springboot.helloworld.common.domain.Cart;
 import com.demo.springboot.helloworld.common.domain.Goods;
 import com.demo.springboot.helloworld.service.GoodsService;
@@ -10,8 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 @Controller
 @RequestMapping("/goods")
@@ -59,6 +56,11 @@ public class   GoodsController {
         }
 
     }
+    @RequestMapping("/newdetail")
+        public String newdetail(){
+            return "goods/product_details.html";
+        }
+
     @RequestMapping("/addgoodstocart")
     public String addgoodstocart(long userId,long goodsId,double price,int quantity,Model model, String goodsname){
         List<Cart> tmp1 =goodsService.addgoodstocart(userId,goodsId,price,quantity,goodsname);

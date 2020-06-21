@@ -7,16 +7,4 @@ INSERT INTO `goods`(`goods_id`, `shop_id`, `order_id`, `goods_price`, `goods_nam
 INSERT INTO `goods`(`goods_id`, `shop_id`, `order_id`, `goods_price`, `goods_name`, `goods_remaning`, `goods_dsp`, `goods_tag`) VALUES (7, NULL, NULL, 88, '连衣裙A', 0, '连衣裙A的描述', NULL);
 INSERT INTO `goods`(`goods_id`, `shop_id`, `order_id`, `goods_price`, `goods_name`, `goods_remaning`, `goods_dsp`, `goods_tag`) VALUES (8, NULL, NULL, 98, '连衣裙B', 0, '连衣裙B的描述', NULL);
 INSERT INTO `goods`(`goods_id`, `shop_id`, `order_id`, `goods_price`, `goods_name`, `goods_remaning`, `goods_dsp`, `goods_tag`) VALUES (9, NULL, NULL, 77, '女裤子', 0, '女裤子的描述', NULL);
-INSERT INTO `address`(`address_id`, `user_id`, `address`) VALUES (1, 1, '????');
-INSERT INTO `address`(`address_id`, `user_id`, `address`) VALUES (2, 1, '????');
 
-INSERT INTO `order_request`(`order_id`, `user_id`, `buyer_id`, `seller_id`, `goods_name`, `goods_quantity`, `goods_price`) VALUES (1, 1, 1, 2, '????', 1, 56);
-INSERT INTO `shipping_state`(`id`, `order_id`, `date`, `loc`, `other_info`) VALUES (1, 1, '2020-06-15 00:00:00', '??', '???');
-INSERT INTO `shopping_cart`(`id`, `user_id`, `goods_id`, `goods_name`, `goods_quantity`, `goods_price`) VALUES (51, 1, 2, 'iPhone 11', 1, 200);
-INSERT INTO `shopping_cart`(`id`, `user_id`, `goods_id`, `goods_name`, `goods_quantity`, `goods_price`) VALUES (52, 1, 3, 'iPadPro 2020', 1, 200);
-INSERT INTO `user_finance`(`finance_id`, `user_id`, `balance`) VALUES (1, 1, 250);
-INSERT INTO `user_finance`(`finance_id`, `user_id`, `balance`) VALUES (2, 2, 10300);
-INSERT INTO `user_info`(`user_id`, `message_id`, `sign_up_id`, `login_id`, `finance_id`, `use_level_id`, `shop_id`, `user_admin`, `user_name`, `user_password`, `usersex`, `user_birthdate`, `user_phonenumber`, `user_img`, `user_introduction`, `user_tag`) VALUES (1, NULL, NULL, NULL, 1, 1, NULL, 'admin', '????', 'admin', 1, '2019-08-07', '12345678901', NULL, '????', 0);
-INSERT INTO `user_info`(`user_id`, `message_id`, `sign_up_id`, `login_id`, `finance_id`, `use_level_id`, `shop_id`, `user_admin`, `user_name`, `user_password`, `usersex`, `user_birthdate`, `user_phonenumber`, `user_img`, `user_introduction`, `user_tag`) VALUES (2, NULL, NULL, NULL, 2, 2, NULL, 'root', '????', 'root', 1, '2019-08-07', '12345678901', NULL, '????', 1);
-INSERT INTO `user_level`(`level_id`, `user_id`, `level`, `points`) VALUES (1, 1, 3, 250);
-INSERT INTO `user_level`(`level_id`, `user_id`, `level`, `points`) VALUES (2, 2, 3, 200);
