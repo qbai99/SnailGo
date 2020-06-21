@@ -1,23 +1,26 @@
 package com.demo.springboot.helloworld.common.domain;
 
+import java.io.UnsupportedEncodingException;
+
 public class UserinfoWithBLOBs extends Userinfo {
-    private Integer usersex;
+    private byte[] userImg;
 
-    private String userIntroductoin;
+    private String userIntroduction;
 
-    public Integer getUsersex() {
-        return usersex;
+    public String getUserImg() throws UnsupportedEncodingException {
+        String str = new String(userImg, "utf-8");
+        return str;
     }
 
-    public void setUsersex(Integer usersex) {
-        this.usersex = usersex;
+    public void setUserImg(byte[] userImg) {
+        this.userImg = userImg;
     }
 
-    public String getUserIntroductoin() {
-        return userIntroductoin;
+    public String getUserIntroduction() {
+        return userIntroduction;
     }
 
-    public void setUserIntroductoin(String userIntroductoin) {
-        this.userIntroductoin = userIntroductoin == null ? null : userIntroductoin.trim();
+    public void setUserIntroduction(String userIntroduction) {
+        this.userIntroduction = userIntroduction == null ? null : userIntroduction.trim();
     }
 }
