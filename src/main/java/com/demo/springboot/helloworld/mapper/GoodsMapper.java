@@ -29,4 +29,6 @@ public interface GoodsMapper {
     int updateByPrimaryKey(Goods record);
 
     List<Goods> mysearch(String search_key);
+
+    int selectRem(Long goodsId);
 }

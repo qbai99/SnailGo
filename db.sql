@@ -337,9 +337,6 @@ alter table shipping_state add constraint FK_Relationship_27 foreign key (order_
 alter table shop add constraint FK_Relationship_2 foreign key (user_id)
       references user_info (user_id) on delete restrict on update restrict;
 
-alter table shopping_cart add constraint FK_Relationship_28 foreign key (goods_id)
-    references goods (goods_id) on delete restrict on update restrict;
-
 alter table shopping_cart add constraint FK_Relationship_8 foreign key (user_id)
       references user_info (user_id) on delete restrict on update restrict;
 

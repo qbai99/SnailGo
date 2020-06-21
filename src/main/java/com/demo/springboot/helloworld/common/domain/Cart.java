@@ -13,6 +13,8 @@ public class Cart {
 
     private Double goodsPrice;
 
+    private Integer goodsRemaning;
+
     public Integer getId() {
         return id;
     }
@@ -59,5 +61,26 @@ public class Cart {
 
     public void setGoodsPrice(Double goodsPrice) {
         this.goodsPrice = goodsPrice;
+    }
+
+    public Integer getGoodsRemaning() {
+        return goodsRemaning;
+    }
+
+    public void setGoodsRemaning(Integer goodsRemaning) {
+        this.goodsRemaning = goodsRemaning;
+    }
+
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", goodsId=" + goodsId +
+                ", goodsName='" + goodsName + '\'' +
+                ", goodsQuantity=" + goodsQuantity +
+                ", goodsPrice=" + goodsPrice +
+                ", goodsRemaning=" + goodsRemaning +
+                '}';
     }
 }
