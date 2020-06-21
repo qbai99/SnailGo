@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
-import javax.script.ScriptContext;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
@@ -50,17 +52,26 @@ public class PayController {
 
     @RequestMapping("/payone")
     @ResponseBody
-    public List<Cart> payone(int id,int num){
-
+    public ModelAndView payone(int id, int num, HttpServletResponse response) throws IOException {
+        response.setContentType("text/html;charset=utf-8");
+        PrintWriter out = response.getWriter();
+        //response.setCharacterEncoding("utf-8");
+        ModelAndView mav =new ModelAndView();
         List<Cart> list = cartService.selectByid(id);
         int remaning= goodsService.selectRem(list.get(0).getGoodsId());
         System.out.println(remaning);
         if (num<=remaning) {
             list.get(0).setGoodsPrice(list.get(0).getGoodsPrice() * num);
             list.get(0).setGoodsQuantity(num);
+            mav.addObject("pay",list);
+            mav.setViewName("pay");
+            return mav;
         }else {
-
+            out.print("<script> alert('商品库存不足！');</script>");
+            out.flush();
+            mav.setViewName("cart");
+            return mav;
         }
-        return list;
+        //out.print("<script>alert('test');</script>");
     }
 }
