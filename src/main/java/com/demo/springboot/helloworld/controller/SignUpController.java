@@ -24,17 +24,16 @@ import java.util.Map;
 
 @Controller
 public class SignUpController extends HttpServlet {
-    @Resource
+    @Autowired
     private SignUpService signUpService;
 
     @Autowired
-    UserinfoService userinfoService;
+  private UserinfoService userinfoService;
 
     @RequestMapping("/signUpPage")
     public String signUpPage(){
         return "signUp/signUpPage";
     }
-    static  Long i=new Long(0);
     @RequestMapping("/signUp")
     public String signUp(SignUp signup, Model model)
     {
@@ -72,7 +71,7 @@ public class SignUpController extends HttpServlet {
 //     //直接获取
 //    bean 方式获取
 //    public String login(@RequestParam("loginName") String name, String password,@RequestParam(name = "age",defaultValue = "0") int age)
-    public String login(Login login, Model model, HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+    public String login(Login login, Model model, HttpServletResponse response) {
         SignUp SignUpInDB = signUpService.login(login);
         if (SignUpInDB == null) {
             System.out.println("用户名不存在");
