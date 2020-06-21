@@ -213,8 +213,11 @@ create table shop
 (
    shop_id              bigint not null auto_increment,
    user_id              bigint,
-   shop_boss            varchar(255),
-   shop_goods           text,
+   shop_name            varchar(255),
+   shop_main_bussiness  varchar(255),
+   shop_star            double,
+   shop_dsp             varchar(255),
+   shop_loc             varchar(255),
    primary key (shop_id)
 );
 
