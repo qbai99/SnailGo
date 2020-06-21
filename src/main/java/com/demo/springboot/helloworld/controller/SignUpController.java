@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class SignUpController extends HttpServlet {
+public class SignUpController {
     @Autowired
     private SignUpService signUpService;
 
