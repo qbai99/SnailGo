@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class CartController {
@@ -23,9 +25,33 @@ public class CartController {
     @RequestMapping("/cartlist")
     @ResponseBody
     public List<Cart> cartList(){
+        List<Cart> list0=cartService.selectallnr();
+        List<Cart> list1=cartService.selectall();
 
-        List<Cart> list=cartService.selectall();
-        System.out.println("123");
-        return list;
+        for (int i=0;i<list0.size();i++){
+            for (int j=0;j<list1.size();j++){
+                if (list1.get(j).getGoodsId()==list0.get(i).getGoodsId()){
+                    list0.get(i).setGoodsRemaning(list1.get(j).getGoodsRemaning());
+                }
+            }
+        }
+        /*for(int i=0;i<list0.size();i++){
+            if(list0.get(i).getGoodsRemaning()==null){
+                list1.add(list0.get(i));
+            }
+        }*/
+        /*for (int i=0;i<list0.size();i++){
+            System.out.println(list0.get(i).toString());
+        }*/
+        /*System.out.println();
+        for (int i=0;i<list1.size();i++){
+            System.out.println(list1.get(i).toString());
+        }*/
+        return list0;
+    }
+    @RequestMapping("/cartdel")
+    public String cartdel(int id){
+        cartService.del(id);
+        return "cart";
     }
 }

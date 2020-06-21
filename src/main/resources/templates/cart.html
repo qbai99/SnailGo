@@ -184,7 +184,10 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i class="nav-icon fas fa-shopping-cart"></i></a>
+                <a href="#" class="nav-link">
+                    <i class="fas fa-shopping-cart "></i>
+                    <span class="badge badge-warning navbar-badge">1</span>
+                </a>
             </li>
 
         </ul>
@@ -388,7 +391,10 @@
                         <thead>
                         <tr>
                             <th style="width: 1%">
-
+                                <div class="icheck-primary">
+                                    <input type="checkbox" value="" id="check0" onclick="SelectAll(this)">
+                                    <label for="check0"></label>
+                                </div>
                             </th>
                             <th style="width: 20%">
                                 商 品
@@ -514,19 +520,41 @@
         }
     };
     //加数量
-    function add(obj) {
+    function add(obj,max) {
         //加前判断
+        console.log(max);
     if ($(obj).prev().val() == '') {
         $(obj).prev().val(1);
     }
-    $(obj).prev().val(parseInt($(obj).prev().val()) + 1);//数值加
-    $(obj).prev().val($(obj).prev().val());//赋值给框
+    if(max==null){
+        $(obj).prev().val(0);
+    }else {
+        if(parseInt($(obj).prev().val()+1)>parseInt(max)){
+            $(obj).prev().val(parseInt(max))
+        }else{
+            $(obj).prev().val(parseInt($(obj).prev().val()) + 1);//数值加
+            $(obj).prev().val($(obj).prev().val());//赋值给框
+        }
+    }
     };
     //校验数字格式（只能输入正整数）
     function checkNumber(obj) {
         var reg = /^[1-9]\d*$/;
         if(!reg.test($(obj).val()) || $(obj).val()==''){
             $(obj).val(1);
+        }
+    }
+    function SelectAll(obj) {
+        if(obj.checked){
+            var checkboxs = document.getElementsByName('cartitem');
+            for (var i=0;i<checkboxs.length;i++){
+                checkboxs[i].checked = true;
+            }
+        } else {
+            var checkboxs = document.getElementsByName('cartitem');
+            for (var i=0; i<checkboxs.length;i++){
+                checkboxs[i].checked=false;
+            }
         }
     }
 </script>

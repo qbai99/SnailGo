@@ -15,4 +15,19 @@ public class CartServiceImpl implements CartService {
     public List<Cart> selectall(){
         return cartMapper.selectAll();
     }
+
+    @Override
+    public List<Cart> selectallnr(){
+        return cartMapper.selectAllNr();
+    }
+
+    @Override
+    public void del(int id){
+        cartMapper.del(id);
+    }
+
+    @Override
+    public List<Cart> selectByid(int id){
+        return cartMapper.selectByid(id);
+    }
 }

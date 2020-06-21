@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    goods_id, shop_id, order_id, goods_price, goods_name, goods_remaning, goods_dsp
+    goods_id, shop_id, order_id, goods_price, goods_name, goods_remaning
   </sql>
   <select id="selectByExample" parameterType="com.demo.springboot.helloworld.common.domain.GoodsExample" resultMap="BaseResultMap">
     select
@@ -103,7 +103,7 @@
   </delete>
   <insert id="insert" parameterType="com.demo.springboot.helloworld.common.domain.Goods">
     insert into goods (goods_id, shop_id, order_id, 
-      goods_price, goods_name, goods_remaning, 
+      goods_price, goods_name, goods_remaning,
       goods_dsp)
     values (#{goodsId,jdbcType=BIGINT}, #{shopId,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, 
       #{goodsPrice,jdbcType=DOUBLE}, #{goodsName,jdbcType=VARCHAR}, #{goodsRemaning,jdbcType=INTEGER}, 
@@ -242,5 +242,8 @@
   </update>
   <select id="mysearch" resultMap="BaseResultMap" resultType="com.demo.springboot.helloworld.common.domain.Goods">
     select * from goods where upper(goods_name) like upper(CONCAT('%',#{search_key},'%'))
+  </select>
+  <select id="selectRem" parameterType="java.lang.Long" resultType="java.lang.Integer">
+    select goods_remaning as goodsRemaning from goods where goods_id=#{goodsId, jdbcType=BIGINT}
   </select>
 </mapper>

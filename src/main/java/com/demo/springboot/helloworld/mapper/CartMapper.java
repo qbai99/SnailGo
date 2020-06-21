@@ -29,4 +29,10 @@ public interface CartMapper {
     int updateByPrimaryKey(Cart record);
 
     List<Cart> selectAll();
+
+    List<Cart> selectAllNr();
+
+    void del(int id);
+
+    List<Cart> selectByid(int id);
 }
