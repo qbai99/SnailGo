@@ -84,6 +84,7 @@ public class SignUpController {
                 Cookie cookie=new Cookie("username",login.getUserAdmin());
                 cookie.setMaxAge(60*5);
                 //将cookie发给浏览器（如果没有这句，cookie就不会发送给客户端）
+                cookie.setSecure(true);
                 response.addCookie(cookie);
                 return "/goods";
 //                return "login/loginPage";
