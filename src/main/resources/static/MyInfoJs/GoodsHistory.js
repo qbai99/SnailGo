@@ -12,6 +12,6 @@ $.ajax({
         goodsId:goodsId
     },
     success:function (res) {
-
+        console.log(res);
     }
 })
