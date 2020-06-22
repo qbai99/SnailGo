@@ -4,7 +4,9 @@ import com.demo.springboot.helloworld.common.domain.Cart;
 import com.demo.springboot.helloworld.common.domain.CartExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface CartMapper {
     long countByExample(CartExample example);
 

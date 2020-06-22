@@ -9,7 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/Records")
@@ -31,15 +33,23 @@ public class BrowsingRecordsController {
 
     @RequestMapping("/getrecords")
     @ResponseBody
-    public List<BrowsingRecords> check(String userAdmin){
+    public Map<String,Object> check(String userAdmin){
         List<BrowsingRecords> browsingRecordsList = browsingRecordsService.check(userAdmin);
+        Map<String,Object> map = new HashMap<>();
         if(browsingRecordsList.size()!=0){
             List<Goods> goodsList = goodsService.goodsdetails(Long.parseLong(browsingRecordsList.get(0).getRecords()));
-            for(int i = 0;i<browsingRecordsList.size();i++){
-
+            for(int i = 1;i<browsingRecordsList.size();i++){
+                goodsList.addAll(goodsService.goodsdetails(Long.parseLong(browsingRecordsList.get(i).getRecords())));
             }
+            map.put("BrowsingRecords",browsingRecordsList);
+            map.put("GoodsInfo",goodsList);
+        }
+        else{
+            List<Goods> goodsList = null;
+            map.put("BrowsingRecords",browsingRecordsList);
+            map.put("GoodsInfo",goodsList);
         }
 
-        return browsingRecordsList;
+        return map;
     }
 }

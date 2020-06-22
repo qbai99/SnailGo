@@ -1,6 +1,7 @@
 package com.demo.springboot.helloworld.service;
 
 import com.demo.springboot.helloworld.common.domain.BrowsingRecords;
+import com.demo.springboot.helloworld.common.domain.BrowsingRecordsExample;
 import com.demo.springboot.helloworld.common.domain.Userinfo;
 import com.demo.springboot.helloworld.common.domain.UserinfoExample;
 import com.demo.springboot.helloworld.mapper.BrowsingRecordsMapper;
@@ -18,9 +19,6 @@ public class BrowsingRecordsServiceImpl implements BrowsingRecordsService {
 
     @Autowired
     UserinfoMapper userinfoMapper;
-
-    @Autowired
-    GoodsService goodsService;
 
     @Override
     public Boolean Addrecords(String userAdmin, String url, String goodsId) {
@@ -47,7 +45,10 @@ public class BrowsingRecordsServiceImpl implements BrowsingRecordsService {
         List<Userinfo> userinfoList = userinfoMapper.selectByExample(userinfoExample);
         Long userId = userinfoList.get(0).getUserId();
 
-        List<BrowsingRecords> browsingRecordsList = browsingRecordsMapper.selectByPrimaryKey(userId)
+        BrowsingRecordsExample browsingRecordsExample = new BrowsingRecordsExample();
+        browsingRecordsExample.createCriteria().andUserIdEqualTo(userId);
+
+        List<BrowsingRecords> browsingRecordsList = browsingRecordsMapper.selectByExample(browsingRecordsExample);
 
         return browsingRecordsList;
     }
