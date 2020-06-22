@@ -12,5 +12,5 @@ public interface GoodsService {
     List<Goods> allgoods();
     List<Cart> addgoodstocart(long userId, long goodsId, double price, int quantity, String goodsname);
 
-    int selectRem(Long goodsId);
+    int selectRem(long goodsId);
 }

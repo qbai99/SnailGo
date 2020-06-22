@@ -34,5 +34,5 @@ public interface CartMapper {
 
     void del(int id);
 
-    List<Cart> selectByid(int id);
+    List<Cart> selectByid(Integer id);
 }

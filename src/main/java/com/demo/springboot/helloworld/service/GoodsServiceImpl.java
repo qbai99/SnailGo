@@ -66,7 +66,7 @@ public class GoodsServiceImpl implements GoodsService{
 
     }
     @Override
-    public int selectRem(Long goodsId){
+    public int selectRem(long goodsId){
         return goodsMapper.selectRem(goodsId);
     }
 

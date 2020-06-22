@@ -26,6 +26,8 @@ public class PayController {
     @Autowired
     private GoodsService goodsService;
 
+    private List<Cart> listto;
+
     @RequestMapping("/pay")
     public  String pay(String s){
         return "pay";
@@ -52,17 +54,22 @@ public class PayController {
 
     @RequestMapping("/payone")
     @ResponseBody
-    public ModelAndView payone(int id, int num, HttpServletResponse response) throws IOException {
+    public ModelAndView payone(Integer id, Integer num, HttpServletResponse response) throws IOException {
+        System.out.println("id: "+id);
+        System.out.println("num: "+num);
         response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
         //response.setCharacterEncoding("utf-8");
         ModelAndView mav =new ModelAndView();
         List<Cart> list = cartService.selectByid(id);
+        System.out.println("list: "+list);
         int remaning= goodsService.selectRem(list.get(0).getGoodsId());
         System.out.println(remaning);
+
         if (num<=remaning) {
             list.get(0).setGoodsPrice(list.get(0).getGoodsPrice() * num);
             list.get(0).setGoodsQuantity(num);
+            listto=list;
             mav.addObject("pay",list);
             mav.setViewName("pay");
             return mav;
@@ -73,5 +80,10 @@ public class PayController {
             return mav;
         }
         //out.print("<script>alert('test');</script>");
+    }
+    @RequestMapping("/payonejs")
+    @ResponseBody
+    public List<Cart> payonejs(){
+        return listto;
     }
 }

@@ -90,6 +90,10 @@ $.ajax({
             str +=vall;
             console.log(str);
             $('#bj'+res[i].id).attr('href',str)
+            if((res[i].goodsRemaning==0)||(res[i].goodsRemaning==null)){
+                $('#bj'+res[i].id).attr("disabled",true);
+                $('#bj'+res[i].id).css("pointer-events","none");
+            }
         }
     }
 })

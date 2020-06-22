@@ -30,5 +30,5 @@ public interface GoodsMapper {
 
     List<Goods> mysearch(String search_key);
 
-    int selectRem(Long goodsId);
+    int selectRem(long goodsId);
 }

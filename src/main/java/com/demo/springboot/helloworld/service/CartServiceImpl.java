@@ -27,7 +27,7 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public List<Cart> selectByid(int id){
+    public List<Cart> selectByid(Integer id){
         return cartMapper.selectByid(id);
     }
 }
