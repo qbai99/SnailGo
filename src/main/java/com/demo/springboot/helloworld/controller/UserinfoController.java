@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,12 +45,11 @@ public class UserinfoController {
 
     @RequestMapping(value = "/information",method = RequestMethod.GET)
     @ResponseBody
-    public Map<String,Object> info(String userEmail){
+    public Map<String,Object> info(String userEmail) throws UnsupportedEncodingException {
         System.out.println(userEmail);
         List<UserinfoWithBLOBs> user = userinfoService.findWithAdmin(userEmail);
-        System.out.println(user.get(0).toString());
-        List<Userfinance> userfinance = userfinanceService.balance();
-        List<Userlevel> userlevel = userlevelService.level();
+        List<Userfinance> userfinance = userfinanceService.check(user.get(0).getUserAdmin());
+        List<Userlevel> userlevel = userlevelService.level(userEmail);
         Map<String,Object> map = new HashMap<String,Object>();
 //        Cookie[] cookies=request.getCookies();
 //        String userAdmin="";
@@ -78,6 +78,9 @@ public class UserinfoController {
     public String password(){
         return "/user/ChangePassword";
     }
+
+    @RequestMapping("/viewhistory")
+    public String history(){return "/user/ViewHistory";}
 
     @RequestMapping("/AdressManage")
     public String adress(){

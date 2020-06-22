@@ -1,10 +1,8 @@
 package com.demo.springboot.helloworld.service;
 
-import com.demo.springboot.helloworld.common.domain.Address;
-import com.demo.springboot.helloworld.common.domain.AddressExample;
-import com.demo.springboot.helloworld.common.domain.Userinfo;
-import com.demo.springboot.helloworld.common.domain.UserinfoWithBLOBs;
+import com.demo.springboot.helloworld.common.domain.*;
 import com.demo.springboot.helloworld.mapper.AddressMapper;
+import com.demo.springboot.helloworld.mapper.UserinfoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +14,10 @@ public class AddressServiceImpl implements AddressService {
     AddressMapper addressMapper;
     @Autowired
     UserinfoService userinfoService;
+
+    @Autowired
+    UserinfoMapper userinfoMapper;
+
     @Override
     public List<Address> MyAddress(String userAdmin) {
         AddressExample addressExample = new AddressExample();
@@ -26,19 +28,29 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public List<Address> AddAdress(String newAddress) {
+    public List<Address> AddAdress(String newAddress,String userAdmin) {
+        UserinfoExample userinfoExample = new UserinfoExample();
+        userinfoExample.createCriteria().andUserAdminEqualTo(userAdmin);
+        List<Userinfo> userinfoList = userinfoMapper.selectByExample(userinfoExample);
+        Long userId = userinfoList.get(0).getUserId();
+
         AddressExample addressExample = new AddressExample();
         Address newaddress = new Address();
-        newaddress.setUserId((long) 1);
+        newaddress.setUserId(userId);
         newaddress.setAddress(newAddress);
         addressMapper.insert(newaddress);
-        addressExample.createCriteria().andUserIdEqualTo((long) 1);
+        addressExample.createCriteria().andUserIdEqualTo(userId);
 
         return addressMapper.selectByExample(addressExample);
     }
 
     @Override
-    public int delete(String addressId) {
+    public int delete(String addressId,String userAdmin) {
+        UserinfoExample userinfoExample = new UserinfoExample();
+        userinfoExample.createCriteria().andUserAdminEqualTo(userAdmin);
+        List<Userinfo> userinfoList = userinfoMapper.selectByExample(userinfoExample);
+        Long userId = userinfoList.get(0).getUserId();
+
         AddressExample addressExample = new AddressExample();
         addressExample.createCriteria().andAddressIdEqualTo(Long.parseLong(addressId));
         int result = addressMapper.deleteByExample(addressExample);

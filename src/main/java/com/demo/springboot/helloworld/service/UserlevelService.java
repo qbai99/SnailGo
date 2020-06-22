@@ -8,6 +8,6 @@ import java.util.List;
 @Service
 public interface UserlevelService {
 
-    List<Userlevel> level();
+    List<Userlevel> level(String userEmail);
 
 }

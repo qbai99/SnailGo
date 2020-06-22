@@ -20,6 +20,7 @@ public class GoodsServiceImpl implements GoodsService{
     @Override
     public List<Goods> search(String search_key) {
 
+//        List<Goods> list=goodsMapper.mysearch(search_key);
         List<Goods> list=goodsMapper.mysearch(search_key);
         return list;
     }

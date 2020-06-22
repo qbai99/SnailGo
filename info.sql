@@ -1,11 +1,11 @@
 use eshop;
 INSERT INTO user_info
-(user_id, user_admin, user_name, user_password, usersex, user_birthdate, user_phonenumber,user_introduction,user_tag)
-VALUES (1,"admin@163.com","admin","admin",1,"2019-8-7","12345678901","我太难了",false);
+(user_id, user_admin, user_name, user_password, usersex, user_birthdate, user_phonenumber,user_introduction,user_tag,user_img)
+VALUES (1,"admin@163.com","admin","admin",1,"2019-8-7","12345678901","我太难了",false,"123");
 
 INSERT INTO user_info
-(user_id, user_admin, user_name, user_password, usersex, user_birthdate, user_phonenumber,user_introduction,user_tag)
-VALUES (2,"root@163.com","root","root",1,"2019-8-7","12345678901","我太难了",true);
+(user_id, user_admin, user_name, user_password, usersex, user_birthdate, user_phonenumber,user_introduction,user_tag,user_img)
+VALUES (2,"root@163.com","root","root",1,"2019-8-7","12345678901","我太难了",true,"123");
 
 INSERT INTO sign_up
     (sign_up_id, user_id,user_name,user_password,identity,email_address,sex,address)

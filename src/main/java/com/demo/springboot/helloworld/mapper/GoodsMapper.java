@@ -4,7 +4,9 @@ import com.demo.springboot.helloworld.common.domain.Goods;
 import com.demo.springboot.helloworld.common.domain.GoodsExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface GoodsMapper {
     long countByExample(GoodsExample example);
 

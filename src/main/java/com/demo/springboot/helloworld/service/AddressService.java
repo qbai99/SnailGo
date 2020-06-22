@@ -10,7 +10,7 @@ public interface AddressService {
 
     List<Address> MyAddress(String userAdmin);
 
-    List<Address> AddAdress(String newAddress);
+    List<Address> AddAdress(String newAddress,String userAdmin);
 
-    int delete(String addressId);
+    int delete(String addressId,String userAdmin);
 }

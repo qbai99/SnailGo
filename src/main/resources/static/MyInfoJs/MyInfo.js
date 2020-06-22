@@ -25,7 +25,7 @@ $.ajax({
         userEmail:userEmail
     },
     contentType: "application/json; charset=utf-8",
-    dataType: "json",
+    // dataType: "json",
     success: function (res, ifo) {
         console.log("返回图片"+res.UserInfo[0].userImg);
         $('#preview').attr('src',res.UserInfo[0].userImg);
@@ -64,6 +64,12 @@ $.ajax({
                 break;
         }
         console.log(res);
+    },
+    fali:function () {
+        console.log("错误")
+    },
+    error:function () {
+        console.log("报错")
     }
 });
 

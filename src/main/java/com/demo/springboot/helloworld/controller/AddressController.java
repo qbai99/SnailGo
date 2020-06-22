@@ -25,15 +25,15 @@ public class AddressController {
 
     @RequestMapping("/addaddress")
     @ResponseBody
-    public List<Address> AddAddress(String newAddress){
-        List<Address> myaddress = addressService.AddAdress(newAddress);
+    public List<Address> AddAddress(String newAddress,String userAdmin){
+        List<Address> myaddress = addressService.AddAdress(newAddress,userAdmin);
         return myaddress;
     }
 
     @RequestMapping("/deleteaddress")
     @ResponseBody
-    public int DeleteAddress(String addressId){
-        int addressList = addressService.delete(addressId);
+    public int DeleteAddress(String addressId,String userAdmin){
+        int addressList = addressService.delete(addressId,userAdmin);
         return addressList;
     }
 }

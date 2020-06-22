@@ -1,9 +1,10 @@
 package com.demo.springboot.helloworld.service;
 
-import com.demo.springboot.helloworld.common.domain.SignUp;
-import com.demo.springboot.helloworld.common.domain.UserinfoExample;
-import com.demo.springboot.helloworld.common.domain.UserinfoWithBLOBs;
+import com.demo.springboot.helloworld.common.domain.*;
+import com.demo.springboot.helloworld.mapper.ShopMapper;
+import com.demo.springboot.helloworld.mapper.UserfinanceMapper;
 import com.demo.springboot.helloworld.mapper.UserinfoMapper;
+import com.demo.springboot.helloworld.mapper.UserlevelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,14 @@ public class UserinfoServiceImpl implements UserinfoService{
     @Autowired
     private SignUpService signUpService;
 
+    @Autowired
+    private UserlevelMapper userlevelMapper;
+
+    @Autowired
+    private UserfinanceMapper userfinanceMapper;
+
+    @Autowired
+    private ShopMapper shopMapper;
     @Override
     public UserinfoWithBLOBs updateInfo(String email, String newAdmin,String username, String sex, String birthdate, String phonenumber, String introduction,String file) {
         UserinfoExample userinfoExample = new UserinfoExample();
@@ -81,6 +90,7 @@ public class UserinfoServiceImpl implements UserinfoService{
     @Override
     public boolean addUser(SignUp signUp) {
 
+        //创建新用户信息
         UserinfoWithBLOBs userinfo = new UserinfoWithBLOBs();
         userinfo.setMessageId(null);
         userinfo.setLoginId(null);
@@ -97,15 +107,55 @@ public class UserinfoServiceImpl implements UserinfoService{
         userinfo.setUserPhonenumber(null);
         userinfo.setUserBirthdate(null);
         userinfo.setFinanceId(null);
-
+        userinfo.setUserImg("123".getBytes());
         int result = userinfoMapper.insert(userinfo);
         UserinfoExample userinfoExample = new UserinfoExample();
         userinfoExample.createCriteria().andUserAdminEqualTo(signUp.getEmailAddress());
         List<UserinfoWithBLOBs> userinfoList = userinfoMapper.selectByExampleWithBLOBs(userinfoExample);
+        Userinfo newUserInfo = userinfoList.get(0);
+        Long userId = userinfoList.get(0).getUserId();
+        Boolean userTag = userinfoList.get(0).getUserTag();
 
+        //创建新等级信息并将外键写入
+        Userlevel userlevel = new Userlevel();
+        userlevel.setUserId(userId);
+        userlevel.setLevel(1);
+        userlevel.setPoints(0);
+        int levelResult = userlevelMapper.insert(userlevel);
+        UserlevelExample userlevelExample = new UserlevelExample();
+        userlevelExample.createCriteria().andUserIdEqualTo(userId);
+        List<Userlevel> userlevels = userlevelMapper.selectByExample(userlevelExample);
+        newUserInfo.setUseLevelId(userlevels.get(0).getLevelId());
+
+        //创建新余额信息并将外键写入
+        Userfinance userfinance = new Userfinance();
+        userfinance.setUserId(userId);
+        userfinance.setBalance((double) 0);
+        int financeResult = userfinanceMapper.insert(userfinance);
         SignUp sign = signUpService.updateUserId(userinfoList.get(0));
+        UserfinanceExample userfinanceExample = new UserfinanceExample();
+        userfinanceExample.createCriteria().andUserIdEqualTo(userId);
+        List<Userfinance> userfinances = userfinanceMapper.selectByExample(userfinanceExample);
+        newUserInfo.setFinanceId(userfinances.get(0).getFinanceId());
 
-        if(result==1){
+        //判断用户是否是卖家
+        if(userTag==true){
+            //新建商店
+            Shop shop = new Shop();
+            shop.setUserId(userId);
+            shop.setShopName("");
+            shop.setShopMainBussiness("");
+            shop.setShopStar((double) 1);
+            shop.setShopDsp("");
+            shop.setShopLoc("");
+            ShopExample shopExample = new ShopExample();
+            shopExample.createCriteria().andUserIdEqualTo(userId);
+            List<Shop> shopList = shopMapper.selectByExample(shopExample);
+            newUserInfo.setShopId(shopList.get(0).getShopId());
+        }
+
+        if(result==1 && levelResult==1 && financeResult==1){
+            userinfoMapper.updateByPrimaryKey(newUserInfo);
             return true;
         }
         else{

@@ -36,6 +36,7 @@ function AddAddress() {
         url:"/address/addaddress",
         data:{
             newAddress:newAddress,
+            userAdmin:userEmail
         },
         success:function (res) {
             index+=1;
@@ -63,7 +64,8 @@ function DeleteAddress() {
         type:'POST',
         url:'/address/deleteaddress',
         data:{
-            addressId:addressId
+            addressId:addressId,
+            userAdmin:userEmail
         },
         success:function (res) {
             console.log(res);
