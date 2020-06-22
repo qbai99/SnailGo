@@ -34,7 +34,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 <!--       <table tableName="goods" domainObjectName="Goods"></table>-->
-        <table tableName="sign_up" domainObjectName="SignUp"></table>
+        <table tableName="comment" domainObjectName="Comment"></table>
         <!--<table tableName="shopping_cart" domainObjectName="Cart"></table>-->
        <!-- <table tableName="order_request" domainObjectName="Order"></table>
         <table tableName="shipping_state" domainObjectName="ShippingState"></table>-->
