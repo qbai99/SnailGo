@@ -513,10 +513,14 @@
             $(obj).next().val(1);
         }
         else {
-            $(obj).next().val(parseInt($(obj).next().val()) - 1);
-            //数值减
-            $(obj).next().val($(obj).next().val());
-            //赋值给框
+            if($(obj).next().val()==0) {
+                $(obj).next().val(0)
+            }else {
+                $(obj).next().val(parseInt($(obj).next().val()) - 1);
+                //数值减
+                $(obj).next().val($(obj).next().val());
+                //赋值给框
+            }
         }
     };
     //加数量

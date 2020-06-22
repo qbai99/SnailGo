@@ -3,7 +3,7 @@ $.ajax({
     url:"/cartlist",
     contentType: "application/json; charset=utf-8",
     dataType: "json",
-    async:true,
+    async:false,
     success:function (res,ifo) {
         console.log(res);
         for(var i = 0; i < res.length;i++) {
