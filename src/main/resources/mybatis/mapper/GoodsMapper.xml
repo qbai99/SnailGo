@@ -256,4 +256,7 @@
       goods_tag = #{goodsTag,jdbcType=VARCHAR}
     where goods_id = #{goodsId,jdbcType=BIGINT}
   </update>
+  <select id="selectRem" parameterType="java.lang.Long" resultType="java.lang.Integer">
+    select goods_remaning as goodsRemaning from goods where goods_id=#{goodsId,jdbcType=BIGINT}
+  </select>
 </mapper>
