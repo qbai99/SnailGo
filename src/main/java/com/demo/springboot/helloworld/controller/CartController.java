@@ -1,12 +1,17 @@
 package com.demo.springboot.helloworld.controller;
 
 import com.demo.springboot.helloworld.common.domain.Cart;
+import com.demo.springboot.helloworld.common.domain.Userinfo;
 import com.demo.springboot.helloworld.service.CartService;
+import com.demo.springboot.helloworld.service.UserinfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 
@@ -14,6 +19,8 @@ import java.util.List;
 public class CartController {
     @Autowired
     private CartService cartService;
+    @Autowired
+    private UserinfoService userinfoService;
 
     @RequestMapping("/cart")
     public String cart(){
@@ -22,9 +29,14 @@ public class CartController {
 
     @RequestMapping("/cartlist")
     @ResponseBody
-    public List<Cart> cartList(){
-        List<Cart> list0=cartService.selectallnr();
-        List<Cart> list1=cartService.selectall();
+    public List<Cart> cartList(@CookieValue("username") String username){
+        /*Cookie[] cookies = req.getCookies();
+        System.out.println(cookies);*/
+        System.out.println(username);
+        Long userid = userinfoService.selectid(username);
+        System.out.println(userid);
+        List<Cart> list0=cartService.selectallnr(userid);
+        List<Cart> list1=cartService.selectall(userid);
 
         for (int i=0;i<list0.size();i++){
             for (int j=0;j<list1.size();j++){

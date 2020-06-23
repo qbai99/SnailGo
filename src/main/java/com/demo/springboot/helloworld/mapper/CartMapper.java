@@ -30,9 +30,9 @@ public interface CartMapper {
 
     int updateByPrimaryKey(Cart record);
 
-    List<Cart> selectAll();
+    List<Cart> selectAll(Long userid);
 
-    List<Cart> selectAllNr();
+    List<Cart> selectAllNr(Long userid);
 
     void del(int id);
 

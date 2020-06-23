@@ -225,11 +225,11 @@
       goods_price = #{goodsPrice,jdbcType=DOUBLE}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectAll" resultType="com.demo.springboot.helloworld.common.domain.Cart">
-    select sc.id as id, sc.goods_id as goodsId, sc.goods_name as goodsName, sc.goods_quantity as goodsQuantity, sc.goods_price as goodsPrice, g.goods_remaning as goodsRemaning from shopping_cart sc inner join goods g on sc.goods_id=g.goods_id where user_id=1
+  <select id="selectAll" parameterType="java.lang.Long" resultType="com.demo.springboot.helloworld.common.domain.Cart">
+    select sc.id as id, sc.goods_id as goodsId, sc.goods_name as goodsName, sc.goods_quantity as goodsQuantity, sc.goods_price as goodsPrice, g.goods_remaning as goodsRemaning from shopping_cart sc inner join goods g on sc.goods_id=g.goods_id where user_id=#{userid,jdbcType=BIGINT}
   </select>
-  <select id="selectAllNr" resultType="com.demo.springboot.helloworld.common.domain.Cart">
-    select id as id, goods_id as goodsId, goods_name as goodsName, goods_quantity as goodsQuantity, goods_price as goodsPrice from shopping_cart where user_id=1
+  <select id="selectAllNr" parameterType="java.lang.Long" resultType="com.demo.springboot.helloworld.common.domain.Cart">
+    select id as id, goods_id as goodsId, goods_name as goodsName, goods_quantity as goodsQuantity, goods_price as goodsPrice from shopping_cart where user_id=#{userid,jdbcType=BIGINT}
   </select>
   <delete id="del" parameterType="java.lang.Integer">
     delete from shopping_cart where id= #{id, jdbcType=INTEGER}

@@ -18,8 +18,8 @@ public class PayServiceImpl implements PayService{
     }
 
     @Override
-    public List<Userfinance> selectall() {
-        return userfinanceMapper.selectAll();
+    public List<Userfinance> selectall(Long userid) {
+        return userfinanceMapper.selectAll(userid);
     }
     public void balancePay(int t){
         userfinanceMapper.balancePay(t);

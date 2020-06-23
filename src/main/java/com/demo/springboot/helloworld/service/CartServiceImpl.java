@@ -12,13 +12,13 @@ public class CartServiceImpl implements CartService {
     private CartMapper cartMapper;
 
     @Override
-    public List<Cart> selectall(){
-        return cartMapper.selectAll();
+    public List<Cart> selectall(Long userid){
+        return cartMapper.selectAll(userid);
     }
 
     @Override
-    public List<Cart> selectallnr(){
-        return cartMapper.selectAllNr();
+    public List<Cart> selectallnr(Long userid){
+        return cartMapper.selectAllNr(userid);
     }
 
     @Override
