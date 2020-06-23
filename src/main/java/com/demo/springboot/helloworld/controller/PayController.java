@@ -5,8 +5,10 @@ import com.demo.springboot.helloworld.common.domain.Userfinance;
 import com.demo.springboot.helloworld.service.CartService;
 import com.demo.springboot.helloworld.service.GoodsService;
 import com.demo.springboot.helloworld.service.PayService;
+import com.demo.springboot.helloworld.service.UserinfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,6 +27,8 @@ public class PayController {
     private CartService cartService;
     @Autowired
     private GoodsService goodsService;
+    @Autowired
+    private UserinfoService userinfoService;
 
     private List<Cart> listto;
 
@@ -35,8 +39,9 @@ public class PayController {
 
     @RequestMapping("/payBybalance")
     @ResponseBody
-    public List<Userfinance> payBybalance(){
-        List<Userfinance> list =payService.selectall();
+    public List<Userfinance> payBybalance(@CookieValue("username") String username){
+        Long userid = userinfoService.selectid(username);
+        List<Userfinance> list =payService.selectall(userid);
         return list;
     }
     @RequestMapping("/balancePay")

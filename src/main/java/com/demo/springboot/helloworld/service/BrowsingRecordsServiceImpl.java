@@ -52,4 +52,34 @@ public class BrowsingRecordsServiceImpl implements BrowsingRecordsService {
 
         return browsingRecordsList;
     }
+
+    @Override
+    public boolean delete(String recordsId, String userAdmin) {
+        //搜索用户id
+        UserinfoExample userinfoExample = new UserinfoExample();
+        userinfoExample.createCriteria().andUserAdminEqualTo(userAdmin);
+        List<Userinfo> userinfoList = userinfoMapper.selectByExample(userinfoExample);
+        Long userId = userinfoList.get(0).getUserId();
+
+        //删除浏览记录
+        BrowsingRecordsExample browsingRecordsExample = new BrowsingRecordsExample();
+        browsingRecordsExample.createCriteria().andUserIdEqualTo(userId).andRecordsIdEqualTo(Long.parseLong(recordsId));
+        browsingRecordsMapper.deleteByExample(browsingRecordsExample);
+        return true;
+    }
+
+    @Override
+    public boolean deleteall(String userAdmin) {
+        //搜索用户id
+        UserinfoExample userinfoExample = new UserinfoExample();
+        userinfoExample.createCriteria().andUserAdminEqualTo(userAdmin);
+        List<Userinfo> userinfoList = userinfoMapper.selectByExample(userinfoExample);
+        Long userId = userinfoList.get(0).getUserId();
+
+        //删除浏览记录
+        BrowsingRecordsExample browsingRecordsExample = new BrowsingRecordsExample();
+        browsingRecordsExample.createCriteria().andUserIdEqualTo(userId);
+        browsingRecordsMapper.deleteByExample(browsingRecordsExample);
+        return true;
+    }
 }

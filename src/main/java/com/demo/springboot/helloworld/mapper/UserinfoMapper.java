@@ -36,4 +36,6 @@ public interface UserinfoMapper {
     int updateByPrimaryKeyWithBLOBs(UserinfoWithBLOBs record);
 
     int updateByPrimaryKey(Userinfo record);
+
+    Long selectid(String username);
 }

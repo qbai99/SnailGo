@@ -9,6 +9,7 @@ import com.demo.springboot.helloworld.service.ShippingStateService;
 import com.demo.springboot.helloworld.service.UserinfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -35,7 +36,7 @@ public class OrderController {
 
     @RequestMapping("/order/check")
     @ResponseBody
-    public Map<String,Object> CheckOrder(String userAdmin){
+    public Map<String,Object> CheckOrder(@CookieValue("username") String userAdmin){
         List<Order> orderList = orderService.check(userAdmin);
         System.out.println(orderList.get(0).getUserId());
         List<UserinfoWithBLOBs> buyerList = userinfoService.find(orderList.get(0).getUserId());

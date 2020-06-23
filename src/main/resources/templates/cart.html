@@ -412,7 +412,7 @@
                                 单 价
                             </th>
                             <th style="width: 20%"class="project-actions text-right">
-                                <a class="btn btn-warning  btn-sm" href="/pay">
+                                <a id="paylist" class="btn btn-warning  btn-sm" href="/pay" value="" onclick="paylist()">
                                     <img  src="/img/yen-2x.png"><img>
                                     结算
                                 </a>
@@ -503,6 +503,8 @@
 <!-- AdminLTE for demo purposes -->
 <script src="/AdminLTE-3.0.5/dist/js/demo.js"></script>
 <script>
+    var userEmail = document.cookie.substring(9);
+    console.log(userEmail);
     //减数量
     function reductionOf(obj) {
         //减前判断
@@ -560,6 +562,20 @@
                 checkboxs[i].checked=false;
             }
         }
+    }
+    //支付
+    function paywithone(id) {
+        var num = $('#in'+id).val();
+        var str = '/payone?id=';
+        str +=id;
+        str +='&num=';
+        str +=num;
+        console.log(str);
+        $('#bj'+id).attr('href',str);
+    }
+    function paylist() {
+
+
     }
 </script>
 </body>

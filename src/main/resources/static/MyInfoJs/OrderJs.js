@@ -1,37 +1,55 @@
-var userEmail = document.cookie.split('=')[6];
+
 $.ajax({
     type:"GET",
     url:"/order/check",
-    data:{
-        userAdmin:userEmail
-    },
+    // data:{
+    //     userAdmin:userEmail
+    // },
     success:function (res) {
 
         console.log(res);
         for(var i = 0; i < res.Order.length;i++) {
-            var bigDiv = $('<div class="card-header">' +
-                '<div class="row">' +
-                '<div class="col-md-6">' +
-                '<div class="form-group">' +
-                '<label class="card-header">订单号：' + res.ShippingState[i].id + '<br></label>' +
-                '<p class="form-control"><label>商品名：</label>' + res.Order[i].goodsName + '</p>' +
-                '<p class="form-control"><label>单价：</label>' + res.Order[i].goodsPrice + '元' + '</p>' +
-                '<p class="form-control"><label>数量：</label>' + res.Order[i].goodsQuantity + '</p>' +
-                '<p class="form-control"><label>总额：</label>' + (parseFloat(res.Order[i].goodsQuantity) * parseFloat(res.Order[i].goodsPrice)) + '元' + '<br>' +'</p>'+
-                '</div></div>' +
-                '<div class="col-md-6">' +
-                // '买家id：' + res.Buyer[i].userId + '<br>' +
-                '<div class="form-group">' +
-                '<label class="card-header"><br></label>' +
-                '<p class="form-control"><label>买家名：</label>' + res.Buyer[i].userName + '</p>' +
-                // '卖家id：' + res.Seller[i].userId + '<br>' +
-                '<p class="form-control"><label>卖家名：</label>' + res.Seller[i].userName + '<br>' +'</p>'+
-                '<p class="form-control"><label>货物当前地点：</label>' + res.ShippingState[i].loc + '</p>' +
-                '<p class="form-control"><label>配送状态：</label>' + res.ShippingState[i].otherInfo + '</p>' +
-                '</div></div>' +
-                '</div>' +
-                '</div>');
-            $('#address').append(bigDiv);
+            var bigDiv = $('<tr>' +
+                '<td>'+
+                res.Order[i].orderId+
+                '</td>'+
+                '<td>'+
+                // '<a href='+"/goods/details?id="+res.GoodsInfo[i].goodsId+'>'+
+                // '<img style="width:4vh;height: 4vh" src='+"/goods_pics/"+res.GoodsInfo[i].goodsId+"-pic-1.jpg"+' class="product-image" alt="Product Image">'+
+                ''+res.Order[i].goodsName+''+
+                // '</a>'+
+                '</td>'+
+                '<td>'
+                + res.Order[i].goodsPrice + '元' +
+                '</td>'+
+                '<td>'
+                + res.Order[i].goodsQuantity+
+                '</td>'+
+                '<td>'+
+                (parseFloat(res.Order[i].goodsQuantity) * parseFloat(res.Order[i].goodsPrice)) + '元'+
+                '</td>'+
+                '<td>'+
+                res.Buyer[i].userName+
+                '</td>'+
+                '<td>'+
+                res.Seller[i].userName+
+                '</td>'+
+                '<td>'+
+                res.ShippingState[i].loc+
+                '</td>'+
+                '<td>'+
+                res.ShippingState[i].otherInfo+
+                '</td>'+
+                // '<td class="project-actions text-right" >'+
+                // '<a class="btn btn-danger btn-sm" href='+"/Records/deleterecords?recordsId="+res.BrowsingRecords[i].recordsId+'>'+
+                // '<i class="fas fa-trash">'+
+                // '</i>'+
+                // '删除'+
+                // '</a>'+
+                // '</td>'+
+                '</tr>');
+
+            $('#orderTable').append(bigDiv);
         }
     }
 })

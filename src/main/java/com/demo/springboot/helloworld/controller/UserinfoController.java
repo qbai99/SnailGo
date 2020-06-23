@@ -45,7 +45,7 @@ public class UserinfoController {
 
     @RequestMapping(value = "/information",method = RequestMethod.GET)
     @ResponseBody
-    public Map<String,Object> info(String userEmail) throws UnsupportedEncodingException {
+    public Map<String,Object> info(@CookieValue("username") String userEmail) throws UnsupportedEncodingException {
         System.out.println(userEmail);
         List<UserinfoWithBLOBs> user = userinfoService.findWithAdmin(userEmail);
         List<Userfinance> userfinance = userfinanceService.check(user.get(0).getUserAdmin());
@@ -69,8 +69,8 @@ public class UserinfoController {
 
     @RequestMapping("/updateInfo")
     @ResponseBody
-    public Userinfo updateinfo(String email, String newAdmin,String username, String sex, String birthdate, String phonenumber, String introduction,String file){
-        System.out.println(file);
+    public Userinfo updateinfo(@CookieValue("username") String email, String newAdmin,String username, String sex, String birthdate, String phonenumber, String introduction,String file){
+        System.out.println(email);
         Userinfo result = userinfoService.updateInfo(email,newAdmin,username,sex,birthdate,phonenumber,introduction,file);
         return result;
     }
@@ -88,7 +88,7 @@ public class UserinfoController {
     }
     @RequestMapping("/changeCommit")
     @ResponseBody
-    public String ChangePassword(String oldPassword,String newPassword,String userAdmin) {
+    public String ChangePassword(String oldPassword,String newPassword,@CookieValue("username") String userAdmin) {
         System.out.println(oldPassword);
         System.out.println(newPassword);
         boolean result = userinfoService.changepassword(oldPassword,newPassword,userAdmin);

@@ -1,10 +1,10 @@
-var userEmail = document.cookie.split('=')[6];
+
 $.ajax({
     type:"GET",
     url:"/balance/check",
-    data:{
-        userAdmin:userEmail
-    },
+    // data:{
+    //     userAdmin:userEmail
+    // },
     success:function (res) {
         $('#balance').html(res[0].balance);
     }
@@ -20,7 +20,7 @@ function charge() {
            type: "POST",
            url: "/balance/postcharge",
            data: {
-               userAdmin:userEmail,
+               // userAdmin:userEmail,
                input: chargeInput
            },
            success: function (res) {

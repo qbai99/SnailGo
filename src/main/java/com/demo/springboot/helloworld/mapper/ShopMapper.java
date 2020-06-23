@@ -4,7 +4,9 @@ import com.demo.springboot.helloworld.common.domain.Shop;
 import com.demo.springboot.helloworld.common.domain.ShopExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface ShopMapper {
     long countByExample(ShopExample example);
 

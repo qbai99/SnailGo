@@ -35,8 +35,10 @@ public class   GoodsController {
             return "search";//跳转到搜索页search.html
         } else {//搜索失败
             model.addAttribute("error_search_fail", "没有相关商品");
-            return "searcherror";
+            return "goods/goodsnotfound";
         }
+
+
 
     }
 

@@ -7,7 +7,7 @@ import java.util.List;
 public interface PayService {
     Double getbalance();
 
-    List<Userfinance> selectall();
+    List<Userfinance> selectall(Long userid);
 
     void balancePay(int t);
 }

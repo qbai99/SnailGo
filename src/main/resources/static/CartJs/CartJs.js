@@ -1,3 +1,5 @@
+
+
 $.ajax({
     type:"POST",
     url:"/cartlist",
@@ -43,7 +45,7 @@ $.ajax({
                 '</td>'+
                 '<td>'+
                 '<a href='+"goods/details?id="+res[i].goodsId+'>'+
-                '<img style="width:4vh;height: 4vh" src='+"/goods_pics/"+res[i].id+"-pic-1.jpg"+' class="product-image" alt="Product Image">'+
+                '<img style="width:4vh;height: 4vh" src='+"/goods_pics/"+res[i].goodsId+"-pic-1.jpg"+' class="product-image" alt="Product Image">'+
                 ''+res[i].goodsName+''+
                 '</a>'+
                 '</td>'+
@@ -63,7 +65,7 @@ $.ajax({
                 ''+res[i].goodsPrice+''+
                 '</td>'+
                 '<td class="project-actions text-right" >'+
-                '<a id='+"bj"+res[i].id+' class="btn btn-warning  btn-sm" href="#">'+
+                '<a id='+"bj"+res[i].id+' class="btn btn-warning  btn-sm" href="#" onclick="">'+
                 '<img  src="/img/yen-2x.png"><img>'+
                 '结算'+
                 '</a>'+
@@ -82,14 +84,17 @@ $.ajax({
         var k=0;
         console.log($('#in'+res[k].id).val());
         for(var i = 0; i < res.length;i++) {
-            var id=res[i].id;
+            /*var id=res[i].id;
             var str='/payone?id=';
             str +=id;
             str +='&num=';
             var vall=$('#in'+res[i].id).val();
             str +=vall;
             console.log(str);
-            $('#bj'+res[i].id).attr('href',str)
+            $('#bj'+res[i].id).attr('href',str)*/
+            var strr='in';
+            strr +=res[i].id;
+            $('#bj'+res[i].id).attr("onclick","paywithone("+res[i].id+")");
             if((res[i].goodsRemaning==0)||(res[i].goodsRemaning==null)){
                 $('#bj'+res[i].id).attr("disabled",true);
                 $('#bj'+res[i].id).css("pointer-events","none");
