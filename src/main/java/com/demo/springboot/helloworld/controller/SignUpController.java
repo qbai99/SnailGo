@@ -76,7 +76,7 @@ public class SignUpController{
                 //将cookie发给浏览器（如果没有这句，cookie就不会发送给客户端）
                 cookie.setSecure(false);
                 response.addCookie(cookie);
-                return "/goods";
+                return "/index";
 //                return "login/loginPage";
             }
             else
