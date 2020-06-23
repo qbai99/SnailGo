@@ -18,10 +18,10 @@ public class   GoodsController {
 
     @RequestMapping("/search")
 
-    public String search(String search_key, Model model) {
+    public String search(String search_key, Model model,String goods_tag) {
 
 
-        List<Goods> tmp = goodsService.search(search_key);
+        List<Goods> tmp = goodsService.search(search_key,goods_tag);
 
         System.out.println("返回成功");
         System.out.println(tmp.size());
