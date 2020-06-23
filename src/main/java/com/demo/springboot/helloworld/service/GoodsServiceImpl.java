@@ -19,9 +19,11 @@ public class GoodsServiceImpl implements GoodsService{
 
     @Override
     public List<Goods> search(String search_key, String goods_tag) {
-        String param=search_key+goods_tag;
+        if (search_key.length()==0){
+            search_key=null;
+        };
 //        List<Goods> list=goodsMapper.mysearch(search_key);
-        List<Goods> list=goodsMapper.mysearch(param);
+        List<Goods> list=goodsMapper.mysearch(search_key,goods_tag);
         return list;
     }
 

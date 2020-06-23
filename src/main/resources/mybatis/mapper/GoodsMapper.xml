@@ -266,12 +266,14 @@
          goods
     where
           1=1
-
-    <if test="search_key!=null and goods_tag!=null and search_tag!=''">
+    <if test="search_key==null">
+      and upper(goods_tag) like upper(concat('%',#{goods_tag},'%'))
+    </if>
+    <if test="search_key!=null and goods_tag!=null and search_key!=''">
     and
-      upper(goods_tag) like upper(concat('%',#{param},'%'))
+      upper(goods_tag) like upper(concat('%',#{goods_tag},'%'))
     or
-    upper(goods_name) like upper(concat('%',#{param},'%'));
+    upper(goods_name) like upper(concat('%',#{search_key},'%'));
     </if>
   </select>
 </mapper>
