@@ -10,4 +10,8 @@ public interface BrowsingRecordsService {
     Boolean Addrecords(String userAdmin, String url, String goodsId);
 
     List<BrowsingRecords> check(String userAdmin);
+
+    boolean delete(String recordsId, String userAdmin);
+
+    boolean deleteall(String userAdmin);
 }

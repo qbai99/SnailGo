@@ -1,5 +1,5 @@
-var userEmail = document.cookie.split('=')[6];
-console.log(userEmail);
+// var userEmail = document.cookie.split('=')[6];
+// console.log(userEmail);
 var binaryFile;
 
 function check(){
@@ -21,12 +21,13 @@ $.ajax({
     type: "GET",
     url: "/user/information",
     // data:JSON.stringify(dataObj) ,
-    data:{
-        userEmail:userEmail
-    },
+    // data:{
+    //     userEmail:userEmail
+    // },
     contentType: "application/json; charset=utf-8",
     // dataType: "json",
     success: function (res, ifo) {
+        binaryFile = res.UserInfo[0].userImg;
         console.log("返回图片"+res.UserInfo[0].userImg);
         $('#preview').attr('src',res.UserInfo[0].userImg);
         $("#emailInput").attr('value',res.UserInfo[0].userAdmin);
@@ -98,7 +99,7 @@ function clickHandle() {
         type:'POST',
         url:'/user/updateInfo',
         data:{
-            email:userEmail,
+            // email:userEmail,
             newAdmin:email,
             username:username,
             sex:realsex,

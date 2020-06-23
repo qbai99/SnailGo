@@ -1,8 +1,6 @@
 var oldPassword = '';
 var rewriteoldPassword = '';
 var newPassword = '';
-var userEmail = document.cookie.split('=')[6];
-console.log(userEmail);
 
 function Oldlistener() {
     oldPassword = $("#oldpassword").val();
@@ -82,7 +80,6 @@ function submitChange() {
             data: {
                 "oldPassword": oldPassword,
                 "newPassword": newPassword,
-                userAdmin:userEmail
             },
             success: function (res) {
                 alert(res);

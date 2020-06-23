@@ -6,6 +6,7 @@ import com.demo.springboot.helloworld.service.BrowsingRecordsService;
 import com.demo.springboot.helloworld.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -25,7 +26,7 @@ public class BrowsingRecordsController {
 
     @RequestMapping("/addrecords")
     @ResponseBody
-    public String Addrecords(String userAdmin,String URL,String goodsId){
+    public String Addrecords(@CookieValue("username") String userAdmin,String URL,String goodsId){
         Boolean result = browsingRecordsService.Addrecords(userAdmin,URL,goodsId);
         if (result==true) return "添加成功";
         else return "添加失败！";
@@ -33,7 +34,7 @@ public class BrowsingRecordsController {
 
     @RequestMapping("/getrecords")
     @ResponseBody
-    public Map<String,Object> check(String userAdmin){
+    public Map<String,Object> check(@CookieValue("username") String userAdmin){
         List<BrowsingRecords> browsingRecordsList = browsingRecordsService.check(userAdmin);
         Map<String,Object> map = new HashMap<>();
         if(browsingRecordsList.size()!=0){
@@ -51,5 +52,16 @@ public class BrowsingRecordsController {
         }
 
         return map;
+    }
+
+    @RequestMapping("/deleterecords")
+    public String DeleteRecords(String recordsId,@CookieValue("username") String userAdmin){
+        boolean result = browsingRecordsService.delete(recordsId,userAdmin);
+        return "/user/ViewHistory";
+    }
+    @RequestMapping("/deleteall")
+    public String DeleteAll(@CookieValue("username") String userAdmin){
+        boolean result = browsingRecordsService.deleteall(userAdmin);
+        return "/user/ViewHistory";
     }
 }
