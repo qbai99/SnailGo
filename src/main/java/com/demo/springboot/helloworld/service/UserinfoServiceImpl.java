@@ -162,4 +162,12 @@ public class UserinfoServiceImpl implements UserinfoService{
             return false;
         }
     }
+
+    @Override
+    public Long selectid(String username){
+        /*Long userid=userinfoMapper.selectid(username);
+        System.out.println("service:"+userid);
+        System.out.println(username);*/
+        return userinfoMapper.selectid(username);
+    }
 }

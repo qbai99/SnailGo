@@ -18,4 +18,6 @@ public interface UserinfoService {
     boolean changepassword(String oldPassword,String newPassword,String userAdmin);
 
     boolean addUser(SignUp signUp);
+
+    Long selectid(String username);
 }

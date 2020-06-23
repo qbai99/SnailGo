@@ -181,8 +181,8 @@
   <select id="selectBalance" resultType="com.demo.springboot.helloworld.common.domain.Userfinance">
     select balance from user_finance where user_id=1
   </select>
-  <select id="selectAll" resultType="com.demo.springboot.helloworld.common.domain.Userfinance">
-    select * from user_finance;
+  <select id="selectAll" parameterType="java.lang.Long" resultType="com.demo.springboot.helloworld.common.domain.Userfinance">
+    select * from user_finance where user_id=#{userid,jdbcType=BIGINT};
   </select>
   <update id="balancePay" parameterType="map">
     update user_finance

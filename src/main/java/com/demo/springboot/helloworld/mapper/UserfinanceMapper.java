@@ -32,7 +32,7 @@ public interface UserfinanceMapper {
 
     Double selectBalance();
 
-    List<Userfinance> selectAll();
+    List<Userfinance> selectAll(Long userid);
 
     void balancePay(int t);
 }
