@@ -113,11 +113,11 @@
     </div>
       <div class="search-cate">
         <form action="/goods/search" target=_parent>
-          <select class="selectpicker">
-            <option> 分类</option>
-            <option> 男装</option>
-            <option> 女装</option>
-            <option> 数码3C</option>
+          <select class="selectpicker" name="goods_tag">
+            <option value="'" disabled="disabled"> 分类</option>
+            <option value="男装"> 男装</option>
+            <option value="女装"> 女装</option>
+            <option value="3C"> 数码3C</option>
           </select>
           <input type="search" name="search_key" placeholder="在此输入你想要的商品">
           <button class="submit" type="submit"><i class="icon-magnifier"></i></button>
@@ -1497,8 +1497,17 @@
   <a href="#" class="cd-top"><i class="fa fa-angle-up"></i></a> 
   <!-- GO TO TOP End --> 
 </div>
-<!-- End Page Wrapper --> 
+<!-- End Page Wrapper -->
+<script type="text/javascript">
+  $(document).ready(function () {
+    bsCustomFileInput.init();
+  });
 
+  var decodedCookie = decodeURIComponent(document.cookie);
+  console.log(decodedCookie.substring(decodedCookie.indexOf('=')+1));
+
+</script>
+<script src="/MyInfoJs/MyInfo.js"></script>
 <!-- JavaScripts --> 
 <script src="js/vendors/jquery/jquery.min.js"></script> 
 <script src="js/vendors/wow.min.js"></script> 

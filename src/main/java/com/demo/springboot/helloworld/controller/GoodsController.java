@@ -18,10 +18,10 @@ public class   GoodsController {
 
     @RequestMapping("/search")
 
-    public String search(String search_key, Model model) {
+    public String search(String search_key, Model model,String goods_tag) {
 
 
-        List<Goods> tmp = goodsService.search(search_key);
+        List<Goods> tmp = goodsService.search(search_key,goods_tag);
 
         System.out.println("返回成功");
         System.out.println(tmp.size());
@@ -35,10 +35,8 @@ public class   GoodsController {
             return "search";//跳转到搜索页search.html
         } else {//搜索失败
             model.addAttribute("error_search_fail", "没有相关商品");
-            return "goods/goodsnotfound";
+            return "searcherror";
         }
-
-
 
     }
 

@@ -106,7 +106,7 @@
     <div class="search-cate">
       <form action="/goods/search" target=_parent>
         <select class="selectpicker" name="goods_tag">
-          <option value=" "> 分类</option>
+          <option value="'" disabled="disabled"> 分类</option>
           <option value="男装"> 男装</option>
           <option value="女装"> 女装</option>
           <option value="3C"> 数码3C</option>
@@ -152,10 +152,29 @@
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="/AdminLTE-3.0.5/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="/AdminLTE-3.0.5/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="/AdminLTE-3.0.5/dist/js/adminlte.min.js"></script>
+<!-- End Page Wrapper -->
+<script type="text/javascript">
+  $(document).ready(function () {
+    bsCustomFileInput.init();
+  });
+
+  var decodedCookie = decodeURIComponent(document.cookie);
+  console.log(decodedCookie.substring(decodedCookie.indexOf('=')+1));
+
+</script>
+<script src="/MyInfoJs/MyInfo.js"></script>
+<!-- JavaScripts -->
+<script src="/js/vendors/jquery/jquery.min.js"></script>
+<script src="/js/vendors/wow.min.js"></script>
+<script src="/js/vendors/bootstrap.min.js"></script>
+<script src="/js/vendors/own-menu.js"></script>
+<script src="/js/vendors/jquery.sticky.js"></script>
+<script src="/js/vendors/owl.carousel.min.js"></script>
+
+<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+<script type="text/javascript" src="/rs-plugin/js/jquery.tp.t.min.js"></script>
+<script type="text/javascript" src="/rs-plugin/js/jquery.tp.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- ##### Footer Area End ##### -->
 </body>
 </html>

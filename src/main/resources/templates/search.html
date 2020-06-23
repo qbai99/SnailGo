@@ -1,380 +1,184 @@
 <!DOCTYPE html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>搜索结果</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>商品</title>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="/AdminLTE-3.0.5/plugins/fontawesome-free/css/all.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="/AdminLTE-3.0.5/dist/css/adminlte.min.css">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <link href="/icofont/icofont.min.css" rel="stylesheet">
-    <link href="/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="css/stylesheet.css" rel="stylesheet">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="author" content="M_Adnan" />
+        <meta charset="UTF-8">
+        <meta name="description" content="">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!-- Title  -->
+        <!-- Favicon  -->
+        <link rel="icon" href="/img/core-img/favicon.ico">
+        <link href="/icofont/icofont.min.css" rel="stylesheet">
+        <link href="/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <!-- Document Title -->
+        <title>搜索结果</title>
+
+        <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+        <link rel="stylesheet" type="text/css" href="/rs-plugin/css/settings.css" media="screen" />
+        <!-- StyleSheets -->
+        <link rel="stylesheet" href="/css/ionicons.min.css">
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/responsive.css">
+        <link href="/icofont/icofont.min.css" rel="stylesheet">
+        <link href="/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <!-- Fonts Online -->
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+        <!-- JavaScripts -->
+        <script src="/js/vendors/modernizr.js"></script>
+        <script src="/js/jquery-3.1.1.js"></script>
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+
 </head>
 <body class="sidebar-collapse">
 <div class="wrapper">
 
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-        <!-- Left navbar links -->
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-            </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="/" class="nav-link">主页</a>
-            </li>
+    <header class="header">
+        <!-- Nav -->
+        <nav class="navbar ownmenu">
+            <!-- Categories -->
 
 
-        </ul>
 
 
-        <!-- SEARCH FORM -->
-        <form class="form-inline ml-3" action="/goods/search" target=_parent>
-            <div class="input-group input-group-sm">
-                <input name="search_key" class="form-control form-control-navbar" placeholder="在此搜索商品" aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-navbar" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
+            <!-- Navbar Header -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-open-btn" aria-expanded="false"> <span><i class="fa fa-navicon"></i></span> </button>
+            </div>
+            <!-- NAV -->
+            <div class="collapse navbar-collapse" id="nav-open-btn">
+                <ul class="nav">
+
+                    <div class="logo"> <a href="/"><img style="height: 60px; width: 60px" src="/img/logo.png" alt="" ></a> </div>
+                    <div class="h2"style="margin-top: 20px">Snail Go</div>
+
+                </ul>
+            </div>
+
+            <!-- NAV RIGHT -->
+            <div class="nav-right">
+                <a href="/user/MyInformation"><i class="fa fa-user"></i> <strong>个人中心</strong> </a>
+                <a href="/"><i class="fa fa-comment"></i><strong>消息</strong></a>
+                <a href="/cart"> <i class="fa fa-shopping-cart"></i></a>
+            </div>
+
+        </nav>
+        <!--
+
+        --><div class="container">
+        <div class="cate-lst" style="float: left"> <a  data-toggle="collapse" class="cate-style" href="#cater"><i class="fa fa-list-ul"></i> 所有分类 </a>
+            <div class="cate-bar-in">
+                <div id="cater" class="collapse">
+                    <ul>
+
+                        <li class="sub-menu"><a href="#.">男装</a>
+                            <ul>
+                                <li><a href="#."> 上衣</a></li>
+                                <li><a href="#."> 下装</a></li>
+                                <li><a href="#."> 包</a>
+                                <li><a href="#."> 配饰</a>
+                            </ul>
+                        </li>
+                        <li class="sub-menu"><a href="#.">女装</a>
+                            <ul>
+                                <li><a href="#."> 上衣</a></li>
+                                <li><a href="#."> 下装</a></li>
+                                <li><a href="#."> 包</a>
+                                <li><a href="#."> 配饰</a>
+                            </ul>
+                        </li>
+                        <li class="sub-menu"><a href="#.">数码3C</a>
+                            <ul>
+                                <li><a href="#.">平板电脑</a></li>
+                                <li><a href="#.">移动电话</a></li>
+                                <li><a href="#.">台式机</a>
+                                <li><a href="#.">配件</a>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </form>
+        </div>
+        <div class="search-cate">
+            <form action="/goods/search" target=_parent>
+                <select class="selectpicker" name="goods_tag">
+                    <option value="'" disabled="disabled"> 分类</option>
+                    <option value="男装"> 男装</option>
+                    <option value="女装"> 女装</option>
+                    <option value="3C"> 数码3C</option>
+                </select>
+                <input type="search" name="search_key" placeholder="在此输入你想要的商品">
+                <button class="submit" type="submit"><i class="icon-magnifier"></i></button>
+            </form>
+        </div>
+        <!-- Cart Part -->
 
-
-        <!-- Right navbar links -->
-        <ul class="navbar-nav ml-auto">
-            <!-- Messages Dropdown Menu -->
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="far fa-comments"></i>
-                    <span class="badge badge-danger navbar-badge">3</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="/AdminLTE-3.0.5/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    Brad Diesel
-                                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">Call me whenever you can...</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="/AdminLTE-3.0.5/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    John Pierce
-                                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">I got your message bro</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="/AdminLTE-3.0.5/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    Nora Silvester
-                                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">The subject goes here</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                </div>
-            </li>
-
-            <!-- Notifications Dropdown Menu -->
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="far fa-bell"></i>
-                    <span class="badge badge-warning navbar-badge">15</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-header">15 Notifications</span>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-envelope mr-2"></i> 4 new messages
-                        <span class="float-right text-muted text-sm">3 mins</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-users mr-2"></i> 8 friend requests
-                        <span class="float-right text-muted text-sm">12 hours</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-file mr-2"></i> 3 new reports
-                        <span class="float-right text-muted text-sm">2 days</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown user-menu">
-                <a href="./user/userInfomation.html" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                    <img src="/AdminLTE-3.0.5/dist/img/user2-160x160.jpg" class="user-image img-circle elevation-2" alt="User Image">
-                    <span class="d-none d-md-inline">Alexander Pierce</span>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <!-- User image -->
-                    <li class="user-header bg-primary">
-                        <img src="/AdminLTE-3.0.5/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-
-                        <p>
-                            Alexander Pierce - Web Developer
-                            <small>Member since Nov. 2012</small>
-                        </p>
-                    </li>
-                    <!-- Menu Body -->
-                    <li class="user-body">
-                        <div class="row">
-                            <div class="col-4 text-center">
-                                <a href="#">Followers</a>
-                            </div>
-                            <div class="col-4 text-center">
-                                <a href="#">Sales</a>
-                            </div>
-                            <div class="col-4 text-center">
-                                <a href="#">Friends</a>
-                            </div>
-                        </div>
-                        <!-- /.row -->
-                    </li>
-                    <!-- Menu Footer-->
-                    <li class="user-footer">
-                        <a href="./user/userInfomation.html" class="btn btn-default btn-flat">个人中心</a>
-                        <a href="#" class="btn btn-default btn-flat float-right">Sign out</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i class="nav-icon fas fa-shopping-cart"></i></a>
-            </li>
-
-        </ul>
-    </nav>
-    <!-- /.navbar -->
+    </div>
+    </header>
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-light-primary small-text elevation-4">
-        <!-- Brand Logo -->
-        <a href="/AdminLTE-3.0.5/index3.html" class="brand-link">
-            <img src="/AdminLTE-3.0.5/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                 style="opacity: .8">
-            <span class="brand-text font-weight-light">AdminLTE 3</span>
-        </a>
 
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <!-- Sidebar user panel (optional) -->
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
-                    <img src="/AdminLTE-3.0.5/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-                </div>
-
-            </div>
-
-            <!-- Sidebar Menu -->
-            <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <!-- Add icons to the links using the .nav-icon class
-                         with font-awesome or any other icon font library -->
-                    <li class="nav-item has-treeview menu-open">
-                        <a href="#" class="nav-link active bg-gradient-gray-dark">
-                            <i class="nav-icon fas fa-male"></i>
-                            <p>
-                                男 装
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>上衣</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>裤子</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>鞋</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>配饰</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item has-treeview menu-open">
-                        <a href="#" class="nav-link active bg-gradient-gray-dark">
-                            <i class="nav-icon fas fa-female "></i>
-                            <p>
-                                女 装
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>上衣</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>裤子</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>鞋</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>配饰</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item has-treeview menu-open">
-                        <a href="#" class="nav-link active bg-gradient-gray-dark">
-                            <i class="nav-icon fas fa-child"></i>
-                            <p>
-                                童 装
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>上衣</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>裤子</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>鞋</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>配饰</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item has-treeview menu-open">
-                        <a href="#" class="nav-link active bg-gradient-dark">
-                            <i class="nav-icon fas fa-mobile"></i>
-                            <p>
-                                数码 3C
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>平板电脑</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>手机</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>台式机</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>配件</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-            <!-- /.sidebar-menu -->
-        </div>
-        <!-- /.sidebar -->
-    </aside>
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="ml-lg-2 text-dark">为你找到如下商品</h1>
+
+                        <h3 class="ml-lg-2 text-dark" style="margin-left: 120px">为你找到如下商品</h3>
                     </div><!-- /.col -->
 
+        </div>
 
-                </div><!-- /.row -->
-                <div class="row">
+
+                <div class="col-list" style="margin-left: 120px">
+                    <!-- Product -->
+
+
                 <li  th:each="sc:${search_result}" style="list-style:none; /* 将默认的列表符号去掉 */padding:0; /* 将默认的内边距去掉 */margin:0; /* 将默认的外边距去掉 */">
-
-                        <div class="row-cols-md-6">
-                            <a th:href="'details?id='+${sc.goodsId}"><img style="width: 300px ;height: 300px" th:src="'/goods_pics/'+${sc.goodsId}+'-pic-1.jpg'"/></a>
-
-                            <h3 class="my-3"><p class="title fl" th:text="${sc.goodsName}"></p></h3>
-                            <h3 class="mb-0">
-                                <p class="title fl" th:text="'¥'+${sc.goodsPrice}"></p>
-                            </h3>
-                        </div>
-
-
+                    <div class="product">
+                        <article>
+                            <!-- Product img -->
+                            <div class="media-left">
+                                <div class="item-img">  <a th:href="'details?id='+${sc.goodsId}"><img style="width: 300px ;height: 300px" th:src="'/goods_pics/'+${sc.goodsId}+'-pic-1.jpg'"/></a>
+                            </div>
+                            </div>
+                            <!-- Content -->
+                            <div class="media-body">
+                                <div class="row">
+                                    <!-- Content Left -->
+                                    <div class="col-sm-7"> <span class="tag">Tablets</span> <a href="#." class="tittle"><p class="title fl" th:text="${sc.goodsName}"></p></a>
+                                        <!-- Reviews -->
+                                        <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                        <ul class="bullet-round-list">
+                                            <li>Screen: 1920 x 1080 pixels</li>
+                                            <li>Processor: 2.5 GHz None</li>
+                                            <li>RAM: 8 GB</li>
+                                            <li>Hard Drive: Flash memory solid state</li>
+                                            <li>Graphics : Intel HD Graphics 520 Integrated</li>
+                                        </ul>
+                                    </div>
+                                    <!-- Content Right -->
+                                    <div class="col-sm-5 text-center"> <a href="#." class="heart"><i class="fa fa-heart"></i></a> <a href="#." class="heart navi"><i class="fa fa-navicon"></i></a>
+                                        <div class="position-center-center">
+                                            <div class="price"><p class="title fl" th:text="'¥'+${sc.goodsPrice}"></p></div>
+                                            <p>Availability: <span class="in-stock">In stock</span></p>
+                                            <a href="#." class="btn-round"><i class="icon-basket-loaded"></i> Add to Cart</a> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
 
                 </li>
                 </div>
@@ -383,7 +187,7 @@
         <!-- /.content-header -->
     </div>
 
-</div>
+
 <footer class="main-footer">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
@@ -397,11 +201,29 @@
 
 <!-- REQUIRED SCRIPTS -->
 
-<!-- jQuery -->
-<script src="/AdminLTE-3.0.5/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="/AdminLTE-3.0.5/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="/AdminLTE-3.0.5/dist/js/adminlte.min.js"></script>
+<!-- End Page Wrapper -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        bsCustomFileInput.init();
+    });
+
+    var decodedCookie = decodeURIComponent(document.cookie);
+    console.log(decodedCookie.substring(decodedCookie.indexOf('=')+1));
+
+</script>
+<script src="/MyInfoJs/MyInfo.js"></script>
+<!-- JavaScripts -->
+<script src="/js/vendors/jquery/jquery.min.js"></script>
+<script src="/js/vendors/wow.min.js"></script>
+<script src="/js/vendors/bootstrap.min.js"></script>
+<script src="/js/vendors/own-menu.js"></script>
+<script src="/js/vendors/jquery.sticky.js"></script>
+<script src="/js/vendors/owl.carousel.min.js"></script>
+
+<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+<script type="text/javascript" src="/rs-plugin/js/jquery.tp.t.min.js"></script>
+<script type="text/javascript" src="/rs-plugin/js/jquery.tp.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- ##### Footer Area End ##### -->
 </body>
 </html>

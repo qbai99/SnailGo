@@ -259,4 +259,19 @@
   <select id="selectRem" parameterType="java.lang.Long" resultType="java.lang.Integer">
     select goods_remaning as goodsRemaning from goods where goods_id=#{goodsId,jdbcType=BIGINT}
   </select>
+  <select id="mysearch" resultType="com.demo.springboot.helloworld.common.domain.Goods" resultMap="BaseResultMap">
+    select
+           *
+    from
+         goods
+    where
+          1=1
+
+    <if test="search_key!=null and goods_tag!=null and search_tag!=''">
+    and
+      upper(goods_tag) like upper(concat('%',#{param},'%'))
+    or
+    upper(goods_name) like upper(concat('%',#{param},'%'));
+    </if>
+  </select>
 </mapper>
