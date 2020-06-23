@@ -22,20 +22,26 @@ public class   GoodsController {
 
 
         List<Goods> tmp = goodsService.search(search_key,goods_tag);
+        List<Goods> tmp1= goodsService.search("",goods_tag);
 
-        System.out.println("返回成功");
         System.out.println(tmp.size());
         System.out.println(tmp);
         if (tmp.size() != 0) {//返回不为空。搜索成功
+            System.out.println("返回成功");
             /*将搜索结果集合、集合元素个数(结果商品个数)、搜索关键字添加到model的属性中返回前端页面*/
             model.addAttribute("search_result", tmp);//搜索结果商品list
             model.addAttribute("result_num", tmp.size());//搜索结果商品数
             model.addAttribute("search_key", search_key);//搜索关键词
+            model.addAttribute("tag", goods_tag);//tag
 
             return "search";//跳转到搜索页search.html
         } else {//搜索失败
+            System.out.println("返回成功");
             model.addAttribute("error_search_fail", "没有相关商品");
-            return "goods/goodsnotfound";
+
+            model.addAttribute("tag", goods_tag);//tag
+            model.addAttribute("relatedgoods",tmp1);
+            return "searcherror";
         }
 
 
