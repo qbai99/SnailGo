@@ -18,12 +18,11 @@ public class IndexController {
     @Autowired
     private GoodsService goodsService;
     private UserfinanceService userfinanceService;
-    @RequestMapping({"/","/loginPage.html"})
+    @RequestMapping({"/","index"})
     public String index(Model model){
         List<Goods> tmp= goodsService.allgoods();
-
         model.addAttribute("allgoods",tmp);
-        return "index";
+        return "login/loginPage";
     }
 
     @RequestMapping("/Listall")
