@@ -69,7 +69,7 @@
 
             <!-- NAV RIGHT -->
             <div class="nav-right">
-                <a href="/user/MyInformation"><i class="fa fa-user"></i> <strong>个人中心</strong> </a>
+                <a href="/user/MyInformation"><i class="fa fa-user"></i> <span id="login"></span><strong><span id="test"></span></strong> </a>
                 <a href="/"><i class="fa fa-comment"></i><strong>消息</strong></a>
                 <a href="/cart"> <i class="fa fa-shopping-cart"></i></a>
             </div>
@@ -157,22 +157,16 @@
                             <div class="media-body">
                                 <div class="row">
                                     <!-- Content Left -->
-                                    <div class="col-sm-7"> <span class="tag">Tablets</span> <a href="#." class="tittle"><p class="title fl" th:text="${sc.goodsName}"></p></a>
+                                    <div class="col-sm-7"> <span class="tag" th:text="${sc.goodsTag}"></span> <a href="#." class="tittle"><p class="title fl" style="font-size: 25px;font-weight: bold" th:text="${sc.goodsName}"></p></a>
                                         <!-- Reviews -->
-                                        <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
-                                        <ul class="bullet-round-list">
-                                            <li>Screen: 1920 x 1080 pixels</li>
-                                            <li>Processor: 2.5 GHz None</li>
-                                            <li>RAM: 8 GB</li>
-                                            <li>Hard Drive: Flash memory solid state</li>
-                                            <li>Graphics : Intel HD Graphics 520 Integrated</li>
-                                        </ul>
+                                        <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 个评论</span></p>
+                                       <p class="tag" style="color: #0a0a0a"><span th:text="${sc.goodsDsp}"></span></p>
                                     </div>
                                     <!-- Content Right -->
                                     <div class="col-sm-5 text-center"> <a href="#." class="heart"><i class="fa fa-heart"></i></a> <a href="#." class="heart navi"><i class="fa fa-navicon"></i></a>
                                         <div class="position-center-center">
                                             <div class="price"><p class="title fl" th:text="'¥'+${sc.goodsPrice}"></p></div>
-                                            <p>Availability: <span class="in-stock">In stock</span></p>
+                                            <p>库存: <span class="in-stock" th:text="${sc.goodsRemaning}"></span></p>
                                             <a href="#." class="btn-round"><i class="icon-basket-loaded"></i> 加入到购物车</a> </div>
                                     </div>
                                 </div>
@@ -212,6 +206,8 @@
 
 </script>
 <script src="/MyInfoJs/MyInfo.js"></script>
+<script src="/js/vendors/jquery/jquery.min.js"></script>
+<script src="/js/index.js"></script>
 <!-- JavaScripts -->
 <script src="/js/vendors/jquery/jquery.min.js"></script>
 <script src="/js/vendors/wow.min.js"></script>

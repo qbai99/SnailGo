@@ -820,15 +820,15 @@ section {
 	position: relative;
 }
 .product article .tag {
-	color: #aaaaaa;
+	color: #0a0a0a;
 	display: inline-block;
 	width: 100%;
 	margin: 7px 0;
-	font-size: 13px;
+	font-size: 14px;
 }
 .product article .tittle {
 	color: #0168b8;
-	font-size: 14px;
+	font-size: 18px;
 	display: inline-block;
 	min-height: 40px;
 }
@@ -929,7 +929,7 @@ section {
 }
 .col-list .product article .price {
 	width: 100%;
-	font-size: 16px;
+	font-size: 24px;
 	margin-bottom: 10px;
 }
 .col-list .product article .col-sm-5 {
