@@ -5,6 +5,7 @@ import com.demo.springboot.helloworld.mapper.UserfinanceMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -21,7 +22,7 @@ public class PayServiceImpl implements PayService{
     public List<Userfinance> selectall(Long userid) {
         return userfinanceMapper.selectAll(userid);
     }
-    public void balancePay(int t){
-        userfinanceMapper.balancePay(t);
+    public void balancePay(HashMap map){
+        userfinanceMapper.balancePay(map);
     }
 }

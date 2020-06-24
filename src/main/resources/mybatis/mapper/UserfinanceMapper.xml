@@ -182,12 +182,12 @@
     select balance from user_finance where user_id=1
   </select>
   <select id="selectAll" parameterType="java.lang.Long" resultType="com.demo.springboot.helloworld.common.domain.Userfinance">
-    select * from user_finance where user_id=#{userid,jdbcType=BIGINT};
+    select finance_id as financeId, user_id as userId, balance as balance from user_finance where user_id=#{id,jdbcType=BIGINT};
   </select>
   <update id="balancePay" parameterType="map">
     update user_finance
     set
-         balance=balance-#{id}
-    where user_id=1
+         balance=balance-#{num,jdbcType=DOUBLE}
+    where user_id=#{userid,jdbcType=BIGINT}
   </update>
 </mapper>

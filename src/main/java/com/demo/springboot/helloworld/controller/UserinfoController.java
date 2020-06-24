@@ -86,6 +86,13 @@ public class UserinfoController {
     public String adress(){
         return "/user/AddressManage";
     }
+
+    @RequestMapping("/isSeller")
+    @ResponseBody
+    public boolean IsSeller(@CookieValue("username") String userAdmin){
+        Userinfo user = userinfoService.findWithAdmin(userAdmin).get(0);
+        return user.getUserTag();
+    }
     @RequestMapping("/changeCommit")
     @ResponseBody
     public String ChangePassword(String oldPassword,String newPassword,@CookieValue("username") String userAdmin) {

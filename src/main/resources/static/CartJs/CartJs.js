@@ -54,7 +54,7 @@ $.ajax({
                 '<td class="project_progress">'+
                 '<div style="width: 160px">'+
                 '<input style="width: 50px; height: 38px; border: 2px white; float: left;" type="button" value="-" onclick="reductionOf(this)" />'+
-                '<input style="text-align: center; width: 50px; height: 32px; float: left;" type="text" id='+"in"+res[i].id+' value='+num+' onblur="checkNumber(this)" />'+
+                '<input style="text-align: center; width: 50px; height: 32px; float: left;" name="qinput" type="text" id='+"in"+res[i].id+' value='+num+' onblur="checkNumber(this)" />'+
                 '<input style="width: 50px; height: 38px; border: 2px white;" type="button" value="+" onclick="add(this,'+res[i].goodsRemaning+')" />'+
                 '</div>'+
                 '</td>'+
@@ -99,6 +99,8 @@ $.ajax({
                 $('#bj'+res[i].id).attr("disabled",true);
                 $('#bj'+res[i].id).css("pointer-events","none");
             }
+            var size = res.length;
+            $('#paylistid').val(size);
         }
     }
 })
