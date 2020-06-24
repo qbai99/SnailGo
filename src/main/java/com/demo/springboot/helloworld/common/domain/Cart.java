@@ -1,6 +1,7 @@
 package com.demo.springboot.helloworld.common.domain;
 
 public class Cart {
+
     private Integer id;
 
     private Long userId;

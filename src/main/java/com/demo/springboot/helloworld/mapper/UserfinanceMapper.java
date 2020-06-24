@@ -2,6 +2,8 @@ package com.demo.springboot.helloworld.mapper;
 
 import com.demo.springboot.helloworld.common.domain.Userfinance;
 import com.demo.springboot.helloworld.common.domain.UserfinanceExample;
+
+import java.util.HashMap;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -32,7 +34,7 @@ public interface UserfinanceMapper {
 
     Double selectBalance();
 
-    List<Userfinance> selectAll(Long userid);
+    List<Userfinance> selectAll(Long id);
 
-    void balancePay(int t);
+    void balancePay(HashMap map);
 }
