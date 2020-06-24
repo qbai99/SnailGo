@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Login/Registration Form Transition</title>
+  <title>登录/注册</title>
   
   
   <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Open+Sans'>
@@ -12,8 +12,12 @@
   
 </head>
 
-<body>
-  <p class="tip"></p>
+<body >
+  <p class="tip">
+    <a th:href="@{/}">
+      <img th:src="@{/img/logo.png}" alt="logo" style="width: 40px;height: 40px;margin-left: 90%"/>
+    </a>
+  </p>
 <div class="cont">
   <div class="form sign-in">
     <h2>Welcome back,</h2>
@@ -75,11 +79,11 @@
         <input type="radio" id="radioIdentity1" value="0" name="identity"
                style="display: inline;width: 10%;margin-left: 30%" checked>
         <label for="radioIdentity1" style="display:inline;width: 10%">
-          买家
+          BUYER
         </label>
         <input type="radio" id="radioIdentity2" value="1"  name="identity" style="display:inline;width: 10%">
         <label for="radioIdentity2" style="display:inline;width: 10%">
-          卖家
+          SELLER
         </label>
     </div>
       <button type="submit" class="submit">Sign Up</button>
@@ -89,13 +93,6 @@
   </div>
 </div>
 
-<a href="https://dribbble.com/shots/3306190-Login-Registration-form" target="_blank" class="icon-link">
-  <img src="http://icons.iconarchive.com/icons/uiconstock/socialmedia/256/Dribbble-icon.png">
-</a>
-<a href="https://twitter.com/NikolayTalanov" target="_blank" class="icon-link icon-link--twitter">
-  <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/twitter-128.png">
-</a>
-  
     <script src="js/login/index.js"></script>
 
 </body>
