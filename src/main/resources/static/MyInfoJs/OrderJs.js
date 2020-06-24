@@ -17,7 +17,7 @@ $.ajax({
                 '<a href='+"/goods/details?id="+res.Order[i].goodsId+'>'+
                 '<img style="width:4vh;height: 4vh" src='+"/goods_pics/"+res.Order[i].goodsId+"-pic-1.jpg"+' class="product-image" alt="Product Image">'+
                 ''+res.Order[i].goodsName+''+
-                // '</a>'+
+                '</a>'+
                 '</td>'+
                 '<td>'
                 + res.Order[i].goodsPrice + '元' +
