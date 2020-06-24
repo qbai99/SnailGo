@@ -272,7 +272,7 @@
     <if test="search_key!=null and goods_tag!=null and search_key!=''">
     and
       upper(goods_tag) like upper(concat('%',#{goods_tag},'%'))
-    or
+    and
     upper(goods_name) like upper(concat('%',#{search_key},'%'));
     </if>
   </select>

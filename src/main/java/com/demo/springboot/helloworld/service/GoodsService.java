@@ -11,6 +11,7 @@ public interface GoodsService {
     List<Goods> searchtest(String search_input);
     List<Goods> allgoods();
     List<Cart> addgoodstocart(long userId, long goodsId, double price, int quantity, String goodsname);
-
     int selectRem(long goodsId);
+
+    List<Goods> selectByShopid(Long shopId);
 }

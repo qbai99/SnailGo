@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.demo.springboot.helloworld.common.domain.Order">
     <id column="order_id" jdbcType="BIGINT" property="orderId" />
     <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="goods_id" jdbcType="BIGINT" property="goodsId" />
     <result column="buyer_id" jdbcType="BIGINT" property="buyerId" />
     <result column="seller_id" jdbcType="BIGINT" property="sellerId" />
     <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    order_id, user_id, buyer_id, seller_id, goods_name, goods_quantity, goods_price
+    order_id, user_id, goods_id, buyer_id, seller_id, goods_name, goods_quantity, goods_price
   </sql>
   <select id="selectByExample" parameterType="com.demo.springboot.helloworld.common.domain.OrderExample" resultMap="BaseResultMap">
     select
@@ -102,12 +103,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.demo.springboot.helloworld.common.domain.Order">
-    insert into order_request (order_id, user_id, buyer_id, 
-      seller_id, goods_name, goods_quantity, 
-      goods_price)
-    values (#{orderId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{buyerId,jdbcType=BIGINT}, 
-      #{sellerId,jdbcType=BIGINT}, #{goodsName,jdbcType=VARCHAR}, #{goodsQuantity,jdbcType=BIGINT}, 
-      #{goodsPrice,jdbcType=DOUBLE})
+    insert into order_request (order_id, user_id, goods_id, 
+      buyer_id, seller_id, goods_name, 
+      goods_quantity, goods_price)
+    values (#{orderId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{goodsId,jdbcType=BIGINT}, 
+      #{buyerId,jdbcType=BIGINT}, #{sellerId,jdbcType=BIGINT}, #{goodsName,jdbcType=VARCHAR}, 
+      #{goodsQuantity,jdbcType=BIGINT}, #{goodsPrice,jdbcType=DOUBLE})
   </insert>
   <insert id="insertSelective" parameterType="com.demo.springboot.helloworld.common.domain.Order">
     insert into order_request
@@ -117,6 +118,9 @@
       </if>
       <if test="userId != null">
         user_id,
+      </if>
+      <if test="goodsId != null">
+        goods_id,
       </if>
       <if test="buyerId != null">
         buyer_id,
@@ -140,6 +144,9 @@
       </if>
       <if test="userId != null">
         #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="goodsId != null">
+        #{goodsId,jdbcType=BIGINT},
       </if>
       <if test="buyerId != null">
         #{buyerId,jdbcType=BIGINT},
@@ -173,6 +180,9 @@
       <if test="record.userId != null">
         user_id = #{record.userId,jdbcType=BIGINT},
       </if>
+      <if test="record.goodsId != null">
+        goods_id = #{record.goodsId,jdbcType=BIGINT},
+      </if>
       <if test="record.buyerId != null">
         buyer_id = #{record.buyerId,jdbcType=BIGINT},
       </if>
@@ -197,6 +207,7 @@
     update order_request
     set order_id = #{record.orderId,jdbcType=BIGINT},
       user_id = #{record.userId,jdbcType=BIGINT},
+      goods_id = #{record.goodsId,jdbcType=BIGINT},
       buyer_id = #{record.buyerId,jdbcType=BIGINT},
       seller_id = #{record.sellerId,jdbcType=BIGINT},
       goods_name = #{record.goodsName,jdbcType=VARCHAR},
@@ -211,6 +222,9 @@
     <set>
       <if test="userId != null">
         user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="goodsId != null">
+        goods_id = #{goodsId,jdbcType=BIGINT},
       </if>
       <if test="buyerId != null">
         buyer_id = #{buyerId,jdbcType=BIGINT},
@@ -233,6 +247,7 @@
   <update id="updateByPrimaryKey" parameterType="com.demo.springboot.helloworld.common.domain.Order">
     update order_request
     set user_id = #{userId,jdbcType=BIGINT},
+      goods_id = #{goodsId,jdbcType=BIGINT},
       buyer_id = #{buyerId,jdbcType=BIGINT},
       seller_id = #{sellerId,jdbcType=BIGINT},
       goods_name = #{goodsName,jdbcType=VARCHAR},

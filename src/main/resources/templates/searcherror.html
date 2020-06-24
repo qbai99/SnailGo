@@ -136,16 +136,42 @@
     </div>
     <!-- /.content-header -->
   </div>
+    <section class="featur-tabs padding-top-60 padding-bottom-60" style="background-image: url(img/bg-img/bg-1.jpg);">
+      <div class="container" style="height: 600px">
+        <div class="row h-100 align-items-center" style="height: 600px">
+          <div class="col-12">
+            <div class="hero-content">
+
+              <h5 th:text="'在找'+${tag}+'？'"></h5>
+              <h5>为你推荐以下商品</h5>
+
+            </div>
+
+          </div>
+          <div class="item-col-5" style="margin-top: 30px">
+            <li  th:each="sc:${relatedgoods}" style="list-style:none; /* 将默认的列表符号去掉 */padding:0; /* 将默认的内边距去掉 */margin:0; /* 将默认的外边距去掉 */">
+            <!-- Product -->
+            <div class="product">
+              <article>
+                <a th:href="'/goods/details?id='+${sc.goodsId}"><img class="img-fluid" id="img-1" th:src="'/goods_pics/'+${sc.goodsId}+'-pic-1.jpg'"/></a>
+                <!-- Content -->
+                <span class="tag" th:text="${sc.goodsTag}"></span> <a href="#." class="tittle" th:text="${sc.goodsName}"></a>
+                <!-- Reviews -->
+                <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                <div class="price"><p class="title fl" th:text="'¥'+${sc.goodsPrice}"></p></div>
+                <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+            </div>
+            </li>
+        
+
+
+          </div>
+        </div>
+      </div>
+    </section>
 
 </div>
-<footer class="main-footer">
-  <!-- To the right -->
-  <div class="float-right d-none d-sm-inline">
-    Anything you want
-  </div>
-  <!-- Default to the left -->
-  <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-</footer>
+
 </div>
 <!-- ./wrapper -->
 
