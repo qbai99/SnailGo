@@ -327,12 +327,63 @@
                 <div class="card card-default" id="address">
                     <div class="card-header">
                         <div class="card-body">
+                            <label>省</label>
+                            <select class="form-control select2bs4" style="width: 100%;" id="province">
+                                <option selected="selected">河北省</option>
+                                <option>山西省</option>
+                                <option>辽宁省</option>
+                                <option>吉林省</option>
+                                <option>黑龙江省</option>
+                                <option>江苏省</option>
+                                <option>浙江省</option>
+                                <option>安徽省</option>
+                                <option>福建省</option>
+                                <option>江西省</option>
+                                <option>山东省</option>
+                                <option>河南省</option>
+                                <option>湖北省</option>
+                                <option>湖南省</option>
+                                <option>广东省</option>
+                                <option>海南省</option>
+                                <option>四川省</option>
+                                <option>贵州省</option>
+                                <option>云南省</option>
+                                <option>陕西省</option>
+                                <option>甘肃省</option>
+                                <option>青海省</option>
+                                <option>台湾省</option>
+                                <option>内蒙古自治区</option>
+                                <option>广西壮族自治区</option>
+                                <option>西藏自治区</option>
+                                <option>宁夏回族自治区</option>
+                                <option>新疆维吾尔自治区</option>
+                                <option>北京市</option>
+                                <option>天津市</option>
+                                <option>上海市</option>
+                                <option>重庆市</option>
+                                <option>香港特别行政区</option>
+                                <option>澳门特别行政区</option>
+                            </select>
+                        </div>
+                        <div class="card-body">
+                            <label>市</label>
+                            <input id="city" class="form-control" placeholder="请输入要添加的地址">
+                        </div>
+                        <div class="card-body">
+                            <label>街道</label>
+                            <input id="street" class="form-control" placeholder="请输入要添加的地址">
+                        </div>
+                        <div class="card-body">
+                            <label>详细地址</label>
                             <input id="newAddress" class="form-control" placeholder="请输入要添加的地址">
                         </div>
                         <div class="card-body">
-                        <input id="newPhoneNumber" class="form-control" placeholder="请输入收件人的手机号码" oninput="checkInput()">
+                            <label>手机号码</label>
+                            <input id="newPhoneNumber" class="form-control" placeholder="请输入收件人的手机号码" oninput="checkInput()">
+                            <p id="alert" style="color: rgba(255,0,0,0.5);margin: 0;font-size: 80%;"></p>
                         </div>
                         <div class="card-body">
+                            <label>收件人姓名</label>
                             <input id="newPeople" class="form-control" placeholder="请输入收件人姓名">
                         </div>
                         <div class="card-tools">
@@ -370,46 +421,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <!--<tr>
-                                        <td>
-                                            <div class="icheck-primary">
-                                                <input type="checkbox" value="" id="check1">
-                                                <label for="check1"></label>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <a href="goods/details">
-                                                <img style="width:4vh;height: 4vh" src="/AdminLTE-3.0.5/dist/img/prod-1.jpg" class="product-image" alt="Product Image">
-                                                iPad pro</a>
-                                        </td>
-                                        <td>
-                                        256G
-                                        </td>
-                                        <td class="project_progress">
-                                            <div style="width: 160px">
-                                                <input style="width: 50px; height: 38px; border: 2px white; float: left;" type="button" value="-" onclick="reductionOf(this)" />
-                                                <input style="text-align: center; width: 50px; height: 32px; float: left;" type="text" value="1" onblur="checkNumber(this)" />
-                                                <input style="width: 50px; height: 38px; border: 2px white;" type="button" value="+" onclick="add(this)" />
-                                            </div>
-                                        </td>
-                                        <td class="project-state">
-                                            <span class="badge badge-success">Success</span>
-                                        </td>
-                                        <td >
-                                            1234.0
-                                        </td>
-                                        <td class="project-actions text-right">
-                                            <a class="btn btn-warning  btn-sm" href="#">
-                                                <img  src="/img/yen-2x.png"><img>
-                                                结算
-                                            </a>
-                                            <a class="btn btn-danger btn-sm" href="#">
-                                                <i class="fas fa-trash">
-                                                </i>
-                                                删除
-                                            </a>
-                                        </td>
-                                    </tr>-->
+
                                     </tbody>
                                 </table>
                             </div>
