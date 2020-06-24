@@ -30,17 +30,31 @@ $.ajax({
     }
 })
 
+
 function checkInput() {
     phoneNumber = $('#newPhoneNumber').val();
+    console.log(phoneNumber.length);
+    if(phoneNumber.length!=11 && phoneNumber.length!=7){
+        $('#alert').html("手机号码的长度应该为7或11！");
+        console.log(1)
+    }
+    else{
+        $('#alert').html("");
+        console.log(3)
+    }
 }
 function AddAddress() {
+    var province = $('#province').val();
+    console.log(province);
+    var city = $('#city').val();
+    var street = $('#street').val();
     var Address = $('#newAddress').val();
     var phoneNumber = $('#newPhoneNumber').val();
     var people = $('#newPeople').val();
-    var newAddress = Address+"/"+phoneNumber+"/"+people;
-    if(phoneNumber.length!=11)
+    var newAddress = province+city+street+Address+"/"+phoneNumber+"/"+people;
+    if(phoneNumber.length!=11 || phoneNumber.length!=7)
     {
-        alert("手机号码的长度应该为11！");
+        alert("手机号码的长度应该为7或11！");
         return;
     }
     else{
