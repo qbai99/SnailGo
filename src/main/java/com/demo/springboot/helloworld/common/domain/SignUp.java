@@ -13,8 +13,6 @@ public class SignUp {
 
     private String emailAddress;
 
-    private Integer sex;
-
     public Long getSignUpId() {
         return signUpId;
     }
@@ -61,13 +59,5 @@ public class SignUp {
 
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress == null ? null : emailAddress.trim();
-    }
-
-    public Integer getSex() {
-        return sex;
-    }
-
-    public void setSex(Integer sex) {
-        this.sex = sex;
     }
 }
