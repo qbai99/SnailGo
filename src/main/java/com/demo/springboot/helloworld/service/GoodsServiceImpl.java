@@ -57,7 +57,7 @@ public class GoodsServiceImpl implements GoodsService{
     public List<Cart> addgoodstocart(long userId, long goodsId, double price, int quantity, String goodsname) {
         Cart cart=new Cart();
         cart.setGoodsId(goodsId);
-        cart.setUserId((long) 1);
+        cart.setUserId(userId);
         cart.setGoodsPrice(price);
         cart.setGoodsQuantity(quantity);
         cart.setGoodsName(goodsname);
