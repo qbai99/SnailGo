@@ -283,6 +283,76 @@ public class CommentExample {
             addCriterion("user_id not between", value1, value2, "userId");
             return (Criteria) this;
         }
+
+        public Criteria andComIsNull() {
+            addCriterion("com is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andComIsNotNull() {
+            addCriterion("com is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andComEqualTo(String value) {
+            addCriterion("com =", value, "com");
+            return (Criteria) this;
+        }
+
+        public Criteria andComNotEqualTo(String value) {
+            addCriterion("com <>", value, "com");
+            return (Criteria) this;
+        }
+
+        public Criteria andComGreaterThan(String value) {
+            addCriterion("com >", value, "com");
+            return (Criteria) this;
+        }
+
+        public Criteria andComGreaterThanOrEqualTo(String value) {
+            addCriterion("com >=", value, "com");
+            return (Criteria) this;
+        }
+
+        public Criteria andComLessThan(String value) {
+            addCriterion("com <", value, "com");
+            return (Criteria) this;
+        }
+
+        public Criteria andComLessThanOrEqualTo(String value) {
+            addCriterion("com <=", value, "com");
+            return (Criteria) this;
+        }
+
+        public Criteria andComLike(String value) {
+            addCriterion("com like", value, "com");
+            return (Criteria) this;
+        }
+
+        public Criteria andComNotLike(String value) {
+            addCriterion("com not like", value, "com");
+            return (Criteria) this;
+        }
+
+        public Criteria andComIn(List<String> values) {
+            addCriterion("com in", values, "com");
+            return (Criteria) this;
+        }
+
+        public Criteria andComNotIn(List<String> values) {
+            addCriterion("com not in", values, "com");
+            return (Criteria) this;
+        }
+
+        public Criteria andComBetween(String value1, String value2) {
+            addCriterion("com between", value1, value2, "com");
+            return (Criteria) this;
+        }
+
+        public Criteria andComNotBetween(String value1, String value2) {
+            addCriterion("com not between", value1, value2, "com");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

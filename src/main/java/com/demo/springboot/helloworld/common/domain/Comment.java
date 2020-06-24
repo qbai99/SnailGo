@@ -7,6 +7,8 @@ public class Comment {
 
     private Integer userId;
 
+    private String com;
+
     public Integer getCommentId() {
         return commentId;
     }
@@ -29,5 +31,13 @@ public class Comment {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public String getCom() {
+        return com;
+    }
+
+    public void setCom(String com) {
+        this.com = com == null ? null : com.trim();
     }
 }

@@ -5,6 +5,7 @@
     <id column="comment_id" jdbcType="INTEGER" property="commentId" />
     <result column="goods_id" jdbcType="BIGINT" property="goodsId" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="com" jdbcType="VARCHAR" property="com" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    comment_id, goods_id, user_id
+    comment_id, goods_id, user_id, com
   </sql>
   <select id="selectByExample" parameterType="com.demo.springboot.helloworld.common.domain.CommentExample" resultMap="BaseResultMap">
     select
@@ -98,10 +99,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.demo.springboot.helloworld.common.domain.Comment">
-    insert into comment (comment_id, goods_id, user_id
-      )
-    values (#{commentId,jdbcType=INTEGER}, #{goodsId,jdbcType=BIGINT}, #{userId,jdbcType=INTEGER}
-      )
+    insert into comment (comment_id, goods_id, user_id, 
+      com)
+    values (#{commentId,jdbcType=INTEGER}, #{goodsId,jdbcType=BIGINT}, #{userId,jdbcType=INTEGER}, 
+      #{com,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.demo.springboot.helloworld.common.domain.Comment">
     insert into comment
@@ -115,6 +116,9 @@
       <if test="userId != null">
         user_id,
       </if>
+      <if test="com != null">
+        com,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="commentId != null">
@@ -125,6 +129,9 @@
       </if>
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="com != null">
+        #{com,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -146,6 +153,9 @@
       <if test="record.userId != null">
         user_id = #{record.userId,jdbcType=INTEGER},
       </if>
+      <if test="record.com != null">
+        com = #{record.com,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -155,7 +165,8 @@
     update comment
     set comment_id = #{record.commentId,jdbcType=INTEGER},
       goods_id = #{record.goodsId,jdbcType=BIGINT},
-      user_id = #{record.userId,jdbcType=INTEGER}
+      user_id = #{record.userId,jdbcType=INTEGER},
+      com = #{record.com,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -169,13 +180,17 @@
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
       </if>
+      <if test="com != null">
+        com = #{com,jdbcType=VARCHAR},
+      </if>
     </set>
     where comment_id = #{commentId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.demo.springboot.helloworld.common.domain.Comment">
     update comment
     set goods_id = #{goodsId,jdbcType=BIGINT},
-      user_id = #{userId,jdbcType=INTEGER}
+      user_id = #{userId,jdbcType=INTEGER},
+      com = #{com,jdbcType=VARCHAR}
     where comment_id = #{commentId,jdbcType=INTEGER}
   </update>
 </mapper>

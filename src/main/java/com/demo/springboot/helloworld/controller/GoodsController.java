@@ -1,7 +1,9 @@
 package com.demo.springboot.helloworld.controller;
 
 import com.demo.springboot.helloworld.common.domain.Cart;
+import com.demo.springboot.helloworld.common.domain.Comment;
 import com.demo.springboot.helloworld.common.domain.Goods;
+import com.demo.springboot.helloworld.service.CommentService;
 import com.demo.springboot.helloworld.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,13 +52,18 @@ public class   GoodsController {
 
     }
 
+
+    @Autowired
+    private CommentService commentService;
     @RequestMapping("/details")
     public String details(long id,Model model)
     {
         List<Goods> tmp = goodsService.goodsdetails(id);
+        List<Comment> tmp2= commentService.allcomment(id);
         if (tmp.size() != 0) {//返回不为空。搜索成功
             /*将搜索结果集合、集合元素个数(结果商品个数)、搜索关键字添加到model的属性中返回前端页面*/
             model.addAttribute("goodsdetails", tmp);//搜索结果商品list
+            model.addAttribute("comments",tmp2);
             return "product_details";
         } else {//搜索失败
             model.addAttribute("error_search_fail", "没有相关商品");

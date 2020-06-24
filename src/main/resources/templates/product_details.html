@@ -229,6 +229,9 @@
                     <p class="tags" th:text="${goodsdetails[0].goodsDsp}"></p>
 
                   <div role="tabpanel" class="tab-pane fade" id="cus-rev"></div>
+                    <li th:each="sc:${comments}">
+                      <p class="tags" th:text="${sc.com}"></p>
+                    </li>
                   <div role="tabpanel" class="tab-pane fade" id="ship"></div>
                 </div>
               </div>
