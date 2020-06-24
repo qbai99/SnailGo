@@ -102,7 +102,7 @@ public class UserinfoServiceImpl implements UserinfoService{
         userinfo.setUserPassword(signUp.getUserPassword());
         userinfo.setUserName(signUp.getUserName());
         userinfo.setUserTag(signUp.getIdentity());
-        userinfo.setUsersex(signUp.getSex());
+        userinfo.setUsersex(null);
         userinfo.setUserIntroduction(null);
         userinfo.setUserPhonenumber(null);
         userinfo.setUserBirthdate(null);

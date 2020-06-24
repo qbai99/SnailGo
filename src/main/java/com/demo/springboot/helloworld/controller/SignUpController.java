@@ -33,18 +33,20 @@ public class SignUpController{
     {
         if(signup.getEmailAddress().equals(""))
         {
-            model.addAttribute("errorMsg","邮箱不能为空");
-            return "signUp/signUpPage";
+            model.addAttribute("errorMsg1","邮箱不能为空");
+            model.addAttribute("errorMsg","注册失败");
+            return "login/loginPage";
         }
         if(signup.getUserPassword().equals(""))
         {
-            model.addAttribute("errorMsg","密码不能为空");
-            return "signUp/signUpPage";
+            model.addAttribute("errorMsg2","密码不能为空");
+            return "login/loginPage";
         }
         if(signup.getUserName().equals(""))
         {
-            model.addAttribute("errorMsg","昵称不能为空");
-            return "signUp/signUpPage";
+            model.addAttribute("errorMsg3","昵称不能为空");
+            model.addAttribute("errorMsg","注册失败");
+            return "login/loginPage";
         }
         if(signUpService.signUp(signup)){
             model.addAttribute("userAdminForUser",signup.getEmailAddress());
@@ -52,8 +54,9 @@ public class SignUpController{
             userinfoService.addUser(signUpInDB);
             return "login/loginPage";
         }
-        model.addAttribute("errorMsg","邮箱已被注册");
-        return "signUp/signUpPage";
+        model.addAttribute("errorMsg4","邮箱已被注册");
+        model.addAttribute("errorMsg","注册失败");
+        return "login/loginPage";
     }
 
     @RequestMapping("/loginPage")
@@ -70,7 +73,7 @@ public class SignUpController{
         SignUp SignUpInDB = signUpService.login(login);
         if (SignUpInDB == null) {
             System.out.println("用户名不存在");
-            model.addAttribute("errorMsg","用户名不存在");
+            model.addAttribute("errorMsg5","用户名不存在");
 
         } else {
             String passwordInDB=SignUpInDB.getUserPassword();
@@ -84,12 +87,11 @@ public class SignUpController{
                 cookie.setSecure(false);
                 response.addCookie(cookie);
                 return "/index";
-//                return "login/loginPage";
             }
             else
             {
                 System.out.println("登陆失败");
-                model.addAttribute("errorMsg","密码错误");
+                model.addAttribute("errorMsg6","密码错误");
             }
         }
         return "login/loginPage";
