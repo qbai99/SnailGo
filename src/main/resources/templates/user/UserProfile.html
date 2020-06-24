@@ -6,6 +6,7 @@
     <title>网上商城</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/jquery/dist/jquery.js"></script>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="/AdminLTE-3.0.5/plugins/fontawesome-free/css/all.min.css">
@@ -248,7 +249,7 @@
                         </a>
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="/" class="nav-link">
+                        <a href="/index" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
                                 商品页面
@@ -312,19 +313,19 @@
                                          alt="User profile picture">
                                 </div>
 
-                                <h3 class="profile-username text-center">胡潇的魔法小屋</h3>
+                                <h3 class="profile-username text-center" id="shopName">胡潇的魔法小屋</h3>
 
-                                <p class="text-muted text-center">胡潇</p>
+                                <p class="text-muted text-center" id="userName">胡潇</p>
 
                                 <ul class="list-group list-group-unbordered mb-3">
+                                    <!--<li class="list-group-item">-->
+                                        <!--<b>粉丝</b> <a class="float-right">1,322</a>-->
+                                    <!--</li>-->
+                                    <!--<li class="list-group-item">-->
+                                        <!--<b>关注</b> <a class="float-right">543</a>-->
+                                    <!--</li>-->
                                     <li class="list-group-item">
-                                        <b>粉丝</b> <a class="float-right">1,322</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>关注</b> <a class="float-right">543</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>商品</b> <a class="float-right">13,287</a>
+                                        <b>商品</b> <a class="float-right" id="goodsQuantity">13,287</a>
                                     </li>
                                 </ul>
 
@@ -343,7 +344,7 @@
                             <div class="card-body">
                                 <strong><i class="fas fa-book mr-1"></i>主营</strong>
 
-                                <p class="text-muted">
+                                <p class="text-muted" id="mainBusiness">
                                     魔法武器，魔法书，魔药原料，自制魔药等
                                 </p>
 
@@ -351,21 +352,21 @@
 
                                 <strong><i class="fas fa-map-marker-alt mr-1"></i> 地址</strong>
 
-                                <p class="text-muted">中国昆仑山顶</p>
+                                <p class="text-muted" id="location">中国昆仑山顶</p>
 
                                 <hr>
 
-                                <strong><i class="fas fa-pencil-alt mr-1"></i> 用户评价</strong>
+                                <strong><i class="fas fa-pencil-alt mr-1"></i> 店铺评价</strong>
 
                                 <p class="text-muted">
-                                    <span class="tag tag-danger">☆☆☆☆☆</span>
+                                    <span class="tag tag-danger" id="star">☆☆☆☆☆</span>
                                 </p>
 
                                 <hr>
 
                                 <strong><i class="far fa-file-alt mr-1"></i> 店铺简介</strong>
 
-                                <p class="text-muted">店铺的商品都经过真人测试，质量绝对有保障</p>
+                                <p class="text-muted" id="introduction">店铺的商品都经过真人测试，质量绝对有保障</p>
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -830,6 +831,7 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
+<script src="/MyInfoJs/ShopPage.js"></script>
 <script src="/AdminLTE-3.0.5/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="/AdminLTE-3.0.5/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -14,8 +14,8 @@ $.ajax({
                 res.Order[i].orderId+
                 '</td>'+
                 '<td>'+
-                // '<a href='+"/goods/details?id="+res.GoodsInfo[i].goodsId+'>'+
-                // '<img style="width:4vh;height: 4vh" src='+"/goods_pics/"+res.GoodsInfo[i].goodsId+"-pic-1.jpg"+' class="product-image" alt="Product Image">'+
+                '<a href='+"/goods/details?id="+res.Order[i].goodsId+'>'+
+                '<img style="width:4vh;height: 4vh" src='+"/goods_pics/"+res.Order[i].goodsId+"-pic-1.jpg"+' class="product-image" alt="Product Image">'+
                 ''+res.Order[i].goodsName+''+
                 // '</a>'+
                 '</td>'+

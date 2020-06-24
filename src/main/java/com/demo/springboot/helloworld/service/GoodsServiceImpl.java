@@ -73,6 +73,15 @@ public class GoodsServiceImpl implements GoodsService{
         return goodsMapper.selectRem(goodsId);
     }
 
+    @Override
+    public List<Goods> selectByShopid(Long shopId) {
+        GoodsExample goodsExample = new GoodsExample();
+        goodsExample.createCriteria().andShopIdEqualTo(shopId);
+
+        List<Goods> goodsList = goodsMapper.selectByExample(goodsExample);
+
+        return goodsList;
+    }
 
 
 }
