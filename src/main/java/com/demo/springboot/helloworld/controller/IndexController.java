@@ -22,7 +22,7 @@ public class IndexController {
     public String index(Model model){
         List<Goods> tmp= goodsService.allgoods();
         model.addAttribute("allgoods",tmp);
-        return "login/loginPage";
+        return "index";
     }
 
     @RequestMapping("/Listall")

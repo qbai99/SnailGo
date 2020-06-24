@@ -1,0 +1,1 @@
+var userEmail = document.cookie.split('=')[6];

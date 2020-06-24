@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -68,7 +70,7 @@ public class   GoodsController {
         }
 
     @RequestMapping("/addgoodstocart")
-    public String addgoodstocart(long userId,long goodsId,double price,int quantity,Model model, String goodsname){
+    public String addgoodstocart(HttpServletRequest request, @RequestParam(value="userId") long userId, long goodsId, double price, int quantity, Model model, String goodsname){
         List<Cart> tmp1 =goodsService.addgoodstocart(userId,goodsId,price,quantity,goodsname);
         List<Goods> tmp2 = goodsService.goodsdetails(goodsId);
         model.addAttribute("goodsdetails", tmp2);//搜索结果商品list

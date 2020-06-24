@@ -69,7 +69,7 @@
 
       <!-- NAV RIGHT -->
       <div class="nav-right">
-        <a href="/user/MyInformation"><i class="fa fa-user"></i> <strong>个人中心</strong> </a>
+        <a href="/user/MyInformation"><i class="fa fa-user"></i> <strong><span id="test"></span></strong> </a>
         <a href="/"><i class="fa fa-comment"></i><strong>消息</strong></a>
         <a href="/cart"> <i class="fa fa-shopping-cart"></i></a>
       </div>
@@ -774,8 +774,76 @@
   <a href="#" class="cd-top"><i class="fa fa-angle-up"></i></a> 
   <!-- GO TO TOP End --> 
 </div>
-<!-- End Page Wrapper --> 
+<!-- End Page Wrapper -->
+<script src="/js/vendors/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    bsCustomFileInput.init();
+  });
 
+  var decodedCookie = decodeURIComponent(document.cookie);
+  console.log(decodedCookie.substring(decodedCookie.indexOf('=')+1));
+  $.ajax({
+    type: "GET",
+    url: "/user/information",
+    // data:JSON.stringify(dataObj) ,
+    // data:{
+    //     userEmail:userEmail
+    // },
+    contentType: "application/json; charset=utf-8",
+    // dataType: "json",
+    success: function (res, ifo) {
+      binaryFile = res.UserInfo[0].userImg;
+      console.log("返回图片"+res.UserInfo[0].userImg);
+      $('#preview').attr('src',res.UserInfo[0].userImg);
+      $("#emailInput").attr('value',res.UserInfo[0].userAdmin);
+      // $("#passwordInput").attr('value',res.UserInfo[0].userPassword);
+      $("#userNameindex").attr('value',res.UserInfo[0].userName);
+      $("#test").html(res.UserInfo[0].userName);
+      $("#userId").html(res.UserInfo[0].userId);
+      console.log((res.UserInfo[0].userId))
+      switch (Number(res.UserInfo[0].usersex)) {
+        case 0:
+          $("#sex").val('保密');
+          break;
+        case 1:
+          $("#sex").val('男');
+          break;
+        case 2:
+          $("#sex").val('女');
+          break;
+        default:
+          break;
+      }
+      $("#birthDate").attr('value',res.UserInfo[0].userBirthdate);
+      $("#phoneNumber").attr('value',res.UserInfo[0].userPhonenumber);
+      $("#introduction").attr('value',res.UserInfo[0].userIntroduction);
+
+      $("#balance").html(res.UserFinance[0].balance);
+      $("#level").html(res.UserLevel[0].level);
+      $("#point").html(res.UserLevel[0].points);
+      switch (res.UserInfo[0].userTag) {
+        case false:
+          $("#identity").html("买家");
+          break;
+        case true:
+          $("#identity").html("买家");
+          break;
+        default:
+          break;
+      }
+      console.log(res);
+    },
+    fali:function () {
+      console.log("错误")
+    },
+    error:function () {
+      console.log("报错")
+    }
+  });
+
+
+</script>
 <!-- JavaScripts -->
 <script src="/MyInfoJs/GoodsHistory.js"></script>
 <script src="/js/vendors/jquery/jquery.min.js"></script>
