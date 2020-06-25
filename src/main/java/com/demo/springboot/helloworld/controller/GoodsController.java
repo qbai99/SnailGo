@@ -5,9 +5,11 @@ import com.demo.springboot.helloworld.common.domain.Comment;
 import com.demo.springboot.helloworld.common.domain.Goods;
 import com.demo.springboot.helloworld.service.CommentService;
 import com.demo.springboot.helloworld.service.GoodsService;
+import com.demo.springboot.helloworld.service.UserinfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -76,13 +78,36 @@ public class   GoodsController {
         public String newdetail(){
             return "product_details";
         }
-
+    @Autowired
+    private UserinfoService userinfoService;
     @RequestMapping("/addgoodstocart")
-    public String addgoodstocart(HttpServletRequest request, @RequestParam(value="userId") long userId, long goodsId, double price, int quantity, Model model, String goodsname){
+
+    public String addgoodstocart(@CookieValue("username") String email,HttpServletRequest request, long goodsId, double price, int quantity, Model model, String goodsname){
+
+        long userId=userinfoService.findWithAdmin(email).get(0).getUserId();
         List<Cart> tmp1 =goodsService.addgoodstocart(userId,goodsId,price,quantity,goodsname);
         List<Goods> tmp2 = goodsService.goodsdetails(goodsId);
         model.addAttribute("goodsdetails", tmp2);//搜索结果商品list
 
-        return"goods/details";
+        return"product_details";
+    }
+
+    @RequestMapping("/addgoodstocartlist")
+    public String addgoodstocartlist(@CookieValue("username") String email,HttpServletRequest request, long goodsId, double price, int quantity, Model model, String goodsname,String search_key,String goods_tag){
+        long userId=userinfoService.findWithAdmin(email).get(0).getUserId();
+        if(userinfoService.findWithAdmin(email).size()==0){
+            return "error";
+        }
+        List<Cart> tmp1 =goodsService.addgoodstocart(userId,goodsId,price,quantity,goodsname);
+        List<Goods> tmp2 = goodsService.search(search_key,goods_tag);
+
+            /*将搜索结果集合、集合元素个数(结果商品个数)、搜索关键字添加到model的属性中返回前端页面*/
+            model.addAttribute("search_result", tmp2);//搜索结果商品list
+            model.addAttribute("result_num", tmp2.size());//搜索结果商品数
+            model.addAttribute("search_key", search_key);//搜索关键词
+            model.addAttribute("tag", goods_tag);//tag
+
+            return "search";//跳转到搜索页search.html
+
     }
 }

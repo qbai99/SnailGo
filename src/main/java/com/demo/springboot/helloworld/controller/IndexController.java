@@ -25,9 +25,5 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping("/Listall")
-    public  String Listall(){
-        return "ListProducts";
-    }
 
 }

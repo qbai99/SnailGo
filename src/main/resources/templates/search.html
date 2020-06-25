@@ -167,7 +167,7 @@
                                         <div class="position-center-center">
                                             <div class="price"><p class="title fl" th:text="'¥'+${sc.goodsPrice}"></p></div>
                                             <p>库存: <span class="in-stock" th:text="${sc.goodsRemaning}"></span></p>
-                                            <a href="#." class="btn-round"><i class="icon-basket-loaded"></i> 加入到购物车</a> </div>
+                                            <a class="btn-round" th:href="'/goods/addgoodstocartlist?'+'&goodsId='+${sc.goodsId}+'&price='+${sc.goodsPrice}+'&quantity=1'+'&goodsname='+${sc.goodsName}+'&goods_tag='+${tag}+'&search_key='+${search_key}" ><i class="icon-basket-loaded"></i> 加入到购物车</a> </div>
                                     </div>
                                 </div>
                             </div>
