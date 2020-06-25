@@ -169,7 +169,7 @@
                   <!-- Item Content -->
                   <div class="col-xs-7"> <span class="tags" th:text="${goodsdetails[0].goodsTag}"></span>
                     <h4 th:text="${goodsdetails[0].goodsName}"></h4>
-                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10" style="color: #0a0a0a" th:text="${commentnumber}+'条评论'"></span></p>
                     <div class="row">
                       <div class="col-sm-6"><span class="price" th:text="'¥'+${goodsdetails[0].goodsPrice}"> </span></div>
                       <div class="col-sm-6">
@@ -181,7 +181,7 @@
                       <span th:text="${goodsdetails[0].goodsDsp}"></span>
                     </p>
                     <!-- Colors -->
-                    <div class="row">
+                    <div class="row" style="margin-top: 30px">
                       <div class="col-xs-5">
                         <div class="clr"> <span style="background:#068bcd"></span> <span style="background:#d4b174"></span> <span style="background:#333333"></span> </div>
                       </div>
@@ -219,23 +219,82 @@
                 <!-- Nav tabs -->
                 <ul class="nav" role="tablist">
                   <li role="presentation" class="active"><a href="#pro-detil"  role="tab" data-toggle="tab">商品详情</a></li>
-                  <li role="presentation"><a href="#cus-rev"  role="tab" data-toggle="tab">用户评价</a></li>
+                  <li role="presentation"><a href="#cus-rev"  role="tab" data-toggle="tab">用户评价<span class="margin-left-10" style="color: #0a0a0a" th:text="'('+${commentnumber}+'条评论)'"></span></a></li>
                 </ul>
-                
-                <!-- Tab panes -->
-                <div class="tab-content">
-                  <div role="tabpanel" class="tab-pane fade in active" id="pro-detil"> 
-                    <!-- List Details -->
-                    <p class="tags" th:text="${goodsdetails[0].goodsDsp}"></p>
 
-                  <div role="tabpanel" class="tab-pane fade" id="cus-rev"></div>
+                <div class="tab-content">
+                  <div role="tabpanel" class="tab-pane fade in active" id="pro-detil">
+                    <!-- List Details -->
+
+                      <p th:text="${goodsdetails[0].goodsDsp}">
+
+
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                        <tr>
+                          <th>Carrier</th>
+                          <th>Compatibility Rating </th>
+                          <th>Voice / Text </th>
+                          <th>Voice / Text </th>
+                          <th>2G Data </th>
+                          <th>3G Data </th>
+                          <th>4G LTE Data </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                          <td>AT&T </td>
+                          <td>Fully Compatible</td>
+                          <td class="text-center"><i class="fa fa-check"></i></td>
+                          <td class="text-center"><i class="fa fa-check"></i></td>
+                          <td class="text-center"></td>
+                          <td class="text-center"><i class="fa fa-check"></i></td>
+                          <td class="text-center"></td>
+                        </tr>
+                        <tr>
+                          <td>Sprint </td>
+                          <td>No Voice/Text and Partial Data Connection</td>
+                          <td class="text-center"></td>
+                          <td class="text-center"><i class="fa fa-check"></i></td>
+                          <td class="text-center"><i class="fa fa-check"></i></td>
+                          <td class="text-center"><i class="fa fa-check"></i></td>
+                          <td class="text-center"><i class="fa fa-check"></i></td>
+                        </tr>
+                        <tr>
+                          <td>Q-Mobile </td>
+                          <td>Partial Data Connection</td>
+                          <td class="text-center"><i class="fa fa-check"></i></td>
+                          <td class="text-center"><i class="fa fa-check"></i></td>
+                          <td class="text-center"><i class="fa fa-check"></i></td>
+                          <td class="text-center"></td>
+                          <td class="text-center"><i class="fa fa-check"></i></td>
+                        </tr>
+                        <tr>
+                          <td>Verizon Wireless </td>
+                          <td>No Votice/Text and Partial Data Connection</td>
+                          <td class="text-center"><i class="fa fa-check"></i></td>
+                          <td class="text-center"></td>
+                          <td class="text-center"><i class="fa fa-check"></i></td>
+                          <td class="text-center"><i class="fa fa-check"></i></td>
+                          <td class="text-center"><i class="fa fa-check"></i></td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div role="tabpanel" class="tab-pane fade" id="cus-rev">
                     <li th:each="sc:${comments}">
-                      <p class="tags" th:text="${sc.com}"></p>
+                    <p class="title"style="font-size: 16px;font-weight: bold" th:text="'用户id：'+${sc.userId}+'评论说'
+                    ">
+                    </p>
+                      <i class="bx bxs-quote-alt-left" style="margin-left: 50px;"></i> <span style="font-size: 14px;font-style: italic " th:text="${sc.com}"></span> <i class="bx bxs-quote-alt-right"></i>
                     </li>
+                  </div>
                   <div role="tabpanel" class="tab-pane fade" id="ship"></div>
                 </div>
               </div>
-            </div>
+              </div>
             
             <!-- Related Products -->
             <section class="padding-top-30 padding-bottom-0"> 
@@ -252,7 +311,7 @@
                     <!-- Content --> 
                     <span class="tag">Latop</span> <a href="#." class="tittle">Laptop Alienware 15 i7 Perfect For Playing Game</a> 
                     <!-- Reviews -->
-                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 条评论</span></p>
                     <div class="price">$350.00 </div>
                     <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
                 </div>
@@ -571,76 +630,10 @@
   <!-- GO TO TOP End --> 
 </div>
 <!-- End Page Wrapper -->
-<script src="/js/vendors/jquery/jquery.min.js"></script>
-<script type="text/javascript">
-  $(document).ready(function () {
-    bsCustomFileInput.init();
-  });
-
-  var decodedCookie = decodeURIComponent(document.cookie);
-  console.log(decodedCookie.substring(decodedCookie.indexOf('=')+1));
-  $.ajax({
-    type: "GET",
-    url: "/user/information",
-    // data:JSON.stringify(dataObj) ,
-    // data:{
-    //     userEmail:userEmail
-    // },
-    contentType: "application/json; charset=utf-8",
-    // dataType: "json",
-    success: function (res, ifo) {
-      binaryFile = res.UserInfo[0].userImg;
-      console.log("返回图片"+res.UserInfo[0].userImg);
-      $('#preview').attr('src',res.UserInfo[0].userImg);
-      $("#emailInput").attr('value',res.UserInfo[0].userAdmin);
-      // $("#passwordInput").attr('value',res.UserInfo[0].userPassword);
-      $("#userNameindex").attr('value',res.UserInfo[0].userName);
-      $("#test").html(res.UserInfo[0].userName);
-      $("#userId").html(res.UserInfo[0].userId);
-      console.log((res.UserInfo[0].userId))
-      switch (Number(res.UserInfo[0].usersex)) {
-        case 0:
-          $("#sex").val('保密');
-          break;
-        case 1:
-          $("#sex").val('男');
-          break;
-        case 2:
-          $("#sex").val('女');
-          break;
-        default:
-          break;
-      }
-      $("#birthDate").attr('value',res.UserInfo[0].userBirthdate);
-      $("#phoneNumber").attr('value',res.UserInfo[0].userPhonenumber);
-      $("#introduction").attr('value',res.UserInfo[0].userIntroduction);
-
-      $("#balance").html(res.UserFinance[0].balance);
-      $("#level").html(res.UserLevel[0].level);
-      $("#point").html(res.UserLevel[0].points);
-      switch (res.UserInfo[0].userTag) {
-        case false:
-          $("#identity").html("买家");
-          break;
-        case true:
-          $("#identity").html("买家");
-          break;
-        default:
-          break;
-      }
-      console.log(res);
-    },
-    fali:function () {
-      console.log("错误")
-    },
-    error:function () {
-      console.log("报错")
-    }
-  });
 
 
-</script>
 <!-- JavaScripts -->
+
 <script src="/js/vendors/jquery/jquery.min.js"></script>
 <script src="/js/index.js"></script>
 <script src="/MyInfoJs/GoodsHistory.js"></script>

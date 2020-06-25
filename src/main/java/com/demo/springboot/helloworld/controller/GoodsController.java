@@ -64,6 +64,7 @@ public class   GoodsController {
             /*将搜索结果集合、集合元素个数(结果商品个数)、搜索关键字添加到model的属性中返回前端页面*/
             model.addAttribute("goodsdetails", tmp);//搜索结果商品list
             model.addAttribute("comments",tmp2);
+            model.addAttribute("commentnumber",tmp2.size());
             return "product_details";
         } else {//搜索失败
             model.addAttribute("error_search_fail", "没有相关商品");
