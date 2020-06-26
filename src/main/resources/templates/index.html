@@ -13,7 +13,10 @@
     <!-- Title  -->
     <!-- Favicon  -->
     <link rel="icon" href="img/logo.png">
-
+  <script th:src="@{/js/sockjs.min.js}"></script>
+  <script th:src="@{/js/stomp.js}"></script>
+  <script th:src="@{/js/jquery-3.1.1.js}"></script>
+  <script src="js/ws.js"></script>
 <!-- Document Title -->
 <title>SnailGo-主页</title>
 
@@ -35,9 +38,12 @@
 <script src="js/vendors/modernizr.js"></script>
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-
+  <link href="css/toast.style.css" rel="stylesheet">
+  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="js/toast.script.js"></script>
+  <script src="js/ws.js"></script>
 </head>
-<body>
+<body onload="connect()">
 
 <!-- Page Wrapper -->
 <div id="wrap">
@@ -1501,7 +1507,7 @@
 <script src="/js/vendors/jquery/jquery.min.js"></script>
 <script src="js/index.js"></script>
 <script src="/MyInfoJs/MyInfo.js"></script>
-<!-- JavaScripts --> 
+<!-- JavaScripts -->
 <script src="/js/vendors/jquery/jquery.min.js"></script>
 <script src="/js/vendors/wow.min.js"></script>
 <script src="/js/vendors/bootstrap.min.js"></script>
@@ -1514,7 +1520,7 @@
 <script type="text/javascript" src="/rs-plugin/js/jquery.tp.min.js"></script>
 <script src="/js/main.js"></script>
 <!-- ##### Footer Area End ##### -->
-<script>
+<script type="text/javascript" >
   function tocart() {
     var str = document.cookie;
     if (str=='') {
@@ -1523,6 +1529,9 @@
       $('#tocartid').attr("href","/cart");
     }
   }
+
+
+
 </script>
 </body>
 </html>
