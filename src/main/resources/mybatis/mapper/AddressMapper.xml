@@ -178,4 +178,7 @@
       address = #{address,jdbcType=VARCHAR}
     where address_id = #{addressId,jdbcType=BIGINT}
   </update>
+  <select id="selectByuserid" parameterType="java.lang.Long" resultType="com.demo.springboot.helloworld.common.domain.Address">
+    select address_id as addressId, user_id as userId, address as address from address where user_id=#{id,jdbcType=BIGINT};
+  </select>
 </mapper>

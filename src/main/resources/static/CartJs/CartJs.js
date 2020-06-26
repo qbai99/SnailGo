@@ -101,6 +101,7 @@ $.ajax({
             }
             var size = res.length;
             $('#paylistid').val(size);
+            $('#dellistid').val(size);
         }
     }
 })

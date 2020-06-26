@@ -7,6 +7,14 @@ INSERT INTO user_info
 (user_id, user_admin, user_name, user_password, usersex, user_birthdate, user_phonenumber,user_introduction,user_tag,user_img)
 VALUES (2,"root@163.com","root","root",1,"2019-8-7","12345678901","我太难了",true,"123");
 
+INSERT INTO user_info
+(user_id, user_admin, user_name, user_password, usersex, user_birthdate, user_phonenumber,user_introduction,user_tag,user_img)
+VALUES (3,"8276@qq.com","123","admin",null,null,null,null,false,"123");
+
+INSERT INTO sign_up
+    (sign_up_id, user_id,user_name,user_password,identity,email_address)
+VALUES (1,1,"admin","admin",1,"admin@163.com");
+
 INSERT INTO sign_up
     (sign_up_id, user_id,user_name,user_password,identity,email_address)
 VALUES (1,1,"admin","admin",1,"admin@163.com");
@@ -23,6 +31,10 @@ INSERT INTO user_level
     (level_id,user_id,level,points)
 VALUES(2,2,3,200);
 
+INSERT INTO user_level
+(level_id,user_id,level,points)
+VALUES(3,3,1,0);
+
 INSERT INTO user_finance
 (finance_id,user_id,balance)
 VALUES(1,1,250);
@@ -30,6 +42,10 @@ VALUES(1,1,250);
 INSERT INTO user_finance
     (finance_id,user_id,balance)
 VALUES(2,2,10300);
+
+INSERT INTO user_finance
+(finance_id,user_id,balance)
+VALUES(3,3,10000);
 
 INSERT INTO address (address_id,user_id,address) VALUES(1,1,"四川大学");
 INSERT INTO address (address_id,user_id,address) VALUES(2,1,"清华大学");

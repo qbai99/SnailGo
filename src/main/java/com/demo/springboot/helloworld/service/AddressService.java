@@ -13,4 +13,6 @@ public interface AddressService {
     List<Address> AddAdress(String newAddress,String userAdmin);
 
     int delete(String addressId,String userAdmin);
+
+    List<Address> getaddress(Long userid);
 }
