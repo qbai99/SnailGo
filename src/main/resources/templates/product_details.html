@@ -233,66 +233,33 @@
 
 
                     <div class="table-responsive">
-                      <table class="table">
-                        <thead>
-                        <tr>
-                          <th>Carrier</th>
-                          <th>Compatibility Rating </th>
-                          <th>Voice / Text </th>
-                          <th>Voice / Text </th>
-                          <th>2G Data </th>
-                          <th>3G Data </th>
-                          <th>4G LTE Data </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                          <td>AT&T </td>
-                          <td>Fully Compatible</td>
-                          <td class="text-center"><i class="fa fa-check"></i></td>
-                          <td class="text-center"><i class="fa fa-check"></i></td>
-                          <td class="text-center"></td>
-                          <td class="text-center"><i class="fa fa-check"></i></td>
-                          <td class="text-center"></td>
-                        </tr>
-                        <tr>
-                          <td>Sprint </td>
-                          <td>No Voice/Text and Partial Data Connection</td>
-                          <td class="text-center"></td>
-                          <td class="text-center"><i class="fa fa-check"></i></td>
-                          <td class="text-center"><i class="fa fa-check"></i></td>
-                          <td class="text-center"><i class="fa fa-check"></i></td>
-                          <td class="text-center"><i class="fa fa-check"></i></td>
-                        </tr>
-                        <tr>
-                          <td>Q-Mobile </td>
-                          <td>Partial Data Connection</td>
-                          <td class="text-center"><i class="fa fa-check"></i></td>
-                          <td class="text-center"><i class="fa fa-check"></i></td>
-                          <td class="text-center"><i class="fa fa-check"></i></td>
-                          <td class="text-center"></td>
-                          <td class="text-center"><i class="fa fa-check"></i></td>
-                        </tr>
-                        <tr>
-                          <td>Verizon Wireless </td>
-                          <td>No Votice/Text and Partial Data Connection</td>
-                          <td class="text-center"><i class="fa fa-check"></i></td>
-                          <td class="text-center"></td>
-                          <td class="text-center"><i class="fa fa-check"></i></td>
-                          <td class="text-center"><i class="fa fa-check"></i></td>
-                          <td class="text-center"><i class="fa fa-check"></i></td>
-                        </tr>
-                        </tbody>
-                      </table>
+
+
                     </div>
                   </div>
                   <div role="tabpanel" class="tab-pane fade" id="cus-rev">
+
+
+                      <form>
+                        <div class="row">
+
+                        <input class="col-lg-8 input-group-lg"  name="mycomment">
+
+                        <button class="col-lg-2 btn-round" style="float: right" type="submit" >添加评论</button>
+                        </div>
+                      </form>
+
+
+
+
                     <li th:each="sc:${comments}">
                     <p class="title"style="font-size: 16px;font-weight: bold" th:text="'用户id：'+${sc.userId}+'评论说'
                     ">
                     </p>
                       <i class="bx bxs-quote-alt-left" style="margin-left: 50px;"></i> <span style="font-size: 14px;font-style: italic " th:text="${sc.com}"></span> <i class="bx bxs-quote-alt-right"></i>
                     </li>
+
+
                   </div>
                   <div role="tabpanel" class="tab-pane fade" id="ship"></div>
                 </div>
