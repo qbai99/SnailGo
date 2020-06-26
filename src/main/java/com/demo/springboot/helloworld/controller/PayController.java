@@ -92,7 +92,31 @@ public class PayController {
         return "/user/CheckOrder";
     }
     @RequestMapping("/meetpay")
-    public String meetpay(){
+    public String meetpay(Integer addId,@CookieValue("username") String username){
+        Long userid = userinfoService.selectid(username);
+        for(int i=0;i<listq.length;i++){
+            Integer goodsId=cartService.getGoodsId(listq[i]);
+            cartService.del(listq[i]);
+            System.out.println("/balancePay-------goodsId: "+goodsId);
+            Integer shopId=goodsService.getShopIdBygoodsId(goodsId);
+            goodsService.delnum(goodsId,listnum[i]);
+            System.out.println("/balancePay-------shopId: "+shopId);
+            Long sellerId=shopService.getsellerID(shopId);
+            System.out.println("/balancePay-------sellerId: "+sellerId);
+            List<Goods> NameAndPrilist= goodsService.selectNameAndPri(goodsId);
+            Double price=NameAndPrilist.get(0).getGoodsPrice()*listnum[i];
+            Long orderId=orderService.getMaxId()+1;
+            System.out.println("/balancePay-------orderId: "+orderId);
+            orderService.insertone(orderId,userid,goodsId,userid,sellerId,addId,NameAndPrilist.get(0).getGoodsName(),listnum[i],price);
+            Long shipid=shippingStateService.getMaxId()+1;
+            Date date= new Date();
+            Long times = date.getTime();
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String dateString = formatter.format(date);
+            String loc=shopService.getLoc(shopId);
+            String info= "等待配送";
+            shippingStateService.insertone(shipid,orderId,date,loc,info);
+        }
         return "/user/CheckOrder";
     }
 
@@ -146,13 +170,16 @@ public class PayController {
     @RequestMapping("/quickpay")
     public String quickpay(Long goodsId, Integer num){
         List<Cart> paylist = new ArrayList<Cart>();
+        Cart cart=new Cart();
         Goods goods=goodsService.selectone(goodsId);
         System.out.println("/quickpay-------goods: "+goods);
-        paylist.get(0).setGoodsId(goodsId);
-        paylist.get(0).setGoodsName(goods.getGoodsName());
-        paylist.get(0).setGoodsQuantity(num);
-        paylist.get(0).setGoodsPrice(goods.getGoodsPrice()*num);
+        cart.setGoodsId(goodsId);
+        cart.setGoodsName(goods.getGoodsName());
+        cart.setGoodsQuantity(num);
+        cart.setGoodsPrice(goods.getGoodsPrice()*num);
+        paylist.add(cart);
         listlis=paylist;
-        return "/user/CheckOrder";
+        System.out.println("/quickpay-------paylist: "+paylist);
+        return "/pay";
     }
 }

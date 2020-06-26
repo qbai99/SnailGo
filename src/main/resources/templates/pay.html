@@ -389,7 +389,7 @@
                     <input type="text" class="form-control float-right" id="reservationtime">
                   </div>
                   <div style="float:right;width:10%">
-                    <a class="btn btn-warning  btn-sm swalDefaultSuccess" href="#">
+                    <a class="btn btn-warning  btn-sm" href="#" onclick="meetpay()">
                       <img  src="/img/yen-2x.png"><img>
                       结算
                     </a>
@@ -795,6 +795,17 @@
     console.log(totalnum);
     console.log(addId);
     $('#paya').attr("href","/balancePay?total="+totalnum+"&addId="+addId);
+  }
+  function meetpay() {
+    var addId;
+    var inputs = document.getElementsByName('r2');
+    for (var i=0;i<inputs.length;i++){
+      if(inputs[i].checked){
+        addId=inputs[i].value;
+      }
+    }
+    var totalnum=$('#ptotalid').text();
+    $('#paya').attr("href","/meetpay?addId="+addId);
   }
 </script>
 </body>
