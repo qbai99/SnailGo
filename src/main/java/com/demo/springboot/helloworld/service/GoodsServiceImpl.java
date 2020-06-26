@@ -2,6 +2,7 @@ package com.demo.springboot.helloworld.service;
 
 import com.demo.springboot.helloworld.common.domain.*;
 import com.demo.springboot.helloworld.mapper.CartMapper;
+import com.demo.springboot.helloworld.mapper.GoodsImgMapper;
 import com.demo.springboot.helloworld.mapper.GoodsMapper;
 import com.demo.springboot.helloworld.mapper.OrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ public class GoodsServiceImpl implements GoodsService{
 
     @Autowired
     private OrderMapper orderMapper;
+
+    @Autowired
+    private GoodsImgMapper goodsImgMapper;
 
     @Override
     public List<Goods> search(String search_key, String goods_tag) {
@@ -114,6 +118,31 @@ public class GoodsServiceImpl implements GoodsService{
 
         int result = goodsMapper.updateByExample(goods,goodsExample);
         if(result == 1)return true;
+        else return false;
+    }
+
+    @Override
+    public boolean AddGoods(String shopId, String goodsName, String goodsIntro, String goodsTag, String goodsPrice, String goodsRemain, String file) {
+
+        Goods goods = new Goods();
+        goods.setShopId(Long.parseLong(shopId));
+        goods.setGoodsName(goodsName);
+        goods.setGoodsDsp(goodsIntro);
+        goods.setGoodsTag(goodsTag);
+        goods.setGoodsPrice(Double.valueOf(goodsPrice));
+        goods.setGoodsRemaning(Integer.parseInt(goodsRemain));
+
+        int result = goodsMapper.insert(goods);
+        Long goodsId = goodsMapper.selectCurId();
+        System.out.println("新id"+goodsId);
+
+        GoodsImg goodsImg = new GoodsImg();
+        goodsImg.setGoodsId(goodsId);
+        goodsImg.setGoodsImg(file.getBytes());
+
+        int result2 = goodsImgMapper.insert(goodsImg);
+
+        if (result==1&&result2==1) return true;
         else return false;
     }
 

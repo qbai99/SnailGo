@@ -129,6 +129,7 @@ create table order_request
    goods_id             bigint,
    buyer_id             bigint,
    seller_id            bigint,
+   address_id           bigint,
    goods_name           varchar(255),
    goods_quantity       bigint,
    goods_price          double,
@@ -261,6 +262,17 @@ CREATE TABLE comment  (
 
 
 
+DROP TABLE IF EXISTS goods_img;
+CREATE TABLE goods_img (
+  img_id bigint not null auto_increment,
+  goods_id              bigint,
+  goods_img             longblob,
+  primary key (img_id)
+);
+
+alter table goods_img add constraint FK_Relationship_101 foreign key (goods_id)
+references goods (goods_id) on delete restrict on update restrict;
+
 alter table address add constraint FK_Relationship_4 foreign key (user_id)
       references user_info (user_id) on delete restrict on update restrict;
 
@@ -325,3 +337,6 @@ alter table user_level add constraint FK_Relationship_6 foreign key (user_id)
 
 alter table order_request add constraint FK_Relationship_100 foreign key (goods_id)
 references goods (goods_id) on delete restrict on update restrict;
+
+alter table order_request add constraint FK_Relationship_102 foreign key (address_id)
+references address (address_id) on delete restrict on update restrict;

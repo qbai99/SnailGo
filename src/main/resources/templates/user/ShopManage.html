@@ -196,10 +196,10 @@
             <!-- Sidebar user (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img id="sideImg" class="img-circle elevation-2" alt="User Image">
+                    <img src="/AdminLTE-3.0.5/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="/user/MyInformation" class="d-block" id="sideName"></a>
+                    <a href="#" class="d-block">Alexander Pierce</a>
                 </div>
             </div>
 
@@ -385,7 +385,7 @@
                             <div class="card-header p-2">
                                 <ul class="nav nav-pills">
                                     <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">管理商品</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#addGoods" data-toggle="tab" onclick="listGoods()">添加商品</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#addGoods" data-toggle="tab">添加商品</a></li>
                                 </ul>
                             </div><!-- /.card-header -->
                             <div class="card-body">
@@ -393,13 +393,51 @@
                                     <div class="active tab-pane" id="activity">
 
                                     </div>
-                                    <div class="active tab-pane" id="addGoods">
-                                        <label>商品名称</label><input>
-                                        <label>商品简介</label><textarea></textarea>
-                                        <label>商品图片</label><input type="file" class="custom-file-input" id="exampleInputFile" onchange="check()" accept="image/jpg,image/jpeg,img/png,img/PNG">
-                                        <label>商品标签</label><input>
-                                        <label>商品价格</label><input>
-                                        <label>商品库存</label><input>
+                                    <div class="tab-pane" id="addGoods">
+                                        <form role="form">
+                                            <!--账户 名称 密码 性别 出生年月 手机号码 头像 自我介绍 等级 积分 卖家还是买家-->
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <label>商品图片</label>
+                                                    <div style="background-color: black;height: 350px;width: 350px;"><img src="" id="preview" style="width: 350px;height: 350px;"></div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="imgFile">选择商品图片文件</label>
+                                                    <div class="input-group">
+                                                        <div class="custom-file">
+                                                            <input type="file" class="custom-file-input" id="imgFile" onchange="check()" accept="image/jpg,image/jpeg,img/png,img/PNG">
+                                                            <label class="custom-file-label" for="imgFile">Choose file</label>
+                                                        </div>
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text" id="">上传</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label >商品名</label>
+                                                    <input id="goodsName" type="email" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label >商品简介</label>
+                                                    <input id="goodsIntro" type="email" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label >商品标签</label>
+                                                    <input id="goodsTag" type="email" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label >商品价格</label>
+                                                    <input id="goodsPrice" type="email" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label >商品库存</label>
+                                                    <input id="goodsRemain" type="email" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="button" class="btn btn-primary" onclick="AddGoods()">添加</button>
+                                                </div>
+                                            </div>
+                                        </form>
 
                                     </div>
                                 </div>

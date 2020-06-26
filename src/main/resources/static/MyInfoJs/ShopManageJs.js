@@ -1,4 +1,22 @@
 var shopId;
+
+var binaryFile;
+
+function check(){
+    console.log($('#imgFile').val());
+    var reads = new FileReader();
+    console.log(document.getElementById('imgFile').files);
+    var f = document.getElementById('imgFile').files[0];
+    reads.readAsDataURL(f);
+    reads.onload = function (e) {
+        binaryFile = this.result;
+        console.log("上传图片"+this.result);
+        $('#preview').attr('src',this.result);
+        // console.log(f);
+    }
+
+}
+
 $.ajax({
     type:"GET",
     url:"/user/isSeller",
@@ -21,7 +39,7 @@ $.ajax({
     url: "/user/information",
     success: function (res, ifo) {
         $('#sideImg').attr('src', res.UserInfo[0].userImg);
-        $("#sideName").attr('value', res.UserInfo[0].userName);
+        $("#sideName").html( res.UserInfo[0].userName);
     }
 });
 function changeConfirm(){
@@ -100,16 +118,16 @@ $.ajax({
                 '        <div class="row">' +
                 '            <div class="col-sm-6">' +
                 // '<td>          ' +
-                '                <label class="description">商品名：'+ '<input style="text-align: center" id='+"name"+res.goods[i].goodsId +'value='+res.goods[i].goodsName+'></label>' +
+                '                <label class="description">商品名：'+ '<input style="text-align: center" id='+"name"+res.goods[i].goodsId +'></label>' +
                 '                <p style="width:400%;"><label class="description">商品描述：</label><br>'+'<textarea style="width: 70%;height: 100px" id='+"dsp"+res.goods[i].goodsId+'></textarea></p>   ' +
                 // '                <a href='+"/goods/details?id="+res.goods[i].goodsId+'>' +
                 '                <label>商品图片</label>'+
-                '                <img class="img-fluid mb-3" src='+"/goods_pics/"+res.goods[i].goodsId+"-pic-1.jpg"+' alt="Photo">' +
+                '                <img class="img-fluid mb-3" src='+res.img[i].goodsImg+' alt="Photo">' +
                 // '                <img class="img-fluid" src="/AdminLTE-3.0.5/dist/img/photo3.jpg" alt="Photo">\n' +
                 // '                </a> ' +
-                '                <p style="width:400%;"><label>商品标签：</label>'+'<input style="text-align: center" id='+"tag"+res.goods[i].goodsId + 'value='+res.goods[i].goodsTag+'></p>   ' +
-                '                <p style="width:400%;"><label>商品价格：</label>'+'<input style="text-align: center" id='+"price"+res.goods[i].goodsId + 'value='+res.goods[i].goodsPrice+'></p>   ' +
-                '                <p style="width:400%;"><label>商品库存：</label>'+'<input style="text-align: center" id='+"remain"+res.goods[i].goodsId + 'value='+res.goods[i].goodsRemaning+'></p>   ' +
+                '                <p style="width:400%;"><label>商品标签：</label>'+'<input style="text-align: center" id='+"tag"+res.goods[i].goodsId + '></p>   ' +
+                '                <p style="width:400%;"><label>商品价格：</label>'+'<input style="text-align: center" id='+"price"+res.goods[i].goodsId + '></p>   ' +
+                '                <p style="width:400%;"><label>商品库存：</label>'+'<input style="text-align: center" id='+"remain"+res.goods[i].goodsId + '></p>   ' +
                 // '            </div>' +
                 // '            <!-- /.col -->\n' +
                 // '            <div class="col-sm-6">\n' +
@@ -129,21 +147,23 @@ $.ajax({
                 // '<span class="username">' +
                 // '</span>' +
                 // '<span class="float-right">\n' +
-                '  <a href="'+"/shop/changeinfo?goodsId="+res.goods[i].goodsId+
-                "  &name="+$('#'+"name"+res.goods[i].goodsId).val()+
-                "  &dsp="+$('#'+"dsp"+res.goods[i].goodsId).val()+
-                "  &tag="+$('#'+"tag"+res.goods[i].goodsId).val()+
-                "  &price="+$('#'+"price"+res.goods[i].goodsId).val()+
-                "  &remain="+$('#'+"remain"+res.goods[i].goodsId).val()+
-                '" class="btn btn-info" >' +
+                '  <a id='+"change"+res.goods[i].goodsId +
+                // 'href="'+"/shop/changeinfo?goodsId="+res.goods[i].goodsId+
+                // // "&name="+$('#'+"name"+res.goods[i].goodsId).val()+
+                // "&name="+res.goods[i].goodsName+
+                // "&dsp="+$('#'+"dsp"+res.goods[i].goodsId).val()+
+                // "&tag="+$('#'+"tag"+res.goods[i].goodsId).val()+
+                // "&price="+$('#'+"price"+res.goods[i].goodsId).val()+
+                // "&remain="+$('#'+"remain"+res.goods[i].goodsId).val()+
+                ' class="btn btn-info" onclick="change(this)" style="color: white;">' +
                 '    修改' +
                 '  </a>' +
-                '  <a href="#" class="btn btn-info">' +
-                '    上架' +
-                '  </a>' +
-                '  <a href="#" class="btn btn-info">\n' +
-                '    下架' +
-                '  </a>' +
+                // '  <a href="#" class="btn btn-info">' +
+                // '    上架' +
+                // '  </a>' +
+                // '  <a href="#" class="btn btn-info">\n' +
+                // '    下架' +
+                // '  </a>' +
                 '  <a class="btn btn-info" href='+"/shop/deletegoods?goodsId="+ res.goods[i].goodsId+'>' +
                 '    删除' +
                 '  </a>' +
@@ -155,11 +175,70 @@ $.ajax({
                 );
             $('#activity').append(bigDiv);
             $('#'+"dsp"+res.goods[i].goodsId).val(res.goods[i].goodsDsp);
-            console.log($('#'+"name"+res.goods[i].goodsId).val);
-            console.log($('#'+"dsp"+res.goods[i].goodsId).val);
-            console.log($('#'+"tag"+res.goods[i].goodsId).val);
-            console.log($('#'+"price"+res.goods[i].goodsId).val);
-            console.log($('#'+"remain"+res.goods[i].goodsId).val);
+            $('#'+"name"+res.goods[i].goodsId).val(res.goods[i].goodsName);
+            $('#'+"tag"+res.goods[i].goodsId).val(res.goods[i].goodsTag);
+            $('#'+"price"+res.goods[i].goodsId).val(res.goods[i].goodsPrice);
+            $('#'+"remain"+res.goods[i].goodsId).val(res.goods[i].goodsRemaning);
         }
     }
 })
+
+function AddGoods() {
+    var goodsName = $('#goodsName').val();
+    var goodsIntro = $('#goodsIntro').val();
+    var goodsTag = $('#goodsTag').val();
+    var goodsPrice = $('#goodsPrice').val();
+    var goodsRemain = $('#goodsRemain').val();
+
+    $.ajax({
+        type:"POST",
+        url:"/shop/addgoods",
+        data:{
+            shopId:shopId,
+            goodsName:goodsName,
+            goodsIntro:goodsIntro,
+            goodsTag:goodsTag,
+            goodsPrice:goodsPrice,
+            goodsRemain:goodsRemain,
+            file:binaryFile
+        },
+        success:function (res) {
+            if (res.toString()=="true"){
+                alert("添加成功！");
+                window.location.reload();
+            }
+            else alert("添加失败！");
+        }
+
+    })
+}
+
+function change(e) {
+    var goodsid = e.id.split("change")[1];
+    var goodsName = $('#'+"name"+goodsid).val();
+    var goodsDsp = $('#'+"dsp"+goodsid).val();
+    var goodsTag = $('#'+"tag"+goodsid).val();
+    var goodsPrice = $('#'+"price"+goodsid).val();
+    var goodsRemain = $('#'+"remain"+goodsid).val();
+    console.log($('#'+"dsp"+goodsid).val());
+
+    $.ajax({
+        type:"POST",
+        url:"/shop/changeinfo",
+        data:{
+            goodsId:goodsid,
+            name:goodsName,
+            dsp:goodsDsp,
+            tag:goodsTag,
+            price:goodsPrice,
+            remain:goodsRemain
+        },
+        success:function (res) {
+            console.log(res);
+        }
+    })
+}
+
+
+
+

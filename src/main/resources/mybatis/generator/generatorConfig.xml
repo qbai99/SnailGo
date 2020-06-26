@@ -37,7 +37,9 @@
         <!--<table tableName="browsing_records" domainObjectName="BrowsingRecords"></table>-->
         <!--<table tableName="shopping_cart" domainObjectName="Cart"></table>-->
 
-        <table tableName="comment" domainObjectName="Comment"></table>
+        <!--<table tableName="comment" domainObjectName="Comment"></table>-->
+        <!--<table tableName="goods_img" domainObjectName="GoodsImg"></table>-->
+        <table tableName="order_request" domainObjectName="Order"></table>
 
 
 

@@ -20,7 +20,7 @@ $.ajax({
     url: "/user/information",
     success: function (res, ifo) {
         $('#sideImg').attr('src', res.UserInfo[0].userImg);
-        $("#sideName").attr('value', res.UserInfo[0].userName);
+        $("#sideName").html(res.UserInfo[0].userName);
     }
 });
 $.ajax({
