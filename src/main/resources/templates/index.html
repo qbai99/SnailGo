@@ -71,7 +71,7 @@
         <div class="nav-right">
           <a href="/user/MyInformation"><i class="fa fa-user"></i> <span id="login"></span><strong><span id="test"></span></strong> </a>
           <a href="/"><i class="fa fa-comment"></i><strong>消息</strong></a>
-          <a href="/cart"> <i class="fa fa-shopping-cart"></i></a>
+          <a id="tocartid" href="#" onclick="tocart()"> <i class="fa fa-shopping-cart"></i></a>
         </div>
 
     </nav>
@@ -1514,5 +1514,15 @@
 <script type="text/javascript" src="/rs-plugin/js/jquery.tp.min.js"></script>
 <script src="/js/main.js"></script>
 <!-- ##### Footer Area End ##### -->
+<script>
+  function tocart() {
+    var str = document.cookie;
+    if (str=='') {
+      $('#tocartid').attr("href","/loginPage");
+    }else {
+      $('#tocartid').attr("href","/cart");
+    }
+  }
+</script>
 </body>
 </html>
