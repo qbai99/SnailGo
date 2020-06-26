@@ -35,4 +35,27 @@ public class ShopServiceImpl implements ShopService {
 
         return shop;
     }
+
+    @Override
+    public boolean Change(String userAdmin, String shopId,String name, String mbs, String loc, String dsp) {
+        //搜索用户id
+        UserinfoExample userinfoExample = new UserinfoExample();
+        userinfoExample.createCriteria().andUserAdminEqualTo(userAdmin);
+        List<Userinfo> userinfoList = userinfoMapper.selectByExample(userinfoExample);
+        Long userId = userinfoList.get(0).getUserId();
+
+        ShopExample shopExample = new ShopExample();
+        shopExample.createCriteria().andShopIdEqualTo(Long.parseLong(shopId));
+        Shop shop = new Shop();
+        shop.setShopId(Long.parseLong(shopId));
+        shop.setUserId(userId);
+        shop.setShopName(name);
+        shop.setShopMainBussiness(mbs);
+        shop.setShopLoc(loc);
+        shop.setShopDsp(dsp);
+
+        int result = shopMapper.updateByExample(shop,shopExample);
+        if (result==1)return true;
+        else return false;
+    }
 }

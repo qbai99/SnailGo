@@ -1,11 +1,9 @@
 package com.demo.springboot.helloworld.service;
 
-import com.demo.springboot.helloworld.common.domain.Cart;
-import com.demo.springboot.helloworld.common.domain.CartExample;
-import com.demo.springboot.helloworld.common.domain.Goods;
-import com.demo.springboot.helloworld.common.domain.GoodsExample;
+import com.demo.springboot.helloworld.common.domain.*;
 import com.demo.springboot.helloworld.mapper.CartMapper;
 import com.demo.springboot.helloworld.mapper.GoodsMapper;
+import com.demo.springboot.helloworld.mapper.OrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,6 +14,9 @@ import java.util.List;
 public class GoodsServiceImpl implements GoodsService{
     @Autowired
     private GoodsMapper goodsMapper;
+
+    @Autowired
+    private OrderMapper orderMapper;
 
     @Override
     public List<Goods> search(String search_key, String goods_tag) {
@@ -81,6 +82,23 @@ public class GoodsServiceImpl implements GoodsService{
         List<Goods> goodsList = goodsMapper.selectByExample(goodsExample);
 
         return goodsList;
+    }
+
+    @Override
+    public boolean deleteById(String goodsId) {
+        GoodsExample goodsExample = new GoodsExample();
+        goodsExample.createCriteria().andGoodsIdEqualTo(Long.parseLong(goodsId));
+
+        //判断是否在订单表里面
+        OrderExample orderExample = new OrderExample();
+        orderExample.createCriteria().andGoodsIdEqualTo(Long.parseLong(goodsId));
+        List<Order> orderList = orderMapper.selectByExample(orderExample);
+        if(orderList.size()==0){
+            int result = goodsMapper.deleteByExample(goodsExample);
+            if (result==1)return true;
+            else return false;
+        }
+        else return false;
     }
 
 

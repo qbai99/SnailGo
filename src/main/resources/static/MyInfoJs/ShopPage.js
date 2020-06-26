@@ -17,6 +17,7 @@ $.ajax({
 })
 
 
+
 $.ajax({
     type:"GET",
     url:"/shop/information",
@@ -58,7 +59,6 @@ $.ajax({
                 '    <img class="img-circle img-bordered-sm" src="'+res.user.userImg+'" alt="User Image">' +
                 '    <span class="username">' +
                 '        <a href="#">'+res.shop.shopName+'</a>' +
-                '        <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>' +
                 '    </span>' +
                 '</div>' +
                 '<div class="row mb-3">' +
@@ -75,6 +75,7 @@ $.ajax({
                 '                <img class="img-fluid mb-3" src='+"/goods_pics/"+res.goods[i].goodsId+"-pic-1.jpg"+' alt="Photo">' +
                 // '                <img class="img-fluid" src="/AdminLTE-3.0.5/dist/img/photo3.jpg" alt="Photo">\n' +
                 '                </a> ' +
+                '                <p style="width:400%;"><label>商品价格：</label>'+res.goods[i].goodsPrice+'元</p>   ' +
                 ' </div>' +
                 // '            <!-- /.col -->\n' +
                 // '            <div class="col-sm-6">\n' +

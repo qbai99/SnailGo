@@ -14,4 +14,6 @@ public interface GoodsService {
     int selectRem(long goodsId);
 
     List<Goods> selectByShopid(Long shopId);
+
+    boolean deleteById(String goodsId);
 }

@@ -8,12 +8,12 @@ INSERT INTO user_info
 VALUES (2,"root@163.com","root","root",1,"2019-8-7","12345678901","我太难了",true,"123");
 
 INSERT INTO sign_up
-    (sign_up_id, user_id,user_name,user_password,identity,email_address,sex)
-VALUES (1,1,"admin","admin",1,"admin@163.com",1);
+    (sign_up_id, user_id,user_name,user_password,identity,email_address)
+VALUES (1,1,"admin","admin",1,"admin@163.com");
 
 INSERT INTO sign_up
-    (sign_up_id, user_id,user_name,user_password,identity,email_address,sex)
-VALUES (2,2,"root","root",1,"root@163.com",1);
+    (sign_up_id, user_id,user_name,user_password,identity,email_address)
+VALUES (2,2,"root","root",1,"root@163.com");
 
 INSERT INTO user_level
 (level_id,user_id,level,points)

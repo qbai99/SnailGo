@@ -52,7 +52,7 @@ function AddAddress() {
     var phoneNumber = $('#newPhoneNumber').val();
     var people = $('#newPeople').val();
     var newAddress = province+city+street+Address+"/"+phoneNumber+"/"+people;
-    if(phoneNumber.length!=11 || phoneNumber.length!=7)
+    if(phoneNumber.length!=11 && phoneNumber.length!=7)
     {
         alert("手机号码的长度应该为7或11！");
         return;

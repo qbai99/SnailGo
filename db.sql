@@ -247,15 +247,15 @@ create table user_level
    primary key (level_id)
 );
 
-DROP TABLE IF EXISTS `comment`;
-CREATE TABLE `comment`  (
-                            `comment_id` int(11) NOT NULL,
-                            `goods_id` bigint(20) NULL DEFAULT NULL,
-                            `user_id` int(11) NULL DEFAULT NULL,
-                            `com` varchar(255),
-                            PRIMARY KEY (`comment_id`) USING BTREE,
-                            INDEX `fk_comment_1`(`goods_id`) USING BTREE,
-                            CONSTRAINT `fk_comment_1` FOREIGN KEY (`goods_id`) REFERENCES `goods` (`goods_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+DROP TABLE IF EXISTS comment;
+CREATE TABLE comment  (
+                            comment_id int(11) NOT NULL,
+                            goods_id bigint(20) NULL DEFAULT NULL,
+                            user_id int(11) NULL DEFAULT NULL,
+                            com varchar(255),
+                            PRIMARY KEY (comment_id) USING BTREE,
+                            INDEX fk_comment_1(goods_id) USING BTREE,
+                            CONSTRAINT fk_comment_1 FOREIGN KEY (goods_id) REFERENCES goods (goods_id) ON DELETE RESTRICT ON UPDATE RESTRICT
 );
 
 alter table address add constraint FK_Relationship_4 foreign key (user_id)

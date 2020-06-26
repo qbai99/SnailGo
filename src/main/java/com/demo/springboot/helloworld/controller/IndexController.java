@@ -18,6 +18,7 @@ public class IndexController {
     @Autowired
     private GoodsService goodsService;
     private UserfinanceService userfinanceService;
+
     @RequestMapping({"/","index"})
     public String index(Model model){
         List<Goods> tmp= goodsService.allgoods();
