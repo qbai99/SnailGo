@@ -26,4 +26,6 @@ public interface GoodsService {
     List<Goods> selectNameAndPri(Integer goodsId);
 
     void delnum(Integer goodsId, Integer quantity);
+
+    Goods selectone(Long goodsId);
 }

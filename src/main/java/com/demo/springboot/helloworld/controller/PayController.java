@@ -124,6 +124,7 @@ public class PayController {
             }
         }
         listlis=paylist;
+        System.out.println("/paylist--------paylist: "+paylist);
         return "pay";
     }
 
@@ -140,5 +141,18 @@ public class PayController {
         List<Address> list =addressService.getaddress(userid);
         System.out.println("/getaddress---------------list: "+list);
         return list;
+    }
+
+    @RequestMapping("/quickpay")
+    public String quickpay(Long goodsId, Integer num){
+        List<Cart> paylist = new ArrayList<Cart>();
+        Goods goods=goodsService.selectone(goodsId);
+        System.out.println("/quickpay-------goods: "+goods);
+        paylist.get(0).setGoodsId(goodsId);
+        paylist.get(0).setGoodsName(goods.getGoodsName());
+        paylist.get(0).setGoodsQuantity(num);
+        paylist.get(0).setGoodsPrice(goods.getGoodsPrice()*num);
+        listlis=paylist;
+        return "/user/CheckOrder";
     }
 }

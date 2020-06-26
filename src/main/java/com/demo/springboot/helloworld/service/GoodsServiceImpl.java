@@ -163,4 +163,9 @@ public class GoodsServiceImpl implements GoodsService{
         goods.setGoodsRemaning(quantity);
         goodsMapper.delnum(goods);
     }
+
+    @Override
+    public Goods selectone(Long goodsId){
+        return goodsMapper.selectByPrimaryKey(goodsId);
+    }
 }
