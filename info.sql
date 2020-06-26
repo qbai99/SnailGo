@@ -15,9 +15,6 @@ INSERT INTO sign_up
     (sign_up_id, user_id,user_name,user_password,identity,email_address)
 VALUES (1,1,"admin","admin",1,"admin@163.com");
 
-INSERT INTO sign_up
-    (sign_up_id, user_id,user_name,user_password,identity,email_address)
-VALUES (1,1,"admin","admin",1,"admin@163.com");
 
 INSERT INTO sign_up
     (sign_up_id, user_id,user_name,user_password,identity,email_address)
@@ -50,20 +47,20 @@ VALUES(3,3,10000);
 INSERT INTO address (address_id,user_id,address) VALUES(1,1,"四川大学");
 INSERT INTO address (address_id,user_id,address) VALUES(2,1,"清华大学");
 
-INSERT INTO order_request (order_id,user_id,goods_id,buyer_id,seller_id,goods_name,goods_quantity,goods_price)
-VALUE (1,1,1,1,2,"iPadPro 2019",1,100);
+INSERT INTO order_request (order_id,user_id,goods_id,buyer_id,seller_id,address_id,goods_name,goods_quantity,goods_price)
+VALUE (1,1,1,1,2,1,"iPadPro 2019",1,100);
 
 INSERT INTO shipping_state (id,order_id,date,loc,other_info)
 VALUE (1,1,"2020-6-15","广东","配送中");
 
-INSERT INTO order_request (order_id,user_id,goods_id,buyer_id,seller_id,goods_name,goods_quantity,goods_price)
-VALUE (2,1,2,1,2," iPhone 11",2,200);
+INSERT INTO order_request (order_id,user_id,goods_id,buyer_id,seller_id,address_id,goods_name,goods_quantity,goods_price)
+VALUE (2,1,2,1,2,1," iPhone 11",2,200);
 
 INSERT INTO shipping_state (id,order_id,date,loc,other_info)
 VALUE (2,2,"2020-6-13","北京","等待出库");
 
-INSERT INTO order_request (order_id,user_id,goods_id,buyer_id,seller_id,goods_name,goods_quantity,goods_price)
-VALUE (3,2,3,2,1," iPadPro 2020",1,200);
+INSERT INTO order_request (order_id,user_id,goods_id,buyer_id,seller_id,address_id,goods_name,goods_quantity,goods_price)
+VALUE (3,2,3,2,1,2," iPadPro 2020",1,200);
 
 INSERT INTO shipping_state (id,order_id,date,loc,other_info)
 VALUE (3,3,"2020-6-15","广东","配送中");

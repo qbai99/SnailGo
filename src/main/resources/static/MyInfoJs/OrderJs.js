@@ -3,7 +3,7 @@ $.ajax({
     url: "/user/information",
     success: function (res, ifo) {
         $('#sideImg').attr('src', res.UserInfo[0].userImg);
-        $("#sideName").attr('value', res.UserInfo[0].userName);
+        $("#sideName").html(res.UserInfo[0].userName);
     }
 });
 $.ajax({
@@ -40,6 +40,9 @@ $.ajax({
                 '</td>'+
                 '<td>'+
                 res.Seller[i].userName+
+                '</td>'+
+                '<td>'+
+                res.address[i].address+
                 '</td>'+
                 '<td>'+
                 res.ShippingState[i].loc+

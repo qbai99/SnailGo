@@ -35,7 +35,7 @@ $.ajax({
         $("#emailInput").attr('value',res.UserInfo[0].userAdmin);
         // $("#passwordInput").attr('value',res.UserInfo[0].userPassword);
         $("#userName").attr('value',res.UserInfo[0].userName);
-        $("#sideName").attr('value',res.UserInfo[0].userName);
+        $("#sideName").html(res.UserInfo[0].userName);
         console.log(Number(res.UserInfo[0].usersex))
         switch (Number(res.UserInfo[0].usersex)) {
             case 0:

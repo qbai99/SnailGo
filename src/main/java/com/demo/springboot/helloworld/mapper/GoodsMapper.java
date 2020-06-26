@@ -33,4 +33,6 @@ public interface GoodsMapper {
     int selectRem(long goodsId);
 
     List<Goods> mysearch(String search_key,String goods_tag);
+
+    Long selectCurId();
 }

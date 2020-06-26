@@ -15,4 +15,6 @@ public interface AddressService {
     int delete(String addressId,String userAdmin);
 
     List<Address> getaddress(Long userid);
+
+    List<Address> selectAddress(Long addressId);
 }

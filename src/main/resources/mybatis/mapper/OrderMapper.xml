@@ -7,6 +7,7 @@
     <result column="goods_id" jdbcType="BIGINT" property="goodsId" />
     <result column="buyer_id" jdbcType="BIGINT" property="buyerId" />
     <result column="seller_id" jdbcType="BIGINT" property="sellerId" />
+    <result column="address_id" jdbcType="BIGINT" property="addressId" />
     <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
     <result column="goods_quantity" jdbcType="BIGINT" property="goodsQuantity" />
     <result column="goods_price" jdbcType="DOUBLE" property="goodsPrice" />
@@ -70,7 +71,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    order_id, user_id, goods_id, buyer_id, seller_id, goods_name, goods_quantity, goods_price
+    order_id, user_id, goods_id, buyer_id, seller_id, address_id, goods_name, goods_quantity, 
+    goods_price
   </sql>
   <select id="selectByExample" parameterType="com.demo.springboot.helloworld.common.domain.OrderExample" resultMap="BaseResultMap">
     select
@@ -104,11 +106,13 @@
   </delete>
   <insert id="insert" parameterType="com.demo.springboot.helloworld.common.domain.Order">
     insert into order_request (order_id, user_id, goods_id, 
-      buyer_id, seller_id, goods_name, 
-      goods_quantity, goods_price)
+      buyer_id, seller_id, address_id, 
+      goods_name, goods_quantity, goods_price
+      )
     values (#{orderId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{goodsId,jdbcType=BIGINT}, 
-      #{buyerId,jdbcType=BIGINT}, #{sellerId,jdbcType=BIGINT}, #{goodsName,jdbcType=VARCHAR}, 
-      #{goodsQuantity,jdbcType=BIGINT}, #{goodsPrice,jdbcType=DOUBLE})
+      #{buyerId,jdbcType=BIGINT}, #{sellerId,jdbcType=BIGINT}, #{addressId,jdbcType=BIGINT}, 
+      #{goodsName,jdbcType=VARCHAR}, #{goodsQuantity,jdbcType=BIGINT}, #{goodsPrice,jdbcType=DOUBLE}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.demo.springboot.helloworld.common.domain.Order">
     insert into order_request
@@ -127,6 +131,9 @@
       </if>
       <if test="sellerId != null">
         seller_id,
+      </if>
+      <if test="addressId != null">
+        address_id,
       </if>
       <if test="goodsName != null">
         goods_name,
@@ -153,6 +160,9 @@
       </if>
       <if test="sellerId != null">
         #{sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="addressId != null">
+        #{addressId,jdbcType=BIGINT},
       </if>
       <if test="goodsName != null">
         #{goodsName,jdbcType=VARCHAR},
@@ -189,6 +199,9 @@
       <if test="record.sellerId != null">
         seller_id = #{record.sellerId,jdbcType=BIGINT},
       </if>
+      <if test="record.addressId != null">
+        address_id = #{record.addressId,jdbcType=BIGINT},
+      </if>
       <if test="record.goodsName != null">
         goods_name = #{record.goodsName,jdbcType=VARCHAR},
       </if>
@@ -210,6 +223,7 @@
       goods_id = #{record.goodsId,jdbcType=BIGINT},
       buyer_id = #{record.buyerId,jdbcType=BIGINT},
       seller_id = #{record.sellerId,jdbcType=BIGINT},
+      address_id = #{record.addressId,jdbcType=BIGINT},
       goods_name = #{record.goodsName,jdbcType=VARCHAR},
       goods_quantity = #{record.goodsQuantity,jdbcType=BIGINT},
       goods_price = #{record.goodsPrice,jdbcType=DOUBLE}
@@ -232,6 +246,9 @@
       <if test="sellerId != null">
         seller_id = #{sellerId,jdbcType=BIGINT},
       </if>
+      <if test="addressId != null">
+        address_id = #{addressId,jdbcType=BIGINT},
+      </if>
       <if test="goodsName != null">
         goods_name = #{goodsName,jdbcType=VARCHAR},
       </if>
@@ -250,6 +267,7 @@
       goods_id = #{goodsId,jdbcType=BIGINT},
       buyer_id = #{buyerId,jdbcType=BIGINT},
       seller_id = #{sellerId,jdbcType=BIGINT},
+      address_id = #{addressId,jdbcType=BIGINT},
       goods_name = #{goodsName,jdbcType=VARCHAR},
       goods_quantity = #{goodsQuantity,jdbcType=BIGINT},
       goods_price = #{goodsPrice,jdbcType=DOUBLE}

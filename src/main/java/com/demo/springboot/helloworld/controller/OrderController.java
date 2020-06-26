@@ -1,9 +1,7 @@
 package com.demo.springboot.helloworld.controller;
 
-import com.demo.springboot.helloworld.common.domain.Order;
-import com.demo.springboot.helloworld.common.domain.ShippingState;
-import com.demo.springboot.helloworld.common.domain.Userinfo;
-import com.demo.springboot.helloworld.common.domain.UserinfoWithBLOBs;
+import com.demo.springboot.helloworld.common.domain.*;
+import com.demo.springboot.helloworld.service.AddressService;
 import com.demo.springboot.helloworld.service.OrderService;
 import com.demo.springboot.helloworld.service.ShippingStateService;
 import com.demo.springboot.helloworld.service.UserinfoService;
@@ -29,6 +27,9 @@ public class OrderController {
     @Autowired
     ShippingStateService shippingStateService;
 
+    @Autowired
+    AddressService addressService;
+
     @RequestMapping("/user/OrderHistory")
     public String OrderPage(){
         return "/user/CheckOrder";
@@ -42,19 +43,23 @@ public class OrderController {
         List<UserinfoWithBLOBs> buyerList = userinfoService.find(orderList.get(0).getUserId());
         List<UserinfoWithBLOBs> sellerList = userinfoService.find(orderList.get(0).getSellerId());
         List<ShippingState> shippingStateList = shippingStateService.find(orderList.get(0).getOrderId());
+        List<Address> addressList = addressService.selectAddress(orderList.get(0).getAddressId());
         for(int i=1;i<orderList.size();i++){
             List<UserinfoWithBLOBs> tempbuyerList = userinfoService.find(orderList.get(i).getUserId());
             List<UserinfoWithBLOBs> tempsellerList = userinfoService.find(orderList.get(i).getSellerId());
             List<ShippingState> tempshippingStateList = shippingStateService.find(orderList.get(i).getOrderId());
+            List<Address> tempaddressList = addressService.selectAddress(orderList.get(i).getAddressId());
             buyerList.addAll(tempbuyerList);
             sellerList.addAll(tempsellerList);
             shippingStateList.addAll(tempshippingStateList);
+            addressList.addAll(tempaddressList);
         }
         Map<String,Object> result = new HashMap<String, Object>();
         result.put("Order",orderList);
         result.put("Buyer",buyerList);
         result.put("Seller",sellerList);
         result.put("ShippingState",shippingStateList);
+        result.put("address",addressList);
 
         return result;
     }
