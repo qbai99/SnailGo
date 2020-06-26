@@ -126,7 +126,7 @@ create table order_request
 (
    order_id             bigint not null auto_increment,
    user_id              bigint,
-   goods_id              bigint,
+   goods_id             bigint,
    buyer_id             bigint,
    seller_id            bigint,
    goods_name           varchar(255),
@@ -180,6 +180,7 @@ create table shopping_cart
 (
    id                   int not null auto_increment,
    user_id              bigint,
+   goods_id             bigint,
    goods_name           varchar(255),
    goods_quantity       int,
    goods_price          double not null,
