@@ -196,10 +196,10 @@
             <!-- Sidebar user (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="/AdminLTE-3.0.5/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                    <img id="sideImg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
+                    <a href="/user/MyInformation" class="d-block" id="sideName"></a>
                 </div>
             </div>
 
@@ -394,6 +394,13 @@
 
                                     </div>
                                     <div class="active tab-pane" id="addGoods">
+                                        <label>商品名称</label><input>
+                                        <label>商品简介</label><textarea></textarea>
+                                        <label>商品图片</label><input type="file" class="custom-file-input" id="exampleInputFile" onchange="check()" accept="image/jpg,image/jpeg,img/png,img/PNG">
+                                        <label>商品标签</label><input>
+                                        <label>商品价格</label><input>
+                                        <label>商品库存</label><input>
+
                                     </div>
                                 </div>
                                 <!-- /.tab-content -->

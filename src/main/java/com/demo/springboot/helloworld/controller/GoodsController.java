@@ -110,4 +110,5 @@ public class   GoodsController {
             return "search";//跳转到搜索页search.html
 
     }
+
 }

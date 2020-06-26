@@ -1,5 +1,13 @@
 var phoneNumber;
 $.ajax({
+    type: "GET",
+    url: "/user/information",
+    success: function (res, ifo) {
+        $('#sideImg').attr('src', res.UserInfo[0].userImg);
+        $("#sideName").attr('value', res.UserInfo[0].userName);
+    }
+});
+$.ajax({
     type:"POST",
     url:"/address/myaddress",
     // data:{
@@ -9,13 +17,14 @@ $.ajax({
         console.log(res);
         for(var i = 0;i<res.length;i++){
             var bigDiv = $('<tr>' +
-                '<td>'+res[i].address.split("/")[0]+
+                '<td>'+res[i].address.split("/")[0]+res[i].address.split("/")[1]+res[i].address.split("/")[2]+
+                res[i].address.split("/")[3]+
                 '</td>'+
                 '<td>'+
-                res[i].address.split("/")[2]+
+                res[i].address.split("/")[5]+
                 '</td>'+
                 '<td>'+
-                res[i].address.split("/")[1]+
+                res[i].address.split("/")[4]+
                 '</td>'+
                 '<td class="project-actions text-right" >'+
                 '<a class="btn btn-danger btn-sm" href='+"/address/deleteaddress?addressId="+res[i].addressId+'>'+
@@ -51,7 +60,7 @@ function AddAddress() {
     var Address = $('#newAddress').val();
     var phoneNumber = $('#newPhoneNumber').val();
     var people = $('#newPeople').val();
-    var newAddress = province+city+street+Address+"/"+phoneNumber+"/"+people;
+    var newAddress = province+"/"+city+"/"+street+"/"+Address+"/"+phoneNumber+"/"+people;
     if(phoneNumber.length!=11 && phoneNumber.length!=7)
     {
         alert("手机号码的长度应该为7或11！");

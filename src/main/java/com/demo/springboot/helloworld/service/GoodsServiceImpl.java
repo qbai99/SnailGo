@@ -101,5 +101,21 @@ public class GoodsServiceImpl implements GoodsService{
         else return false;
     }
 
+    @Override
+    public boolean UpdateInfo(String goodsId, String name, String dsp, String tag, String price, String remain) {
+        GoodsExample goodsExample = new GoodsExample();
+        goodsExample.createCriteria().andGoodsIdEqualTo(Long.parseLong(goodsId));
+        Goods goods = goodsMapper.selectByExample(goodsExample).get(0);
+        goods.setGoodsName(name);
+        goods.setGoodsDsp(dsp);
+        goods.setGoodsTag(tag);
+        goods.setGoodsPrice(Double.valueOf(price));
+        goods.setGoodsRemaning(Integer.parseInt(remain));
+
+        int result = goodsMapper.updateByExample(goods,goodsExample);
+        if(result == 1)return true;
+        else return false;
+    }
+
 
 }

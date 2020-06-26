@@ -16,4 +16,6 @@ public interface GoodsService {
     List<Goods> selectByShopid(Long shopId);
 
     boolean deleteById(String goodsId);
+
+    boolean UpdateInfo(String goodsId, String name, String dsp, String tag, String price, String remain);
 }

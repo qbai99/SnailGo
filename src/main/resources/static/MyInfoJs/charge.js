@@ -1,4 +1,11 @@
-
+$.ajax({
+    type: "GET",
+    url: "/user/information",
+    success: function (res, ifo) {
+        $('#sideImg').attr('src', res.UserInfo[0].userImg);
+        $("#sideName").attr('value', res.UserInfo[0].userName);
+    }
+});
 $.ajax({
     type:"GET",
     url:"/balance/check",

@@ -59,11 +59,21 @@ public class ShopController {
         System.out.println(goodsId);
         ModelAndView model = new ModelAndView();
         boolean result = goodsService.deleteById(goodsId);
-        model.addObject("pay",String.valueOf(result));
+        model.addObject("result",String.valueOf(result));
         model.setViewName("/user/ShopManage");
 //        if (result == true)
         return model;
 //        else return "订单";
 
+    }
+
+    @RequestMapping("/changeinfo")
+    public ModelAndView ChangeInfo(String goodsId,String name,String dsp,String tag,String price,String remain){
+        ModelAndView model = new ModelAndView();
+        System.out.println(name+" "+dsp+" "+tag+" "+price+" "+remain);
+        boolean result = goodsService.UpdateInfo(goodsId,name,dsp,tag,price,remain);
+        model.addObject("result",String.valueOf(result));
+        model.setViewName("/user/ShopManage");
+        return model;
     }
 }

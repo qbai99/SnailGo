@@ -1,5 +1,4 @@
 var shopId;
-
 $.ajax({
     type:"GET",
     url:"/user/isSeller",
@@ -9,7 +8,7 @@ $.ajax({
             $('#mainShop').css("display","none");
             var bigDiv = $('<div class="content-wrapper">' +
                 '<div class="card-body">' +
-                '<p>'+ "你还不是商家噢，如果想成为商家请点击下方链接"+'</p>' +
+                '<p>'+ "你还不是商家噢"+'</p>' +
                 '<a href="/">'+"我要成为商家"+'</a>' +
                 '</div>' +
                 '</div>');
@@ -17,6 +16,14 @@ $.ajax({
         }
     }
 })
+$.ajax({
+    type: "GET",
+    url: "/user/information",
+    success: function (res, ifo) {
+        $('#sideImg').attr('src', res.UserInfo[0].userImg);
+        $("#sideName").attr('value', res.UserInfo[0].userName);
+    }
+});
 function changeConfirm(){
     var name = $('#shopName').val();
     var mbs = $('#mainBusiness').val();
@@ -93,16 +100,16 @@ $.ajax({
                 '        <div class="row">' +
                 '            <div class="col-sm-6">' +
                 // '<td>          ' +
-                '                <label class="description">商品名：'+ '<input style="text-align: center" value='+res.goods[i].goodsName+'></label>' +
+                '                <label class="description">商品名：'+ '<input style="text-align: center" id='+"name"+res.goods[i].goodsId +'value='+res.goods[i].goodsName+'></label>' +
                 '                <p style="width:400%;"><label class="description">商品描述：</label><br>'+'<textarea style="width: 70%;height: 100px" id='+"dsp"+res.goods[i].goodsId+'></textarea></p>   ' +
                 // '                <a href='+"/goods/details?id="+res.goods[i].goodsId+'>' +
                 '                <label>商品图片</label>'+
                 '                <img class="img-fluid mb-3" src='+"/goods_pics/"+res.goods[i].goodsId+"-pic-1.jpg"+' alt="Photo">' +
                 // '                <img class="img-fluid" src="/AdminLTE-3.0.5/dist/img/photo3.jpg" alt="Photo">\n' +
                 // '                </a> ' +
-                '                <p style="width:400%;"><label>商品标签：</label>'+'<input style="text-align: center" value='+res.goods[i].goodsTag+'></p>   ' +
-                '                <p style="width:400%;"><label>商品价格：</label>'+'<input style="text-align: center" value='+res.goods[i].goodsPrice+'></p>   ' +
-                '                <p style="width:400%;"><label>商品库存：</label>'+'<input style="text-align: center" value='+res.goods[i].goodsRemaning+'></p>   ' +
+                '                <p style="width:400%;"><label>商品标签：</label>'+'<input style="text-align: center" id='+"tag"+res.goods[i].goodsId + 'value='+res.goods[i].goodsTag+'></p>   ' +
+                '                <p style="width:400%;"><label>商品价格：</label>'+'<input style="text-align: center" id='+"price"+res.goods[i].goodsId + 'value='+res.goods[i].goodsPrice+'></p>   ' +
+                '                <p style="width:400%;"><label>商品库存：</label>'+'<input style="text-align: center" id='+"remain"+res.goods[i].goodsId + 'value='+res.goods[i].goodsRemaning+'></p>   ' +
                 // '            </div>' +
                 // '            <!-- /.col -->\n' +
                 // '            <div class="col-sm-6">\n' +
@@ -119,11 +126,16 @@ $.ajax({
                 // '     <a href="#" class="link-black text-sm mr-2"><i class="fas fa-share mr-1"></i> Share</a>\n' +
                 // '     <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>\n' +
                 // '        <a href="#">'+res.shop.shopName+'</a>' +
-                '<span class="username">' +
-                '    <a class="btn btn-info" href='+"/shop/deletegoods?goodsId="+ res.goods[i].goodsId+' class="float-right btn-tool">删除</a>' +
-                '</span>' +
+                // '<span class="username">' +
+                // '</span>' +
                 // '<span class="float-right">\n' +
-                '  <a href="#" class="btn btn-info" >' +
+                '  <a href="'+"/shop/changeinfo?goodsId="+res.goods[i].goodsId+
+                "  &name="+$('#'+"name"+res.goods[i].goodsId).val()+
+                "  &dsp="+$('#'+"dsp"+res.goods[i].goodsId).val()+
+                "  &tag="+$('#'+"tag"+res.goods[i].goodsId).val()+
+                "  &price="+$('#'+"price"+res.goods[i].goodsId).val()+
+                "  &remain="+$('#'+"remain"+res.goods[i].goodsId).val()+
+                '" class="btn btn-info" >' +
                 '    修改' +
                 '  </a>' +
                 '  <a href="#" class="btn btn-info">' +
@@ -131,6 +143,9 @@ $.ajax({
                 '  </a>' +
                 '  <a href="#" class="btn btn-info">\n' +
                 '    下架' +
+                '  </a>' +
+                '  <a class="btn btn-info" href='+"/shop/deletegoods?goodsId="+ res.goods[i].goodsId+'>' +
+                '    删除' +
                 '  </a>' +
                 // '</span>' +
                 '</p>' +
@@ -140,6 +155,11 @@ $.ajax({
                 );
             $('#activity').append(bigDiv);
             $('#'+"dsp"+res.goods[i].goodsId).val(res.goods[i].goodsDsp);
+            console.log($('#'+"name"+res.goods[i].goodsId).val);
+            console.log($('#'+"dsp"+res.goods[i].goodsId).val);
+            console.log($('#'+"tag"+res.goods[i].goodsId).val);
+            console.log($('#'+"price"+res.goods[i].goodsId).val);
+            console.log($('#'+"remain"+res.goods[i].goodsId).val);
         }
     }
 })

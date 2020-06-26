@@ -7,7 +7,7 @@ $.ajax({
             $('#mainShop').css("display","none");
             var bigDiv = $('<div class="content-wrapper">' +
                 '<div class="card-body">' +
-                '<p>'+ "你还不是商家噢，如果想成为商家请点击下方链接"+'</p>' +
+                '<p>'+ "你还不是商家噢"+'</p>' +
                 '<a href="/">'+"我要成为商家"+'</a>' +
                 '</div>' +
                 '</div>');
@@ -15,9 +15,14 @@ $.ajax({
         }
     }
 })
-
-
-
+$.ajax({
+    type: "GET",
+    url: "/user/information",
+    success: function (res, ifo) {
+        $('#sideImg').attr('src', res.UserInfo[0].userImg);
+        $("#sideName").attr('value', res.UserInfo[0].userName);
+    }
+});
 $.ajax({
     type:"GET",
     url:"/shop/information",
