@@ -31,7 +31,7 @@ public class UserinfoServiceImpl implements UserinfoService{
         UserinfoExample userinfoExample = new UserinfoExample();
         userinfoExample.createCriteria().andUserAdminEqualTo(email);
         UserinfoWithBLOBs result = userinfoMapper.selectByExampleWithBLOBs(userinfoExample).get(0);
-        System.out.println("旧数据"+result.toString());
+//        System.out.println("旧数据"+result.toString());
 //        System.out.println(file);
         result.setUserAdmin(newAdmin);
         result.setUserId(result.getUserId());
@@ -43,7 +43,7 @@ public class UserinfoServiceImpl implements UserinfoService{
         result.setUserPhonenumber(phonenumber);
         result.setUserIntroduction(introduction);
         result.setUserImg(file.getBytes());
-        System.out.println("新数据"+result.toString());
+//        System.out.println("新数据"+result.toString());
         int res = userinfoMapper.updateByPrimaryKeyWithBLOBs(result);
 
         return result;
@@ -55,7 +55,7 @@ public class UserinfoServiceImpl implements UserinfoService{
         UserinfoExample userinfoExample = new UserinfoExample();
         userinfoExample.createCriteria().andUserIdEqualTo(userId);
         List<UserinfoWithBLOBs> userinfo = userinfoMapper.selectByExampleWithBLOBs(userinfoExample);
-        System.out.println(userinfo.toString());
+//        System.out.println(userinfo.toString());
         return userinfo;
     }
 
@@ -64,7 +64,7 @@ public class UserinfoServiceImpl implements UserinfoService{
         UserinfoExample userinfoExample = new UserinfoExample();
         userinfoExample.createCriteria().andUserAdminEqualTo(userAdmin);
         List<UserinfoWithBLOBs> userinfo = userinfoMapper.selectByExampleWithBLOBs(userinfoExample);
-        System.out.println(userinfo.toString());
+//        System.out.println(userinfo.toString());
         return userinfo;
     }
 
@@ -102,7 +102,7 @@ public class UserinfoServiceImpl implements UserinfoService{
         userinfo.setUserPassword(signUp.getUserPassword());
         userinfo.setUserName(signUp.getUserName());
         userinfo.setUserTag(signUp.getIdentity());
-        userinfo.setUsersex(null);
+        userinfo.setUsersex(0);
         userinfo.setUserIntroduction(null);
         userinfo.setUserPhonenumber(null);
         userinfo.setUserBirthdate(null);

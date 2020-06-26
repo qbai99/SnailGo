@@ -80,4 +80,18 @@ public class Goods {
     public void setGoodsTag(String goodsTag) {
         this.goodsTag = goodsTag == null ? null : goodsTag.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Goods{" +
+                "goodsId=" + goodsId +
+                ", shopId=" + shopId +
+                ", orderId=" + orderId +
+                ", goodsPrice=" + goodsPrice +
+                ", goodsName='" + goodsName + '\'' +
+                ", goodsRemaning=" + goodsRemaning +
+                ", goodsDsp='" + goodsDsp + '\'' +
+                ", goodsTag='" + goodsTag + '\'' +
+                '}';
+    }
 }

@@ -1,11 +1,10 @@
 package com.demo.springboot.helloworld.service;
 
-import com.demo.springboot.helloworld.common.domain.Cart;
-import com.demo.springboot.helloworld.common.domain.CartExample;
-import com.demo.springboot.helloworld.common.domain.Goods;
-import com.demo.springboot.helloworld.common.domain.GoodsExample;
+import com.demo.springboot.helloworld.common.domain.*;
 import com.demo.springboot.helloworld.mapper.CartMapper;
+import com.demo.springboot.helloworld.mapper.GoodsImgMapper;
 import com.demo.springboot.helloworld.mapper.GoodsMapper;
+import com.demo.springboot.helloworld.mapper.OrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,6 +15,12 @@ import java.util.List;
 public class GoodsServiceImpl implements GoodsService{
     @Autowired
     private GoodsMapper goodsMapper;
+
+    @Autowired
+    private OrderMapper orderMapper;
+
+    @Autowired
+    private GoodsImgMapper goodsImgMapper;
 
     @Override
     public List<Goods> search(String search_key, String goods_tag) {
@@ -81,6 +86,64 @@ public class GoodsServiceImpl implements GoodsService{
         List<Goods> goodsList = goodsMapper.selectByExample(goodsExample);
 
         return goodsList;
+    }
+
+    @Override
+    public boolean deleteById(String goodsId) {
+        GoodsExample goodsExample = new GoodsExample();
+        goodsExample.createCriteria().andGoodsIdEqualTo(Long.parseLong(goodsId));
+
+        //判断是否在订单表里面
+        OrderExample orderExample = new OrderExample();
+        orderExample.createCriteria().andGoodsIdEqualTo(Long.parseLong(goodsId));
+        List<Order> orderList = orderMapper.selectByExample(orderExample);
+        if(orderList.size()==0){
+            int result = goodsMapper.deleteByExample(goodsExample);
+            if (result==1)return true;
+            else return false;
+        }
+        else return false;
+    }
+
+    @Override
+    public boolean UpdateInfo(String goodsId, String name, String dsp, String tag, String price, String remain) {
+        GoodsExample goodsExample = new GoodsExample();
+        goodsExample.createCriteria().andGoodsIdEqualTo(Long.parseLong(goodsId));
+        Goods goods = goodsMapper.selectByExample(goodsExample).get(0);
+        goods.setGoodsName(name);
+        goods.setGoodsDsp(dsp);
+        goods.setGoodsTag(tag);
+        goods.setGoodsPrice(Double.valueOf(price));
+        goods.setGoodsRemaning(Integer.parseInt(remain));
+
+        int result = goodsMapper.updateByExample(goods,goodsExample);
+        if(result == 1)return true;
+        else return false;
+    }
+
+    @Override
+    public boolean AddGoods(String shopId, String goodsName, String goodsIntro, String goodsTag, String goodsPrice, String goodsRemain, String file) {
+
+        Goods goods = new Goods();
+        goods.setShopId(Long.parseLong(shopId));
+        goods.setGoodsName(goodsName);
+        goods.setGoodsDsp(goodsIntro);
+        goods.setGoodsTag(goodsTag);
+        goods.setGoodsPrice(Double.valueOf(goodsPrice));
+        goods.setGoodsRemaning(Integer.parseInt(goodsRemain));
+
+        int result = goodsMapper.insert(goods);
+        Long goodsId = goodsMapper.selectCurId();
+        System.out.println("新id"+goodsId);
+
+        GoodsImg goodsImg = new GoodsImg();
+        goodsImg.setGoodsId(goodsId);
+        goodsImg.setGoodsImg(file.getBytes());
+
+        int result2 = goodsImgMapper.insert(goodsImg);
+
+        if (result==1&&result2==1) return true;
+        else return false;
     }
 
 

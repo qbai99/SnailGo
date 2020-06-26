@@ -14,4 +14,10 @@ public interface GoodsService {
     int selectRem(long goodsId);
 
     List<Goods> selectByShopid(Long shopId);
+
+    boolean deleteById(String goodsId);
+
+    boolean UpdateInfo(String goodsId, String name, String dsp, String tag, String price, String remain);
+
+    boolean AddGoods(String shopId, String goodsName, String goodsIntro, String goodsTag, String goodsPrice, String goodsRemain, String file);
 }

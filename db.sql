@@ -126,9 +126,10 @@ create table order_request
 (
    order_id             bigint not null auto_increment,
    user_id              bigint,
-   goods_id              bigint,
+   goods_id             bigint,
    buyer_id             bigint,
    seller_id            bigint,
+   address_id           bigint,
    goods_name           varchar(255),
    goods_quantity       bigint,
    goods_price          double,
@@ -180,6 +181,7 @@ create table shopping_cart
 (
    id                   int not null auto_increment,
    user_id              bigint,
+   goods_id             bigint,
    goods_name           varchar(255),
    goods_quantity       int,
    goods_price          double not null,
@@ -247,15 +249,29 @@ create table user_level
    primary key (level_id)
 );
 
-DROP TABLE IF EXISTS `comment`;
-CREATE TABLE `comment`  (
-                            `comment_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS comment;
+CREATE TABLE comment  (
+                            `id` int(11) NOT NULL AUTO_INCREMENT,
                             `goods_id` bigint(20) NULL DEFAULT NULL,
-                            `user_id` int(11) NULL DEFAULT NULL,
-                            PRIMARY KEY (`comment_id`) USING BTREE,
+                            `user_id` bigint(11) NULL DEFAULT NULL,
+                            `com` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+                            PRIMARY KEY (`id`) USING BTREE,
                             INDEX `fk_comment_1`(`goods_id`) USING BTREE,
                             CONSTRAINT `fk_comment_1` FOREIGN KEY (`goods_id`) REFERENCES `goods` (`goods_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+
+
+DROP TABLE IF EXISTS goods_img;
+CREATE TABLE goods_img (
+  img_id bigint not null auto_increment,
+  goods_id              bigint,
+  goods_img             longblob,
+  primary key (img_id)
 );
+
+alter table goods_img add constraint FK_Relationship_101 foreign key (goods_id)
+references goods (goods_id) on delete restrict on update restrict;
 
 alter table address add constraint FK_Relationship_4 foreign key (user_id)
       references user_info (user_id) on delete restrict on update restrict;

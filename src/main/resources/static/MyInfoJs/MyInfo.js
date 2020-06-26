@@ -30,9 +30,12 @@ $.ajax({
         binaryFile = res.UserInfo[0].userImg;
         console.log("返回图片"+res.UserInfo[0].userImg);
         $('#preview').attr('src',res.UserInfo[0].userImg);
+        $('#sideImg').attr('src',res.UserInfo[0].userImg);
+
         $("#emailInput").attr('value',res.UserInfo[0].userAdmin);
         // $("#passwordInput").attr('value',res.UserInfo[0].userPassword);
         $("#userName").attr('value',res.UserInfo[0].userName);
+        $("#sideName").html(res.UserInfo[0].userName);
         console.log(Number(res.UserInfo[0].usersex))
         switch (Number(res.UserInfo[0].usersex)) {
             case 0:
@@ -131,6 +134,7 @@ function clickHandle() {
             $("#phoneNumber").attr('value',res.userPhonenumber);
             $("#introduction").attr('value',res.userIntroductoin);
             alert("保存成功！");
+            window.location.reload();
         }
     })
 }

@@ -11,6 +11,8 @@ public class Order {
 
     private Long sellerId;
 
+    private Long addressId;
+
     private String goodsName;
 
     private Long goodsQuantity;
@@ -55,6 +57,14 @@ public class Order {
 
     public void setSellerId(Long sellerId) {
         this.sellerId = sellerId;
+    }
+
+    public Long getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(Long addressId) {
+        this.addressId = addressId;
     }
 
     public String getGoodsName() {

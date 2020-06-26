@@ -2,6 +2,14 @@ var oldPassword = '';
 var rewriteoldPassword = '';
 var newPassword = '';
 
+$.ajax({
+    type: "GET",
+    url: "/user/information",
+    success: function (res, ifo) {
+        $('#sideImg').attr('src', res.UserInfo[0].userImg);
+        $("#sideName").html(res.UserInfo[0].userName);
+    }
+});
 function Oldlistener() {
     oldPassword = $("#oldpassword").val();
 }

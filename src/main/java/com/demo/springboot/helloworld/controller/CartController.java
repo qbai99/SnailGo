@@ -64,4 +64,11 @@ public class CartController {
         cartService.del(id);
         return "cart";
     }
+    @RequestMapping("/dellist")
+    public String dellist(Integer list[]){
+        for(int i=0;i<list.length;i++){
+            cartService.del(list[i]);
+        }
+        return "cart";
+    }
 }

@@ -276,4 +276,10 @@
     upper(goods_name) like upper(concat('%',#{search_key},'%'));
     </if>
   </select>
+  <select id="selectCurId" resultType="Long">
+    select
+    max(goods_id)
+    from
+    goods
+  </select>
 </mapper>

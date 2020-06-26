@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>网上商城</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/jquery/dist/jquery.js"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/AdminLTE-3.0.5/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/AdminLTE-3.0.5/dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper" id="mainContainer">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="/" class="nav-link">主页</a>
+            </li>
+
+
+        </ul>
+
+
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <div class="nav-right" style="right: 20px">
+                    <a href="/" style="color: black"><i class="fa fa-comment" style="color: black"></i><strong>消息</strong></a>
+                    <a id="tocartid" href="#" onclick="tocart()" style="color: black"> <i class="fa fa-shopping-cart"></i></a>
+                </div>
+            </li>
+
+        </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="/" class="brand-link">
+            <img src="/img/logo.png"
+                 alt="AdminLTE Logo"
+                 class="brand-image img-circle elevation-3"
+                 style="opacity: .8">
+            <span class="brand-text font-weight-light">Snail Go</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Sidebar user (optional) -->
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="image">
+                    <img src="/AdminLTE-3.0.5/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                </div>
+                <div class="info">
+                    <a href="#" class="d-block">Alexander Pierce</a>
+                </div>
+            </div>
+
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <!-- Add icons to the links using the .nav-icon class
+                         with font-awesome or any other icon font library -->
+                    <li class="nav-item has-treeview">
+                        <a href="/user/MyInformation" class="nav-link">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                个人中心
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/user/AdressManage" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                地址管理
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="/user/changepassword" class="nav-link">
+                            <i class="nav-icon fas fa-copy"></i>
+                            <p>
+                                修改密码
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="/balance/balancepage" class="nav-link">
+                            <i class="nav-icon fas fa-copy"></i>
+                            <p>
+                                余额充值
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="/user/OrderHistory" class="nav-link">
+                            <i class="nav-icon fas fa-copy"></i>
+                            <p>
+                                订单记录
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="/user/viewhistory" class="nav-link">
+                            <i class="nav-icon fas fa-copy"></i>
+                            <p>
+                                浏览记录
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview" id="myShop">
+                        <a href="/user/MyProfile" class="nav-link">
+                            <i class="nav-icon fas fa-copy"></i>
+                            <p>
+                                我的商店
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview" id="shopManagement">
+                        <a href="/user/ShopManage" class="nav-link">
+                            <i class="nav-icon fas fa-copy"></i>
+                            <p>
+                                管理商店
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper"  id="mainShop">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>用户信息</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">个人中心</a></li>
+                            <li class="breadcrumb-item active">我的主页</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+
+                        <!-- Profile Image -->
+                        <div class="card card-primary card-outline">
+                            <div class="card-body box-profile">
+                                <div class="text-center">
+                                    <img class="profile-user-img img-fluid img-circle"
+                                         src="/AdminLTE-3.0.5/dist/img/user4-128x128.jpg"
+                                         alt="User profile picture" id="userImg">
+                                </div>
+
+                                <input class="form-control text-center" id="shopName" placeholder="在这里输入商店名"></input>
+
+                                <p class="text-muted text-center" id="userName"></p>
+
+                                <ul class="list-group list-group-unbordered mb-3">
+                                    <!--<li class="list-group-item">-->
+                                    <!--<b>粉丝</b> <a class="float-right">1,322</a>-->
+                                    <!--</li>-->
+                                    <!--<li class="list-group-item">-->
+                                    <!--<b>关注</b> <a class="float-right">543</a>-->
+                                    <!--</li>-->
+                                    <li class="list-group-item">
+                                        <b>商品</b> <a class="float-right" id="goodsQuantity">13,287</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+
+                        <!-- About Me Box -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">关于我</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <strong><i class="fas fa-book mr-1"></i>主营</strong>
+
+                                <textarea class="form-control" id="mainBusiness" style="height: 100px" placeholder="在这里输入商店的主营业务" >
+                                </textarea>
+
+                                <hr>
+
+                                <strong><i class="fas fa-map-marker-alt mr-1"></i> 地址</strong>
+
+                                <input class="form-control text-center" id="location" placeholder="在这里输入店铺地址">
+
+                                <hr>
+
+                                <strong><i class="fas fa-pencil-alt mr-1"></i> 店铺评价</strong>
+
+                                <p class="text-muted">
+                                    <span class="tag tag-danger" id="star"></span>
+                                </p>
+
+                                <hr>
+
+                                <strong><i class="far fa-file-alt mr-1"></i> 店铺简介</strong>
+
+                                <textarea class="form-control" id="introduction" style="height: 150px" placeholder="在这里输入店铺简介">
+                                </textarea>
+                                <button class="btn btn-primary btn-block" style="margin-top:25px;" onclick="changeConfirm()"><b>确定更改</b></button>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header p-2">
+                                <ul class="nav nav-pills">
+                                    <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">管理商品</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#addGoods" data-toggle="tab">添加商品</a></li>
+                                </ul>
+                            </div><!-- /.card-header -->
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <div class="active tab-pane" id="activity">
+
+                                    </div>
+                                    <div class="tab-pane" id="addGoods">
+                                        <form role="form">
+                                            <!--账户 名称 密码 性别 出生年月 手机号码 头像 自我介绍 等级 积分 卖家还是买家-->
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <label>商品图片</label>
+                                                    <div style="background-color: black;height: 350px;width: 350px;"><img src="" id="preview" style="width: 350px;height: 350px;"></div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="imgFile">选择商品图片文件</label>
+                                                    <div class="input-group">
+                                                        <div class="custom-file">
+                                                            <input type="file" class="custom-file-input" id="imgFile" onchange="check()" accept="image/jpg,image/jpeg,img/png,img/PNG">
+                                                            <label class="custom-file-label" for="imgFile">Choose file</label>
+                                                        </div>
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text" id="">上传</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label >商品名</label>
+                                                    <input id="goodsName" type="email" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label >商品简介</label>
+                                                    <input id="goodsIntro" type="email" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label >商品标签</label>
+                                                    <input id="goodsTag" type="email" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label >商品价格</label>
+                                                    <input id="goodsPrice" type="email" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label >商品库存</label>
+                                                    <input id="goodsRemain" type="email" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="button" class="btn btn-primary" onclick="AddGoods()">添加</button>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                                <!-- /.tab-content -->
+                            </div><!-- /.card-body -->
+                        </div>
+                        <!-- /.nav-tabs-custom -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <!--<footer class="main-footer">-->
+    <!--<div class="float-right d-none d-sm-block">-->
+    <!--<b>Version</b> 3.0.5-->
+    <!--</div>-->
+    <!--<strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights-->
+    <!--reserved.-->
+    <!--</footer>-->
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="/MyInfoJs/ShopManageJs.js"></script>
+<script src="/AdminLTE-3.0.5/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/AdminLTE-3.0.5/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/AdminLTE-3.0.5/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/AdminLTE-3.0.5/dist/js/demo.js"></script>
+<script>
+    function tocart() {
+        var str = document.cookie;
+        if (str=='') {
+            $('#tocartid').attr("href","/loginPage");
+        }else {
+            $('#tocartid').attr("href","/cart");
+        }
+    }
+</script>
+</body>
+</html>

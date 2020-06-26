@@ -12,10 +12,10 @@
 
     <!-- Title  -->
     <!-- Favicon  -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href="img/logo.png">
 
 <!-- Document Title -->
-<title>Home</title>
+<title>SnailGo-主页</title>
 
 <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
 <link rel="stylesheet" type="text/css" href="rs-plugin/css/settings.css" media="screen" />
@@ -71,7 +71,7 @@
         <div class="nav-right">
           <a href="/user/MyInformation"><i class="fa fa-user"></i> <span id="login"></span><strong><span id="test"></span></strong> </a>
           <a href="/"><i class="fa fa-comment"></i><strong>消息</strong></a>
-          <a href="/cart"> <i class="fa fa-shopping-cart"></i></a>
+          <a id="tocartid" href="#" onclick="tocart()"> <i class="fa fa-shopping-cart"></i></a>
         </div>
 
     </nav>
@@ -83,7 +83,7 @@
         <div id="cater" class="collapse">
           <ul>
 
-            <li class="sub-menu"><a href="#.">男装</a>
+            <li class="sub-menu"><a href="/goods/search?goods_tag=男装&search_key=">男装</a>
               <ul>
                 <li><a href="#."> 上衣</a></li>
                 <li><a href="#."> 下装</a></li>
@@ -91,7 +91,7 @@
                 <li><a href="#."> 配饰</a>
               </ul>
             </li>
-            <li class="sub-menu"><a href="#.">女装</a>
+            <li class="sub-menu"><a href="/goods/search?goods_tag=女装&search_key=">女装</a>
               <ul>
                 <li><a href="#."> 上衣</a></li>
                 <li><a href="#."> 下装</a></li>
@@ -99,7 +99,7 @@
                 <li><a href="#."> 配饰</a>
               </ul>
             </li>
-            <li class="sub-menu"><a href="#.">数码3C</a>
+            <li class="sub-menu"><a href="/goods/search?goods_tag=3C&search_key=">数码3C</a>
               <ul>
                 <li><a href="#.">平板电脑</a></li>
                 <li><a href="#.">移动电话</a></li>
@@ -758,7 +758,7 @@
         
         <!-- heading -->
         <div class="heading">
-          <h2>Top Selling of the Week</h2>
+          <h2>本周销量排行榜</h2>
           <hr>
         </div>
         
@@ -1346,7 +1346,7 @@
         
         <!-- heading -->
         <div class="heading">
-          <h2>From our Blog</h2>
+          <h2>Blog</h2>
           <hr>
         </div>
         <div id="blog-slide" class="with-nav"> 
@@ -1514,5 +1514,15 @@
 <script type="text/javascript" src="/rs-plugin/js/jquery.tp.min.js"></script>
 <script src="/js/main.js"></script>
 <!-- ##### Footer Area End ##### -->
+<script>
+  function tocart() {
+    var str = document.cookie;
+    if (str=='') {
+      $('#tocartid').attr("href","/loginPage");
+    }else {
+      $('#tocartid').attr("href","/cart");
+    }
+  }
+</script>
 </body>
 </html>

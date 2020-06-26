@@ -1,4 +1,11 @@
-
+$.ajax({
+    type: "GET",
+    url: "/user/information",
+    success: function (res, ifo) {
+        $('#sideImg').attr('src', res.UserInfo[0].userImg);
+        $("#sideName").html(res.UserInfo[0].userName);
+    }
+});
 $.ajax({
     type:"GET",
     url:"/order/check",
@@ -33,6 +40,9 @@ $.ajax({
                 '</td>'+
                 '<td>'+
                 res.Seller[i].userName+
+                '</td>'+
+                '<td>'+
+                res.address[i].address+
                 '</td>'+
                 '<td>'+
                 res.ShippingState[i].loc+

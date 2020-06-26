@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.demo.springboot.helloworld.mapper.CommentMapper">
-  <resultMap id="BaseResultMap" type="com.demo.springboot.helloworld.common.domain.Comment">
-    <id column="id" jdbcType="INTEGER" property="id" />
+<mapper namespace="com.demo.springboot.helloworld.mapper.GoodsImgMapper">
+  <resultMap id="BaseResultMap" type="com.demo.springboot.helloworld.common.domain.GoodsImg">
+    <id column="img_id" jdbcType="BIGINT" property="imgId" />
     <result column="goods_id" jdbcType="BIGINT" property="goodsId" />
-    <result column="user_id" jdbcType="BIGINT" property="userId" />
-    <result column="com" jdbcType="VARCHAR" property="com" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.demo.springboot.helloworld.common.domain.GoodsImg">
+    <result column="goods_img" jdbcType="LONGVARBINARY" property="goodsImg" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -66,15 +67,20 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, goods_id, user_id, com
+    img_id, goods_id
   </sql>
-  <select id="selectByExample" parameterType="com.demo.springboot.helloworld.common.domain.CommentExample" resultMap="BaseResultMap">
+  <sql id="Blob_Column_List">
+    goods_img
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.demo.springboot.helloworld.common.domain.GoodsImgExample" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from comment
+    ,
+    <include refid="Blob_Column_List" />
+    from goods_img
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -82,115 +88,130 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.demo.springboot.helloworld.common.domain.GoodsImgExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from goods_img
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
-    from comment
-    where id = #{id,jdbcType=INTEGER}
+    ,
+    <include refid="Blob_Column_List" />
+    from goods_img
+    where img_id = #{imgId,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from comment
-    where id = #{id,jdbcType=INTEGER}
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from goods_img
+    where img_id = #{imgId,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.demo.springboot.helloworld.common.domain.CommentExample">
-    delete from comment
+  <delete id="deleteByExample" parameterType="com.demo.springboot.helloworld.common.domain.GoodsImgExample">
+    delete from goods_img
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.demo.springboot.helloworld.common.domain.Comment">
-    insert into comment (id, goods_id, user_id, 
-      com)
-    values (#{id,jdbcType=INTEGER}, #{goodsId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
-      #{com,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.demo.springboot.helloworld.common.domain.GoodsImg">
+    insert into goods_img (img_id, goods_id, goods_img
+      )
+    values (#{imgId,jdbcType=BIGINT}, #{goodsId,jdbcType=BIGINT}, #{goodsImg,jdbcType=LONGVARBINARY}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.demo.springboot.helloworld.common.domain.Comment">
-    insert into comment
+  <insert id="insertSelective" parameterType="com.demo.springboot.helloworld.common.domain.GoodsImg">
+    insert into goods_img
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
+      <if test="imgId != null">
+        img_id,
       </if>
       <if test="goodsId != null">
         goods_id,
       </if>
-      <if test="userId != null">
-        user_id,
-      </if>
-      <if test="com != null">
-        com,
+      <if test="goodsImg != null">
+        goods_img,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
+      <if test="imgId != null">
+        #{imgId,jdbcType=BIGINT},
       </if>
       <if test="goodsId != null">
         #{goodsId,jdbcType=BIGINT},
       </if>
-      <if test="userId != null">
-        #{userId,jdbcType=BIGINT},
-      </if>
-      <if test="com != null">
-        #{com,jdbcType=VARCHAR},
+      <if test="goodsImg != null">
+        #{goodsImg,jdbcType=LONGVARBINARY},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.demo.springboot.helloworld.common.domain.CommentExample" resultType="java.lang.Long">
-    select count(*) from comment
+  <select id="countByExample" parameterType="com.demo.springboot.helloworld.common.domain.GoodsImgExample" resultType="java.lang.Long">
+    select count(*) from goods_img
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update comment
+    update goods_img
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=INTEGER},
+      <if test="record.imgId != null">
+        img_id = #{record.imgId,jdbcType=BIGINT},
       </if>
       <if test="record.goodsId != null">
         goods_id = #{record.goodsId,jdbcType=BIGINT},
       </if>
-      <if test="record.userId != null">
-        user_id = #{record.userId,jdbcType=BIGINT},
-      </if>
-      <if test="record.com != null">
-        com = #{record.com,jdbcType=VARCHAR},
+      <if test="record.goodsImg != null">
+        goods_img = #{record.goodsImg,jdbcType=LONGVARBINARY},
       </if>
     </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update goods_img
+    set img_id = #{record.imgId,jdbcType=BIGINT},
+      goods_id = #{record.goodsId,jdbcType=BIGINT},
+      goods_img = #{record.goodsImg,jdbcType=LONGVARBINARY}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update comment
-    set id = #{record.id,jdbcType=INTEGER},
-      goods_id = #{record.goodsId,jdbcType=BIGINT},
-      user_id = #{record.userId,jdbcType=BIGINT},
-      com = #{record.com,jdbcType=VARCHAR}
+    update goods_img
+    set img_id = #{record.imgId,jdbcType=BIGINT},
+      goods_id = #{record.goodsId,jdbcType=BIGINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.demo.springboot.helloworld.common.domain.Comment">
-    update comment
+  <update id="updateByPrimaryKeySelective" parameterType="com.demo.springboot.helloworld.common.domain.GoodsImg">
+    update goods_img
     <set>
       <if test="goodsId != null">
         goods_id = #{goodsId,jdbcType=BIGINT},
       </if>
-      <if test="userId != null">
-        user_id = #{userId,jdbcType=BIGINT},
-      </if>
-      <if test="com != null">
-        com = #{com,jdbcType=VARCHAR},
+      <if test="goodsImg != null">
+        goods_img = #{goodsImg,jdbcType=LONGVARBINARY},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where img_id = #{imgId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.demo.springboot.helloworld.common.domain.Comment">
-    update comment
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.demo.springboot.helloworld.common.domain.GoodsImg">
+    update goods_img
     set goods_id = #{goodsId,jdbcType=BIGINT},
-      user_id = #{userId,jdbcType=BIGINT},
-      com = #{com,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+      goods_img = #{goodsImg,jdbcType=LONGVARBINARY}
+    where img_id = #{imgId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.demo.springboot.helloworld.common.domain.GoodsImg">
+    update goods_img
+    set goods_id = #{goodsId,jdbcType=BIGINT}
+    where img_id = #{imgId,jdbcType=BIGINT}
   </update>
 </mapper>

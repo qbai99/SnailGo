@@ -82,6 +82,9 @@ public class UserinfoController {
     @RequestMapping("/viewhistory")
     public String history(){return "/user/ViewHistory";}
 
+    @RequestMapping("ShopManage")
+    public String shopmanage(){return "/user/ShopManage";}
+
     @RequestMapping("/AdressManage")
     public String adress(){
         return "/user/AddressManage";

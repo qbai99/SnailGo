@@ -3,14 +3,14 @@ package com.demo.springboot.helloworld.common.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommentExample {
+public class GoodsImgExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public CommentExample() {
+    public GoodsImgExample() {
         oredCriteria = new ArrayList<>();
     }
 
@@ -104,63 +104,63 @@ public class CommentExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andIdIsNull() {
-            addCriterion("id is null");
+        public Criteria andImgIdIsNull() {
+            addCriterion("img_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andIdIsNotNull() {
-            addCriterion("id is not null");
+        public Criteria andImgIdIsNotNull() {
+            addCriterion("img_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(Integer value) {
-            addCriterion("id =", value, "id");
+        public Criteria andImgIdEqualTo(Long value) {
+            addCriterion("img_id =", value, "imgId");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(Integer value) {
-            addCriterion("id <>", value, "id");
+        public Criteria andImgIdNotEqualTo(Long value) {
+            addCriterion("img_id <>", value, "imgId");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(Integer value) {
-            addCriterion("id >", value, "id");
+        public Criteria andImgIdGreaterThan(Long value) {
+            addCriterion("img_id >", value, "imgId");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("id >=", value, "id");
+        public Criteria andImgIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("img_id >=", value, "imgId");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(Integer value) {
-            addCriterion("id <", value, "id");
+        public Criteria andImgIdLessThan(Long value) {
+            addCriterion("img_id <", value, "imgId");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(Integer value) {
-            addCriterion("id <=", value, "id");
+        public Criteria andImgIdLessThanOrEqualTo(Long value) {
+            addCriterion("img_id <=", value, "imgId");
             return (Criteria) this;
         }
 
-        public Criteria andIdIn(List<Integer> values) {
-            addCriterion("id in", values, "id");
+        public Criteria andImgIdIn(List<Long> values) {
+            addCriterion("img_id in", values, "imgId");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<Integer> values) {
-            addCriterion("id not in", values, "id");
+        public Criteria andImgIdNotIn(List<Long> values) {
+            addCriterion("img_id not in", values, "imgId");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(Integer value1, Integer value2) {
-            addCriterion("id between", value1, value2, "id");
+        public Criteria andImgIdBetween(Long value1, Long value2) {
+            addCriterion("img_id between", value1, value2, "imgId");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("id not between", value1, value2, "id");
+        public Criteria andImgIdNotBetween(Long value1, Long value2) {
+            addCriterion("img_id not between", value1, value2, "imgId");
             return (Criteria) this;
         }
 
@@ -221,136 +221,6 @@ public class CommentExample {
 
         public Criteria andGoodsIdNotBetween(Long value1, Long value2) {
             addCriterion("goods_id not between", value1, value2, "goodsId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdIsNull() {
-            addCriterion("user_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdIsNotNull() {
-            addCriterion("user_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdEqualTo(Long value) {
-            addCriterion("user_id =", value, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdNotEqualTo(Long value) {
-            addCriterion("user_id <>", value, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdGreaterThan(Long value) {
-            addCriterion("user_id >", value, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("user_id >=", value, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdLessThan(Long value) {
-            addCriterion("user_id <", value, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdLessThanOrEqualTo(Long value) {
-            addCriterion("user_id <=", value, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdIn(List<Long> values) {
-            addCriterion("user_id in", values, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdNotIn(List<Long> values) {
-            addCriterion("user_id not in", values, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdBetween(Long value1, Long value2) {
-            addCriterion("user_id between", value1, value2, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdNotBetween(Long value1, Long value2) {
-            addCriterion("user_id not between", value1, value2, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andComIsNull() {
-            addCriterion("com is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andComIsNotNull() {
-            addCriterion("com is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andComEqualTo(String value) {
-            addCriterion("com =", value, "com");
-            return (Criteria) this;
-        }
-
-        public Criteria andComNotEqualTo(String value) {
-            addCriterion("com <>", value, "com");
-            return (Criteria) this;
-        }
-
-        public Criteria andComGreaterThan(String value) {
-            addCriterion("com >", value, "com");
-            return (Criteria) this;
-        }
-
-        public Criteria andComGreaterThanOrEqualTo(String value) {
-            addCriterion("com >=", value, "com");
-            return (Criteria) this;
-        }
-
-        public Criteria andComLessThan(String value) {
-            addCriterion("com <", value, "com");
-            return (Criteria) this;
-        }
-
-        public Criteria andComLessThanOrEqualTo(String value) {
-            addCriterion("com <=", value, "com");
-            return (Criteria) this;
-        }
-
-        public Criteria andComLike(String value) {
-            addCriterion("com like", value, "com");
-            return (Criteria) this;
-        }
-
-        public Criteria andComNotLike(String value) {
-            addCriterion("com not like", value, "com");
-            return (Criteria) this;
-        }
-
-        public Criteria andComIn(List<String> values) {
-            addCriterion("com in", values, "com");
-            return (Criteria) this;
-        }
-
-        public Criteria andComNotIn(List<String> values) {
-            addCriterion("com not in", values, "com");
-            return (Criteria) this;
-        }
-
-        public Criteria andComBetween(String value1, String value2) {
-            addCriterion("com between", value1, value2, "com");
-            return (Criteria) this;
-        }
-
-        public Criteria andComNotBetween(String value1, String value2) {
-            addCriterion("com not between", value1, value2, "com");
             return (Criteria) this;
         }
     }
