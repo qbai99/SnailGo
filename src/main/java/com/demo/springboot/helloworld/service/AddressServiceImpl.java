@@ -56,4 +56,9 @@ public class AddressServiceImpl implements AddressService {
         int result = addressMapper.deleteByExample(addressExample);
         return result;
     }
+
+    @Override
+    public List<Address> getaddress(Long userid){
+        return addressMapper.selectByuserid(userid);
+    }
 }

@@ -1,23 +1,18 @@
 package com.demo.springboot.helloworld.controller;
 
+import com.demo.springboot.helloworld.common.domain.Address;
 import com.demo.springboot.helloworld.common.domain.Cart;
 import com.demo.springboot.helloworld.common.domain.Userfinance;
-import com.demo.springboot.helloworld.service.CartService;
-import com.demo.springboot.helloworld.service.GoodsService;
-import com.demo.springboot.helloworld.service.PayService;
-import com.demo.springboot.helloworld.service.UserinfoService;
+import com.demo.springboot.helloworld.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,8 +28,10 @@ public class PayController {
     private GoodsService goodsService;
     @Autowired
     private UserinfoService userinfoService;
+    @Autowired
+    private AddressService addressService;
 
-    private List<Cart> listto;
+    private Integer listq[];
     private List<Cart> listlis;
 
     @RequestMapping("/pay")
@@ -62,46 +59,14 @@ public class PayController {
         map.put("userid",userid);
         map.put("num",total);
         payService.balancePay(map);
+        for(int i=0;i<listq.length;i++){
+            cartService.del(listq[i]);
+        }
         return "pay";
     }
     @RequestMapping("/meetpay")
     public String meetpay(){
         return "pay";
-    }
-
-    @RequestMapping("/payone")
-    @ResponseBody
-    public ModelAndView payone(Integer id, Integer num, HttpServletResponse response) throws IOException {
-        System.out.println("id: "+id);
-        System.out.println("num: "+num);
-        response.setContentType("text/html;charset=utf-8");
-        PrintWriter out = response.getWriter();
-        //response.setCharacterEncoding("utf-8");
-        ModelAndView mav =new ModelAndView();
-        List<Cart> list = cartService.selectByid(id);
-        System.out.println("list: "+list);
-        int remaning= goodsService.selectRem(list.get(0).getGoodsId());
-        System.out.println(remaning);
-
-        if (num<=remaning) {
-            list.get(0).setGoodsPrice(list.get(0).getGoodsPrice() * num);
-            list.get(0).setGoodsQuantity(num);
-            listto=list;
-            mav.addObject("pay",list);
-            mav.setViewName("pay");
-            return mav;
-        }else {
-            out.print("<script> alert('商品库存不足！');</script>");
-            out.flush();
-            mav.setViewName("cart");
-            return mav;
-        }
-        //out.print("<script>alert('test');</script>");
-    }
-    @RequestMapping("/payonejs")
-    @ResponseBody
-    public List<Cart> payonejs(){
-        return listto;
     }
 
     @RequestMapping("/paylist")
@@ -110,11 +75,14 @@ public class PayController {
         response.setContentType("text/html;charset=utf-8");
         PrintWriter out =response.getWriter();
         System.out.println(list[0]);
+        listq=null;
+        listq=list.clone();
         List<Cart> paylist = new ArrayList<Cart>();
         for(int i=0;i<list.length;i++){
             List<Cart> listc= cartService.selectByid(list[i]);
             int remaning = goodsService.selectRem(listc.get(0).getGoodsId());
-            if(num[i]<=remaning) {
+            System.out.println("/paylist---------remaning: "+remaning);
+            if((num[i]<=remaning)&(remaning!=0)) {
                 listc.get(0).setGoodsPrice(listc.get(0).getGoodsPrice() * num[i]);
                 listc.get(0).setGoodsQuantity(num[i]);
                 System.out.println(listc);
@@ -122,6 +90,7 @@ public class PayController {
             }else{
                 out.println("<script> alert('商品:"+listc.get(0).getGoodsName()+" 库存不足！');</script>");
                 out.flush();
+                System.out.println("/payone---------alert: ");
                 return "cart";
             }
         }
@@ -129,10 +98,18 @@ public class PayController {
         return "pay";
     }
 
-    @RequestMapping("paylistjs")
+    @RequestMapping("/paylistjs")
     @ResponseBody
     public List<Cart> paylistjs(){
         System.out.println(listlis);
         return listlis;
+    }
+    @RequestMapping("/getaddress")
+    @ResponseBody
+    public List<Address> getaddress(@CookieValue("username")String username){
+        Long userid = userinfoService.selectid(username);
+        List<Address> list =addressService.getaddress(userid);
+        System.out.println("/getaddress---------------list: "+list);
+        return list;
     }
 }

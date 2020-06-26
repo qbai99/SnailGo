@@ -416,7 +416,7 @@
                                     <img  src="/img/yen-2x.png"><img>
                                     结算
                                 </a>
-                                <a class="btn btn-danger btn-sm" href="#">
+                                <a id="dellistid" class="btn btn-danger btn-sm" href="#" onclick="dellist()">
                                     <i class="fas fa-trash">
                                     </i>
                                     删除
@@ -565,33 +565,61 @@
     }
     //支付
     function paywithone(id) {
+        var arr=new Array();
+        var arrq=new Array();
+        arr.push(id);
         var num = $('#in'+id).val();
-        var str = '/payone?id=';
-        str +=id;
-        str +='&num=';
-        str +=num;
-        console.log(str);
-        $('#bj'+id).attr('href',str);
+        arrq.push(num);
+        $('#bj'+id).attr('href',"/paylist?list="+arr+"&num="+arrq);
     }
     function paylist() {
         var size=$('#paylistid').val();
         //console.log(size);
         var arr=new Array();
         var arrq=new Array();
+        var arrAll=new Array();
+        var arrqAll=new Array();
+        var bool=true;
         var checkboxs = document.getElementsByName('cartitem');
         var qinputs = document.getElementsByName('qinput');
         for(var i=0;i<checkboxs.length;i++){
             if(checkboxs[i].checked){
+                bool=false;
                 arr.push(checkboxs[i].value);
                 arrq.push(qinputs[i].value);
-                console.log(checkboxs[i].value);
+                //console.log(checkboxs[i].value);
             }
         }
-        /*var str=arr.toString();
-        var strr='/paylist?list=';
-        strr+=str;
-        console.log(strr);*/
-        $('#paylistid').attr("href","/paylist?list="+arr+"&num="+arrq);
+        if(bool){
+            for(var i=0;i<checkboxs.length;i++){
+                arrAll.push(checkboxs[i].value);
+                arrqAll.push(qinputs[i].value);
+            }
+            $('#paylistid').attr("href","/paylist?list="+arrAll+"&num="+arrqAll);
+        }else {
+            $('#paylistid').attr("href", "/paylist?list=" + arr + "&num=" + arrq);
+        }
+    }
+    function dellist() {
+        var size=$('paylistid').val();
+        var arr=new Array();
+        var arrAll=new Array();
+        var checkboxs = document.getElementsByName('cartitem');
+        var bool=true;
+        for(var i=0;i<checkboxs.length;i++){
+            if(checkboxs[i].checked){
+                bool=false;
+                arr.push(checkboxs[i].value);
+            }
+        }
+        if(bool){
+            for(var i=0;i<checkboxs.length;i++){
+                arrAll.push(checkboxs[i].value);
+            }
+            $('#dellistid').attr("href","/dellist?list="+arrAll);
+        }else {
+            $('#dellistid').attr("href", "/dellist?list=" + arr);
+        }
     }
 </script>
 </body>

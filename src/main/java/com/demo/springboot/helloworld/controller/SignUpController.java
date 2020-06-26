@@ -21,7 +21,7 @@ public class SignUpController{
     private SignUpService signUpService;
 
     @Autowired
-  private UserinfoService userinfoService;
+    private UserinfoService userinfoService;
     @Autowired
     private GoodsService goodsService;
     @RequestMapping("/signUpPage")
@@ -82,7 +82,7 @@ public class SignUpController{
                 List<Goods> tmp= goodsService.allgoods();
                 model.addAttribute("allgoods",tmp);
                 Cookie cookie=new Cookie("username",login.getUserAdmin());
-                cookie.setMaxAge(60*5);
+                cookie.setMaxAge(60*5*60);
                 //将cookie发给浏览器（如果没有这句，cookie就不会发送给客户端）
                 cookie.setSecure(false);
                 response.addCookie(cookie);
