@@ -30,4 +30,9 @@ public class CartServiceImpl implements CartService {
     public List<Cart> selectByid(Integer id){
         return cartMapper.selectByid(id);
     }
+
+    @Override
+    public Integer getGoodsId(Integer cartId){
+        return cartMapper.getGoodsId(cartId);
+    }
 }

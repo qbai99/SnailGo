@@ -1,8 +1,6 @@
 package com.demo.springboot.helloworld.controller;
 
-import com.demo.springboot.helloworld.common.domain.Address;
-import com.demo.springboot.helloworld.common.domain.Cart;
-import com.demo.springboot.helloworld.common.domain.Userfinance;
+import com.demo.springboot.helloworld.common.domain.*;
 import com.demo.springboot.helloworld.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +11,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -30,9 +30,16 @@ public class PayController {
     private UserinfoService userinfoService;
     @Autowired
     private AddressService addressService;
+    @Autowired
+    private OrderService orderService;
+    @Autowired
+    private ShopService shopService;
+    @Autowired
+    private ShippingStateService shippingStateService;
 
     private Integer listq[];
     private List<Cart> listlis;
+    private Integer listnum[];
 
     @RequestMapping("/pay")
     public  String pay(String s){
@@ -50,7 +57,7 @@ public class PayController {
         return list;
     }
     @RequestMapping("/balancePay")
-    public String balancePay(int total,@CookieValue("username") String username){
+    public String balancePay(int total,Integer addId,@CookieValue("username") String username){
         Long userid = userinfoService.selectid(username);
         int t;
         t=total;
@@ -60,13 +67,33 @@ public class PayController {
         map.put("num",total);
         payService.balancePay(map);
         for(int i=0;i<listq.length;i++){
+            Integer goodsId=cartService.getGoodsId(listq[i]);
             cartService.del(listq[i]);
+            System.out.println("/balancePay-------goodsId: "+goodsId);
+            Integer shopId=goodsService.getShopIdBygoodsId(goodsId);
+            goodsService.delnum(goodsId,listnum[i]);
+            System.out.println("/balancePay-------shopId: "+shopId);
+            Long sellerId=shopService.getsellerID(shopId);
+            System.out.println("/balancePay-------sellerId: "+sellerId);
+            List<Goods> NameAndPrilist= goodsService.selectNameAndPri(goodsId);
+            Double price=NameAndPrilist.get(0).getGoodsPrice()*listnum[i];
+            Long orderId=orderService.getMaxId()+1;
+            System.out.println("/balancePay-------orderId: "+orderId);
+            orderService.insertone(orderId,userid,goodsId,userid,sellerId,addId,NameAndPrilist.get(0).getGoodsName(),listnum[i],price);
+            Long shipid=shippingStateService.getMaxId()+1;
+            Date date= new Date();
+            Long times = date.getTime();
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String dateString = formatter.format(date);
+            String loc=shopService.getLoc(shopId);
+            String info= "等待配送";
+            shippingStateService.insertone(shipid,orderId,date,loc,info);
         }
-        return "pay";
+        return "/user/CheckOrder";
     }
     @RequestMapping("/meetpay")
     public String meetpay(){
-        return "pay";
+        return "/user/CheckOrder";
     }
 
     @RequestMapping("/paylist")
@@ -77,6 +104,8 @@ public class PayController {
         System.out.println(list[0]);
         listq=null;
         listq=list.clone();
+        listnum=null;
+        listnum=num.clone();
         List<Cart> paylist = new ArrayList<Cart>();
         for(int i=0;i<list.length;i++){
             List<Cart> listc= cartService.selectByid(list[i]);

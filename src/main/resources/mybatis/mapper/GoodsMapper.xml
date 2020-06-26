@@ -282,4 +282,13 @@
     from
     goods
   </select>
+  <select id="getShopIdBygoodsId" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+    select shop_id as shopId from goods where goods_id=#{goodsId,jdbcType=BIGINT};
+  </select>
+  <select id="selectNameAndPri" parameterType="java.lang.Integer" resultType="com.demo.springboot.helloworld.common.domain.Goods">
+    select goods_name as goodsName, goods_price as goodsPrice from goods where goods_id=#{goodsId,jdbcType=BIGINT};
+  </select>
+  <update id="delnum" parameterType="com.demo.springboot.helloworld.common.domain.Goods">
+    update goods set goods_remaning = goods_remaning-#{goodsRemaning,jdbcType=INTEGER} where goods_id=#{goodsId,jdbcType=BIGINT};
+  </update>
 </mapper>

@@ -146,5 +146,21 @@ public class GoodsServiceImpl implements GoodsService{
         else return false;
     }
 
+    @Override
+    public Integer getShopIdBygoodsId(Integer goodsId){
+        return goodsMapper.getShopIdBygoodsId(goodsId);
+    }
 
+    @Override
+    public List<Goods> selectNameAndPri(Integer goodsId){
+        return goodsMapper.selectNameAndPri(goodsId);
+    }
+
+    @Override
+    public void delnum(Integer goodsId, Integer quantity){
+        Goods goods=new Goods();
+        goods.setGoodsId(Long.valueOf(goodsId));
+        goods.setGoodsRemaning(quantity);
+        goodsMapper.delnum(goods);
+    }
 }

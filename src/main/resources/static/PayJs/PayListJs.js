@@ -25,13 +25,14 @@ $.ajax({
         }
         var totalDiv = $('<td>'+
             '<th>总计:</th>'+
-            '<td id="total">'+totalnum+'</td>'+
+            '<td id="ptotalid">'+totalnum+'</td>'+
             '</tr>'
         );
         $('#totaltable').append(totalDiv);
-        var str='';
+        $('#ptotalid').attr("value",totalnum);
+        /*var str='';
         str +='/balancePay?total=';
-        str += totalnum;
-        $('#paya').attr("href",str);
+        str += totalnum;*/
+        $('#paya').attr("value",totalnum);
     }
 })

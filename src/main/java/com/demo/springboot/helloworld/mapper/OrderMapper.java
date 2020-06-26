@@ -29,4 +29,10 @@ public interface OrderMapper {
     int updateByPrimaryKeySelective(Order record);
 
     int updateByPrimaryKey(Order record);
+
+    //void insertone(Long userid, Integer goodsId, Long buyerid, Integer addId, String goodsName, Integer quantity, Double price);
+
+    Long getMaxId();
+
+    void insertone(Order list);
 }

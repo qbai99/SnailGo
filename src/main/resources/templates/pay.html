@@ -363,56 +363,8 @@
                 <!-- /.col -->
               </div>
               <!-- info row -->
-              <div class="row invoice-info">
-                <div style="width:30%" class="callout callout-danger">
-                  <h5>四川省成都市（刘佳宇收）</h5>
-                  <p>双流 西航港 川大路2号四川大学江安校区</p>
-                  <p>17360079045</p>
-                  <div class="icheck-danger d-inline">
-                    <input name="r2" id="radioDanger0" type="radio" checked>
-                    <label for="radioDanger0">
-                    </label>
-                  </div>
-                </div>
-                <!--<div class="col-sm-4 invoice-col">
-                  To
-                  <address>
-                    <strong>刘佳宇</strong><br>
-                    四川省成都市<br>
-                    双流西航港<br>
-                    川大路2号四川大学江安校区<br>
-                    17360079045
-                  </address>
-                </div>-->
-                <div style="width:5%">
+              <div id="addressdivid" class="row invoice-info">
 
-                </div>
-                <div style="width:30%" class="callout callout-danger">
-                  <h5>四川省成都市（胡潇收）</h5>
-                  <p>双流 西航港 川大路2号四川大学江安校区</p>
-                  <p>17360079045</p>
-                  <div class="icheck-danger d-inline">
-                    <input name="r2" id="radioDanger1" type="radio">
-                    <label for="radioDanger1">
-                    </label>
-                  </div>
-                </div>
-                <div style="width:5%">
-
-                </div>
-                <div style="width:30%" class="callout callout-danger">
-                  <h5>四川省成都市（卢铮收）</h5>
-                  <p>双流 西航港 川大路2号四川大学江安校区</p>
-                  <p>17360079045</p>
-                  <div class="icheck-danger d-inline">
-                    <input name="r2" id="radioDanger2" type="radio">
-                    <label for="radioDanger2">
-                    </label>
-                  </div>
-                </div>
-                <div style="width: 100%">
-                  <button style="width: 15%;position: relative;left: 85%" type="button" class="btn btn-block btn-outline-info btn-xs">显示全部地址</button>
-                </div>
               </div>
               <div style="height:1vh">
 
@@ -529,7 +481,7 @@
                         <img  src="/img/yen-2x.png"><img> 平台余额
                         <p id="balance" class="float-right text-muted text-sm"></p>
                       </a>
-                      <a id="paya" href="" class="dropdown-item">
+                      <a id="paya" href="#" class="dropdown-item" value="" onclick="topay()">
                         <img  src="/img/blank.png"><img>
                         <span  class="float-right text-muted text-sm">结算</span>
                       </a>
@@ -575,6 +527,7 @@
 <script src="/AdminLTE-3.0.5/plugins/jquery/jquery.min.js"></script>
 <script src="/PayJs/Balance.js"></script>
 <script src="/PayJs/PayListJs.js"></script>
+<script src="/PayJs/AddressJs.js"></script>
 <!-- Select2 -->
 <script src="/AdminLTE-3.0.5/plugins/select2/js/select2.full.min.js"></script>
 <!-- Bootstrap4 Duallistbox -->
@@ -828,6 +781,21 @@
     });
   });
 
+</script>
+<script>
+  function topay() {
+    var addId;
+    var inputs = document.getElementsByName('r2');
+    for (var i=0;i<inputs.length;i++){
+      if(inputs[i].checked){
+        addId=inputs[i].value;
+      }
+    }
+    var totalnum=$('#ptotalid').text();
+    console.log(totalnum);
+    console.log(addId);
+    $('#paya').attr("href","/balancePay?total="+totalnum+"&addId="+addId);
+  }
 </script>
 </body>
 </html>

@@ -248,4 +248,7 @@
       loc = #{loc,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <select id="getMaxId" resultType="java.lang.Long">
+    select max(id) from shipping_state;
+  </select>
 </mapper>

@@ -237,4 +237,7 @@
   <select id="selectByid" parameterType="java.lang.Integer" resultType="com.demo.springboot.helloworld.common.domain.Cart">
     select goods_id as goodsId, goods_name as goodsName, goods_price as goodsPrice from shopping_cart where id= #{id, jdbcType=INTEGER}
   </select>
+  <select id="getGoodsId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select goods_id as goodsId from shopping_cart where id=#{cartId,jdbcType=INTEGER};
+  </select>
 </mapper>

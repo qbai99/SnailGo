@@ -29,4 +29,27 @@ public class OrderServiceImpl implements OrderService {
 
         return orderList;
     }
+
+    @Override
+    public void insertone(Long orderId,Long userid,Integer goodsId,Long buyerid,Long sellerId, Integer addId,String goodsName,Integer quantity,Double price){
+        Order list = new Order();
+        list.setOrderId(orderId);
+        list.setUserId(userid);
+        Long goodsIdd=Long.valueOf(goodsId);
+        list.setGoodsId(goodsIdd);
+        list.setBuyerId(buyerid);
+        list.setSellerId(sellerId);
+        Long addIdd=Long.valueOf(addId);
+        list.setAddressId(addIdd);
+        list.setGoodsName(goodsName);
+        Long quantityy=Long.valueOf(quantity);
+        list.setGoodsQuantity(quantityy);
+        list.setGoodsPrice(price);
+        orderMapper.insertone(list);
+    }
+
+    @Override
+    public Long getMaxId(){
+        return orderMapper.getMaxId();
+    }
 }

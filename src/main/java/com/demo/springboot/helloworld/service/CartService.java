@@ -13,4 +13,6 @@ public interface CartService {
     void del(int id);
 
     List<Cart> selectByid(Integer id);
+
+    Integer getGoodsId(Integer cartId);
 }

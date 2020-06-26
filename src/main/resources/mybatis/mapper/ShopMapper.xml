@@ -240,4 +240,10 @@
       shop_loc = #{shopLoc,jdbcType=VARCHAR}
     where shop_id = #{shopId,jdbcType=BIGINT}
   </update>
+  <select id="getsellerId" parameterType="java.lang.Integer" resultType="java.lang.Long">
+    select user_id as sellerId from shop where shop_id=#{shopId,jdbcType=BIGINT};
+  </select>
+  <select id="getLoc" parameterType="java.lang.Integer" resultType="java.lang.String">
+    select shop_loc as shopLoc from shop where shop_id=#{shopId,jdbcType=BIGINT}
+  </select>
 </mapper>

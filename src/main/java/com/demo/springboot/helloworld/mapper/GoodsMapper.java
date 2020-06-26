@@ -35,4 +35,10 @@ public interface GoodsMapper {
     List<Goods> mysearch(String search_key,String goods_tag);
 
     Long selectCurId();
+
+    Integer getShopIdBygoodsId(Integer goodsId);
+
+    List<Goods> selectNameAndPri(Integer goodsId);
+
+    void delnum(Goods goods);
 }

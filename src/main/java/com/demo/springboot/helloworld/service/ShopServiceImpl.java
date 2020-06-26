@@ -58,4 +58,14 @@ public class ShopServiceImpl implements ShopService {
         if (result==1)return true;
         else return false;
     }
+
+    @Override
+    public Long getsellerID(Integer shopId){
+        return shopMapper.getsellerId(shopId);
+    }
+
+    @Override
+    public String getLoc(Integer shopId){
+        return shopMapper.getLoc(shopId);
+    }
 }

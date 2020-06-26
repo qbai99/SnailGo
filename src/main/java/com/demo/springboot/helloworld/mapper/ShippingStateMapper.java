@@ -35,4 +35,6 @@ public interface ShippingStateMapper {
     int updateByPrimaryKeyWithBLOBs(ShippingState record);
 
     int updateByPrimaryKey(ShippingState record);
+
+    Long getMaxId();
 }
