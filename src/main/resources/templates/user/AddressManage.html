@@ -48,12 +48,11 @@
 
 
         <!-- Right navbar links -->
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto" >
             <li class="nav-item">
                 <div class="nav-right" style="right: 20px">
-                    <a href="/user/MyInformation"><i class="fa fa-user"></i> <span id="login"></span><strong><span id="test"></span></strong> </a>
-                    <a href="/"><i class="fa fa-comment"></i><strong>消息</strong></a>
-                    <a id="tocartid" href="#" onclick="tocart()"> <i class="fa fa-shopping-cart"></i></a>
+                    <a href="/" style="color: black"><i class="fa fa-comment" style="color: black"></i><strong>消息</strong></a>
+                    <a id="tocartid" href="#" onclick="tocart()" style="color: black"> <i class="fa fa-shopping-cart"></i></a>
                 </div>
             </li>
 
@@ -62,14 +61,14 @@
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #0a95da;color: black">
         <!-- Brand Logo -->
-        <a href="/AdminLTE-3.0.5/index3.html" class="brand-link">
+        <a href="/" class="brand-link">
             <img src="/img/logo.png"
                  alt="AdminLTE Logo"
                  class="brand-image img-circle elevation-3"
                  style="opacity: .8">
-            <span class="brand-text font-weight-light">Snail Go</span>
+            <span class="brand-text">Snail Go</span>
         </a>
 
         <!-- Sidebar -->
@@ -80,7 +79,7 @@
                     <img id="sideImg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="/user/MyInformation" class="d-block" id="sideName"></a>
+                    <a href="/user/MyInformation" class="d-block" id="sideName" style="color: white"></a>
                 </div>
             </div>
 
@@ -92,7 +91,7 @@
                     <li class="nav-item has-treeview">
                         <a href="/user/MyInformation" class="nav-link">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>
+                            <p style="color: white">
                                 个人中心
                             </p>
                         </a>
@@ -100,7 +99,7 @@
                     <li class="nav-item">
                         <a href="/user/AdressManage" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
-                            <p>
+                            <p style="color: white">
                                 地址管理
                             </p>
                         </a>
@@ -108,7 +107,7 @@
                     <li class="nav-item has-treeview">
                         <a href="/user/changepassword" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
-                            <p>
+                            <p style="color: white">
                                 修改密码
                             </p>
                         </a>
@@ -116,23 +115,15 @@
                     <li class="nav-item has-treeview">
                         <a href="/balance/balancepage" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
-                            <p>
+                            <p style="color: white">
                                 余额充值
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="/index" class="nav-link">
-                            <i class="nav-icon fas fa-copy"></i>
-                            <p>
-                                商品页面
                             </p>
                         </a>
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="/user/OrderHistory" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
-                            <p>
+                            <p style="color: white">
                                 订单记录
                             </p>
                         </a>
@@ -140,7 +131,7 @@
                     <li class="nav-item has-treeview">
                         <a href="/user/viewhistory" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
-                            <p>
+                            <p style="color: white">
                                 浏览记录
                             </p>
                         </a>
@@ -148,7 +139,7 @@
                     <li class="nav-item has-treeview" id="myShop">
                         <a href="/user/MyProfile" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
-                            <p>
+                            <p style="color: white">
                                 我的商店
                             </p>
                         </a>
@@ -156,7 +147,7 @@
                     <li class="nav-item has-treeview" id="shopManagement">
                         <a href="/user/ShopManage" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
-                            <p>
+                            <p style="color: white">
                                 管理商店
                             </p>
                         </a>
@@ -345,6 +336,16 @@
 <script src="/AdminLTE-3.0.5/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/AdminLTE-3.0.5/dist/js/demo.js"></script>
+<script>
+    function tocart() {
+        var str = document.cookie;
+        if (str=='') {
+            $('#tocartid').attr("href","/loginPage");
+        }else {
+            $('#tocartid').attr("href","/cart");
+        }
+    }
+</script>
 <!-- Page script -->
 <script>
     $(function () {

@@ -337,6 +337,3 @@ alter table user_level add constraint FK_Relationship_6 foreign key (user_id)
 
 alter table order_request add constraint FK_Relationship_100 foreign key (goods_id)
 references goods (goods_id) on delete restrict on update restrict;
-
-alter table order_request add constraint FK_Relationship_102 foreign key (address_id)
-references address (address_id) on delete restrict on update restrict;

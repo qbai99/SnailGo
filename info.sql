@@ -44,8 +44,8 @@ INSERT INTO user_finance
 (finance_id,user_id,balance)
 VALUES(3,3,10000);
 
-INSERT INTO address (address_id,user_id,address) VALUES(1,1,"四川大学");
-INSERT INTO address (address_id,user_id,address) VALUES(2,1,"清华大学");
+INSERT INTO address (address_id,user_id,address) VALUES(1,1,"四川省/成都市/双流区川大路/四川大学/13060033269/胡潇");
+INSERT INTO address (address_id,user_id,address) VALUES(2,1,"广西壮族自治区/钦州市/永福西大街/永兴市场/13060033269/胡潇");
 
 INSERT INTO order_request (order_id,user_id,goods_id,buyer_id,seller_id,address_id,goods_name,goods_quantity,goods_price)
 VALUE (1,1,1,1,2,1,"iPadPro 2019",1,100);

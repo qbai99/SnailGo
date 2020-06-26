@@ -134,6 +134,7 @@ function clickHandle() {
             $("#phoneNumber").attr('value',res.userPhonenumber);
             $("#introduction").attr('value',res.userIntroductoin);
             alert("保存成功！");
+            window.location.reload();
         }
     })
 }
