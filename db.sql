@@ -250,14 +250,16 @@ create table user_level
 
 DROP TABLE IF EXISTS comment;
 CREATE TABLE comment  (
-                            comment_id int(11) NOT NULL,
-                            goods_id bigint(20) NULL DEFAULT NULL,
-                            user_id int(11) NULL DEFAULT NULL,
-                            com varchar(255),
-                            PRIMARY KEY (comment_id) USING BTREE,
-                            INDEX fk_comment_1(goods_id) USING BTREE,
-                            CONSTRAINT fk_comment_1 FOREIGN KEY (goods_id) REFERENCES goods (goods_id) ON DELETE RESTRICT ON UPDATE RESTRICT
-);
+                            `id` int(11) NOT NULL AUTO_INCREMENT,
+                            `goods_id` bigint(20) NULL DEFAULT NULL,
+                            `user_id` bigint(11) NULL DEFAULT NULL,
+                            `com` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+                            PRIMARY KEY (`id`) USING BTREE,
+                            INDEX `fk_comment_1`(`goods_id`) USING BTREE,
+                            CONSTRAINT `fk_comment_1` FOREIGN KEY (`goods_id`) REFERENCES `goods` (`goods_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+
 
 alter table address add constraint FK_Relationship_4 foreign key (user_id)
       references user_info (user_id) on delete restrict on update restrict;

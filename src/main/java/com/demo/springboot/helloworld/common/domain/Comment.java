@@ -1,20 +1,20 @@
 package com.demo.springboot.helloworld.common.domain;
 
 public class Comment {
-    private Integer commentId;
+    private Integer id;
 
     private Long goodsId;
 
-    private Integer userId;
+    private Long userId;
 
     private String com;
 
-    public Integer getCommentId() {
-        return commentId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setCommentId(Integer commentId) {
-        this.commentId = commentId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Long getGoodsId() {
@@ -25,11 +25,11 @@ public class Comment {
         this.goodsId = goodsId;
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 

@@ -12,17 +12,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
-@RequestMapping("/goods")
+
 public class   GoodsController {
     @Autowired
     private GoodsService goodsService;
 
-    @RequestMapping("/search")
+    @RequestMapping("goods/search")
 
     public String search(String search_key, Model model,String goods_tag) {
 
@@ -57,7 +58,7 @@ public class   GoodsController {
 
     @Autowired
     private CommentService commentService;
-    @RequestMapping("/details")
+    @RequestMapping("goods/details")
     public String details(long id,Model model)
     {
         List<Goods> tmp = goodsService.goodsdetails(id);
@@ -74,13 +75,10 @@ public class   GoodsController {
         }
 
     }
-    @RequestMapping("/newdetail")
-        public String newdetail(){
-            return "product_details";
-        }
+
     @Autowired
     private UserinfoService userinfoService;
-    @RequestMapping("/addgoodstocart")
+    @RequestMapping("goods/addgoodstocart")
 
     public String addgoodstocart(@CookieValue("username") String email,HttpServletRequest request, long goodsId, double price, int quantity, Model model, String goodsname){
 
@@ -92,7 +90,7 @@ public class   GoodsController {
         return"product_details";
     }
 
-    @RequestMapping("/addgoodstocartlist")
+    @RequestMapping("goods/addgoodstocartlist")
     public String addgoodstocartlist(@CookieValue("username") String email,HttpServletRequest request, long goodsId, double price, int quantity, Model model, String goodsname,String search_key,String goods_tag){
         long userId=userinfoService.findWithAdmin(email).get(0).getUserId();
         if(userinfoService.findWithAdmin(email).size()==0){
@@ -109,6 +107,14 @@ public class   GoodsController {
 
             return "search";//跳转到搜索页search.html
 
+    }
+    @RequestMapping("goods/addcomment")
+    @ResponseBody
+    public Comment addcomment(@CookieValue("username") String email, long goodId, String mycomment){
+        System.out.println(email);
+        long userId=userinfoService.findWithAdmin(email).get(0).getUserId();
+        Comment list=commentService.add(userId,goodId,mycomment);
+        return list;
     }
 
 }

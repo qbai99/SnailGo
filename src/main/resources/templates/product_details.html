@@ -35,7 +35,6 @@
   <!-- JavaScripts -->
   <script src="/js/vendors/modernizr.js"></script>
   <script src="/js/jquery-3.1.1.js"></script>
-
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 
@@ -50,9 +49,6 @@
     <!-- Nav -->
     <nav class="navbar ownmenu">
       <!-- Categories -->
-
-
-
 
       <!-- Navbar Header -->
       <div class="navbar-header">
@@ -240,14 +236,15 @@
                   <div role="tabpanel" class="tab-pane fade" id="cus-rev">
 
 
-                      <form>
+
+
                         <div class="row">
 
-                        <input class="col-lg-8 input-group-lg"  name="mycomment">
+                        <input class="col-lg-8 input-group-lg"  style="height:47.2px; " id="mycomment">
 
-                        <button class="col-lg-2 btn-round" style="float: right" type="submit" >添加评论</button>
+                        <button class="col-lg-2 btn-round" style="float: right" onclick="addcomment()" >添加评论</button>
                         </div>
-                      </form>
+
 
 
 
@@ -619,37 +616,42 @@
 <script type="text/javascript" src="/rs-plugin/js/jquery.tp.min.js"></script>
 <script src="/js/main.js"></script>
 <script src="/js/vendors/jquery.nouislider.min.js"></script>
-<script>
-jQuery(document).ready(function($) {
-  
- 
-    $("#price-range").noUiSlider({
-    range: {
-      'min': [ 0 ],
-      'max': [ 1000 ]
-    },
-    start: [40, 940],
-        connect:true,
-        serialization:{
-            lower: [
-        $.Link({
-          target: $("#price-min")
-        })
-      ],
-      upper: [
-        $.Link({
-          target: $("#price-max")
-        })
-      ],
-      format: {
-      
-        decimals: 2,
-        prefix: '$'
+<script type="text/javascript">
+  function addcomment() {
+    var goodId='[[${goodsdetails[0].goodsId}]]';
+    var com=document.getElementById("mycomment").value;
+    var str = document.cookie;
+    if (str=='') {
+      $('#tocartid').attr("href","/loginPage");
+    }else {
+      ;
+    }
+    console.log(goodId);
+    console.log(com);
+    console.log(str);
+    $.ajax({
+      type:'POST',
+      url:'/goods/addcomment',
+      data:{
+        goodId:goodId,
+        mycomment:com
+      },
+      success:function (res){
+        alert("添加评论成功！");
+      },
+      fali:function () {
+        console.log("错误")
+      },
+      error:function () {
+        console.log("报错")
       }
-        }
-  })
-})
+    })
 
+  }
+  function myclick() {
+
+    alert("添加到购物车成功")
+  }
 </script>
 
 </body>
