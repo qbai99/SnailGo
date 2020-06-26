@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>聊天室</title>
+<style>
+	#message{
+		margin-top:20px;
+		border:1px solid gray;
+		padding:20px;
+	}
+</style>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>聊天室</title>
+	<!-- Tell the browser to be responsive to screen width -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="/AdminLTE-3.0.5/plugins/fontawesome-free/css/all.min.css"
+		  th:href="@{/AdminLTE-3.0.5/plugins/fontawesome-free/css/all.min.css}">
+	<!-- Ionicons -->
+	<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+	<!-- Theme style -->
+	<link rel="stylesheet" href="/AdminLTE-3.0.5/dist/css/adminlte.min.css"
+		  th:href="@{/AdminLTE-3.0.5/dist/css/adminlte.min.css}">
+	<!-- Google Font: Source Sans Pro -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition sidebar-collapse">
+	<div class="wrapper">
+		<section class="content-header">
+			<div class="container-fluid">
+				<div class="row mb-2">
+					<div class="col-sm-6">
+						<h1>聊天室</h1>
+					</div>
+					<div class="col-sm-6">
+						<ol class="breadcrumb float-sm-right">
+							<a th:href="@{/}">
+								<img th:src="@{/img/logo.png}" alt="logo" style="width: 40px;height: 40px"/>
+							</a>
+						</ol>
+					</div>
+				</div>
+			</div><!-- /.container-fluid -->
+		</section>
+		<div class="content-wrapper">
+			<div class="content">
+	昵称：<input type="text" id="nickname" />
+
+	<button class="btn btn-primary" onclick="conectWebSocket()">连接WebSocket</button>
+	<button class="btn btn-danger" onclick="closeWebSocket()">断开连接</button>
+
+	<br />
+	消息：<textarea id="text" type="text" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;border: 1px solid #dddddd; padding: 10px;">
+			</textarea>
+	频道号<input id="toUser" type="text">
+	<button class="btn btn-primary" onclick="send()">发送消息</button>
+	
+	<!-- 存放接收到的消息. -->
+	<div id="message">
+
+	</div>
+	</div>
+	</div>
+	</div>
+
+<script type="text/javascript">
+	
+	//连接对象.
+	var websocket = null;
+	var nickname = null;
+	function conectWebSocket(){
+		nickname = document.getElementById("nickname").value;
+		if(nickname == ''){
+			alert("请输入昵称");
+			return;
+		}
+		//判断当前的浏览器是否支持websocket.
+		if("WebSocket" in window){
+			websocket = new WebSocket("ws://localhost:8585/websocket/"+nickname);
+		}else{
+			alert("Not support websocket");
+			return false;
+		}
+		
+		//连接成功的方法.
+		websocket.onopen = function(event){
+			setMessgeHtml("Loc MSG:连接成功");
+		}
+		
+		//连接关闭.
+		websocket.onclose = function(event){
+			setMessgeHtml("Loc MSG:连接关闭");
+		}
+		
+		//连接异常.
+		websocket.onerror = function(event){
+			setMessgeHtml("Loc MSG:连接异常");
+		}
+		
+		
+		websocket.onmessage = function(event){
+			setMessgeHtml(event.data);
+		}
+		
+	}
+	
+	
+	function setMessgeHtml(msg){
+		var message = document.getElementById("message");
+		message.innerHTML += msg+"<br/>";
+	}
+	
+	/**
+		发送消息.
+	*/
+	function send(){
+		var message = document.getElementById("text").value;
+		var toUser = document.getElementById("toUser").value;
+		var socketMsg = {msg:message,toUser:toUser};
+		if(toUser == ''){
+			socketMsg.type =0;//群聊.
+		}else{
+			socketMsg.type =1;//单聊.
+		}
+		
+		//websocket.send(nickname+":"+message);
+		websocket.send(JSON.stringify(socketMsg));//将json对象转换为json字符串.
+	}
+	
+	
+</script>
+
+
+
+</body>
+</html>
