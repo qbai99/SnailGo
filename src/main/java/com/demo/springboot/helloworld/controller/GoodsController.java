@@ -58,9 +58,11 @@ public class   GoodsController {
 
     @Autowired
     private CommentService commentService;
+    @Autowired
+    private  UserinfoService userinfoService;
     @RequestMapping("goods/details")
-    public String details(long id,Model model)
-    {
+    public String details(@CookieValue("username") String email, long id,Model model)
+    {   String usernamedetail=userinfoService.findWithAdmin(email).get(0).getUserName();
         List<Goods> tmp = goodsService.goodsdetails(id);
         List<Comment> tmp2= commentService.allcomment(id);
         if (tmp.size() != 0) {//返回不为空。搜索成功
@@ -68,6 +70,7 @@ public class   GoodsController {
             model.addAttribute("goodsdetails", tmp);//搜索结果商品list
             model.addAttribute("comments",tmp2);
             model.addAttribute("commentnumber",tmp2.size());
+            model.addAttribute("name",usernamedetail);
             return "product_details";
         } else {//搜索失败
             model.addAttribute("error_search_fail", "没有相关商品");
@@ -76,8 +79,7 @@ public class   GoodsController {
 
     }
 
-    @Autowired
-    private UserinfoService userinfoService;
+
     @RequestMapping("goods/addgoodstocart")
 
     public String addgoodstocart(@CookieValue("username") String email,HttpServletRequest request, long goodsId, double price, int quantity, Model model, String goodsname){

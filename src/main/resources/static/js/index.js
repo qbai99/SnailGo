@@ -22,7 +22,7 @@ c_start=document.cookie.indexOf("username=");
 console.log(c_start)
 
 if(c_start == -1){
-    $("#login").append('<a href="/loginPage" target="_blank">登录/注册</a>');
+    $("#login").append('<a href="/loginPage" target="_parent">登录/注册</a>');
 }
 else{
     $("#login").hide();

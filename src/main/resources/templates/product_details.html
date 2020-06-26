@@ -192,18 +192,18 @@
                     <!-- Quinty -->
                     <div class="row" style="margin-top: 100px">
                     <div class="quinty col-sm-6">
-                      <input type="number" value="01">
+                      <input type="number" value="1" id="numofgood">
 
                     </div>
 
                       <div class="col-sm-4" style="display:inline-block;">
-                        <a class="btn-round" onclick="myclick()" th:href="'/goods/addgoodstocart?'+'&goodsId='+${goodsdetails[0].goodsId}+'&price='+${goodsdetails[0].goodsPrice}+'&quantity=1'+'&goodsname='+${goodsdetails[0].goodsName}" >
+                        <a class="btn-round" onclick="myclick()" >
                         <i class="icon-basket-loaded margin-right-5"></i>
                           加入购物车</a>
                       </div>
                     <div class="col-sm-4" style="display:inline-block;">
 
-                      <a href="#." class="btn-round"><i class="icofont-pay margin-right-5"></i>立即购买</a>
+                      <a id="paybtn" onclick="paynow()" class="btn-round"><i class="icofont-pay margin-right-5"></i>立即购买</a>
                     </div>
 
 
@@ -250,7 +250,7 @@
 
 
                     <li th:each="sc:${comments}">
-                    <p class="title"style="font-size: 16px;font-weight: bold" th:text="'用户id：'+${sc.userId}+'评论说'
+                    <p class="title"style="font-size: 16px;font-weight: bold" th:text="'用户'+${name}+'(id:'+${sc.userId}+')评论说'
                     ">
                     </p>
                       <i class="bx bxs-quote-alt-left" style="margin-left: 50px;"></i> <span style="font-size: 14px;font-style: italic " th:text="${sc.com}"></span> <i class="bx bxs-quote-alt-right"></i>
@@ -375,7 +375,7 @@
         
         <!-- heading -->
         <div class="heading">
-          <h2>Your Recently Viewed Items</h2>
+          <h2>最近浏览的商品</h2>
           <hr>
         </div>
         <!-- Items Slider -->
@@ -649,8 +649,43 @@
 
   }
   function myclick() {
+    var goodsId='[[${goodsdetails[0].goodsId}]]';
+    var price='[[${goodsdetails[0].goodsPrice}]]';
+    var quantity=document.getElementById("numofgood").value;
+    var goodName='[[${goodsdetails[0].goodsName}]]';
+    console.log(goodsId);
+    console.log(price);
+    console.log(quantity);
+    console.log(goodName);
+    $.ajax({
+      type:'POST',
+      url:'/goods/addgoodstocart',
+      data:{
+        goodsId:goodsId,
+        price:price,
+        quantity:quantity,
+        goodsname:goodName
+      },
+      success:function (res){
+        alert("添加到购物车成功")
+      },
+      fali:function () {
+        console.log("错误")
+      },
+      error:function () {
+        console.log("报错")
+      }
+    })
 
-    alert("添加到购物车成功")
+  }
+  function paynow() {
+
+    var id='[[${goodsdetails[0].goodsId}]]';
+
+    var num=document.getElementById("numofgood").value;
+
+
+    window.location.href="/quickpay?goodsId="+id+"&num="+num;
   }
 </script>
 
