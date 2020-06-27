@@ -15,6 +15,7 @@
 	<title>聊天室</title>
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="/jquery/dist/jquery.js"></script>
 
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="/AdminLTE-3.0.5/plugins/fontawesome-free/css/all.min.css"
@@ -57,14 +58,14 @@
 		<!-- /.navbar -->
 
 		<!-- Main Sidebar Container -->
-		<aside class="main-sidebar sidebar-dark-primary elevation-4">
+		<aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #f4f6f9;color: white">
 			<!-- Brand Logo -->
 			<a href="/" class="brand-link">
 				<img src="/img/logo.png"
 					 alt="AdminLTE Logo"
 					 class="brand-image img-circle elevation-3"
 					 style="opacity: .8">
-				<span class="brand-text font-weight-light">Snail Go</span>
+				<span class="brand-text" style="color: black">Snail Go</span>
 			</a>
 
 			<!-- Sidebar -->
@@ -75,7 +76,7 @@
 						<img id="sideImg" class="img-circle elevation-2" alt="User Image">
 					</div>
 					<div class="info">
-						<a href="/user/MyInformation" class="d-block" id="sideName"></a>
+						<a href="/user/MyInformation" class="d-block" id="sideName" style="color: black"></a>
 					</div>
 				</div>
 
@@ -86,65 +87,73 @@
                              with font-awesome or any other icon font library -->
 						<li class="nav-item has-treeview">
 							<a href="/user/MyInformation" class="nav-link">
-								<i class="nav-icon fas fa-tachometer-alt"></i>
-								<p>
+								<i class="nav-icon fas fa-info" style="color:black"></i>
+								<p style="color: black">
 									个人中心
 								</p>
 							</a>
 						</li>
 						<li class="nav-item">
 							<a href="/user/AdressManage" class="nav-link">
-								<i class="nav-icon fas fa-th"></i>
-								<p>
+								<i class="nav-icon fas fa-location-arrow" style="color:black"></i>
+								<p style="color: black">
 									地址管理
 								</p>
 							</a>
 						</li>
 						<li class="nav-item has-treeview">
 							<a href="/user/changepassword" class="nav-link">
-								<i class="nav-icon fas fa-copy"></i>
-								<p>
+								<i class="nav-icon fas fa-key" style="color:black"></i>
+								<p style="color: black">
 									修改密码
 								</p>
 							</a>
 						</li>
 						<li class="nav-item has-treeview">
 							<a href="/balance/balancepage" class="nav-link">
-								<i class="nav-icon fas fa-copy"></i>
-								<p>
+								<i class="nav-icon fas fa-money-bill" style="color:black"></i>
+								<p style="color: black">
 									余额充值
 								</p>
 							</a>
 						</li>
 						<li class="nav-item has-treeview">
 							<a href="/user/OrderHistory" class="nav-link">
-								<i class="nav-icon fas fa-copy"></i>
-								<p>
+								<i class="nav-icon fas fa-copy" style="color:black"></i>
+								<p style="color: black">
 									订单记录
 								</p>
 							</a>
 						</li>
 						<li class="nav-item has-treeview">
 							<a href="/user/viewhistory" class="nav-link">
-								<i class="nav-icon fas fa-copy"></i>
-								<p>
+								<i class="nav-icon fas fa-history" style="color:black"></i>
+								<p style="color: black">
 									浏览记录
 								</p>
 							</a>
 						</li>
 						<li class="nav-item has-treeview" id="myShop">
 							<a href="/user/MyProfile" class="nav-link">
-								<i class="nav-icon fas fa-copy"></i>
-								<p>
+								<i class="nav-icon fas fa-shopping-basket" style="color:black"></i>
+								<p style="color: black">
 									我的商店
 								</p>
 							</a>
 						</li>
 						<li class="nav-item has-treeview" id="shopManagement">
 							<a href="/user/ShopManage" class="nav-link">
-								<i class="nav-icon fas fa-copy"></i>
-								<p>
+								<i class="nav-icon fas fa-book-open" style="color:black"></i>
+								<p style="color: black">
 									管理商店
+								</p>
+							</a>
+						</li>
+						<li class="nav-item has-treeview">
+							<a href="/chatting" class="nav-link">
+								<i class="nav-icon fas fa-comment" style="color:black"></i>
+								<p style="color: black">
+									我的会话
 								</p>
 							</a>
 						</li>
@@ -193,7 +202,14 @@
 	</div>
 
 <script type="text/javascript">
-	
+    $.ajax({
+        type: "GET",
+        url: "/user/information",
+        success: function (res, ifo) {
+            $('#sideImg').attr('src', res.UserInfo[0].userImg);
+            $("#sideName").html(res.UserInfo[0].userName);
+        }
+    });
 	//连接对象.
 	var websocket = null;
 	var nickname = null;
