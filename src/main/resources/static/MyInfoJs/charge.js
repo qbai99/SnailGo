@@ -20,6 +20,7 @@ function charge() {
    var chargeInput =  $('#chargeInput').val();
    if(parseFloat(chargeInput)<=0){
        alert("充值金额不能为负数！");
+       $('#chargeInput').val("0");
        return;
    }
    else {
@@ -33,6 +34,7 @@ function charge() {
            success: function (res) {
                alert("充值成功！");
                $('#balance').html(res.balance);
+
            }
        })
    }
