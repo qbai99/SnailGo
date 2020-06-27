@@ -88,22 +88,19 @@ public class MyWebSocket {
 			
 		} catch (JsonParseException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 			Logger LOGGER = Logger.getLogger("lavasoft");
 			LOGGER.setLevel(Level.INFO);
-			LOGGER.info("aaa");
+			LOGGER.info(e.toString());
 		} catch (JsonMappingException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 			Logger LOGGER = Logger.getLogger("lavasoft");
 			LOGGER.setLevel(Level.INFO);
-			LOGGER.info("aaa");
+			LOGGER.info(e.toString());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 			Logger LOGGER = Logger.getLogger("lavasoft");
 			LOGGER.setLevel(Level.INFO);
-			LOGGER.info("aaa");
+			LOGGER.info(e.toString());
 		}
 	}
 	
@@ -112,7 +109,9 @@ public class MyWebSocket {
 	 */
 	public void onError(Session session, Throwable error){
 		System.out.println("发生错误");
-		error.printStackTrace();
+		Logger LOGGER = Logger.getLogger("lavasoft");
+		LOGGER.setLevel(Level.INFO);
+		LOGGER.info(error.toString());
 	}
 	
 	/**
