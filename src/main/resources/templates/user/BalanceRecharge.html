@@ -491,7 +491,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label >充值</label>
-                                    <input id="chargeInput"class="form-control" placeholder="输入充值的金额">
+                                    <input id="chargeInput" class="form-control" placeholder="输入充值的金额">
                                 </div>
                                 <div class="row">
                                     <div class="col-6">
@@ -525,10 +525,73 @@
     </aside>
     <!-- /.control-sidebar -->
 </div>
+<form  style="display: none" name=alipayment  id="formDiv" action="alipaySum">
+    <div id="body1" class="show" name="divcontent">
+        <dl class="content">
+            <dt>金额 ：</dt>
+            <dd>
+                <input id="WIDout_trade_no" name="WIDout_trade_no" value=""/>
+            </dd>
+            <dt>订单名称 ：</dt>
+            <dd>
+                <input id="WIDsubject" name="WIDsubject" value=""/>
+            </dd>
+            <dt>备注 ：</dt>
+            <dd>
+                <input id="WIDtotal_amount" name="WIDtotal_amount" value=""/>
+            </dd>
+            <dt>商品描述：</dt>
+            <dd>
+                <input id="WIDbody" name="WIDbody" value=""/>
+            </dd>
+            <dt></dt>
+            <dd id="btn-dd">
+                        <span class="new-btn-login-sp">
+                            <button class="new-btn-login" type="submit"
+                                    style="text-align: center;" id="btn" >付 款</button>
+                        </span>
+                <span class="note-help">如果您点击“付款”按钮，即表示您同意该次的执行操作。</span>
+            </dd>
+        </dl>
+    </div>
+</form>
 <!-- ./wrapper -->
 
 <!-- jQuery -->
 <script src="/MyInfoJs/charge.js"></script>
+<script>
+    function charge() {
+        var chargeInput =  $('#chargeInput').val();
+        if(parseFloat(chargeInput)<=0){
+            alert("充值金额不能为负数！");
+            $('#chargeInput').val("0");
+            return;
+        }
+        else {
+            var str='';
+            var d=new Date();
+            str=d.getTime();
+            $('#WIDout_trade_no').attr("value",chargeInput);
+            $('#WIDsubject').attr("value",str);
+            document.getElementById("btn").click();
+            // $.ajax({
+            //     type: "POST",
+            //     url: "/balance/postcharge",
+            //     data: {
+            //         // userAdmin:userEmail,
+            //         input: chargeInput
+            //     },
+            //     success: function (res) {
+            //         alert("充值成功！");
+            //         $('#balance').html(res.balance);
+            //
+            //     }
+            // })
+
+        }
+
+    }
+</script>
 <script src="/AdminLTE-3.0.5/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="/AdminLTE-3.0.5/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -67,6 +67,14 @@ public class UserinfoController {
         return map;
     }
 
+    @RequestMapping("/emailExist")
+    @ResponseBody
+    public boolean Exist(String newEmail){
+        List<UserinfoWithBLOBs> list = userinfoService.findWithAdmin(newEmail);
+        if (list.size()==0) return true;
+        else return false;
+    }
+
     @RequestMapping("/updateInfo")
     @ResponseBody
     public Userinfo updateinfo(@CookieValue("username") String email, String newAdmin,String username, String sex, String birthdate, String phonenumber, String introduction,String file){

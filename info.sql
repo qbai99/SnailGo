@@ -44,8 +44,6 @@ INSERT INTO user_finance
 (finance_id,user_id,balance)
 VALUES(3,3,10000);
 
-INSERT INTO address (address_id,user_id,address) VALUES(1,1,"四川大学");
-INSERT INTO address (address_id,user_id,address) VALUES(2,1,"清华大学");
 INSERT INTO address (address_id,user_id,address) VALUES(3,3,"河北省/成都市/西航港/四川大学江安/17360079045/刘佳宇");
 INSERT INTO address (address_id,user_id,address) VALUES(4,3,"黑龙江省/成都市/西航港/川大江安/17360079045/刘佳宇");
 INSERT INTO address (address_id,user_id,address) VALUES(5,3,"辽宁省/成都市/西航港/川大望江/17360079045/白谦");
@@ -83,10 +81,10 @@ VALUES(1,2,"胡潇的魔法小屋","魔法武器，魔法书，魔药原料，�
 
 INSERT INTO goods
     (goods_id, shop_id, order_id, goods_price, goods_name, goods_remaning, goods_dsp, goods_tag)
-VALUES (10, 1, NULL, 98, '神奇动物在哪里', 10, '神奇动物在哪里的描述', 'book/动物学');
+VALUES (17, 1, NULL, 98, '神奇动物在哪里', 10, '神奇动物在哪里的描述', 'book/动物学');
 INSERT INTO goods
     (goods_id, shop_id, order_id, goods_price, goods_name, goods_remaning, goods_dsp, goods_tag)
-VALUES (11, 1, NULL, 77, '魔药学', 20, '魔药学的描述', 'book/植物学');
+VALUES (18, 1, NULL, 77, '魔药学', 20, '魔药学的描述', 'book/植物学');
 
 
 UPDATE user_info SET use_level_id = 1,finance_id = 1,sign_up_id=1 WHERE user_id = 1;

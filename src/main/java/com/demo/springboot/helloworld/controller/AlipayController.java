@@ -21,7 +21,7 @@ public class AlipayController {
      * @param model，id，payables，
      * @return Object
      */
-    @RequestMapping("alipaySum")
+    @RequestMapping("/alipaySum")
     @ResponseBody
     public Object alipayIumpSum(Model model, String WIDout_trade_no, String WIDsubject, String WIDtotal_amount,String WIDbody,
                                 HttpServletResponse response)

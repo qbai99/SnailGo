@@ -17,6 +17,24 @@ function check(){
 
 }
 
+function IfExist(){
+    var email = $('#emailInput').val();
+    $.ajax({
+        type:"POST",
+        url:"/user/emailExist",
+        data:{
+            newEmail:email
+        },
+        success:function (res) {
+            if(res.toString()=='false') {
+                alert("该邮箱已存在！");
+                window.location.reload();
+            }
+        }
+    })
+
+}
+
 $.ajax({
     type: "GET",
     url: "/user/information",
@@ -62,7 +80,7 @@ $.ajax({
                 $("#identity").html("买家");
                 break;
             case true:
-                $("#identity").html("买家");
+                $("#identity").html("卖家");
                 break;
             default:
                 break;
