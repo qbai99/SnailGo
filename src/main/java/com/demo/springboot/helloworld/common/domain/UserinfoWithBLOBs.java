@@ -2,6 +2,8 @@ package com.demo.springboot.helloworld.common.domain;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 public class UserinfoWithBLOBs extends Userinfo {
     private byte[] userImg;
@@ -13,7 +15,10 @@ public class UserinfoWithBLOBs extends Userinfo {
         try {
             str = new String(userImg, "utf-8");
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            Logger LOGGER = Logger.getLogger("lavasoft");
+            LOGGER.setLevel(Level.INFO);
+            LOGGER.info("aaa");
         }
         return str;
     }
