@@ -54,13 +54,66 @@ public class   GoodsController {
 
 
     }
+    @RequestMapping("goods/searchsorted")
+    public String searchsorted(String search_key, Model model,String goods_tag){
+        List<Goods> tmp = goodsService.searchsorted(search_key,goods_tag);
+        List<Goods> tmp1= goodsService.search("",goods_tag);
 
+        System.out.println(tmp.size());
+        System.out.println(tmp);
+        if (tmp.size() != 0) {//返回不为空。搜索成功
+            System.out.println("返回成功");
+            /*将搜索结果集合、集合元素个数(结果商品个数)、搜索关键字添加到model的属性中返回前端页面*/
+            model.addAttribute("search_result", tmp);//搜索结果商品list
+            model.addAttribute("result_num", tmp.size());//搜索结果商品数
+            model.addAttribute("search_key", search_key);//搜索关键词
+            model.addAttribute("tag", goods_tag);//tag
+
+            return "search";//跳转到搜索页search.html
+        } else {//搜索失败
+            System.out.println("返回成功");
+            model.addAttribute("error_search_fail", "没有相关商品");
+
+            model.addAttribute("tag", goods_tag);//tag
+            model.addAttribute("relatedgoods",tmp1);
+            return "searcherror";
+        }
+
+    }
+    @RequestMapping("goods/searchsortedh2l")
+    public String searchsortedh2l(String search_key, Model model,String goods_tag){
+        List<Goods> tmp = goodsService.searchsortedh2l(search_key,goods_tag);
+        List<Goods> tmp1= goodsService.search("",goods_tag);
+
+        System.out.println(tmp.size());
+        System.out.println(tmp);
+        if (tmp.size() != 0) {//返回不为空。搜索成功
+            System.out.println("返回成功");
+            /*将搜索结果集合、集合元素个数(结果商品个数)、搜索关键字添加到model的属性中返回前端页面*/
+            model.addAttribute("search_result", tmp);//搜索结果商品list
+            model.addAttribute("result_num", tmp.size());//搜索结果商品数
+            model.addAttribute("search_key", search_key);//搜索关键词
+            model.addAttribute("tag", goods_tag);//tag
+
+            return "search";//跳转到搜索页search.html
+        } else {//搜索失败
+            System.out.println("返回成功");
+            model.addAttribute("error_search_fail", "没有相关商品");
+
+            model.addAttribute("tag", goods_tag);//tag
+            model.addAttribute("relatedgoods",tmp1);
+            return "searcherror";
+        }
+
+    }
 
     @Autowired
     private CommentService commentService;
+    @Autowired
+    private  UserinfoService userinfoService;
     @RequestMapping("goods/details")
-    public String details(long id,Model model)
-    {
+    public String details(@CookieValue("username") String email, long id,Model model)
+    {   String usernamedetail=userinfoService.findWithAdmin(email).get(0).getUserName();
         List<Goods> tmp = goodsService.goodsdetails(id);
         List<Comment> tmp2= commentService.allcomment(id);
         if (tmp.size() != 0) {//返回不为空。搜索成功
@@ -68,6 +121,7 @@ public class   GoodsController {
             model.addAttribute("goodsdetails", tmp);//搜索结果商品list
             model.addAttribute("comments",tmp2);
             model.addAttribute("commentnumber",tmp2.size());
+            model.addAttribute("name",usernamedetail);
             return "product_details";
         } else {//搜索失败
             model.addAttribute("error_search_fail", "没有相关商品");
@@ -76,8 +130,7 @@ public class   GoodsController {
 
     }
 
-    @Autowired
-    private UserinfoService userinfoService;
+
     @RequestMapping("goods/addgoodstocart")
 
     public String addgoodstocart(@CookieValue("username") String email,HttpServletRequest request, long goodsId, double price, int quantity, Model model, String goodsname){

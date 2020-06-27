@@ -80,11 +80,13 @@ public class ShopController {
 
     @RequestMapping("/changeinfo")
     @ResponseBody
-    public ModelAndView ChangeInfo(String goodsId,String name,String dsp,String tag,String price,String remain){
+    public ModelAndView ChangeInfo(String goodsId,String name,String dsp,String tag,String price,String remain,String file){
         ModelAndView model = new ModelAndView();
         System.out.println(goodsId);
         System.out.println(name+" "+dsp+" "+tag+" "+price+" "+remain);
+        System.out.println(file);
         boolean result = goodsService.UpdateInfo(goodsId,name,dsp,tag,price,remain);
+        boolean result1 = goodsImgService.UpdateImg(goodsId,file);
         model.addObject("result",String.valueOf(result));
         model.setViewName("/user/ShopManage");
         return model;

@@ -1,6 +1,8 @@
 package com.demo.springboot.helloworld.common.domain;
 
 import java.io.UnsupportedEncodingException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class GoodsImg {
     private Long imgId;
@@ -30,7 +32,9 @@ public class GoodsImg {
         try {
             str = new String(goodsImg, "utf-8");
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+            Logger LOGGER = Logger.getLogger("lavasoft");
+            LOGGER.setLevel(Level.INFO);
+            LOGGER.info("aaa");
         }
         return str;
     }

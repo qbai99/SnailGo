@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,8 +14,11 @@
     <link rel="stylesheet" href="/AdminLTE-3.0.5/dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <script th:src="@{/js/sockjs.min.js}"></script>
+    <script th:src="@{/js/stomp.js}"></script>
+    <script th:src="@{/js/jquery-3.1.1.js}"></script>
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini" onload="connect()">
 <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -46,14 +49,14 @@
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #f4f6f9;color: white">
         <!-- Brand Logo -->
         <a href="/" class="brand-link">
             <img src="/img/logo.png"
                  alt="AdminLTE Logo"
                  class="brand-image img-circle elevation-3"
                  style="opacity: .8">
-            <span class="brand-text font-weight-light">Snail Go</span>
+            <span class="brand-text" style="color: black">Snail Go</span>
         </a>
 
         <!-- Sidebar -->
@@ -64,7 +67,7 @@
                     <img id="sideImg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="/user/MyInformation" class="d-block" id="sideName"></a>
+                    <a href="/user/MyInformation" class="d-block" id="sideName" style="color: black"></a>
                 </div>
             </div>
 
@@ -75,65 +78,73 @@
                          with font-awesome or any other icon font library -->
                     <li class="nav-item has-treeview">
                         <a href="/user/MyInformation" class="nav-link">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>
+                            <i class="nav-icon fas fa-info" style="color:black"></i>
+                            <p style="color: black">
                                 个人中心
                             </p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="/user/AdressManage" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
+                            <i class="nav-icon fas fa-location-arrow" style="color:black"></i>
+                            <p style="color: black">
                                 地址管理
                             </p>
                         </a>
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="/user/changepassword" class="nav-link">
-                            <i class="nav-icon fas fa-copy"></i>
-                            <p>
+                            <i class="nav-icon fas fa-key" style="color:black"></i>
+                            <p style="color: black">
                                 修改密码
                             </p>
                         </a>
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="/balance/balancepage" class="nav-link">
-                            <i class="nav-icon fas fa-copy"></i>
-                            <p>
+                            <i class="nav-icon fas fa-money-bill" style="color:black"></i>
+                            <p style="color: black">
                                 余额充值
                             </p>
                         </a>
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="/user/OrderHistory" class="nav-link">
-                            <i class="nav-icon fas fa-copy"></i>
-                            <p>
+                            <i class="nav-icon fas fa-copy" style="color:black"></i>
+                            <p style="color: black">
                                 订单记录
                             </p>
                         </a>
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="/user/viewhistory" class="nav-link">
-                            <i class="nav-icon fas fa-copy"></i>
-                            <p>
+                            <i class="nav-icon fas fa-history" style="color:black"></i>
+                            <p style="color: black">
                                 浏览记录
                             </p>
                         </a>
                     </li>
                     <li class="nav-item has-treeview" id="myShop">
                         <a href="/user/MyProfile" class="nav-link">
-                            <i class="nav-icon fas fa-copy"></i>
-                            <p>
+                            <i class="nav-icon fas fa-shopping-basket" style="color:black"></i>
+                            <p style="color: black">
                                 我的商店
                             </p>
                         </a>
                     </li>
                     <li class="nav-item has-treeview" id="shopManagement">
                         <a href="/user/ShopManage" class="nav-link">
-                            <i class="nav-icon fas fa-copy"></i>
-                            <p>
+                            <i class="nav-icon fas fa-book-open" style="color:black"></i>
+                            <p style="color: black">
                                 管理商店
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="/chatting" class="nav-link">
+                            <i class="nav-icon fas fa-comment" style="color:black"></i>
+                            <p style="color: black">
+                                我的会话
                             </p>
                         </a>
                     </li>
@@ -302,6 +313,25 @@
         }else {
             $('#tocartid').attr("href","/cart");
         }
+    }
+
+    function connect() {
+        var socket = new SockJS('/endpointSang');
+        stompClient = Stomp.over(socket);
+        stompClient.connect({}, function (frame) {
+            // setConnected(true);
+            console.log('Connected:' + frame);
+            stompClient.subscribe('/topic/getResponse', function (response) {
+                showResponse(JSON.parse(response.body).responseMessage);
+            })
+        });
+    }
+    function showResponse(message) {
+        $(document).Toasts('create', {
+            class: 'bg-info',
+            title: '消息推送',
+            body: message
+        })
     }
 </script>
 

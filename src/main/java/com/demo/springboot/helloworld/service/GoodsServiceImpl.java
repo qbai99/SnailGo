@@ -168,4 +168,26 @@ public class GoodsServiceImpl implements GoodsService{
     public Goods selectone(Long goodsId){
         return goodsMapper.selectByPrimaryKey(goodsId);
     }
+
+    @Override
+    public List<Goods> searchsorted(String search_key, String goods_tag) {
+        if (search_key.length()==0){
+            search_key=null;
+        };
+//        List<Goods> list=goodsMapper.mysearch(search_key);
+        List<Goods> list=goodsMapper.mysearchsorted(search_key,goods_tag);
+        System.out.println("排序中。。。。。。。。。。。。。。");
+        return list;
+    }
+
+    @Override
+    public List<Goods> searchsortedh2l(String search_key, String goods_tag) {
+        if (search_key.length()==0){
+            search_key=null;
+        };
+//        List<Goods> list=goodsMapper.mysearch(search_key);
+        List<Goods> list=goodsMapper.mysearchsortedh2l(search_key,goods_tag);
+        System.out.println("排序中。。。。。。。。。。。。。。");
+        return list;
+    }
 }

@@ -7,7 +7,7 @@ public class MyErrorPageController {
 
     @RequestMapping("error-404")
     public String toPage404(){
-        return "error/error-404";
+        return "error";
     }
     @RequestMapping("error-400")
     public String toPage400(){
@@ -15,7 +15,7 @@ public class MyErrorPageController {
     }
     @RequestMapping("error-500")
     public String toPage500(){
-        return "error/error-500";
+        return "error";
     }
 
 }
