@@ -49,7 +49,7 @@ function showResponse(message) {
        // space between toasts
        spacing: 20,
        // in milliseconds
-       timeout: 4000,
+       timeout: 50000,
        // has close button
        has_close_btn: true,
        // has icon

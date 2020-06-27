@@ -258,7 +258,14 @@
                                 <!-- /.card-body -->
 
                                 <div class="card-footer">
+                                    <div class="row">
+                                    <div class="col-sm-9">
                                     <button type="button" class="btn btn-primary" onclick="clickHandle()">保存</button>
+                                    </div>
+                                        <div class="col-sm-3">
+                                    <button type="button" class="btn btn-primary" onclick="delCookie('username')">退出登录</button>
+                                </div>
+                                </div>
                                 </div>
                             </form>
                         </div>
@@ -332,6 +339,20 @@
             title: '消息推送',
             body: message
         })
+    }
+    function getCookie(name){
+        let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+        if (arr != null) return unescape(arr[2]);
+        return null;
+    }
+    function delCookie(name){
+        var exp = new Date();
+        exp.setTime(exp.getTime() - 1);
+        var cval = getCookie(name);
+        if (cval != null)
+            document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString()+";path=/";
+        alert("您已退出登录，即将跳转至主页")
+        window.location.href="/";
     }
 </script>
 
