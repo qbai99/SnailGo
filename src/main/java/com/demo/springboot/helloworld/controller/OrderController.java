@@ -32,8 +32,8 @@ public class OrderController {
     AddressService addressService;
 
     @RequestMapping("/user/OrderHistory")
-    public String OrderPage(Integer id){
-        System.out.println(id);
+    public String OrderPage(){
+        //System.out.println(id);
         return "/user/CheckOrder";
     }
 
@@ -44,8 +44,10 @@ public class OrderController {
         System.out.println(orderList.get(0).getUserId());
         List<UserinfoWithBLOBs> buyerList = userinfoService.find(orderList.get(0).getUserId());
         List<UserinfoWithBLOBs> sellerList = userinfoService.find(orderList.get(0).getSellerId());
+        //System.out.println(orderList.get(0).getOrderId());
         List<ShippingState> shippingStateList = shippingStateService.find(orderList.get(0).getOrderId());
         List<Address> addressList = addressService.selectAddress(orderList.get(0).getAddressId());
+        System.out.println("shippingstatelist 11:  "+shippingStateList);
         for(int i=1;i<orderList.size();i++){
             List<UserinfoWithBLOBs> tempbuyerList = userinfoService.find(orderList.get(i).getUserId());
             List<UserinfoWithBLOBs> tempsellerList = userinfoService.find(orderList.get(i).getSellerId());
@@ -55,7 +57,9 @@ public class OrderController {
             sellerList.addAll(tempsellerList);
             shippingStateList.addAll(tempshippingStateList);
             addressList.addAll(tempaddressList);
+            //System.out.println("shipingstate: "+i+"   "+shippingStateList);
         }
+        //System.out.println("shippingstatelistall:  "+shippingStateList);
         Map<String,Object> result = new HashMap<String, Object>();
         result.put("Order",orderList);
         result.put("Buyer",buyerList);

@@ -181,7 +181,7 @@ public class PayController {
     }
 
     @RequestMapping("/paywithali")
-    public String paywithali(int num,Integer addId,@CookieValue("username") String username){
+    public String paywithali(Integer addId,@CookieValue("username") String username){
         Long userid = userinfoService.selectid(username);
         for(int i=0;i<listq.length;i++){
             Integer goodsId = cartService.getGoodsId(listq[i]);
@@ -190,7 +190,7 @@ public class PayController {
             goodsService.delnum(goodsId,listnum[i]);
             Long sellerId = shopService.getsellerID(shopId);
             List<Goods> NameAndPrilist = goodsService.selectNameAndPri(goodsId);
-            Double price = NameAndPrilist.get(0).getGoodsPrice()+listnum[i];
+            Double price = NameAndPrilist.get(0).getGoodsPrice()*listnum[i];
             Long orderId = orderService.getMaxId()+1;
             orderService.insertone(orderId,userid,goodsId,userid,sellerId,addId,NameAndPrilist.get(0).getGoodsName(),listnum[i],price);
             Long shipid = shippingStateService.getMaxId()+1;
@@ -202,4 +202,10 @@ public class PayController {
         return "/user/CheckOrder";
     }
 
+
+    @RequestMapping("/paynotice")
+    @ResponseBody
+    public void paynotice(HttpServletResponse response){
+        System.out.println(response.toString());
+    }
 }
