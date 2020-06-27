@@ -41,4 +41,8 @@ public interface GoodsMapper {
     List<Goods> selectNameAndPri(Integer goodsId);
 
     void delnum(Goods goods);
+
+    List<Goods> mysearchsorted(String search_key, String goods_tag);
+
+    List<Goods> mysearchsortedh2l(String search_key, String goods_tag);
 }

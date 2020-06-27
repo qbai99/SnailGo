@@ -28,4 +28,8 @@ public interface GoodsService {
     void delnum(Integer goodsId, Integer quantity);
 
     Goods selectone(Long goodsId);
+
+    List<Goods> searchsorted(String search_key, String goods_tag);
+
+    List<Goods> searchsortedh2l(String search_key, String goods_tag);
 }

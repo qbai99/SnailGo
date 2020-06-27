@@ -137,6 +137,8 @@
 
                         <h3 class="ml-lg-2 text-dark" style="margin-left: 120px">为你找到如下商品</h3>
                     </div><!-- /.col -->
+            <btn class="btn-round" style="background-color:#1746ac;float: right;margin-right: 170px" onclick="sortbypriceh2l()">按价格从高到低排序</btn>
+            <btn class="btn-round" style="background-color:#f3d51e;float: right;color: #0a0a0a" onclick="sortbypricel2h()">按价格从低到高排序</btn>
 
         </div>
 
@@ -220,6 +222,18 @@
 <script type="text/javascript" src="/rs-plugin/js/jquery.tp.t.min.js"></script>
 <script type="text/javascript" src="/rs-plugin/js/jquery.tp.min.js"></script>
 <script src="/js/main.js"></script>
+<script type="text/javascript">
+    function sortbypricel2h() {
+        var goods_tag='[[${tag}]]';
+        var search_key='[[${search_key}]]';
+        window.location.href='/goods/searchsorted?goods_tag='+goods_tag+'&search_key='+search_key;
+    }
+    function sortbypriceh2l() {
+        var goods_tag='[[${tag}]]';
+        var search_key='[[${search_key}]]';
+        window.location.href='/goods/searchsortedh2l?goods_tag='+goods_tag+'&search_key='+search_key;
+    }
+</script>
 <!-- ##### Footer Area End ##### -->
 </body>
 </html>

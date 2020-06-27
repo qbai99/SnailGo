@@ -276,6 +276,46 @@
     upper(goods_name) like upper(concat('%',#{search_key},'%'));
     </if>
   </select>
+  <select id="mysearchsorted" resultType="com.demo.springboot.helloworld.common.domain.Goods" resultMap="BaseResultMap">
+    select
+    *
+    from
+    goods
+    where
+    1=1
+    <if test="search_key==null">
+      and upper(goods_tag) like upper(concat('%',#{goods_tag},'%'))
+      ORDER BY (goods_price);
+    </if>
+    <if test="search_key!=null and goods_tag!=null and search_key!=''">
+      and
+      upper(goods_tag) like upper(concat('%',#{goods_tag},'%'))
+
+      and
+      upper(goods_name) like upper(concat('%',#{search_key},'%'))
+      ORDER BY (goods_price);
+    </if>
+  </select>
+  <select id="mysearchsortedh2l" resultType="com.demo.springboot.helloworld.common.domain.Goods" resultMap="BaseResultMap">
+    select
+    *
+    from
+    goods
+    where
+    1=1
+    <if test="search_key==null">
+      and upper(goods_tag) like upper(concat('%',#{goods_tag},'%'))
+      ORDER BY (goods_price) DESC;
+    </if>
+    <if test="search_key!=null and goods_tag!=null and search_key!=''">
+      and
+      upper(goods_tag) like upper(concat('%',#{goods_tag},'%'))
+
+      and
+      upper(goods_name) like upper(concat('%',#{search_key},'%'))
+      ORDER BY (goods_price) DESC;
+    </if>
+  </select>
   <select id="selectCurId" resultType="Long">
     select
     max(goods_id)
