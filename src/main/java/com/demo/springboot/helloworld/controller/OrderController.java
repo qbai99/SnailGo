@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.sound.midi.Soundbank;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +32,8 @@ public class OrderController {
     AddressService addressService;
 
     @RequestMapping("/user/OrderHistory")
-    public String OrderPage(){
+    public String OrderPage(Integer id){
+        System.out.println(id);
         return "/user/CheckOrder";
     }
 

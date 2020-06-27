@@ -59,8 +59,6 @@ public class PayController {
     @RequestMapping("/balancePay")
     public String balancePay(int total,Integer addId,@CookieValue("username") String username){
         Long userid = userinfoService.selectid(username);
-        int t;
-        t=total;
         System.out.println("total: "+total+"userid: "+userid);
         HashMap<String,Object> map = new HashMap<String, Object>();
         map.put("userid",userid);
@@ -96,7 +94,6 @@ public class PayController {
         Long userid = userinfoService.selectid(username);
         for(int i=0;i<listq.length;i++){
             Integer goodsId=cartService.getGoodsId(listq[i]);
-            cartService.del(listq[i]);
             System.out.println("/balancePay-------goodsId: "+goodsId);
             Integer shopId=goodsService.getShopIdBygoodsId(goodsId);
             goodsService.delnum(goodsId,listnum[i]);
@@ -182,4 +179,27 @@ public class PayController {
         System.out.println("/quickpay-------paylist: "+paylist);
         return "/pay";
     }
+
+    @RequestMapping("/paywithali")
+    public String paywithali(int num,Integer addId,@CookieValue("username") String username){
+        Long userid = userinfoService.selectid(username);
+        for(int i=0;i<listq.length;i++){
+            Integer goodsId = cartService.getGoodsId(listq[i]);
+            cartService.del(listq[i]);
+            Integer shopId=goodsService.getShopIdBygoodsId(goodsId);
+            goodsService.delnum(goodsId,listnum[i]);
+            Long sellerId = shopService.getsellerID(shopId);
+            List<Goods> NameAndPrilist = goodsService.selectNameAndPri(goodsId);
+            Double price = NameAndPrilist.get(0).getGoodsPrice()+listnum[i];
+            Long orderId = orderService.getMaxId()+1;
+            orderService.insertone(orderId,userid,goodsId,userid,sellerId,addId,NameAndPrilist.get(0).getGoodsName(),listnum[i],price);
+            Long shipid = shippingStateService.getMaxId()+1;
+            Date date = new Date();
+            String loc = shopService.getLoc(shopId);
+            String info = "等待配送";
+            shippingStateService.insertone(shipid,orderId,date,loc,info);
+        }
+        return "/user/CheckOrder";
+    }
+
 }

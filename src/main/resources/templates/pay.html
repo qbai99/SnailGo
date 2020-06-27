@@ -389,7 +389,7 @@
                     <input type="text" class="form-control float-right" id="reservationtime">
                   </div>
                   <div style="float:right;width:10%">
-                    <a class="btn btn-warning  btn-sm" href="#" onclick="meetpay()">
+                    <a id="meetpayid" class="btn btn-warning  btn-sm" href="#" onclick="meetpay()">
                       <img  src="/img/yen-2x.png"><img>
                       结算
                     </a>
@@ -449,28 +449,18 @@
                 <!-- accepted payments column -->
                 <div class="col-6">
                   <p class="lead">付款方式:</p>
-                  <div style="float: left;width: 5vh" class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
+                  <div style="float: left;width: 5vh">
+                    <a class="nav-link" href="#" onclick="paywithali()">
                       <img style="height: 5vh;width: 5vh" src="/img/zhi.png">
                     </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-top">
-                      <img style="height: 35vh;position:relative;left: 5%" src="/img/zfbpay.jpg">
-                      <div class="dropdown-divider"></div>
-                      <a href="#" class="dropdown-item dropdown-footer">支付宝支付</a>
-                    </div>
                   </div>
-                  <div style="float:left;width:1vh"></div>
-                  <div style="float: left;width: 5vh;position: relative;left:1vh;" class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
+                  <div style="float:left;width:3vh"> </div>
+                  <div style="float: left;width: 5vh;position: relative;left:1vh;" class="swalDefaultError">
+                    <a class="nav-link" href="#">
                       <img style="height: 5vh;width: 5vh" src="/img/vx.jpg">
                     </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-top">
-                      <img style="height: 35vh;position:relative;left: 5%" src="/img/vxpay.png">
-                      <div class="dropdown-divider"></div>
-                      <a href="#" class="dropdown-item dropdown-footer">微信支付</a>
-                    </div>
                   </div>
-                  <div style="float:left;width:2vh"></div>
+                  <div style="float:left;width:3vh"> </div>
                   <div style="float: left;width: 5vh;position: relative;left:1vh;" class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
                       <img style="height: 5vh;width: 5vh" src="/img/logo.png">
@@ -520,6 +510,36 @@
   </aside>
   <!-- /.control-sidebar -->
 </div>
+<form  style="display: none" name=alipayment  id="formDiv" action="alipaySum">
+  <div id="body1" class="show" name="divcontent">
+    <dl class="content">
+      <dt>金额 ：</dt>
+      <dd>
+        <input id="WIDout_trade_no" name="WIDout_trade_no" value=""/>
+      </dd>
+      <dt>订单名称 ：</dt>
+      <dd>
+        <input id="WIDsubject" name="WIDsubject" value=""/>
+      </dd>
+      <dt>备注 ：</dt>
+      <dd>
+        <input id="WIDtotal_amount" name="WIDtotal_amount" value=""/>
+      </dd>
+      <dt>商品描述：</dt>
+      <dd>
+        <input id="WIDbody" name="WIDbody" value=""/>
+      </dd>
+      <dt></dt>
+      <dd id="btn-dd">
+                        <span class="new-btn-login-sp">
+                            <button class="new-btn-login" type="submit"
+                                    style="text-align: center;" id="btn" >付 款</button>
+                        </span>
+        <span class="note-help">如果您点击“付款”按钮，即表示您同意该次的执行操作。</span>
+      </dd>
+    </dl>
+  </div>
+</form>
 <!-- ./wrapper -->
 
 <!-- jQuery -->
@@ -651,7 +671,7 @@
     $('.swalDefaultError').click(function() {
       Toast.fire({
         icon: 'error',
-        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+        title: '暂不支持微信支付，给您带来不便，深表歉意。'
       })
     });
     $('.swalDefaultWarning').click(function() {
@@ -804,8 +824,24 @@
         addId=inputs[i].value;
       }
     }
+    $('#meetpayid').attr("href","/meetpay?addId="+addId);
+  }
+  function paywithali() {
+    var addId;
+    var inputs = document.getElementsByName('r2');
+    for (var i=0;i<inputs.length;i++){
+      if(inputs[i].checked){
+        addId=inputs[i].value;
+      }
+    }
     var totalnum=$('#ptotalid').text();
-    $('#paya').attr("href","/meetpay?addId="+addId);
+    var str='';
+    var d=new Date();
+    str=d.getTime();
+    $('#WIDout_trade_no').attr("value",totalnum);
+    $('#WIDsubject').attr("value",str);
+    document.getElementById("btn").click();
+    window.location.href="/paywithali?totoal="+totalnum+"&addId="+addId;
   }
 </script>
 </body>
