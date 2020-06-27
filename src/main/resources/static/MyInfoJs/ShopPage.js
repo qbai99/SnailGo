@@ -77,7 +77,7 @@ $.ajax({
                 '                <label class="description">'+ res.goods[i].goodsName+'</label>' +
                 '                <p style="width:400%;">'+res.goods[i].goodsDsp+'</p>   ' +
                 '                <a href='+"/goods/details?id="+res.goods[i].goodsId+'>'+
-                '                <img class="img-fluid mb-3" src='+"/goods_pics/"+res.goods[i].goodsId+"-pic-1.jpg"+' alt="Photo">' +
+                '                <img class="img-fluid mb-3" src='+res.img[0].goodsImg+' alt="Photo">' +
                 // '                <img class="img-fluid" src="/AdminLTE-3.0.5/dist/img/photo3.jpg" alt="Photo">\n' +
                 '                </a> ' +
                 '                <p style="width:400%;"><label>商品价格：</label>'+res.goods[i].goodsPrice+'元</p>   ' +
