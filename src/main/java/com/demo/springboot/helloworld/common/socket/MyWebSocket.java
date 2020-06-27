@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *  
@@ -87,12 +89,21 @@ public class MyWebSocket {
 		} catch (JsonParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			Logger LOGGER = Logger.getLogger("lavasoft");
+			LOGGER.setLevel(Level.INFO);
+			LOGGER.info("aaa");
 		} catch (JsonMappingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			Logger LOGGER = Logger.getLogger("lavasoft");
+			LOGGER.setLevel(Level.INFO);
+			LOGGER.info("aaa");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			Logger LOGGER = Logger.getLogger("lavasoft");
+			LOGGER.setLevel(Level.INFO);
+			LOGGER.info("aaa");
 		}
 	}
 	

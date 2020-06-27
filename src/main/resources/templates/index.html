@@ -13,35 +13,28 @@
     <!-- Title  -->
     <!-- Favicon  -->
     <link rel="icon" href="img/logo.png">
-  <script th:src="@{/js/sockjs.min.js}"></script>
-  <script th:src="@{/js/stomp.js}"></script>
-  <script th:src="@{/js/jquery-3.1.1.js}"></script>
-  <script src="js/ws.js"></script>
+
+  <!--<script src="js/ws.js"></script>-->
 <!-- Document Title -->
 <title>SnailGo-主页</title>
 
 <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+  <!--还原到没有引入的-->
 <link rel="stylesheet" type="text/css" href="rs-plugin/css/settings.css" media="screen" />
 <!-- StyleSheets -->
 <link rel="stylesheet" href="css/ionicons.min.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/font-awesome.min.css">
+
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/responsive.css">
+  <link href="jqueryToast/css/toast.style.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
   <link href="/icofont/icofont.min.css" rel="stylesheet">
   <link href="/boxicons/css/boxicons.min.css" rel="stylesheet">
 <!-- Fonts Online -->
 <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 
-<!-- JavaScripts -->
-<script src="js/vendors/modernizr.js"></script>
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <link href="css/toast.style.css" rel="stylesheet">
-  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="js/toast.script.js"></script>
-  <script src="js/ws.js"></script>
 </head>
 <body onload="connect()">
 
@@ -1503,7 +1496,8 @@
   <a href="#" class="cd-top"><i class="fa fa-angle-up"></i></a> 
   <!-- GO TO TOP End --> 
 </div>
-<!-- End Page Wrapper -->
+<!-- End Page Wrapper 额-->
+<script src="js/vendors/modernizr.js"></script>
 <script src="/js/vendors/jquery/jquery.min.js"></script>
 <script src="js/index.js"></script>
 <script src="/MyInfoJs/MyInfo.js"></script>
@@ -1514,13 +1508,56 @@
 <script src="/js/vendors/own-menu.js"></script>
 <script src="/js/vendors/jquery.sticky.js"></script>
 <script src="/js/vendors/owl.carousel.min.js"></script>
+<!-- JavaScripts -->
+<script th:src="@{/js/sockjs.min.js}"></script>
+<script th:src="@{/js/stomp.js}"></script>
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 
 <!-- SLIDER REVOLUTION 4.x SCRIPTS  --> 
 <script type="text/javascript" src="/rs-plugin/js/jquery.tp.t.min.js"></script>
 <script type="text/javascript" src="/rs-plugin/js/jquery.tp.min.js"></script>
 <script src="/js/main.js"></script>
+<script type="text/javascript" th:src="@{jqueryToast/js/toast.script.js}"></script>
+
+<script th:src="@{js/ws.js}"></script>
 <!-- ##### Footer Area End ##### -->
 <script type="text/javascript" >
+  // $(function () {
+  //   $.Toast("111","hhhh","success",{
+  //     // append to body
+  //     appendTo: "body",
+  //     // is stackable?
+  //     stack: false,
+  //     // 'toast-top-left'
+  //     // 'toast-top-right'
+  //     // 'toast-top-center'
+  //     // 'toast-bottom-left'
+  //     // 'toast-bottom-right'
+  //     // 'toast-bottom-center'
+  //     position_class: "toast-top-right",
+  //     // true = snackbar
+  //     fullscreen: false,
+  //     // width
+  //     width: 250,
+  //     // space between toasts
+  //     spacing: 20,
+  //     // in milliseconds
+  //     timeout: 4000,
+  //     // has close button
+  //     has_close_btn: true,
+  //     // has icon
+  //     has_icon: true,
+  //     // is sticky
+  //     sticky: false,
+  //     // border radius in pixels
+  //     border_radius: 6,
+  //     // has progress bar
+  //     has_progress: false,
+  //     // RTL support
+  //     rtl: false
+  //   })
+  // })
   function tocart() {
     var str = document.cookie;
     if (str=='') {
