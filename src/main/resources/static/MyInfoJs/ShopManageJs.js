@@ -2,6 +2,8 @@ var shopId;
 
 var binaryFile;
 
+var fileList = new Array();
+
 function check(){
     console.log($('#imgFile').val());
     var reads = new FileReader();
@@ -122,7 +124,11 @@ $.ajax({
                 '                <p style="width:400%;"><label class="description">商品描述：</label><br>'+'<textarea style="width: 70%;height: 100px" id='+"dsp"+res.goods[i].goodsId+'></textarea></p>   ' +
                 // '                <a href='+"/goods/details?id="+res.goods[i].goodsId+'>' +
                 '                <label>商品图片</label>'+
-                '                <img class="img-fluid mb-3" src='+res.img[i].goodsImg+' alt="Photo">' +
+                '                <img class="img-fluid mb-3" src='+res.img[i].goodsImg+' alt="Photo" id='+"goodsimg"+res.goods[i].goodsId+'>' +
+                '                <input placeholder="点我更换图片" type="file" id="'+"imgFile"+res.goods[i].goodsId+"/"+i+'" accept="image/jpg,image/jpeg,img/png,img/PNG" onchange="changeImg(this)">' +
+                // <a id='+"changeImg"+res.goods[i].goodsId+'' +
+                // '                class="btn btn-info" style="color:white;" onclick="changeImg(this)">' +
+                // '                  更换图片</a>' +
                 // '                <img class="img-fluid" src="/AdminLTE-3.0.5/dist/img/photo3.jpg" alt="Photo">\n' +
                 // '                </a> ' +
                 '                <p style="width:400%;"><label>商品标签：</label>'+'<input style="text-align: center" id='+"tag"+res.goods[i].goodsId + '></p>   ' +
@@ -147,7 +153,7 @@ $.ajax({
                 // '<span class="username">' +
                 // '</span>' +
                 // '<span class="float-right">\n' +
-                '  <a id='+"change"+res.goods[i].goodsId +
+                '  <a id='+"change"+res.goods[i].goodsId+"/" +i+
                 // 'href="'+"/shop/changeinfo?goodsId="+res.goods[i].goodsId+
                 // // "&name="+$('#'+"name"+res.goods[i].goodsId).val()+
                 // "&name="+res.goods[i].goodsName+
@@ -179,7 +185,9 @@ $.ajax({
             $('#'+"tag"+res.goods[i].goodsId).val(res.goods[i].goodsTag);
             $('#'+"price"+res.goods[i].goodsId).val(res.goods[i].goodsPrice);
             $('#'+"remain"+res.goods[i].goodsId).val(res.goods[i].goodsRemaning);
+            fileList.push(res.img[i].goodsImg);
         }
+        console.log(fileList);
     }
 })
 
@@ -213,8 +221,31 @@ function AddGoods() {
     })
 }
 
+function changeImg(e) {
+    console.log(e);
+    var goodsid = e.id.split("imgFile")[1].split("/")[0];
+    var arrayIndex = e.id.split("imgFile")[1].split("/")[1];
+    console.log(goodsid);
+    console.log(arrayIndex);
+    var reads = new FileReader();
+    console.log(document.getElementById(e.id).files);
+    var f = document.getElementById(e.id).files[0];
+    reads.readAsDataURL(f);
+    reads.onload = function (e) {
+        fileList[arrayIndex] = this.result;
+        console.log("上传图片"+this.result);
+        $('#'+"goodsimg"+goodsid).attr('src',this.result);
+        // console.log(f);
+    }
+
+}
 function change(e) {
-    var goodsid = e.id.split("change")[1];
+    var goodsid = e.id.split("change")[1].split("/")[0];
+    var index = e.id.split("change")[1].split("/")[1];
+    console.log(goodsid);
+    console.log(index);
+    console.log("新图片"+fileList[index]);
+
     var goodsName = $('#'+"name"+goodsid).val();
     var goodsDsp = $('#'+"dsp"+goodsid).val();
     var goodsTag = $('#'+"tag"+goodsid).val();
@@ -231,10 +262,12 @@ function change(e) {
             dsp:goodsDsp,
             tag:goodsTag,
             price:goodsPrice,
-            remain:goodsRemain
+            remain:goodsRemain,
+            file:fileList[index]
         },
         success:function (res) {
-            console.log(res);
+            alert("修改成功！");
+            window.location.reload();
         }
     })
 }

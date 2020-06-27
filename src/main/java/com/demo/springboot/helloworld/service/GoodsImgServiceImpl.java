@@ -21,4 +21,25 @@ public class GoodsImgServiceImpl implements GoodsImgService {
         List<GoodsImg> goodsImgs = goodsImgMapper.selectByExampleWithBLOBs(goodsImgExample);
         return goodsImgs;
     }
+
+    @Override
+    public boolean UpdateImg(String goodsId, String file) {
+        GoodsImgExample goodsImgExample = new GoodsImgExample();
+        goodsImgExample.createCriteria().andGoodsIdEqualTo(Long.parseLong(goodsId));
+        List<GoodsImg> goodsImg = goodsImgMapper.selectByExampleWithBLOBs(goodsImgExample);
+
+        System.out.println(file);
+
+        GoodsImg tempGoodsImg = goodsImg.get(0);
+        GoodsImg newGoodsImg = new GoodsImg();
+        newGoodsImg.setImgId(tempGoodsImg.getImgId());
+        newGoodsImg.setGoodsId(tempGoodsImg.getGoodsId());
+        newGoodsImg.setGoodsImg(file.getBytes());
+
+        int result = goodsImgMapper.updateByPrimaryKeyWithBLOBs(newGoodsImg);
+        System.out.println(result);
+
+        if (result==1)return true;
+        else return false;
+    }
 }
