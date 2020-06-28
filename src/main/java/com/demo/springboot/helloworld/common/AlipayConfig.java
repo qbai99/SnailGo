@@ -1,5 +1,7 @@
 package com.demo.springboot.helloworld.common;
 
+import com.demo.springboot.helloworld.common.domain.LogerUtil;
+
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -47,13 +49,14 @@ public class AlipayConfig {
                     + System.currentTimeMillis() + ".txt");
             writer.write(sWord);
         } catch (Exception e) {
-            e.printStackTrace();
+            LogerUtil.log(e.getClass(),"",e);
         } finally {
             if (writer != null) {
                 try {
                     writer.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    LogerUtil.log(e.getClass(),"",e);
+
                 }
             }
         }

@@ -6,7 +6,7 @@
     <script src="/AdminLTE-3.0.5/plugins/jquery/jquery.min.js"></script>
 </head>
 <body>
-<form name=alipayment  id="formDiv" action="alipaySum">
+<form name=alipayment  id="formDiv" >
     <div id="body1" class="show" name="divcontent">
         <dl class="content">
             <dt>金额 ：</dt>
@@ -33,7 +33,7 @@
             <dd id="btn-dd">
                         <span class="new-btn-login-sp">
                             <button class="new-btn-login" type="submit"
-                                    style="text-align: center;" id="btn" >付 款</button>
+                                    style="text-align: center;" id="btn" onclick="pay()" >付 款</button>
                         </span>
                 <span class="note-help">如果您点击“付款”按钮，即表示您同意该次的执行操作。</span>
             </dd>
@@ -46,5 +46,10 @@
         $.post("alipaySum",da,"json")
     })
 </script>-->
+<script>
+    function pay() {
+        window.location.href="/alipaySun?WIDout_trade_no=100&WIDtotal_amount=1234655&WIDtotal_amount=&WIDbody="
+    }
+</script>
 </body>
 </html>
