@@ -670,7 +670,9 @@
     console.log(totalnum);
     console.log(addId);
     var balance = $('#balance').html();
-    if(balance<totalnum){
+    console.log("balance: "+balance);
+    console.log()
+    if(parseFloat(balance)<parseFloat(totalnum)){
       alert("余额不足！！");
     }else {
       $('#paya').attr("href", "/balancePay?total=" + totalnum + "&addId=" + addId);

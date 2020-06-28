@@ -11,25 +11,24 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping("/balance")
 public class UserfinanceController {
 
     @Autowired
     UserfinanceService userfinanceService;
 
-    @RequestMapping("/balancepage")
+    @RequestMapping("/balance/balancepage")
     public String balancepage(){
         return "/user/BalanceRecharge";
     }
 
-    @RequestMapping("/check")
+    @RequestMapping("/balance/check")
     @ResponseBody
     public List<Userfinance> check(@CookieValue("username") String userAdmin){
         List<Userfinance> userfinances = userfinanceService.check(userAdmin);
         return userfinances;
     }
 
-    @RequestMapping("/postcharge")
+    @RequestMapping("/balance/postcharge")
     @ResponseBody
     public Userfinance charge(@CookieValue("username") String userAdmin,String input){
         double price = Double.valueOf(input);

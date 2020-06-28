@@ -525,16 +525,16 @@
     </aside>
     <!-- /.control-sidebar -->
 </div>
-<form  style="display: none" name=alipayment  id="formDiv" action="alipaySum">
+<form   name=alipayment  id="formDiv" action="alipaySum">
     <div id="body1" class="show" name="divcontent">
         <dl class="content">
             <dt>金额 ：</dt>
             <dd>
-                <input id="WIDout_trade_no" name="WIDout_trade_no" value=""/>
+                <input id="WIDout_trade_no" name="WIDout_trade_no" value="1000"/>
             </dd>
             <dt>订单名称 ：</dt>
             <dd>
-                <input id="WIDsubject" name="WIDsubject" value=""/>
+                <input id="WIDsubject" name="WIDsubject" value="123456789"/>
             </dd>
             <dt>备注 ：</dt>
             <dd>
@@ -562,6 +562,7 @@
 <script>
     function charge() {
         var chargeInput =  $('#chargeInput').val();
+        console.log(chargeInput);
         if(parseFloat(chargeInput)<=0){
             alert("充值金额不能为负数！");
             $('#chargeInput').val("0");
@@ -573,7 +574,9 @@
             str=d.getTime();
             $('#WIDout_trade_no').attr("value",chargeInput);
             $('#WIDsubject').attr("value",str);
-            document.getElementById("btn").click();
+            console.log(chargeInput);
+            console.log(str);
+            //document.getElementById("btn").click();
             // $.ajax({
             //     type: "POST",
             //     url: "/balance/postcharge",
