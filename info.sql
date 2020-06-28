@@ -15,6 +15,9 @@ INSERT INTO sign_up
     (sign_up_id, user_id,user_name,user_password,identity,email_address)
 VALUES (1,1,"admin","admin",1,"admin@163.com");
 
+INSERT INTO sign_up
+(sign_up_id, user_id,user_name,user_password,identity,email_address)
+VALUES (3,3,"123","admin",0,"8276@qq.com");
 
 INSERT INTO sign_up
     (sign_up_id, user_id,user_name,user_password,identity,email_address)

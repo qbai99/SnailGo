@@ -38,156 +38,20 @@
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">主页</a>
+                <a href="/" class="nav-link">主页</a>
             </li>
 
 
         </ul>
 
 
-        <!-- SEARCH FORM -->
-        <form class="form-inline ml-3" action="/goods/search" target=_parent>
-            <div class="input-group input-group-sm">
-                <input name="search_key" class="form-control form-control-navbar" type="name" placeholder="在此搜索商品" aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-navbar" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
-
-
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
-            <!-- Messages Dropdown Menu -->
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="far fa-comments"></i>
-                    <span class="badge badge-danger navbar-badge">3</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="/AdminLTE-3.0.5/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    Brad Diesel
-                                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">Call me whenever you can...</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="/AdminLTE-3.0.5/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    John Pierce
-                                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">I got your message bro</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="/AdminLTE-3.0.5/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    Nora Silvester
-                                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">The subject goes here</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                </div>
-            </li>
-
-            <!-- Notifications Dropdown Menu -->
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="far fa-bell"></i>
-                    <span class="badge badge-warning navbar-badge">15</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-header">15 Notifications</span>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-envelope mr-2"></i> 4 new messages
-                        <span class="float-right text-muted text-sm">3 mins</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-users mr-2"></i> 8 friend requests
-                        <span class="float-right text-muted text-sm">12 hours</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-file mr-2"></i> 3 new reports
-                        <span class="float-right text-muted text-sm">2 days</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown user-menu">
-                <a href="./user/userInfomation.html" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                    <img src="/AdminLTE-3.0.5/dist/img/user2-160x160.jpg" class="user-image img-circle elevation-2" alt="User Image">
-                    <span class="d-none d-md-inline">Alexander Pierce</span>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <!-- User image -->
-                    <li class="user-header bg-primary">
-                        <img src="/AdminLTE-3.0.5/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-
-                        <p>
-                            Alexander Pierce - Web Developer
-                            <small>Member since Nov. 2012</small>
-                        </p>
-                    </li>
-                    <!-- Menu Body -->
-                    <li class="user-body">
-                        <div class="row">
-                            <div class="col-4 text-center">
-                                <a href="#">Followers</a>
-                            </div>
-                            <div class="col-4 text-center">
-                                <a href="#">Sales</a>
-                            </div>
-                            <div class="col-4 text-center">
-                                <a href="#">Friends</a>
-                            </div>
-                        </div>
-                        <!-- /.row -->
-                    </li>
-                    <!-- Menu Footer-->
-                    <li class="user-footer">
-                        <a href="/user/MyInformation" class="btn btn-default btn-flat">个人中心</a>
-                        <a href="#" class="btn btn-default btn-flat float-right">Sign out</a>
-                    </li>
-                </ul>
-            </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fas fa-shopping-cart "></i>
-                    <span class="badge badge-warning navbar-badge">1</span>
-                </a>
+                <div class="nav-right" style="right: 20px">
+                    <a href="/" style="color: black"><i class="fa fa-comment" style="color: black"></i><strong>消息</strong></a>
+                    <a id="tocartid" href="#" onclick="tocart()" style="color: black"> <i class="fa fa-shopping-cart"></i></a>
+                </div>
             </li>
 
         </ul>
@@ -195,22 +59,26 @@
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-light-primary small-text elevation-4">
+    <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #f4f6f9;color: white">
         <!-- Brand Logo -->
-        <a href="/AdminLTE-3.0.5/index3.html" class="brand-link">
-            <img src="/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+        <a href="/" class="brand-link">
+            <img src="/img/logo.png"
+                 alt="AdminLTE Logo"
+                 class="brand-image img-circle elevation-3"
                  style="opacity: .8">
-            <span class="brand-text font-weight-light">AdminLTE 3</span>
+            <span class="brand-text" style="color: black">Snail Go</span>
         </a>
 
         <!-- Sidebar -->
         <div class="sidebar">
-            <!-- Sidebar user panel (optional) -->
+            <!-- Sidebar user (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="/AdminLTE-3.0.5/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                    <img id="sideImg" class="img-circle elevation-2" alt="User Image">
                 </div>
-
+                <div class="info">
+                    <a href="/user/MyInformation" class="d-block" id="sideName" style="color: black"></a>
+                </div>
             </div>
 
             <!-- Sidebar Menu -->
@@ -218,145 +86,77 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-                    <li class="nav-item has-treeview menu-open">
-                        <a href="#" class="nav-link active bg-gradient-gray-dark">
-                            <i class="nav-icon fas fa-male"></i>
-                            <p>
-                                男 装
-                                <i class="right fas fa-angle-left"></i>
+                    <li class="nav-item has-treeview">
+                        <a href="/user/MyInformation" class="nav-link">
+                            <i class="nav-icon fas fa-info" style="color:black"></i>
+                            <p style="color: black">
+                                个人中心
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>上衣</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>裤子</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>鞋</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>配饰</p>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
-                    <li class="nav-item has-treeview menu-open">
-                        <a href="#" class="nav-link active bg-gradient-gray-dark">
-                            <i class="nav-icon fas fa-female "></i>
-                            <p>
-                                女 装
-                                <i class="right fas fa-angle-left"></i>
+                    <li class="nav-item">
+                        <a href="/user/AdressManage" class="nav-link">
+                            <i class="nav-icon fas fa-location-arrow" style="color:black"></i>
+                            <p style="color: black">
+                                地址管理
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>上衣</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>裤子</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>鞋</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>配饰</p>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
-                    <li class="nav-item has-treeview menu-open">
-                        <a href="#" class="nav-link active bg-gradient-gray-dark">
-                            <i class="nav-icon fas fa-child"></i>
-                            <p>
-                                童 装
-                                <i class="right fas fa-angle-left"></i>
+                    <li class="nav-item has-treeview">
+                        <a href="/user/changepassword" class="nav-link">
+                            <i class="nav-icon fas fa-key" style="color:black"></i>
+                            <p style="color: black">
+                                修改密码
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>上衣</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>裤子</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>鞋</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>配饰</p>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
-                    <li class="nav-item has-treeview menu-open">
-                        <a href="#" class="nav-link active bg-gradient-dark">
-                            <i class="nav-icon fas fa-mobile"></i>
-                            <p>
-                                数码 3C
-                                <i class="right fas fa-angle-left"></i>
+                    <li class="nav-item has-treeview">
+                        <a href="/balance/balancepage" class="nav-link">
+                            <i class="nav-icon fas fa-money-bill" style="color:black"></i>
+                            <p style="color: black">
+                                余额充值
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>平板电脑</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>手机</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>台式机</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>配件</p>
-                                </a>
-                            </li>
-                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="/user/OrderHistory" class="nav-link">
+                            <i class="nav-icon fas fa-copy" style="color:black"></i>
+                            <p style="color: black">
+                                订单记录
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="/user/viewhistory" class="nav-link">
+                            <i class="nav-icon fas fa-history" style="color:black"></i>
+                            <p style="color: black">
+                                浏览记录
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview" id="myShop">
+                        <a href="/user/MyProfile" class="nav-link">
+                            <i class="nav-icon fas fa-shopping-basket" style="color:black"></i>
+                            <p style="color: black">
+                                我的商店
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview" id="shopManagement">
+                        <a href="/user/ShopManage" class="nav-link">
+                            <i class="nav-icon fas fa-book-open" style="color:black"></i>
+                            <p style="color: black">
+                                管理商店
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="/chatting" class="nav-link">
+                            <i class="nav-icon fas fa-comment" style="color:black"></i>
+                            <p style="color: black">
+                                我的会话
+                            </p>
+                        </a>
                     </li>
                 </ul>
             </nav>
@@ -476,15 +276,7 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-
-    <footer class="main-footer">
-        <div class="float-right d-none d-sm-block">
-            <b>Version</b> 3.0.5
-        </div>
-        <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-        reserved.
-    </footer>
-
+    
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
         <!-- Control sidebar content goes here -->
@@ -496,6 +288,16 @@
 <!-- jQuery -->
 <script src="/AdminLTE-3.0.5/plugins/jquery/jquery.min.js"></script>
 <script src="/CartJs/CartJs.js"></script>
+<script>
+    $.ajax({
+        type: "GET",
+        url: "/user/information",
+        success: function (res, ifo) {
+            $('#sideImg').attr('src', res.UserInfo[0].userImg);
+            $("#sideName").html(res.UserInfo[0].userName);
+        }
+    });
+</script>
 <!-- Bootstrap 4 -->
 <script src="/AdminLTE-3.0.5/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
