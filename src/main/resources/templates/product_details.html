@@ -180,11 +180,23 @@
                     <!-- Colors -->
                     <div class="row" style="margin-top: 30px">
                       <div class="col-xs-5">
-                        <div class="clr"> <span style="background:#068bcd"></span> <span style="background:#d4b174"></span> <span style="background:#333333"></span> </div>
+                        <span>颜色：</span>
+                        <select class="bootstrap-select" style="background:#fafdfe;height:28px;width:180px;line-height:28px;border:1px solid #9bc0dd;-moz-border-radius:2px; -webkit-border-radius:2px;border-radius:2px;  ">
+                          <option value ="1">白色</option>
+                          <option value ="2">银色</option>
+                          <option value="3">蓝色</option>
+                          <option value="4">黑色</option>
+                        </select>
                       </div>
                       <!-- Sizes -->
                       <div class="col-xs-7">
-                        <div class="sizes"> <a href="#.">S</a> <a class="active" href="#.">M</a> <a href="#.">L</a> <a href="#.">XL</a> </div>
+                        <span>规格</span>
+                        <select class="bootstrap-select bx-selection" style="background:#fafdfe;height:28px;width:180px;line-height:28px;border:1px solid #9bc0dd;-moz-border-radius:2px; -webkit-border-radius:2px;border-radius:2px; ">
+                          <option value ="1">S</option>
+                          <option value ="2">M</option>
+                          <option value="3">L</option>
+                          <option value="4">XL</option>
+                        </select>
                       </div>
                     </div>
                     <!-- Compare Wishlist -->
@@ -192,7 +204,7 @@
                     <!-- Quinty -->
                     <div class="row" style="margin-top: 100px">
                     <div class="quinty col-sm-6">
-                      <input type="number" value="1" id="numofgood">
+                      <input type="number" value="1" oninput="if(value<0)value=0;if(value>30)value=30"id="numofgood">
 
                     </div>
 
